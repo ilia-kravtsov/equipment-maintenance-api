@@ -2,18 +2,21 @@
   "name": "equipment-maintenance-api",
   "version": "1.0.0",
   "description": "REST API with Express: Equipment Service Request Tracking Service",
-  "main": "index.js",
+  "main": "dist/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "typecheck": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ilia-kravtsov/equipment-maintenance-api.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "ilia-kravtsov",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/ilia-kravtsov/equipment-maintenance-api/issues"
   },
