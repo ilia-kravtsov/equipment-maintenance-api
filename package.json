@@ -1,0 +1,42 @@
+{
+  "name": "equipment-maintenance-api",
+  "version": "1.0.0",
+  "description": "REST API with Express: Equipment Service Request Tracking Service",
+  "main": "dist/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "dev": "tsx watch src/server.ts",
+    "start": "node dist/server.js",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ilia-kravtsov/equipment-maintenance-api.git"
+  },
+  "keywords": [],
+  "author": "ilia-kravtsov",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/ilia-kravtsov/equipment-maintenance-api/issues"
+  },
+  "homepage": "https://github.com/ilia-kravtsov/equipment-maintenance-api#readme",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.5.1",
+    "eslint": "^10.10.0",
+    "prettier": "^3.9.6",
+    "tsx": "^4.23.13",
+    "typescript": "6.0",
+    "typescript-eslint": "^8.70.0"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1"
+  }
+}
