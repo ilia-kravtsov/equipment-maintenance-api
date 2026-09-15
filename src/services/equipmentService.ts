@@ -1,5 +1,5 @@
 import { randomUUID } from 'node:crypto';
-
+import { ConflictError } from '../errors/conflictError.js';
 import type {
   CreateEquipmentInput,
   Equipment,
@@ -19,6 +19,15 @@ export class EquipmentService {
   }
 
   create(input: CreateEquipmentInput): Equipment {
+    const existingEquipment =
+      this.equipmentRepository.findBySerialNumber(input.serialNumber);
+
+    if (existingEquipment !== undefined) {
+      throw new ConflictError(
+        `Equipment with serial number "${input.serialNumber}" already exists`,
+      );
+    }
+
     const equipment: Equipment = {
       id: randomUUID(),
       ...input,
@@ -32,6 +41,20 @@ export class EquipmentService {
 
     if (existingEquipment === undefined) {
       return undefined;
+    }
+
+    if (
+      input.serialNumber !== undefined &&
+      input.serialNumber !== existingEquipment.serialNumber
+    ) {
+      const equipmentWithSameSerialNumber =
+        this.equipmentRepository.findBySerialNumber(input.serialNumber);
+
+      if (equipmentWithSameSerialNumber !== undefined) {
+        throw new ConflictError(
+          `Equipment with serial number "${input.serialNumber}" already exists`,
+        );
+      }
     }
 
     const updatedEquipment: Equipment = {
