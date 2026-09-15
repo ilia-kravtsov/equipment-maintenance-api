@@ -24,15 +24,6 @@ export class EquipmentController {
   getById = (req: Request<EquipmentParams>, res: Response): void => {
     const equipment = this.equipmentService.getById(req.params.id);
 
-    if (equipment === undefined) {
-      res.status(404).json({
-        error: {
-          message: 'Equipment not found',
-        },
-      });
-      return;
-    }
-
     res.status(200).json({
       data: equipment,
     });
@@ -57,31 +48,13 @@ export class EquipmentController {
       req.body as UpdateEquipmentInput,
     );
 
-    if (equipment === undefined) {
-      res.status(404).json({
-        error: {
-          message: 'Equipment not found',
-        },
-      });
-      return;
-    }
-
     res.status(200).json({
       data: equipment,
     });
   };
 
   delete = (req: Request<EquipmentParams>, res: Response): void => {
-    const deleted = this.equipmentService.delete(req.params.id);
-
-    if (!deleted) {
-      res.status(404).json({
-        error: {
-          message: 'Equipment not found',
-        },
-      });
-      return;
-    }
+    this.equipmentService.delete(req.params.id);
 
     res.status(204).send();
   };
