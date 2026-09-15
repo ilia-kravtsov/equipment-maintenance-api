@@ -1,5 +1,6 @@
 import express from 'express';
 import { equipmentRouter } from './routes/equipmentRoutes.js';
+import { errorHandler } from './middlewares/errorHandler.js';
 
 export const app = express();
 
@@ -12,3 +13,5 @@ app.get('/api/health', (_req, res) => {
     status: 'ok',
   });
 });
+
+app.use(errorHandler);
