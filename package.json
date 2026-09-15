@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
+    "dev": "tsx watch src/server.ts",
     "start": "node dist/server.js",
     "typecheck": "tsc --noEmit"
   },
@@ -22,7 +23,13 @@
   },
   "homepage": "https://github.com/ilia-kravtsov/equipment-maintenance-api#readme",
   "devDependencies": {
+    "@types/express": "^5.0.6",
     "@types/node": "^26.5.1",
+    "tsx": "^4.23.13",
     "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1"
   }
 }
