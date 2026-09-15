@@ -1,7 +1,12 @@
+import type { ParamsDictionary } from 'express-serve-static-core';
 import type { RequestHandler } from 'express';
 import type { ZodType } from 'zod';
 
-export const validateBody = (schema: ZodType): RequestHandler => {
+export const validateBody = <
+  P extends ParamsDictionary = ParamsDictionary,
+>(
+  schema: ZodType,
+): RequestHandler<P> => {
   return (req, _res, next) => {
     const result = schema.safeParse(req.body);
 

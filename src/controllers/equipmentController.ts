@@ -1,12 +1,12 @@
 import type { Request, Response } from 'express';
-
+import type { ParamsDictionary } from 'express-serve-static-core';
 import type {
   CreateEquipmentInput,
   UpdateEquipmentInput,
 } from '../models/equipment.js';
 import type { EquipmentService } from '../services/equipmentService.js';
 
-interface EquipmentParams {
+export interface EquipmentParams extends ParamsDictionary {
   id: string;
 }
 
