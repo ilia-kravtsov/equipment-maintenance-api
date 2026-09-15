@@ -3,6 +3,7 @@ import { randomUUID } from 'node:crypto';
 import type {
   CreateEquipmentInput,
   Equipment,
+  UpdateEquipmentInput,
 } from '../models/equipment.js';
 import type { EquipmentRepository } from '../repositories/equipmentRepository.js';
 
@@ -24,6 +25,22 @@ export class EquipmentService {
     };
 
     return this.equipmentRepository.create(equipment);
+  }
+
+  update(id: string, input: UpdateEquipmentInput): Equipment | undefined {
+    const existingEquipment = this.equipmentRepository.findById(id);
+
+    if (existingEquipment === undefined) {
+      return undefined;
+    }
+
+    const updatedEquipment: Equipment = {
+      ...existingEquipment,
+      ...input,
+      id: existingEquipment.id,
+    };
+
+    return this.equipmentRepository.update(id, updatedEquipment);
   }
 
   delete(id: string): boolean {
