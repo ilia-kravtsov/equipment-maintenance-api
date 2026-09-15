@@ -32,3 +32,5 @@ export interface Equipment {
 }
 
 export type CreateEquipmentInput = Omit<Equipment, 'id'>;
+
+export type UpdateEquipmentInput = Partial<CreateEquipmentInput>;
