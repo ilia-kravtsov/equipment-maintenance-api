@@ -1,5 +1,6 @@
 import { randomUUID } from 'node:crypto';
 import { ConflictError } from '../errors/conflictError.js';
+import { NotFoundError } from '../errors/notFoundError.js';
 import type {
   CreateEquipmentInput,
   Equipment,
@@ -14,8 +15,14 @@ export class EquipmentService {
     return this.equipmentRepository.findAll();
   }
 
-  getById(id: string): Equipment | undefined {
-    return this.equipmentRepository.findById(id);
+  getById(id: string): Equipment {
+    const equipment = this.equipmentRepository.findById(id);
+
+    if (equipment === undefined) {
+      throw new NotFoundError('Equipment not found');
+    }
+
+    return equipment;
   }
 
   create(input: CreateEquipmentInput): Equipment {
@@ -36,11 +43,11 @@ export class EquipmentService {
     return this.equipmentRepository.create(equipment);
   }
 
-  update(id: string, input: UpdateEquipmentInput): Equipment | undefined {
+  update(id: string, input: UpdateEquipmentInput): Equipment {
     const existingEquipment = this.equipmentRepository.findById(id);
 
     if (existingEquipment === undefined) {
-      return undefined;
+      throw new NotFoundError('Equipment not found');
     }
 
     if (
@@ -63,10 +70,23 @@ export class EquipmentService {
       id: existingEquipment.id,
     };
 
-    return this.equipmentRepository.update(id, updatedEquipment);
+    const updatedEquipmentResult = this.equipmentRepository.update(
+      id,
+      updatedEquipment,
+    );
+
+    if (updatedEquipmentResult === undefined) {
+      throw new NotFoundError('Equipment not found');
+    }
+
+    return updatedEquipmentResult;
   }
 
-  delete(id: string): boolean {
-    return this.equipmentRepository.delete(id);
+  delete(id: string): void {
+    const deleted = this.equipmentRepository.delete(id);
+
+    if (!deleted) {
+      throw new NotFoundError('Equipment not found');
+    }
   }
 }
