@@ -5,13 +5,23 @@ import {
   type MaintenanceRequestParams,
 } from '../controllers/maintenanceRequestController.js';
 
+import { validateBody } from '../middlewares/validateBody.js';
+import {
+  createMaintenanceRequestSchema,
+  updateMaintenanceRequestSchema,
+} from '../validators/maintenanceRequestValidator.js';
+
 export const createMaintenanceRequestRouter = (
   requestController: MaintenanceRequestController,
 ): Router => {
   const router = Router();
 
   router.get('/', requestController.getAll);
-  router.post('/', requestController.create);
+  router.post(
+    '/',
+    validateBody(createMaintenanceRequestSchema),
+    requestController.create,
+  );
 
   router.get<MaintenanceRequestParams>(
     '/:id',
@@ -20,6 +30,9 @@ export const createMaintenanceRequestRouter = (
 
   router.patch<MaintenanceRequestParams>(
     '/:id',
+    validateBody<MaintenanceRequestParams>(
+      updateMaintenanceRequestSchema,
+    ),
     requestController.update,
   );
 
