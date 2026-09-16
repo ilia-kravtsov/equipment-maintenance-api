@@ -40,3 +40,15 @@ export type UpdateMaintenanceRequestInput = Partial<
 export interface UpdateMaintenanceRequestStatusInput {
   status: RequestStatus;
 }
+
+export interface MaintenanceRequestListQuery {
+  status?: RequestStatus;
+  priority?: RequestPriority;
+  equipmentId?: string;
+  createdFrom?: string;
+  createdTo?: string;
+  page: number;
+  limit: number;
+  sortBy?: 'createdAt' | 'updatedAt' | 'plannedAt' | 'priority' | 'status';
+  order?: 'asc' | 'desc';
+}
