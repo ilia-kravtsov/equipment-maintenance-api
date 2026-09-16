@@ -6,11 +6,19 @@ import type {
   MaintenanceRequest, RequestStatus,
   UpdateMaintenanceRequestInput, UpdateMaintenanceRequestStatusInput,
   MaintenanceRequestListQuery,
+  RequestPriority,
 } from '../models/maintenanceRequest.js';
 import type { EquipmentRepository } from '../repositories/equipmentRepository.js';
 import type { MaintenanceRequestRepository } from '../repositories/maintenanceRequestRepository.js';
 import {ConflictError} from "../errors/conflictError.js";
 import type { PaginatedResult } from '../models/pagination.js';
+
+const priorityOrder: Record<RequestPriority, number> = {
+  low: 1,
+  medium: 2,
+  high: 3,
+  critical: 4,
+};
 
 const allowedStatusTransitions: Record<
   RequestStatus,
@@ -72,6 +80,13 @@ export class MaintenanceRequestService {
       const direction = query.order === 'desc' ? -1 : 1;
 
       requests = [...requests].sort((a, b) => {
+        if (sortBy === 'priority') {
+          return (
+            priorityOrder[a.priority] -
+            priorityOrder[b.priority]
+          ) * direction;
+        }
+
         const first = a[sortBy] ?? '';
         const second = b[sortBy] ?? '';
 
