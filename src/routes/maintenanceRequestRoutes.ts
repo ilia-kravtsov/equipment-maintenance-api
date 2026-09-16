@@ -4,11 +4,12 @@ import {
   type MaintenanceRequestController,
   type MaintenanceRequestParams,
 } from '../controllers/maintenanceRequestController.js';
-
+import { validateQuery } from '../middlewares/validateQuery.js';
 import { validateBody } from '../middlewares/validateBody.js';
 import {
   createMaintenanceRequestSchema,
   updateMaintenanceRequestSchema, updateMaintenanceRequestStatusSchema,
+  maintenanceRequestListQuerySchema,
 } from '../validators/maintenanceRequestValidator.js';
 
 export const createMaintenanceRequestRouter = (
@@ -16,7 +17,12 @@ export const createMaintenanceRequestRouter = (
 ): Router => {
   const router = Router();
 
-  router.get('/', requestController.getAll);
+  router.get(
+    '/',
+    validateQuery(maintenanceRequestListQuerySchema),
+    requestController.getAll,
+  );
+
   router.post(
     '/',
     validateBody(createMaintenanceRequestSchema),
