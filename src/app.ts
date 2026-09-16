@@ -8,6 +8,7 @@ import { MaintenanceRequestController } from './controllers/maintenanceRequestCo
 import { InMemoryMaintenanceRequestRepository } from './repositories/inMemoryMaintenanceRequestRepository.js';
 import { createMaintenanceRequestRouter } from './routes/maintenanceRequestRoutes.js';
 import { MaintenanceRequestService } from './services/maintenanceRequestService.js';
+import { notFoundHandler } from './middlewares/notFoundHandler.js';
 
 export const app = express();
 
@@ -40,5 +41,7 @@ app.get('/api/health', (_req, res) => {
 app.use('/api/equipment', createEquipmentRouter(equipmentController));
 
 app.use('/api/requests', createMaintenanceRequestRouter(requestController));
+
+app.use(notFoundHandler);
 
 app.use(errorHandler);
