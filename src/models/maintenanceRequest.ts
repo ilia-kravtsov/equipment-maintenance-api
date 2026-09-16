@@ -36,3 +36,7 @@ export type CreateMaintenanceRequestInput = Omit<
 export type UpdateMaintenanceRequestInput = Partial<
   Omit<CreateMaintenanceRequestInput, 'equipmentId'>
 >;
+
+export interface UpdateMaintenanceRequestStatusInput {
+  status: RequestStatus;
+}
