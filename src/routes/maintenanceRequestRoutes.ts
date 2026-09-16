@@ -8,7 +8,7 @@ import {
 import { validateBody } from '../middlewares/validateBody.js';
 import {
   createMaintenanceRequestSchema,
-  updateMaintenanceRequestSchema,
+  updateMaintenanceRequestStatusSchema,
 } from '../validators/maintenanceRequestValidator.js';
 
 export const createMaintenanceRequestRouter = (
@@ -29,11 +29,11 @@ export const createMaintenanceRequestRouter = (
   );
 
   router.patch<MaintenanceRequestParams>(
-    '/:id',
+    '/:id/status',
     validateBody<MaintenanceRequestParams>(
-      updateMaintenanceRequestSchema,
+      updateMaintenanceRequestStatusSchema,
     ),
-    requestController.update,
+    requestController.updateStatus,
   );
 
   router.delete<MaintenanceRequestParams>(
