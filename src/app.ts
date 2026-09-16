@@ -10,6 +10,7 @@ import { createMaintenanceRequestRouter } from './routes/maintenanceRequestRoute
 import { MaintenanceRequestService } from './services/maintenanceRequestService.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import { jsonErrorHandler } from './middlewares/jsonErrorHandler.js';
+import { requestId } from './middlewares/requestId.js';
 
 export const app = express();
 
@@ -30,6 +31,8 @@ const equipmentController = new EquipmentController(
   requestService,
 );
 const requestController = new MaintenanceRequestController(requestService);
+
+app.use(requestId);
 
 app.use(express.json());
 
