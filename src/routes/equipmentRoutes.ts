@@ -1,42 +1,43 @@
 import { Router } from 'express';
+
+import {
+  type EquipmentController,
+  type EquipmentParams,
+} from '../controllers/equipmentController.js';
 import { validateBody } from '../middlewares/validateBody.js';
 import {
   createEquipmentSchema,
   updateEquipmentSchema,
 } from '../validators/equipmentValidator.js';
 
-import {
-  EquipmentController,
-  type EquipmentParams,
-} from '../controllers/equipmentController.js';
-import { InMemoryEquipmentRepository } from '../repositories/inMemoryEquipmentRepository.js';
-import { EquipmentService } from '../services/equipmentService.js';
+export const createEquipmentRouter = (
+  equipmentController: EquipmentController,
+): Router => {
+  const router = Router();
 
-const equipmentRepository = new InMemoryEquipmentRepository();
-const equipmentService = new EquipmentService(equipmentRepository);
-const equipmentController = new EquipmentController(equipmentService);
+  router.get('/', equipmentController.getAll);
 
-export const equipmentRouter = Router();
+  router.post(
+    '/',
+    validateBody(createEquipmentSchema),
+    equipmentController.create,
+  );
 
-equipmentRouter.get('/', equipmentController.getAll);
-equipmentRouter.post(
-  '/',
-  validateBody(createEquipmentSchema),
-  equipmentController.create,
-);
+  router.get<EquipmentParams>(
+    '/:id',
+    equipmentController.getById,
+  );
 
-equipmentRouter.get<EquipmentParams>(
-  '/:id',
-  equipmentController.getById,
-);
+  router.patch<EquipmentParams>(
+    '/:id',
+    validateBody<EquipmentParams>(updateEquipmentSchema),
+    equipmentController.update,
+  );
 
-equipmentRouter.patch<EquipmentParams>(
-  '/:id',
-  validateBody<EquipmentParams>(updateEquipmentSchema),
-  equipmentController.update,
-);
+  router.delete<EquipmentParams>(
+    '/:id',
+    equipmentController.delete,
+  );
 
-equipmentRouter.delete<EquipmentParams>(
-  '/:id',
-  equipmentController.delete,
-);
+  return router;
+};
