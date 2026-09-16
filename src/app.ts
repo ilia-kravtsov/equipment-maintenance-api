@@ -4,12 +4,25 @@ import { errorHandler } from './middlewares/errorHandler.js';
 import { InMemoryEquipmentRepository } from './repositories/inMemoryEquipmentRepository.js';
 import { createEquipmentRouter } from './routes/equipmentRoutes.js';
 import { EquipmentService } from './services/equipmentService.js';
+import { MaintenanceRequestController } from './controllers/maintenanceRequestController.js';
+import { InMemoryMaintenanceRequestRepository } from './repositories/inMemoryMaintenanceRequestRepository.js';
+import { createMaintenanceRequestRouter } from './routes/maintenanceRequestRoutes.js';
+import { MaintenanceRequestService } from './services/maintenanceRequestService.js';
 
 export const app = express();
 
 const equipmentRepository = new InMemoryEquipmentRepository();
+const requestRepository = new InMemoryMaintenanceRequestRepository();
 const equipmentService = new EquipmentService(equipmentRepository);
 const equipmentController = new EquipmentController(equipmentService);
+
+const requestService = new MaintenanceRequestService(
+  requestRepository,
+  equipmentRepository,
+);
+
+const requestController =
+  new MaintenanceRequestController(requestService);
 
 app.use(express.json());
 
@@ -22,6 +35,11 @@ app.get('/api/health', (_req, res) => {
 app.use(
   '/api/equipment',
   createEquipmentRouter(equipmentController),
+);
+
+app.use(
+  '/api/requests',
+  createMaintenanceRequestRouter(requestController),
 );
 
 app.use(errorHandler);
