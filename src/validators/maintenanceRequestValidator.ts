@@ -1,6 +1,9 @@
 import { z } from 'zod';
 
-import { requestPriorities } from '../models/maintenanceRequest.js';
+import {
+  requestPriorities,
+  requestStatuses,
+} from '../models/maintenanceRequest.js';
 
 export const createMaintenanceRequestSchema = z.object({
   equipmentId: z.uuid(),
@@ -16,3 +19,7 @@ export const updateMaintenanceRequestSchema =
       equipmentId: true,
     })
     .partial();
+
+export const updateMaintenanceRequestStatusSchema = z.object({
+  status: z.enum(requestStatuses),
+});
