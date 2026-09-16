@@ -3,6 +3,7 @@ import { ValidationError } from '../errors/validationError.js';
 import { AppError } from '../errors/appError.js';
 
 const statusByErrorCode: Record<string, number> = {
+  BAD_REQUEST: 400,
   VALIDATION_ERROR: 422,
   NOT_FOUND: 404,
   CONFLICT: 409,
