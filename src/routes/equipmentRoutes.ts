@@ -8,14 +8,21 @@ import { validateBody } from '../middlewares/validateBody.js';
 import {
   createEquipmentSchema,
   updateEquipmentSchema,
+  equipmentListQuerySchema,
 } from '../validators/equipmentValidator.js';
+
+import { validateQuery } from '../middlewares/validateQuery.js';
 
 export const createEquipmentRouter = (
   equipmentController: EquipmentController,
 ): Router => {
   const router = Router();
 
-  router.get('/', equipmentController.getAll);
+  router.get(
+    '/',
+    validateQuery(equipmentListQuerySchema),
+    equipmentController.getAll,
+  );
 
   router.post(
     '/',
