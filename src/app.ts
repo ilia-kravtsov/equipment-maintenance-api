@@ -9,6 +9,7 @@ import { InMemoryMaintenanceRequestRepository } from './repositories/inMemoryMai
 import { createMaintenanceRequestRouter } from './routes/maintenanceRequestRoutes.js';
 import { MaintenanceRequestService } from './services/maintenanceRequestService.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
+import { jsonErrorHandler } from './middlewares/jsonErrorHandler.js';
 
 export const app = express();
 
@@ -43,5 +44,7 @@ app.use('/api/equipment', createEquipmentRouter(equipmentController));
 app.use('/api/requests', createMaintenanceRequestRouter(requestController));
 
 app.use(notFoundHandler);
+
+app.use(jsonErrorHandler);
 
 app.use(errorHandler);
