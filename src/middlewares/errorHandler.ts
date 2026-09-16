@@ -16,6 +16,7 @@ export const errorHandler: ErrorRequestHandler = (error, _req, res, _next) => {
         code: error.code,
         message: error.message,
         details: error.details,
+        requestId: res.locals.requestId,
       },
     });
 
@@ -29,6 +30,7 @@ export const errorHandler: ErrorRequestHandler = (error, _req, res, _next) => {
       error: {
         code: error.code,
         message: error.message,
+        requestId: res.locals.requestId,
       },
     });
 
@@ -39,6 +41,7 @@ export const errorHandler: ErrorRequestHandler = (error, _req, res, _next) => {
     error: {
       code: 'INTERNAL_SERVER_ERROR',
       message: 'Internal server error',
+      requestId: res.locals.requestId,
     },
   });
 };
