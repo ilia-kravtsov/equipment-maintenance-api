@@ -34,3 +34,12 @@ export interface Equipment {
 export type CreateEquipmentInput = Omit<Equipment, 'id'>;
 
 export type UpdateEquipmentInput = Partial<CreateEquipmentInput>;
+
+export interface EquipmentListQuery {
+  status?: EquipmentStatus;
+  type?: EquipmentType;
+  page: number;
+  limit: number;
+  sortBy?: 'name' | 'type' | 'status' | 'installedAt';
+  order?: 'asc' | 'desc';
+}
