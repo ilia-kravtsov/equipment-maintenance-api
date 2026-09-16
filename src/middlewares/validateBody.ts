@@ -6,9 +6,7 @@ import {
   type ValidationErrorDetail,
 } from '../errors/validationError.js';
 
-export const validateBody = <
-  P extends ParamsDictionary = ParamsDictionary,
->(
+export const validateBody = <P extends ParamsDictionary = ParamsDictionary>(
   schema: ZodType,
 ): RequestHandler<P> => {
   return (req, _res, next) => {

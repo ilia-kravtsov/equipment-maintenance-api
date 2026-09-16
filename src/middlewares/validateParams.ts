@@ -7,9 +7,7 @@ import {
   type ValidationErrorDetail,
 } from '../errors/validationError.js';
 
-export const validateParams = <
-  P extends ParamsDictionary = ParamsDictionary,
->(
+export const validateParams = <P extends ParamsDictionary = ParamsDictionary>(
   schema: ZodType,
 ): RequestHandler<P> => {
   return (req, _res, next) => {
@@ -24,10 +22,7 @@ export const validateParams = <
       );
 
       next(
-        new ValidationError(
-          'Request parameters validation failed',
-          details,
-        ),
+        new ValidationError('Request parameters validation failed', details),
       );
       return;
     }

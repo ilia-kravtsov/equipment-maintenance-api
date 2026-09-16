@@ -27,8 +27,7 @@ const equipmentController = new EquipmentController(
   equipmentService,
   requestService,
 );
-const requestController =
-  new MaintenanceRequestController(requestService);
+const requestController = new MaintenanceRequestController(requestService);
 
 app.use(express.json());
 
@@ -38,14 +37,8 @@ app.get('/api/health', (_req, res) => {
   });
 });
 
-app.use(
-  '/api/equipment',
-  createEquipmentRouter(equipmentController),
-);
+app.use('/api/equipment', createEquipmentRouter(equipmentController));
 
-app.use(
-  '/api/requests',
-  createMaintenanceRequestRouter(requestController),
-);
+app.use('/api/requests', createMaintenanceRequestRouter(requestController));
 
 app.use(errorHandler);

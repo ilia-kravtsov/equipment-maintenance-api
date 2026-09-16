@@ -1,9 +1,4 @@
-export const requestPriorities = [
-  'low',
-  'medium',
-  'high',
-  'critical',
-] as const;
+export const requestPriorities = ['low', 'medium', 'high', 'critical'] as const;
 
 export type RequestPriority = (typeof requestPriorities)[number];
 

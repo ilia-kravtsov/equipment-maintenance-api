@@ -19,21 +19,15 @@ export class EquipmentController {
   ) {}
 
   getAll = (_req: Request, res: Response): void => {
-    const query =
-      res.locals.validatedQuery as EquipmentListQuery;
+    const query = res.locals.validatedQuery as EquipmentListQuery;
 
     const result = this.equipmentService.getAll(query);
 
     res.status(200).json(result);
   };
 
-  getRequests = (
-    req: Request<EquipmentParams>,
-    res: Response,
-  ): void => {
-    const requests = this.requestService.getByEquipmentId(
-      req.params.id,
-    );
+  getRequests = (req: Request<EquipmentParams>, res: Response): void => {
+    const requests = this.requestService.getByEquipmentId(req.params.id);
 
     res.status(200).json({
       data: requests,
@@ -53,12 +47,9 @@ export class EquipmentController {
       req.body as CreateEquipmentInput,
     );
 
-    res
-      .status(201)
-      .location(`/api/equipment/${equipment.id}`)
-      .json({
-        data: equipment,
-      });
+    res.status(201).location(`/api/equipment/${equipment.id}`).json({
+      data: equipment,
+    });
   };
 
   update = (req: Request<EquipmentParams>, res: Response): void => {

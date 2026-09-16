@@ -8,12 +8,7 @@ const statusByErrorCode: Record<string, number> = {
   CONFLICT: 409,
 };
 
-export const errorHandler: ErrorRequestHandler = (
-  error,
-  _req,
-  res,
-  _next,
-) => {
+export const errorHandler: ErrorRequestHandler = (error, _req, res, _next) => {
   if (error instanceof ValidationError) {
     res.status(422).json({
       error: {

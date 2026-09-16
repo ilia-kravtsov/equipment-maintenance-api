@@ -3,14 +3,16 @@ import { randomUUID } from 'node:crypto';
 import { NotFoundError } from '../errors/notFoundError.js';
 import type {
   CreateMaintenanceRequestInput,
-  MaintenanceRequest, RequestStatus,
-  UpdateMaintenanceRequestInput, UpdateMaintenanceRequestStatusInput,
+  MaintenanceRequest,
+  RequestStatus,
+  UpdateMaintenanceRequestInput,
+  UpdateMaintenanceRequestStatusInput,
   MaintenanceRequestListQuery,
   RequestPriority,
 } from '../models/maintenanceRequest.js';
 import type { EquipmentRepository } from '../repositories/equipmentRepository.js';
 import type { MaintenanceRequestRepository } from '../repositories/maintenanceRequestRepository.js';
-import {ConflictError} from "../errors/conflictError.js";
+import { ConflictError } from '../errors/conflictError.js';
 import type { PaginatedResult } from '../models/pagination.js';
 
 const priorityOrder: Record<RequestPriority, number> = {
@@ -20,10 +22,7 @@ const priorityOrder: Record<RequestPriority, number> = {
   critical: 4,
 };
 
-const allowedStatusTransitions: Record<
-  RequestStatus,
-  RequestStatus[]
-> = {
+const allowedStatusTransitions: Record<RequestStatus, RequestStatus[]> = {
   new: ['in_progress', 'rejected'],
   in_progress: ['done', 'rejected'],
   done: [],
@@ -42,9 +41,7 @@ export class MaintenanceRequestService {
     let requests = this.requestRepository.findAll();
 
     if (query.status !== undefined) {
-      requests = requests.filter(
-        (request) => request.status === query.status,
-      );
+      requests = requests.filter((request) => request.status === query.status);
     }
 
     if (query.priority !== undefined) {
@@ -82,18 +79,14 @@ export class MaintenanceRequestService {
       requests = [...requests].sort((a, b) => {
         if (sortBy === 'priority') {
           return (
-            priorityOrder[a.priority] -
-            priorityOrder[b.priority]
-          ) * direction;
+            (priorityOrder[a.priority] - priorityOrder[b.priority]) * direction
+          );
         }
 
         const first = a[sortBy] ?? '';
         const second = b[sortBy] ?? '';
 
-        return (
-          String(first).localeCompare(String(second)) *
-          direction
-        );
+        return String(first).localeCompare(String(second)) * direction;
       });
     }
 
@@ -154,10 +147,7 @@ export class MaintenanceRequestService {
     return this.requestRepository.create(request);
   }
 
-  update(
-    id: string,
-    input: UpdateMaintenanceRequestInput,
-  ): MaintenanceRequest {
+  update(id: string, input: UpdateMaintenanceRequestInput): MaintenanceRequest {
     const existingRequest = this.getById(id);
 
     const updatedRequest: MaintenanceRequest = {
@@ -185,8 +175,7 @@ export class MaintenanceRequestService {
   ): MaintenanceRequest {
     const existingRequest = this.getById(id);
 
-    const allowedStatuses =
-      allowedStatusTransitions[existingRequest.status];
+    const allowedStatuses = allowedStatusTransitions[existingRequest.status];
 
     if (!allowedStatuses.includes(input.status)) {
       throw new ConflictError(

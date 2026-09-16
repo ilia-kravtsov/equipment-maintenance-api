@@ -1,9 +1,6 @@
 import { z } from 'zod';
 
-import {
-  equipmentStatuses,
-  equipmentTypes,
-} from '../models/equipment.js';
+import { equipmentStatuses, equipmentTypes } from '../models/equipment.js';
 
 const locationSchema = z.object({
   lat: z.number().min(-90).max(90),
@@ -16,12 +13,9 @@ export const createEquipmentSchema = z.object({
   serialNumber: z.string().min(1),
   location: locationSchema,
   status: z.enum(equipmentStatuses),
-  installedAt: z.iso.date().refine(
-    (date) => new Date(date) <= new Date(),
-    {
-      message: 'Invalid installation date',
-    },
-  ),
+  installedAt: z.iso.date().refine((date) => new Date(date) <= new Date(), {
+    message: 'Invalid installation date',
+  }),
 });
 
 export const updateEquipmentSchema = createEquipmentSchema.partial();
@@ -32,16 +26,9 @@ export const equipmentListQuerySchema = z.object({
 
   page: z.coerce.number().int().positive().default(1),
 
-  limit: z.coerce
-    .number()
-    .int()
-    .min(1)
-    .max(100)
-    .default(20),
+  limit: z.coerce.number().int().min(1).max(100).default(20),
 
-  sortBy: z
-    .enum(['name', 'type', 'status', 'installedAt'])
-    .optional(),
+  sortBy: z.enum(['name', 'type', 'status', 'installedAt']).optional(),
 
   order: z.enum(['asc', 'desc']).default('asc'),
 });

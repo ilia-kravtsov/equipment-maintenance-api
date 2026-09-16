@@ -1,9 +1,7 @@
 import type { MaintenanceRequest } from '../models/maintenanceRequest.js';
 import type { MaintenanceRequestRepository } from './maintenanceRequestRepository.js';
 
-export class InMemoryMaintenanceRequestRepository
-  implements MaintenanceRequestRepository
-{
+export class InMemoryMaintenanceRequestRepository implements MaintenanceRequestRepository {
   private readonly requests = new Map<string, MaintenanceRequest>();
 
   findAll(): MaintenanceRequest[] {

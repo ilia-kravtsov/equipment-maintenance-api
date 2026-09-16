@@ -17,21 +17,15 @@ export class EquipmentService {
     private readonly requestRepository: MaintenanceRequestRepository,
   ) {}
 
-  getAll(
-    query: EquipmentListQuery,
-  ): PaginatedResult<Equipment> {
+  getAll(query: EquipmentListQuery): PaginatedResult<Equipment> {
     let equipment = this.equipmentRepository.findAll();
 
     if (query.status !== undefined) {
-      equipment = equipment.filter(
-        (item) => item.status === query.status,
-      );
+      equipment = equipment.filter((item) => item.status === query.status);
     }
 
     if (query.type !== undefined) {
-      equipment = equipment.filter(
-        (item) => item.type === query.type,
-      );
+      equipment = equipment.filter((item) => item.type === query.type);
     }
 
     if (query.sortBy !== undefined) {
@@ -39,10 +33,7 @@ export class EquipmentService {
       const direction = query.order === 'desc' ? -1 : 1;
 
       equipment = [...equipment].sort((a, b) => {
-        return (
-          String(a[sortBy]).localeCompare(String(b[sortBy])) *
-          direction
-        );
+        return String(a[sortBy]).localeCompare(String(b[sortBy])) * direction;
       });
     }
 
@@ -74,8 +65,9 @@ export class EquipmentService {
   }
 
   create(input: CreateEquipmentInput): Equipment {
-    const existingEquipment =
-      this.equipmentRepository.findBySerialNumber(input.serialNumber);
+    const existingEquipment = this.equipmentRepository.findBySerialNumber(
+      input.serialNumber,
+    );
 
     if (existingEquipment !== undefined) {
       throw new ConflictError(
@@ -136,9 +128,7 @@ export class EquipmentService {
     const requests = this.requestRepository.findByEquipmentId(id);
 
     const hasOpenRequests = requests.some(
-      (request) =>
-        request.status === 'new' ||
-        request.status === 'in_progress',
+      (request) => request.status === 'new' || request.status === 'in_progress',
     );
 
     if (hasOpenRequests) {
