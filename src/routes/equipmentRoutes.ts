@@ -1,5 +1,6 @@
 import { Router } from 'express';
-
+import { validateParams } from '../middlewares/validateParams.js';
+import { idParamsSchema } from '../validators/commonValidator.js';
 import {
   type EquipmentController,
   type EquipmentParams,
@@ -32,22 +33,26 @@ export const createEquipmentRouter = (
 
   router.get<EquipmentParams>(
     '/:id/requests',
+    validateParams<EquipmentParams>(idParamsSchema),
     equipmentController.getRequests,
   );
 
   router.get<EquipmentParams>(
     '/:id',
+    validateParams<EquipmentParams>(idParamsSchema),
     equipmentController.getById,
   );
 
   router.patch<EquipmentParams>(
     '/:id',
+    validateParams<EquipmentParams>(idParamsSchema),
     validateBody<EquipmentParams>(updateEquipmentSchema),
     equipmentController.update,
   );
 
   router.delete<EquipmentParams>(
     '/:id',
+    validateParams<EquipmentParams>(idParamsSchema),
     equipmentController.delete,
   );
 
