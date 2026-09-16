@@ -25,3 +25,23 @@ export const createEquipmentSchema = z.object({
 });
 
 export const updateEquipmentSchema = createEquipmentSchema.partial();
+
+export const equipmentListQuerySchema = z.object({
+  status: z.enum(equipmentStatuses).optional(),
+  type: z.enum(equipmentTypes).optional(),
+
+  page: z.coerce.number().int().positive().default(1),
+
+  limit: z.coerce
+    .number()
+    .int()
+    .min(1)
+    .max(100)
+    .default(20),
+
+  sortBy: z
+    .enum(['name', 'type', 'status', 'installedAt'])
+    .optional(),
+
+  order: z.enum(['asc', 'desc']).default('asc'),
+});
