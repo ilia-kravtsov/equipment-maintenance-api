@@ -24,6 +24,11 @@ export const createEquipmentRouter = (
   );
 
   router.get<EquipmentParams>(
+    '/:id/requests',
+    equipmentController.getRequests,
+  );
+
+  router.get<EquipmentParams>(
     '/:id',
     equipmentController.getById,
   );

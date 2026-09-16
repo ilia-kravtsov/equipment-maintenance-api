@@ -17,13 +17,16 @@ const equipmentService = new EquipmentService(
   equipmentRepository,
   requestRepository,
 );
-const equipmentController = new EquipmentController(equipmentService);
 
 const requestService = new MaintenanceRequestService(
   requestRepository,
   equipmentRepository,
 );
 
+const equipmentController = new EquipmentController(
+  equipmentService,
+  requestService,
+);
 const requestController =
   new MaintenanceRequestController(requestService);
 
