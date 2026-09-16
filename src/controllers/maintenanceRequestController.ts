@@ -3,7 +3,7 @@ import type { ParamsDictionary } from 'express-serve-static-core';
 
 import type {
   CreateMaintenanceRequestInput,
-  UpdateMaintenanceRequestInput,
+  UpdateMaintenanceRequestInput, UpdateMaintenanceRequestStatusInput,
 } from '../models/maintenanceRequest.js';
 import type { MaintenanceRequestService } from '../services/maintenanceRequestService.js';
 
@@ -55,6 +55,20 @@ export class MaintenanceRequestController {
     const request = this.requestService.update(
       req.params.id,
       req.body as UpdateMaintenanceRequestInput,
+    );
+
+    res.status(200).json({
+      data: request,
+    });
+  };
+
+  updateStatus = (
+    req: Request<MaintenanceRequestParams>,
+    res: Response,
+  ): void => {
+    const request = this.requestService.updateStatus(
+      req.params.id,
+      req.body as UpdateMaintenanceRequestStatusInput,
     );
 
     res.status(200).json({
