@@ -13,7 +13,10 @@ export const app = express();
 
 const equipmentRepository = new InMemoryEquipmentRepository();
 const requestRepository = new InMemoryMaintenanceRequestRepository();
-const equipmentService = new EquipmentService(equipmentRepository);
+const equipmentService = new EquipmentService(
+  equipmentRepository,
+  requestRepository,
+);
 const equipmentController = new EquipmentController(equipmentService);
 
 const requestService = new MaintenanceRequestService(

@@ -7,9 +7,13 @@ import type {
   UpdateEquipmentInput,
 } from '../models/equipment.js';
 import type { EquipmentRepository } from '../repositories/equipmentRepository.js';
+import type { MaintenanceRequestRepository } from '../repositories/maintenanceRequestRepository.js';
 
 export class EquipmentService {
-  constructor(private readonly equipmentRepository: EquipmentRepository) {}
+  constructor(
+    private readonly equipmentRepository: EquipmentRepository,
+    private readonly requestRepository: MaintenanceRequestRepository,
+  ) {}
 
   getAll(): Equipment[] {
     return this.equipmentRepository.findAll();
@@ -83,10 +87,22 @@ export class EquipmentService {
   }
 
   delete(id: string): void {
-    const deleted = this.equipmentRepository.delete(id);
+    this.getById(id);
 
-    if (!deleted) {
-      throw new NotFoundError('Equipment not found');
+    const requests = this.requestRepository.findByEquipmentId(id);
+
+    const hasOpenRequests = requests.some(
+      (request) =>
+        request.status === 'new' ||
+        request.status === 'in_progress',
+    );
+
+    if (hasOpenRequests) {
+      throw new ConflictError(
+        'Equipment with open maintenance requests cannot be deleted',
+      );
     }
+
+    this.equipmentRepository.delete(id);
   }
 }
