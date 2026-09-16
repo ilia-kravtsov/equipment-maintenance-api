@@ -3,6 +3,8 @@ import { ValidationError } from '../errors/validationError.js';
 import { AppError } from '../errors/appError.js';
 
 const statusByErrorCode: Record<string, number> = {
+  PAYLOAD_TOO_LARGE: 413,
+  BAD_REQUEST: 400,
   VALIDATION_ERROR: 422,
   NOT_FOUND: 404,
   CONFLICT: 409,
@@ -15,6 +17,7 @@ export const errorHandler: ErrorRequestHandler = (error, _req, res, _next) => {
         code: error.code,
         message: error.message,
         details: error.details,
+        requestId: res.locals.requestId,
       },
     });
 
@@ -28,6 +31,7 @@ export const errorHandler: ErrorRequestHandler = (error, _req, res, _next) => {
       error: {
         code: error.code,
         message: error.message,
+        requestId: res.locals.requestId,
       },
     });
 
@@ -38,6 +42,7 @@ export const errorHandler: ErrorRequestHandler = (error, _req, res, _next) => {
     error: {
       code: 'INTERNAL_SERVER_ERROR',
       message: 'Internal server error',
+      requestId: res.locals.requestId,
     },
   });
 };

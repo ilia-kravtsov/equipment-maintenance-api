@@ -8,6 +8,9 @@ import { MaintenanceRequestController } from './controllers/maintenanceRequestCo
 import { InMemoryMaintenanceRequestRepository } from './repositories/inMemoryMaintenanceRequestRepository.js';
 import { createMaintenanceRequestRouter } from './routes/maintenanceRequestRoutes.js';
 import { MaintenanceRequestService } from './services/maintenanceRequestService.js';
+import { notFoundHandler } from './middlewares/notFoundHandler.js';
+import { jsonErrorHandler } from './middlewares/jsonErrorHandler.js';
+import { requestId } from './middlewares/requestId.js';
 
 export const app = express();
 
@@ -29,7 +32,13 @@ const equipmentController = new EquipmentController(
 );
 const requestController = new MaintenanceRequestController(requestService);
 
-app.use(express.json());
+app.use(requestId);
+
+app.use(
+  express.json({
+    limit: '100kb',
+  }),
+);
 
 app.get('/api/health', (_req, res) => {
   res.status(200).json({
@@ -40,5 +49,9 @@ app.get('/api/health', (_req, res) => {
 app.use('/api/equipment', createEquipmentRouter(equipmentController));
 
 app.use('/api/requests', createMaintenanceRequestRouter(requestController));
+
+app.use(notFoundHandler);
+
+app.use(jsonErrorHandler);
 
 app.use(errorHandler);
