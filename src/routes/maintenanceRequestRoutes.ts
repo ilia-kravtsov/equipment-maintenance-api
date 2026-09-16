@@ -1,5 +1,6 @@
 import { Router } from 'express';
-
+import { validateParams } from '../middlewares/validateParams.js';
+import { idParamsSchema } from '../validators/commonValidator.js';
 import {
   type MaintenanceRequestController,
   type MaintenanceRequestParams,
@@ -31,11 +32,13 @@ export const createMaintenanceRequestRouter = (
 
   router.get<MaintenanceRequestParams>(
     '/:id',
+    validateParams<MaintenanceRequestParams>(idParamsSchema),
     requestController.getById,
   );
 
   router.patch<MaintenanceRequestParams>(
     '/:id',
+    validateParams<MaintenanceRequestParams>(idParamsSchema),
     validateBody<MaintenanceRequestParams>(
       updateMaintenanceRequestSchema,
     ),
@@ -44,6 +47,7 @@ export const createMaintenanceRequestRouter = (
 
   router.patch<MaintenanceRequestParams>(
     '/:id/status',
+    validateParams<MaintenanceRequestParams>(idParamsSchema),
     validateBody<MaintenanceRequestParams>(
       updateMaintenanceRequestStatusSchema,
     ),
@@ -52,6 +56,7 @@ export const createMaintenanceRequestRouter = (
 
   router.delete<MaintenanceRequestParams>(
     '/:id',
+    validateParams<MaintenanceRequestParams>(idParamsSchema),
     requestController.delete,
   );
 
