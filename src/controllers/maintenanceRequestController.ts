@@ -4,6 +4,7 @@ import type { ParamsDictionary } from 'express-serve-static-core';
 import type {
   CreateMaintenanceRequestInput,
   UpdateMaintenanceRequestInput, UpdateMaintenanceRequestStatusInput,
+  MaintenanceRequestListQuery,
 } from '../models/maintenanceRequest.js';
 import type { MaintenanceRequestService } from '../services/maintenanceRequestService.js';
 
@@ -17,11 +18,12 @@ export class MaintenanceRequestController {
   ) {}
 
   getAll = (_req: Request, res: Response): void => {
-    const requests = this.requestService.getAll();
+    const query =
+      res.locals.validatedQuery as MaintenanceRequestListQuery;
 
-    res.status(200).json({
-      data: requests,
-    });
+    const result = this.requestService.getAll(query);
+
+    res.status(200).json(result);
   };
 
   getById = (
