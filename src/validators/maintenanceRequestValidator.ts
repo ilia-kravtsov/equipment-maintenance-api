@@ -23,3 +23,33 @@ export const updateMaintenanceRequestSchema =
 export const updateMaintenanceRequestStatusSchema = z.object({
   status: z.enum(requestStatuses),
 });
+
+export const maintenanceRequestListQuerySchema = z.object({
+  status: z.enum(requestStatuses).optional(),
+  priority: z.enum(requestPriorities).optional(),
+  equipmentId: z.uuid().optional(),
+
+  createdFrom: z.iso.datetime().optional(),
+  createdTo: z.iso.datetime().optional(),
+
+  page: z.coerce.number().int().positive().default(1),
+
+  limit: z.coerce
+    .number()
+    .int()
+    .min(1)
+    .max(100)
+    .default(20),
+
+  sortBy: z
+    .enum([
+      'createdAt',
+      'updatedAt',
+      'plannedAt',
+      'priority',
+      'status',
+    ])
+    .optional(),
+
+  order: z.enum(['asc', 'desc']).default('asc'),
+});
