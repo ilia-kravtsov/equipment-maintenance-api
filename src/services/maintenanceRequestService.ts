@@ -3,11 +3,22 @@ import { randomUUID } from 'node:crypto';
 import { NotFoundError } from '../errors/notFoundError.js';
 import type {
   CreateMaintenanceRequestInput,
-  MaintenanceRequest,
-  UpdateMaintenanceRequestInput,
+  MaintenanceRequest, RequestStatus,
+  UpdateMaintenanceRequestInput, UpdateMaintenanceRequestStatusInput,
 } from '../models/maintenanceRequest.js';
 import type { EquipmentRepository } from '../repositories/equipmentRepository.js';
 import type { MaintenanceRequestRepository } from '../repositories/maintenanceRequestRepository.js';
+import {ConflictError} from "../errors/conflictError.js";
+
+const allowedStatusTransitions: Record<
+  RequestStatus,
+  RequestStatus[]
+> = {
+  new: ['in_progress', 'rejected'],
+  in_progress: ['done', 'rejected'],
+  done: [],
+  rejected: [],
+};
 
 export class MaintenanceRequestService {
   constructor(
@@ -72,6 +83,36 @@ export class MaintenanceRequestService {
       equipmentId: existingRequest.equipmentId,
       status: existingRequest.status,
       createdAt: existingRequest.createdAt,
+      updatedAt: new Date().toISOString(),
+    };
+
+    const result = this.requestRepository.update(id, updatedRequest);
+
+    if (result === undefined) {
+      throw new NotFoundError('Maintenance request not found');
+    }
+
+    return result;
+  }
+
+  updateStatus(
+    id: string,
+    input: UpdateMaintenanceRequestStatusInput,
+  ): MaintenanceRequest {
+    const existingRequest = this.getById(id);
+
+    const allowedStatuses =
+      allowedStatusTransitions[existingRequest.status];
+
+    if (!allowedStatuses.includes(input.status)) {
+      throw new ConflictError(
+        `Cannot change request status from "${existingRequest.status}" to "${input.status}"`,
+      );
+    }
+
+    const updatedRequest: MaintenanceRequest = {
+      ...existingRequest,
+      status: input.status,
       updatedAt: new Date().toISOString(),
     };
 
