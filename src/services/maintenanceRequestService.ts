@@ -5,10 +5,12 @@ import type {
   CreateMaintenanceRequestInput,
   MaintenanceRequest, RequestStatus,
   UpdateMaintenanceRequestInput, UpdateMaintenanceRequestStatusInput,
+  MaintenanceRequestListQuery,
 } from '../models/maintenanceRequest.js';
 import type { EquipmentRepository } from '../repositories/equipmentRepository.js';
 import type { MaintenanceRequestRepository } from '../repositories/maintenanceRequestRepository.js';
 import {ConflictError} from "../errors/conflictError.js";
+import type { PaginatedResult } from '../models/pagination.js';
 
 const allowedStatusTransitions: Record<
   RequestStatus,
@@ -26,8 +28,75 @@ export class MaintenanceRequestService {
     private readonly equipmentRepository: EquipmentRepository,
   ) {}
 
-  getAll(): MaintenanceRequest[] {
-    return this.requestRepository.findAll();
+  getAll(
+    query: MaintenanceRequestListQuery,
+  ): PaginatedResult<MaintenanceRequest> {
+    let requests = this.requestRepository.findAll();
+
+    if (query.status !== undefined) {
+      requests = requests.filter(
+        (request) => request.status === query.status,
+      );
+    }
+
+    if (query.priority !== undefined) {
+      requests = requests.filter(
+        (request) => request.priority === query.priority,
+      );
+    }
+
+    if (query.equipmentId !== undefined) {
+      requests = requests.filter(
+        (request) => request.equipmentId === query.equipmentId,
+      );
+    }
+
+    if (query.createdFrom !== undefined) {
+      const createdFrom = new Date(query.createdFrom);
+
+      requests = requests.filter(
+        (request) => new Date(request.createdAt) >= createdFrom,
+      );
+    }
+
+    if (query.createdTo !== undefined) {
+      const createdTo = new Date(query.createdTo);
+
+      requests = requests.filter(
+        (request) => new Date(request.createdAt) <= createdTo,
+      );
+    }
+
+    if (query.sortBy !== undefined) {
+      const sortBy = query.sortBy;
+      const direction = query.order === 'desc' ? -1 : 1;
+
+      requests = [...requests].sort((a, b) => {
+        const first = a[sortBy] ?? '';
+        const second = b[sortBy] ?? '';
+
+        return (
+          String(first).localeCompare(String(second)) *
+          direction
+        );
+      });
+    }
+
+    const total = requests.length;
+
+    const start = (query.page - 1) * query.limit;
+    const end = start + query.limit;
+
+    const data = requests.slice(start, end);
+
+    return {
+      data,
+      meta: {
+        total,
+        page: query.page,
+        limit: query.limit,
+      },
+    };
   }
 
   getById(id: string): MaintenanceRequest {
