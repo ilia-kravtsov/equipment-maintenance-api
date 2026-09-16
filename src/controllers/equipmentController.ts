@@ -3,6 +3,7 @@ import type { ParamsDictionary } from 'express-serve-static-core';
 import type {
   CreateEquipmentInput,
   UpdateEquipmentInput,
+  EquipmentListQuery,
 } from '../models/equipment.js';
 import type { EquipmentService } from '../services/equipmentService.js';
 import type { MaintenanceRequestService } from '../services/maintenanceRequestService.js';
@@ -18,11 +19,12 @@ export class EquipmentController {
   ) {}
 
   getAll = (_req: Request, res: Response): void => {
-    const equipment = this.equipmentService.getAll();
+    const query =
+      res.locals.validatedQuery as EquipmentListQuery;
 
-    res.status(200).json({
-      data: equipment,
-    });
+    const result = this.equipmentService.getAll(query);
+
+    res.status(200).json(result);
   };
 
   getRequests = (
