@@ -9,10 +9,7 @@ export const jsonErrorHandler: ErrorRequestHandler = (
   _res,
   next,
 ) => {
-  if (
-    error instanceof SyntaxError &&
-    'body' in error
-  ) {
+  if (error instanceof SyntaxError && 'body' in error) {
     next(new BadRequestError('Malformed JSON body'));
     return;
   }
@@ -23,11 +20,7 @@ export const jsonErrorHandler: ErrorRequestHandler = (
     'type' in error &&
     error.type === 'entity.too.large'
   ) {
-    next(
-      new PayloadTooLargeError(
-        'Request body exceeds the allowed size',
-      ),
-    );
+    next(new PayloadTooLargeError('Request body exceeds the allowed size'));
     return;
   }
 
