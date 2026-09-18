@@ -12,6 +12,7 @@ import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import { jsonErrorHandler } from './middlewares/jsonErrorHandler.js';
 import { requestId } from './middlewares/requestId.js';
 import { WeatherService } from './services/weatherService.js';
+import helmet from 'helmet';
 
 export const app = express();
 
@@ -36,6 +37,8 @@ const equipmentController = new EquipmentController(
 const requestController = new MaintenanceRequestController(requestService);
 
 app.use(requestId);
+
+app.use(helmet());
 
 app.use(
   express.json({
