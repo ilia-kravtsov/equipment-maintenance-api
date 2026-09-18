@@ -3,6 +3,8 @@ import { ValidationError } from '../errors/validationError.js';
 import { AppError } from '../errors/appError.js';
 
 const statusByErrorCode: Record<string, number> = {
+  WEATHER_SERVICE_ERROR: 502,
+  WEATHER_TIMEOUT: 504,
   PAYLOAD_TOO_LARGE: 413,
   BAD_REQUEST: 400,
   VALIDATION_ERROR: 422,

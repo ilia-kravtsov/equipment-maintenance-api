@@ -11,6 +11,7 @@ import { MaintenanceRequestService } from './services/maintenanceRequestService.
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import { jsonErrorHandler } from './middlewares/jsonErrorHandler.js';
 import { requestId } from './middlewares/requestId.js';
+import { WeatherService } from './services/weatherService.js';
 
 export const app = express();
 
@@ -20,6 +21,7 @@ const equipmentService = new EquipmentService(
   equipmentRepository,
   requestRepository,
 );
+const weatherService = new WeatherService(equipmentService);
 
 const requestService = new MaintenanceRequestService(
   requestRepository,
@@ -29,6 +31,7 @@ const requestService = new MaintenanceRequestService(
 const equipmentController = new EquipmentController(
   equipmentService,
   requestService,
+  weatherService,
 );
 const requestController = new MaintenanceRequestController(requestService);
 
