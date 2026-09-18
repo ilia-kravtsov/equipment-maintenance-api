@@ -10,6 +10,7 @@ const statusByErrorCode: Record<string, number> = {
   VALIDATION_ERROR: 422,
   NOT_FOUND: 404,
   CONFLICT: 409,
+  RATE_LIMIT_EXCEEDED: 429,
 };
 
 export const errorHandler: ErrorRequestHandler = (error, _req, res, _next) => {
