@@ -52,8 +52,7 @@ export const config = {
 
   get weatherApiUrl(): string {
     return (
-      process.env.WEATHER_API_URL ??
-      'https://api.open-meteo.com/v1/forecast'
+      process.env.WEATHER_API_URL ?? 'https://api.open-meteo.com/v1/forecast'
     );
   },
 

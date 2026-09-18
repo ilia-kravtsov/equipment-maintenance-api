@@ -1,6 +1,6 @@
 import { fetchForecast } from '../api/forecastClient.js';
 import { config } from '../config/index.js';
-import type { EquipmentWeather, ForecastResult  } from '../models/weather.js';
+import type { EquipmentWeather, ForecastResult } from '../models/weather.js';
 import type { EquipmentService } from './equipmentService.js';
 import {
   ClientHttpError,
