@@ -14,6 +14,7 @@ import { requestId } from './middlewares/requestId.js';
 import { WeatherService } from './services/weatherService.js';
 import helmet from 'helmet';
 import { corsMiddleware } from './middlewares/corsMiddleware.js';
+import { apiRateLimiter } from './middlewares/rateLimitMiddleware.js';
 
 export const app = express();
 
@@ -42,6 +43,8 @@ app.use(requestId);
 app.use(helmet());
 
 app.use(corsMiddleware);
+
+app.use('/api', apiRateLimiter);
 
 app.use(
   express.json({
