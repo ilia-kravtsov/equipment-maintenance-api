@@ -37,6 +37,12 @@ export const createEquipmentRouter = (
     equipmentController.getRequests,
   );
 
+  router.get(
+    '/:id/weather',
+    validateParams(idParamsSchema),
+    equipmentController.getWeather,
+  );
+
   router.get<EquipmentParams>(
     '/:id',
     validateParams<EquipmentParams>(idParamsSchema),
