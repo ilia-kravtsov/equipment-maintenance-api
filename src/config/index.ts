@@ -76,4 +76,20 @@ export const config = {
   get corsOrigins(): string[] {
     return parseCorsOrigins(process.env.CORS_ORIGINS);
   },
+
+  get rateLimitWindowMs(): number {
+    return parsePositiveNumber(
+      process.env.RATE_LIMIT_WINDOW_MS,
+      60000,
+      'RATE_LIMIT_WINDOW_MS',
+    );
+  },
+
+  get rateLimitMax(): number {
+    return parsePositiveNumber(
+      process.env.RATE_LIMIT_MAX,
+      100,
+      'RATE_LIMIT_MAX',
+    );
+  },
 };
