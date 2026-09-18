@@ -1,4 +1,4 @@
-import type { Request, Response } from 'express';
+import type { NextFunction, Request, Response } from 'express';
 import type { ParamsDictionary } from 'express-serve-static-core';
 import type {
   CreateEquipmentInput,
@@ -7,6 +7,7 @@ import type {
 } from '../models/equipment.js';
 import type { EquipmentService } from '../services/equipmentService.js';
 import type { MaintenanceRequestService } from '../services/maintenanceRequestService.js';
+import type { WeatherService } from '../services/weatherService.js';
 
 export interface EquipmentParams extends ParamsDictionary {
   id: string;
@@ -16,6 +17,7 @@ export class EquipmentController {
   constructor(
     private readonly equipmentService: EquipmentService,
     private readonly requestService: MaintenanceRequestService,
+    private readonly weatherService: WeatherService,
   ) {}
 
   getAll = (_req: Request, res: Response): void => {
@@ -40,6 +42,22 @@ export class EquipmentController {
     res.status(200).json({
       data: equipment,
     });
+  };
+
+  getWeather = async (
+    req: Request<EquipmentParams>,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
+    try {
+      const weather = await this.weatherService.getByEquipmentId(req.params.id);
+
+      res.status(200).json({
+        data: weather,
+      });
+    } catch (error) {
+      next(error);
+    }
   };
 
   create = (req: Request, res: Response): void => {
