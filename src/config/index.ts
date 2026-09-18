@@ -30,6 +30,17 @@ const parsePositiveNumber = (
   return number;
 };
 
+const parseCorsOrigins = (value: string | undefined): string[] => {
+  if (value === undefined) {
+    return [];
+  }
+
+  return value
+    .split(',')
+    .map((origin) => origin.trim())
+    .filter((origin) => origin.length > 0);
+};
+
 export const config = {
   get port(): number {
     return parsePort(process.env.PORT);
@@ -60,5 +71,9 @@ export const config = {
       15,
       'WEATHER_MAX_WIND_SPEED',
     );
+  },
+
+  get corsOrigins(): string[] {
+    return parseCorsOrigins(process.env.CORS_ORIGINS);
   },
 };
