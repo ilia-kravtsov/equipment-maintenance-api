@@ -15,6 +15,7 @@ import { WeatherService } from './services/weatherService.js';
 import helmet from 'helmet';
 import { corsMiddleware } from './middlewares/corsMiddleware.js';
 import { apiRateLimiter } from './middlewares/rateLimitMiddleware.js';
+import { requestLogger } from './middlewares/requestLogger.js';
 
 export const app = express();
 
@@ -39,6 +40,8 @@ const equipmentController = new EquipmentController(
 const requestController = new MaintenanceRequestController(requestService);
 
 app.use(requestId);
+
+app.use(requestLogger);
 
 app.use(helmet());
 
