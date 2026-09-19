@@ -12,6 +12,10 @@ import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import { jsonErrorHandler } from './middlewares/jsonErrorHandler.js';
 import { requestId } from './middlewares/requestId.js';
 import { WeatherService } from './services/weatherService.js';
+import helmet from 'helmet';
+import { corsMiddleware } from './middlewares/corsMiddleware.js';
+import { apiRateLimiter } from './middlewares/rateLimitMiddleware.js';
+import { requestLogger } from './middlewares/requestLogger.js';
 
 export const app = express();
 
@@ -36,6 +40,14 @@ const equipmentController = new EquipmentController(
 const requestController = new MaintenanceRequestController(requestService);
 
 app.use(requestId);
+
+app.use(requestLogger);
+
+app.use(helmet());
+
+app.use(corsMiddleware);
+
+app.use('/api', apiRateLimiter);
 
 app.use(
   express.json({

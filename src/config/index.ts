@@ -30,6 +30,17 @@ const parsePositiveNumber = (
   return number;
 };
 
+const parseCorsOrigins = (value: string | undefined): string[] => {
+  if (value === undefined) {
+    return [];
+  }
+
+  return value
+    .split(',')
+    .map((origin) => origin.trim())
+    .filter((origin) => origin.length > 0);
+};
+
 export const config = {
   get port(): number {
     return parsePort(process.env.PORT);
@@ -41,8 +52,7 @@ export const config = {
 
   get weatherApiUrl(): string {
     return (
-      process.env.WEATHER_API_URL ??
-      'https://api.open-meteo.com/v1/forecast'
+      process.env.WEATHER_API_URL ?? 'https://api.open-meteo.com/v1/forecast'
     );
   },
 
@@ -59,6 +69,26 @@ export const config = {
       process.env.WEATHER_MAX_WIND_SPEED,
       15,
       'WEATHER_MAX_WIND_SPEED',
+    );
+  },
+
+  get corsOrigins(): string[] {
+    return parseCorsOrigins(process.env.CORS_ORIGINS);
+  },
+
+  get rateLimitWindowMs(): number {
+    return parsePositiveNumber(
+      process.env.RATE_LIMIT_WINDOW_MS,
+      60000,
+      'RATE_LIMIT_WINDOW_MS',
+    );
+  },
+
+  get rateLimitMax(): number {
+    return parsePositiveNumber(
+      process.env.RATE_LIMIT_MAX,
+      100,
+      'RATE_LIMIT_MAX',
     );
   },
 };
