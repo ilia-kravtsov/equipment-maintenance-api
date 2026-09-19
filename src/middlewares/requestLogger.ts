@@ -2,6 +2,7 @@ import type { Request, Response } from 'express';
 import { pinoHttp } from 'pino-http';
 
 import { logger } from '../config/logger.js';
+import {AppError} from "../errors/appError.js";
 
 const createLogObject = (
   req: Request,
@@ -47,6 +48,18 @@ export const requestLogger = pinoHttp<Request, Response>({
   customSuccessObject: (req, res, value) =>
     createLogObject(req, res, value),
 
-  customErrorObject: (req, res, _error, value) =>
-    createLogObject(req, res, value),
+  customErrorObject: (req, res, _error, value) => {
+    const logObject = createLogObject(req, res, value);
+    const applicationError = res.locals.error;
+
+    if (applicationError instanceof AppError) {
+      return {
+        ...logObject,
+        code: applicationError.code,
+        errorMessage: applicationError.message,
+      };
+    }
+
+    return logObject;
+  },
 });

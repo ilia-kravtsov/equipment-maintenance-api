@@ -1,6 +1,7 @@
 import type { ErrorRequestHandler } from 'express';
 import { ValidationError } from '../errors/validationError.js';
 import { AppError } from '../errors/appError.js';
+import { logger } from '../config/logger.js';
 
 const statusByErrorCode: Record<string, number> = {
   WEATHER_SERVICE_ERROR: 502,
@@ -30,6 +31,10 @@ export const errorHandler: ErrorRequestHandler = (error, _req, res, _next) => {
   if (error instanceof AppError) {
     const status = statusByErrorCode[error.code] ?? 500;
 
+    if (status >= 500) {
+      res.locals.error = error;
+    }
+
     res.status(status).json({
       error: {
         code: error.code,
@@ -40,6 +45,8 @@ export const errorHandler: ErrorRequestHandler = (error, _req, res, _next) => {
 
     return;
   }
+
+  res.locals.error = error;
 
   res.status(500).json({
     error: {
