@@ -3,6 +3,23 @@ import { pinoHttp } from 'pino-http';
 
 import { logger } from '../config/logger.js';
 
+const createLogObject = (
+  req: Request,
+  res: Response,
+  value: Record<string, unknown>,
+) => {
+  const { responseTime, ...rest } = value;
+
+  return {
+    ...rest,
+    requestId: res.locals.requestId,
+    method: req.method,
+    path: req.originalUrl,
+    status: res.statusCode,
+    durationMs: responseTime,
+  };
+};
+
 export const requestLogger = pinoHttp<Request, Response>({
   logger,
 
@@ -22,9 +39,14 @@ export const requestLogger = pinoHttp<Request, Response>({
     return 'info';
   },
 
-  customProps: (req, res) => ({
-    requestId: res.locals.requestId,
-    method: req.method,
-    path: req.originalUrl,
-  }),
+  serializers: {
+    req: () => undefined,
+    res: () => undefined,
+  },
+
+  customSuccessObject: (req, res, value) =>
+    createLogObject(req, res, value),
+
+  customErrorObject: (req, res, _error, value) =>
+    createLogObject(req, res, value),
 });
