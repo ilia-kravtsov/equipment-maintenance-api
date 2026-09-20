@@ -55,6 +55,8 @@ app.use(
   }),
 );
 
+app.use(express.static('public'));
+
 app.get('/api/health', (_req, res) => {
   res.status(200).json({
     status: 'ok',
