@@ -25,6 +25,7 @@ REST API для учёта оборудования и заявок на его 
 - логирование через Pino
 - CORS allowlist, rate limiting, Helmet и ограничение размера JSON
 - Postman коллекция с результатами позитивных и негативных сценариев запросов
+- массовый импорт заявок с частичным успешным выполнением и отчётом по каждой записи
 
 ## Технологии
 
@@ -209,7 +210,7 @@ docs/
 http://localhost:3000
 ```
 
-### Эндпоинты
+### Endpoints
 
 | Метод | Путь | Назначение | Успешный код |
 | --- | --- | --- | --- |
@@ -227,6 +228,7 @@ http://localhost:3000
 | `PATCH` | `/api/requests/:id` | Частичное обновление заявки | `200` |
 | `PATCH` | `/api/requests/:id/status` | Изменение статуса заявки | `200` |
 | `DELETE` | `/api/requests/:id` | Удаление заявки | `204` |
+| `POST` | `/api/requests/import` | Массовый импорт заявок | `201` / `207` |
 
 При успешном `POST` сервер также возвращает заголовок `Location` с
 адресом созданного ресурса
@@ -381,6 +383,84 @@ Content-Type: application/json
 ```
 
 Создание заявки для несуществующего оборудования возвращает `404 Not Found`
+
+### Массовый импорт заявок
+
+Endpoint:
+
+```http
+POST /api/requests/import
+X-API-Key: <API_KEY>
+Content-Type: application/json
+```
+
+Тело запроса содержит от 1 до 100 заявок:
+
+```json
+{
+  "requests": [
+    {
+      "equipmentId": "a8bd75b4-3bf4-4a30-bb38-c088b0cf8137",
+      "title": "Inspect inverter cooling system",
+      "priority": "high"
+    },
+    {
+      "equipmentId": "invalid-id",
+      "title": "Bad",
+      "priority": "urgent"
+    }
+  ]
+}
+```
+
+Каждый элемент валидируется и обрабатывается независимо. Ошибка одной заявки не прерывает импорт остальных.
+
+Если все заявки успешно созданы, сервер возвращает `201 Created`.
+
+Если хотя бы одну заявку создать не удалось, сервер возвращает `207 Multi-Status` с отчётом по каждому элементу:
+
+```json
+{
+  "data": {
+    "total": 2,
+    "created": 1,
+    "failed": 1,
+    "results": [
+      {
+        "index": 0,
+        "status": "created",
+        "data": {
+          "id": "...",
+          "equipmentId": "a8bd75b4-3bf4-4a30-bb38-c088b0cf8137",
+          "title": "Inspect inverter cooling system",
+          "priority": "high",
+          "status": "new",
+          "createdAt": "...",
+          "updatedAt": "..."
+        }
+      },
+      {
+        "index": 1,
+        "status": "failed",
+        "error": {
+          "code": "VALIDATION_ERROR",
+          "message": "Validation failed",
+          "details": [
+            {
+              "field": "equipmentId",
+              "message": "Invalid UUID"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+```
+
+Некорректная структура самого bulk запроса, например пустой массив `requests`, возвращает обычную ошибку `422 Unprocessable Entity`
+
+За один запрос можно передать не более 100 заявок
 
 ## Переходы статусов заявки
 
@@ -781,11 +861,12 @@ docs/postman/
 
 Используется collection variables:
 
-| Переменная | Назначение |
-| --- | --- |
-| `baseUrl` | Адрес API, по умолчанию `http://localhost:3000` |
+| Переменная | Назначение                                                |
+| --- |-----------------------------------------------------------|
+| `baseUrl` | Адрес API, по умолчанию `http://localhost:3000`           |
 | `equipmentId` | ID оборудования, автоматически сохраняемый после создания |
-| `maintenanceRequestId` | ID заявки, автоматически сохраняемый после создания |
+| `maintenanceRequestId` | ID заявки, автоматически сохраняемый после создания       |
+| `apiKey` | API key для защищённых мутирующих запросов                |
 
 `equipmentId` и `maintenanceRequestId` в экспортированном файле
 намеренно оставлены пустыми и заполняются во время выполнения
@@ -865,3 +946,5 @@ RATE_LIMIT_WINDOW_MS=60000
 -   `502 Bad Gateway` - ошибка внешнего Weather API
 -   `504 Gateway Timeout` - внешний Weather API не ответил вовремя
 -   `500 Internal Server Error` - непредвиденная ошибка приложения
+-   `207 Multi-Status` - bulk import обработан, но одна или несколько заявок завершились ошибкой
+-   `401 Unauthorized` - отсутствует или неверен API key
