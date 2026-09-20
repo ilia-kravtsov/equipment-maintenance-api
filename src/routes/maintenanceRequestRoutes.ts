@@ -12,6 +12,7 @@ import {
   updateMaintenanceRequestSchema,
   updateMaintenanceRequestStatusSchema,
   maintenanceRequestListQuerySchema,
+  importMaintenanceRequestsSchema,
 } from '../validators/maintenanceRequestValidator.js';
 import { requireApiKey } from '../middlewares/requireApiKey.js';
 
@@ -31,6 +32,13 @@ export const createMaintenanceRequestRouter = (
     requireApiKey,
     validateBody(createMaintenanceRequestSchema),
     requestController.create,
+  );
+
+  router.post(
+    '/import',
+    requireApiKey,
+    validateBody(importMaintenanceRequestsSchema),
+    requestController.importMany,
   );
 
   router.get<MaintenanceRequestParams>(
