@@ -3382,6 +3382,182 @@
               "body": ""
             }
           ]
+        },
+        {
+          "name": "Bulk Import Maintenance Requests",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 207', () => {\r\n  pm.response.to.have.status(207);\r\n});\r\n\r\npm.test('Response contains bulk import report', () => {\r\n  const body = pm.response.json();\r\n\r\n  pm.expect(body).to.have.property('data');\r\n  pm.expect(body.data.total).to.eql(2);\r\n  pm.expect(body.data.created).to.eql(1);\r\n  pm.expect(body.data.failed).to.eql(1);\r\n  pm.expect(body.data.results).to.be.an('array').with.lengthOf(2);\r\n});\r\n\r\npm.test('Valid request is created', () => {\r\n  const body = pm.response.json();\r\n\r\n  pm.expect(body.data.results[0].status).to.eql('created');\r\n  pm.expect(body.data.results[0].data).to.have.property('id');\r\n});\r\n\r\npm.test('Invalid request is reported without aborting import', () => {\r\n  const body = pm.response.json();\r\n\r\n  pm.expect(body.data.results[1].status).to.eql('failed');\r\n  pm.expect(body.data.results[1].error.code).to.eql('VALIDATION_ERROR');\r\n  pm.expect(body.data.results[1].error.details).to.be.an('array');\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"requests\": [\r\n    {\r\n      \"equipmentId\": \"{{equipmentId}}\",\r\n      \"title\": \"Inspect inverter cooling system\",\r\n      \"description\": \"Check cooling system before scheduled maintenance\",\r\n      \"priority\": \"high\",\r\n      \"plannedAt\": \"2026-10-01T10:00:00.000Z\"\r\n    },\r\n    {\r\n      \"equipmentId\": \"invalid-id\",\r\n      \"title\": \"Bad\",\r\n      \"priority\": \"urgent\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/requests/import",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "requests",
+                "import"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Partial Bulk Import",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-API-Key",
+                    "value": "{{apiKey}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"requests\": [\r\n    {\r\n      \"equipmentId\": \"{{equipmentId}}\",\r\n      \"title\": \"Inspect inverter cooling system\",\r\n      \"description\": \"Check cooling system before scheduled maintenance\",\r\n      \"priority\": \"high\",\r\n      \"plannedAt\": \"2026-10-01T10:00:00.000Z\"\r\n    },\r\n    {\r\n      \"equipmentId\": \"invalid-id\",\r\n      \"title\": \"Bad\",\r\n      \"priority\": \"urgent\"\r\n    }\r\n  ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/requests/import",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "requests",
+                    "import"
+                  ]
+                }
+              },
+              "status": "Multi-Status",
+              "code": 207,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "ratelimit-policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "ratelimit-limit",
+                  "value": "100"
+                },
+                {
+                  "key": "ratelimit-remaining",
+                  "value": "98"
+                },
+                {
+                  "key": "ratelimit-reset",
+                  "value": "40"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "793"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"319-2b/ow8T+6oClY+8riVnwfnhQFOs\""
+                },
+                {
+                  "key": "date",
+                  "value": "Sun, 20 Sep 2026 15:58:53 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"total\": 2,\n    \"created\": 1,\n    \"failed\": 1,\n    \"results\": [\n      {\n        \"index\": 0,\n        \"status\": \"created\",\n        \"data\": {\n          \"id\": \"400fcb1a-2027-401a-9b38-f269bd931903\",\n          \"equipmentId\": \"0bd48383-1137-49bc-a729-577b6279530a\",\n          \"title\": \"Inspect inverter cooling system\",\n          \"priority\": \"high\",\n          \"description\": \"Check cooling system before scheduled maintenance\",\n          \"plannedAt\": \"2026-10-01T10:00:00.000Z\",\n          \"status\": \"new\",\n          \"createdAt\": \"2026-09-20T15:58:53.344Z\",\n          \"updatedAt\": \"2026-09-20T15:58:53.344Z\"\n        }\n      },\n      {\n        \"index\": 1,\n        \"status\": \"failed\",\n        \"error\": {\n          \"code\": \"VALIDATION_ERROR\",\n          \"message\": \"Validation failed\",\n          \"details\": [\n            {\n              \"field\": \"equipmentId\",\n              \"message\": \"Invalid UUID\"\n            },\n            {\n              \"field\": \"title\",\n              \"message\": \"Too small: expected string to have >=5 characters\"\n            },\n            {\n              \"field\": \"priority\",\n              \"message\": \"Invalid option: expected one of \\\"low\\\"|\\\"medium\\\"|\\\"high\\\"|\\\"critical\\\"\"\n            }\n          ]\n        }\n      }\n    ]\n  }\n}"
+            }
+          ]
         }
       ]
     },

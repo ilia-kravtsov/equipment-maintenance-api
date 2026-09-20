@@ -8,6 +8,12 @@ import type {
   MaintenanceRequestListQuery,
 } from '../models/maintenanceRequest.js';
 import type { MaintenanceRequestService } from '../services/maintenanceRequestService.js';
+import { AppError } from '../errors/appError.js';
+import type {
+  BulkImportItemResult,
+  BulkImportResult,
+} from '../models/bulkImport.js';
+import { createMaintenanceRequestSchema } from '../validators/maintenanceRequestValidator.js';
 
 export interface MaintenanceRequestParams extends ParamsDictionary {
   id: string;
@@ -39,6 +45,83 @@ export class MaintenanceRequestController {
 
     res.status(201).location(`/api/requests/${request.id}`).json({
       data: request,
+    });
+  };
+
+  importMany = (req: Request, res: Response): void => {
+    const { requests } = req.body as { requests: unknown[] };
+
+    const results: BulkImportItemResult[] = [];
+
+    requests.forEach((item, index) => {
+      const parsed = createMaintenanceRequestSchema.safeParse(item);
+
+      if (!parsed.success) {
+        results.push({
+          index,
+          status: 'failed',
+          error: {
+            code: 'VALIDATION_ERROR',
+            message: 'Validation failed',
+            details: parsed.error.issues.map((issue) => ({
+              field: issue.path.join('.'),
+              message: issue.message,
+            })),
+          },
+        });
+        return;
+      }
+
+      try {
+        const input: CreateMaintenanceRequestInput = {
+          equipmentId: parsed.data.equipmentId,
+          title: parsed.data.title,
+          priority: parsed.data.priority,
+          ...(parsed.data.description !== undefined && {
+            description: parsed.data.description,
+          }),
+          ...(parsed.data.plannedAt !== undefined && {
+            plannedAt: parsed.data.plannedAt,
+          }),
+        };
+
+        const request = this.requestService.create(input);
+
+        results.push({
+          index,
+          status: 'created',
+          data: request,
+        });
+      } catch (error) {
+        if (error instanceof AppError) {
+          results.push({
+            index,
+            status: 'failed',
+            error: {
+              code: error.code,
+              message: error.message,
+            },
+          });
+          return;
+        }
+
+        throw error;
+      }
+    });
+
+    const created = results.filter(
+      (result) => result.status === 'created',
+    ).length;
+
+    const result: BulkImportResult = {
+      total: results.length,
+      created,
+      failed: results.length - created,
+      results,
+    };
+
+    res.status(result.failed === 0 ? 201 : 207).json({
+      data: result,
     });
   };
 

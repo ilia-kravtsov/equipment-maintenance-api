@@ -41,3 +41,7 @@ export const maintenanceRequestListQuerySchema = z.object({
 
   order: z.enum(['asc', 'desc']).default('asc'),
 });
+
+export const importMaintenanceRequestsSchema = z.object({
+  requests: z.array(z.unknown()).min(1).max(100),
+});
