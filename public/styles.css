@@ -32,8 +32,6 @@
 
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 }
 
 body {
@@ -77,6 +75,11 @@ body {
     margin: 0 0 var(--spacing-lg);
 }
 
+.panel-hint {
+    margin: var(--spacing-sm) 0 0;
+    color: var(--color-text-secondary);
+}
+
 .form {
     display: grid;
     gap: var(--spacing-lg);
@@ -90,9 +93,18 @@ body {
     align-items: end;
 }
 
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+}
+
 .form-field {
     display: grid;
     gap: var(--spacing-sm);
+}
+
+.form-field label {
     font-weight: 600;
 }
 
@@ -161,8 +173,51 @@ textarea {
     margin: var(--spacing-xs) 0;
 }
 
+.weather-section {
+    display: grid;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.weather-section-hidden {
+    display: none;
+}
+
+.weather-list {
+    display: grid;
+    gap: var(--spacing-md);
+}
+
+.weather-card {
+    padding: var(--spacing-lg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-sm);
+}
+
+.weather-card-title {
+    margin: 0 0 var(--spacing-sm);
+}
+
+.weather-card-text {
+    margin: var(--spacing-xs) 0;
+}
+
+.weather-suitability {
+    margin: var(--spacing-sm) 0 0;
+    font-weight: 600;
+}
+
+.weather-suitability-success {
+    color: var(--color-success);
+}
+
+.weather-suitability-warning {
+    color: var(--color-error);
+}
+
 .message {
     min-height: 24px;
+    margin-bottom: 0;
 }
 
 .message-error {
@@ -171,4 +226,10 @@ textarea {
 
 .message-success {
     color: var(--color-success);
+}
+
+@media (max-width: 600px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
 }
