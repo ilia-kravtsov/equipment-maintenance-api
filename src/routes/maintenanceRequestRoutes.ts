@@ -13,6 +13,7 @@ import {
   updateMaintenanceRequestStatusSchema,
   maintenanceRequestListQuerySchema,
 } from '../validators/maintenanceRequestValidator.js';
+import { requireApiKey } from '../middlewares/requireApiKey.js';
 
 export const createMaintenanceRequestRouter = (
   requestController: MaintenanceRequestController,
@@ -27,6 +28,7 @@ export const createMaintenanceRequestRouter = (
 
   router.post(
     '/',
+    requireApiKey,
     validateBody(createMaintenanceRequestSchema),
     requestController.create,
   );
@@ -39,6 +41,7 @@ export const createMaintenanceRequestRouter = (
 
   router.patch<MaintenanceRequestParams>(
     '/:id',
+    requireApiKey,
     validateParams<MaintenanceRequestParams>(idParamsSchema),
     validateBody<MaintenanceRequestParams>(updateMaintenanceRequestSchema),
     requestController.update,
@@ -46,6 +49,7 @@ export const createMaintenanceRequestRouter = (
 
   router.patch<MaintenanceRequestParams>(
     '/:id/status',
+    requireApiKey,
     validateParams<MaintenanceRequestParams>(idParamsSchema),
     validateBody<MaintenanceRequestParams>(
       updateMaintenanceRequestStatusSchema,
@@ -55,6 +59,7 @@ export const createMaintenanceRequestRouter = (
 
   router.delete<MaintenanceRequestParams>(
     '/:id',
+    requireApiKey,
     validateParams<MaintenanceRequestParams>(idParamsSchema),
     requestController.delete,
   );
