@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Equipment Maintenance</title>
+
+    <link rel="stylesheet" href="/styles.css" />
+</head>
+
+<body>
+<main class="container">
+    <header class="page-header">
+        <h1 class="page-title">Equipment Maintenance</h1>
+        <p class="page-subtitle">
+            Управление оборудованием и заявками на обслуживание
+        </p>
+    </header>
+
+    <section class="panel">
+        <h2 class="panel-title">Доступ к API</h2>
+
+        <div class="form-field">
+            <label for="api-key">API key</label>
+            <input
+                    id="api-key"
+                    type="password"
+                    autocomplete="off"
+                    placeholder="Введите API key"
+            />
+        </div>
+
+        <p class="panel-hint">
+            Ключ используется для защищённых запросов и не сохраняется
+            в браузере
+        </p>
+    </section>
+
+    <section class="panel">
+        <h2 class="panel-title">Создать оборудование</h2>
+
+        <form id="create-equipment-form" class="form">
+            <div class="form-field">
+                <label for="equipment-name">Название</label>
+                <input
+                        id="equipment-name"
+                        name="name"
+                        type="text"
+                        minlength="3"
+                        maxlength="100"
+                        required
+                />
+            </div>
+
+            <div class="form-field">
+                <label for="equipment-type">Тип</label>
+                <select id="equipment-type" name="type" required>
+                    <option value="turbine">Турбина</option>
+                    <option value="inverter">Инвертор</option>
+                    <option value="sensor">Датчик</option>
+                    <option value="substation">Подстанция</option>
+                </select>
+            </div>
+
+            <div class="form-field">
+                <label for="serial-number">Серийный номер</label>
+                <input
+                        id="serial-number"
+                        name="serialNumber"
+                        type="text"
+                        required
+                />
+            </div>
+
+            <div class="form-field">
+                <label for="equipment-status">Статус</label>
+                <select id="equipment-status" name="status" required>
+                    <option value="operational">Работает</option>
+                    <option value="maintenance">На обслуживании</option>
+                    <option value="fault">Неисправно</option>
+                    <option value="decommissioned">Выведено из эксплуатации</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <div class="form-field">
+                    <label for="latitude">Широта</label>
+                    <input
+                            id="latitude"
+                            name="lat"
+                            type="number"
+                            min="-90"
+                            max="90"
+                            step="any"
+                            required
+                    />
+                </div>
+
+                <div class="form-field">
+                    <label for="longitude">Долгота</label>
+                    <input
+                            id="longitude"
+                            name="lon"
+                            type="number"
+                            min="-180"
+                            max="180"
+                            step="any"
+                            required
+                    />
+                </div>
+            </div>
+
+            <div class="form-field">
+                <label for="installed-at">Дата установки</label>
+                <input
+                        id="installed-at"
+                        name="installedAt"
+                        type="date"
+                        required
+                />
+            </div>
+
+            <button class="button button-primary" type="submit">
+                Создать оборудование
+            </button>
+        </form>
+
+        <p
+            id="equipment-message"
+            class="message"
+            role="status"
+        ></p>
+
+        <div id="weather-section" class="weather-section weather-section-hidden">
+            <button
+                    id="show-weather"
+                    class="button"
+                    type="button"
+            >
+                Показать прогноз
+            </button>
+
+            <p
+                    id="weather-message"
+                    class="message"
+                    role="status"
+            ></p>
+
+            <div
+                    id="weather-list"
+                    class="weather-list"
+            ></div>
+        </div>
+    </section>
+
+    <section class="panel">
+        <h2 class="panel-title">Создать заявку</h2>
+
+        <form id="create-request-form" class="form">
+            <div class="form-field">
+                <label for="equipment-id">ID оборудования</label>
+                <input
+                        id="equipment-id"
+                        name="equipmentId"
+                        type="text"
+                        placeholder="UUID оборудования"
+                        required
+                />
+            </div>
+
+            <div class="form-field">
+                <label for="request-title">Название</label>
+                <input
+                        id="request-title"
+                        name="title"
+                        type="text"
+                        minlength="5"
+                        maxlength="120"
+                        required
+                />
+            </div>
+
+            <div class="form-field">
+                <label for="request-description">Описание</label>
+                <textarea
+                        id="request-description"
+                        name="description"
+                        maxlength="2000"
+                ></textarea>
+            </div>
+
+            <div class="form-field">
+                <label for="request-priority">Приоритет</label>
+                <select
+                        id="request-priority"
+                        name="priority"
+                        required
+                >
+                    <option value="low">Низкий</option>
+                    <option value="medium" selected>Средний</option>
+                    <option value="high">Высокий</option>
+                    <option value="critical">Критический</option>
+                </select>
+            </div>
+
+            <div class="form-field">
+                <label for="planned-at">Плановая дата</label>
+                <input
+                        id="planned-at"
+                        name="plannedAt"
+                        type="datetime-local"
+                />
+            </div>
+
+            <button class="button button-primary" type="submit">
+                Создать заявку
+            </button>
+        </form>
+
+        <p
+                id="create-message"
+                class="message"
+                role="status"
+        ></p>
+    </section>
+
+    <section class="panel">
+        <h2 class="panel-title">Заявки на обслуживание</h2>
+
+        <form id="filters-form" class="form form-filters">
+            <div class="form-field">
+                <label for="status-filter">Статус</label>
+                <select id="status-filter" name="status">
+                    <option value="">Все</option>
+                    <option value="new">Новая</option>
+                    <option value="in_progress">В работе</option>
+                    <option value="done">Выполнена</option>
+                    <option value="rejected">Отклонена</option>
+                </select>
+            </div>
+
+            <div class="form-field">
+                <label for="priority-filter">Приоритет</label>
+                <select id="priority-filter" name="priority">
+                    <option value="">Все</option>
+                    <option value="low">Низкий</option>
+                    <option value="medium">Средний</option>
+                    <option value="high">Высокий</option>
+                    <option value="critical">Критический</option>
+                </select>
+            </div>
+
+            <button class="button" type="submit">
+                Применить
+            </button>
+
+            <button
+                    id="reset-filters"
+                    class="button"
+                    type="button"
+            >
+                Сбросить
+            </button>
+        </form>
+
+        <p
+                id="requests-message"
+                class="message"
+                role="status"
+        ></p>
+
+        <div
+                id="requests-list"
+                class="requests-list"
+        ></div>
+    </section>
+</main>
+
+<script type="module" src="/js/app.js"></script>
+</body>
+</html>
