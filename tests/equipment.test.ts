@@ -98,8 +98,8 @@ describe('Equipment API', () => {
   describe('DELETE /api/equipment/:id', () => {
     it('should delete equipment', async () => {
       const response = await request(app)
+        .delete(`/api/equipment/${equipmentId}`)
         .set('X-API-Key', TEST_API_KEY)
-        .delete(`/api/equipment/${equipmentId}`);
 
       expect(response.status).toBe(204);
       expect(response.body).toEqual({});
