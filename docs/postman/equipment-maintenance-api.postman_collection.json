@@ -175,7 +175,12 @@
           ],
           "request": {
             "method": "POST",
-            "header": [],
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}"
+              }
+            ],
             "body": {
               "mode": "raw",
               "raw": "{\r\n  \"name\": \"Main inverter\",\r\n  \"type\": \"inverter\",\r\n  \"serialNumber\": \"INVERT-002\",\r\n  \"location\": {\r\n    \"lat\": 55.7558,\r\n    \"lon\": 37.6173\r\n  },\r\n  \"status\": \"operational\",\r\n  \"installedAt\": \"2025-01-15\"\r\n}",
@@ -325,6 +330,140 @@
               ],
               "cookie": [],
               "body": "{\n  \"data\": {\n    \"id\": \"a8bd75b4-3bf4-4a30-bb38-c088b0cf8137\",\n    \"name\": \"Main inverter\",\n    \"type\": \"inverter\",\n    \"serialNumber\": \"INVERT-002\",\n    \"location\": {\n      \"lat\": 55.7558,\n      \"lon\": 37.6173\n    },\n    \"status\": \"operational\",\n    \"installedAt\": \"2025-01-15\"\n  }\n}"
+            },
+            {
+              "name": "Create Equipment",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-API-Key",
+                    "value": "{{apiKey}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"Main inverter\",\r\n  \"type\": \"inverter\",\r\n  \"serialNumber\": \"INVERT-002\",\r\n  \"location\": {\r\n    \"lat\": 55.7558,\r\n    \"lon\": 37.6173\r\n  },\r\n  \"status\": \"operational\",\r\n  \"installedAt\": \"2025-01-15\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/equipment",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "equipment"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "ratelimit-policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "ratelimit-limit",
+                  "value": "100"
+                },
+                {
+                  "key": "ratelimit-remaining",
+                  "value": "99"
+                },
+                {
+                  "key": "ratelimit-reset",
+                  "value": "60"
+                },
+                {
+                  "key": "location",
+                  "value": "/api/equipment/eb8a7340-0c36-4c1a-bf42-3e1b2aef4a76"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "214"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"d6-rTMWzyAtQl9c+T2pYthQ2AYIIsQ\""
+                },
+                {
+                  "key": "date",
+                  "value": "Sun, 20 Sep 2026 14:03:52 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"id\": \"eb8a7340-0c36-4c1a-bf42-3e1b2aef4a76\",\n    \"name\": \"Main inverter\",\n    \"type\": \"inverter\",\n    \"serialNumber\": \"INVERT-002\",\n    \"location\": {\n      \"lat\": 55.7558,\n      \"lon\": 37.6173\n    },\n    \"status\": \"operational\",\n    \"installedAt\": \"2025-01-15\"\n  }\n}"
             }
           ]
         },
@@ -489,7 +628,12 @@
           ],
           "request": {
             "method": "PATCH",
-            "header": [],
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}"
+              }
+            ],
             "body": {
               "mode": "raw",
               "raw": "{\r\n  \"name\": \"Main Inverter Updated\",\r\n  \"status\": \"maintenance\"\r\n}",
@@ -637,6 +781,137 @@
               ],
               "cookie": [],
               "body": "{\n  \"data\": {\n    \"id\": \"a8bd75b4-3bf4-4a30-bb38-c088b0cf8137\",\n    \"name\": \"Main Inverter Updated\",\n    \"type\": \"inverter\",\n    \"serialNumber\": \"INVERT-002\",\n    \"location\": {\n      \"lat\": 55.7558,\n      \"lon\": 37.6173\n    },\n    \"status\": \"maintenance\",\n    \"installedAt\": \"2025-01-15\"\n  }\n}"
+            },
+            {
+              "name": "Equipment",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "X-API-Key",
+                    "value": "{{apiKey}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"Main Inverter Updated\",\r\n  \"status\": \"maintenance\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/equipment/{{equipmentId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "equipment",
+                    "{{equipmentId}}"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "ratelimit-policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "ratelimit-limit",
+                  "value": "100"
+                },
+                {
+                  "key": "ratelimit-remaining",
+                  "value": "98"
+                },
+                {
+                  "key": "ratelimit-reset",
+                  "value": "24"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "222"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"de-dhGfl4XQPF7Ddt6VbIAWKzu5R5M\""
+                },
+                {
+                  "key": "date",
+                  "value": "Sun, 20 Sep 2026 14:04:28 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"id\": \"eb8a7340-0c36-4c1a-bf42-3e1b2aef4a76\",\n    \"name\": \"Main Inverter Updated\",\n    \"type\": \"inverter\",\n    \"serialNumber\": \"INVERT-002\",\n    \"location\": {\n      \"lat\": 55.7558,\n      \"lon\": 37.6173\n    },\n    \"status\": \"maintenance\",\n    \"installedAt\": \"2025-01-15\"\n  }\n}"
             }
           ]
         },
@@ -1103,7 +1378,12 @@
           ],
           "request": {
             "method": "DELETE",
-            "header": [],
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}"
+              }
+            ],
             "url": {
               "raw": "{{baseUrl}}/api/equipment/{{equipmentId}}",
               "host": [
@@ -1221,6 +1501,116 @@
               ],
               "cookie": [],
               "body": ""
+            },
+            {
+              "name": "Equipment",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "X-API-Key",
+                    "value": "{{apiKey}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/equipment/{{equipmentId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "equipment",
+                    "{{equipmentId}}"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "ratelimit-policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "ratelimit-limit",
+                  "value": "100"
+                },
+                {
+                  "key": "ratelimit-remaining",
+                  "value": "93"
+                },
+                {
+                  "key": "ratelimit-reset",
+                  "value": "23"
+                },
+                {
+                  "key": "date",
+                  "value": "Sun, 20 Sep 2026 14:05:31 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": ""
             }
           ]
         }
@@ -1244,7 +1634,12 @@
           ],
           "request": {
             "method": "POST",
-            "header": [],
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}"
+              }
+            ],
             "body": {
               "mode": "raw",
               "raw": "{\r\n  \"equipmentId\": \"{{equipmentId}}\",\r\n  \"title\": \"Scheduled inverter inspection\",\r\n  \"description\": \"Inspect the inverter before scheduled maintenance.\",\r\n  \"priority\": \"high\",\r\n  \"plannedAt\": \"2026-10-01T10:00:00.000Z\"\r\n}",
@@ -1394,6 +1789,140 @@
               ],
               "cookie": [],
               "body": "{\n  \"data\": {\n    \"id\": \"6048638d-6910-4064-9afc-40d30ced9fd3\",\n    \"equipmentId\": \"a8bd75b4-3bf4-4a30-bb38-c088b0cf8137\",\n    \"title\": \"Scheduled inverter inspection\",\n    \"description\": \"Inspect the inverter before scheduled maintenance.\",\n    \"priority\": \"high\",\n    \"plannedAt\": \"2026-10-01T10:00:00.000Z\",\n    \"status\": \"new\",\n    \"createdAt\": \"2026-09-19T06:45:32.186Z\",\n    \"updatedAt\": \"2026-09-19T06:45:32.186Z\"\n  }\n}"
+            },
+            {
+              "name": "Create Request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-API-Key",
+                    "value": "{{apiKey}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"equipmentId\": \"{{equipmentId}}\",\r\n  \"title\": \"Scheduled inverter inspection\",\r\n  \"description\": \"Inspect the inverter before scheduled maintenance.\",\r\n  \"priority\": \"high\",\r\n  \"plannedAt\": \"2026-10-01T10:00:00.000Z\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/requests",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "requests"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "ratelimit-policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "ratelimit-limit",
+                  "value": "100"
+                },
+                {
+                  "key": "ratelimit-remaining",
+                  "value": "95"
+                },
+                {
+                  "key": "ratelimit-reset",
+                  "value": "18"
+                },
+                {
+                  "key": "location",
+                  "value": "/api/requests/32f8b3e6-317b-4653-aec1-894c42fd928f"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "364"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"16c-ORr7EG7+bx78eaM5C5oIM1b3gCU\""
+                },
+                {
+                  "key": "date",
+                  "value": "Sun, 20 Sep 2026 14:07:52 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"id\": \"32f8b3e6-317b-4653-aec1-894c42fd928f\",\n    \"equipmentId\": \"54dc1be4-0855-4187-9773-0d80da013b57\",\n    \"title\": \"Scheduled inverter inspection\",\n    \"description\": \"Inspect the inverter before scheduled maintenance.\",\n    \"priority\": \"high\",\n    \"plannedAt\": \"2026-10-01T10:00:00.000Z\",\n    \"status\": \"new\",\n    \"createdAt\": \"2026-09-20T14:07:52.507Z\",\n    \"updatedAt\": \"2026-09-20T14:07:52.507Z\"\n  }\n}"
             }
           ]
         },
@@ -1706,7 +2235,12 @@
           ],
           "request": {
             "method": "PATCH",
-            "header": [],
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}"
+              }
+            ],
             "body": {
               "mode": "raw",
               "raw": "{\r\n  \"title\": \"Updated inverter inspection\",\r\n  \"description\": \"Inspect and diagnose the inverter before scheduled maintenance.\",\r\n  \"priority\": \"critical\"\r\n}",
@@ -1854,6 +2388,137 @@
               ],
               "cookie": [],
               "body": "{\n  \"data\": {\n    \"id\": \"6048638d-6910-4064-9afc-40d30ced9fd3\",\n    \"equipmentId\": \"a8bd75b4-3bf4-4a30-bb38-c088b0cf8137\",\n    \"title\": \"Updated inverter inspection\",\n    \"description\": \"Inspect and diagnose the inverter before scheduled maintenance.\",\n    \"priority\": \"critical\",\n    \"plannedAt\": \"2026-10-01T10:00:00.000Z\",\n    \"status\": \"new\",\n    \"createdAt\": \"2026-09-19T06:45:32.186Z\",\n    \"updatedAt\": \"2026-09-19T06:51:34.420Z\"\n  }\n}"
+            },
+            {
+              "name": "Request",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "X-API-Key",
+                    "value": "{{apiKey}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"Updated inverter inspection\",\r\n  \"description\": \"Inspect and diagnose the inverter before scheduled maintenance.\",\r\n  \"priority\": \"critical\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/requests/{{maintenanceRequestId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "requests",
+                    "{{maintenanceRequestId}}"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "ratelimit-policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "ratelimit-limit",
+                  "value": "100"
+                },
+                {
+                  "key": "ratelimit-remaining",
+                  "value": "99"
+                },
+                {
+                  "key": "ratelimit-reset",
+                  "value": "60"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "379"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"17b-E66w8iQf0c92ib7CytvSl0LX79k\""
+                },
+                {
+                  "key": "date",
+                  "value": "Sun, 20 Sep 2026 14:08:12 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"id\": \"32f8b3e6-317b-4653-aec1-894c42fd928f\",\n    \"equipmentId\": \"54dc1be4-0855-4187-9773-0d80da013b57\",\n    \"title\": \"Updated inverter inspection\",\n    \"description\": \"Inspect and diagnose the inverter before scheduled maintenance.\",\n    \"priority\": \"critical\",\n    \"plannedAt\": \"2026-10-01T10:00:00.000Z\",\n    \"status\": \"new\",\n    \"createdAt\": \"2026-09-20T14:07:52.507Z\",\n    \"updatedAt\": \"2026-09-20T14:08:12.710Z\"\n  }\n}"
             }
           ]
         },
@@ -1872,7 +2537,12 @@
           ],
           "request": {
             "method": "PATCH",
-            "header": [],
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}"
+              }
+            ],
             "body": {
               "mode": "raw",
               "raw": "{\r\n  \"status\": \"in_progress\"\r\n}",
@@ -2022,6 +2692,138 @@
               ],
               "cookie": [],
               "body": "{\n  \"data\": {\n    \"id\": \"6048638d-6910-4064-9afc-40d30ced9fd3\",\n    \"equipmentId\": \"a8bd75b4-3bf4-4a30-bb38-c088b0cf8137\",\n    \"title\": \"Updated inverter inspection\",\n    \"description\": \"Inspect and diagnose the inverter before scheduled maintenance.\",\n    \"priority\": \"critical\",\n    \"plannedAt\": \"2026-10-01T10:00:00.000Z\",\n    \"status\": \"in_progress\",\n    \"createdAt\": \"2026-09-19T06:45:32.186Z\",\n    \"updatedAt\": \"2026-09-19T06:53:03.797Z\"\n  }\n}"
+            },
+            {
+              "name": "Request Status",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "X-API-Key",
+                    "value": "{{apiKey}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"status\": \"in_progress\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/requests/{{maintenanceRequestId}}/status",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "requests",
+                    "{{maintenanceRequestId}}",
+                    "status"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "ratelimit-policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "ratelimit-limit",
+                  "value": "100"
+                },
+                {
+                  "key": "ratelimit-remaining",
+                  "value": "98"
+                },
+                {
+                  "key": "ratelimit-reset",
+                  "value": "45"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "387"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"183-buQHJqTQ4WOeRtCuficWeT7U+oc\""
+                },
+                {
+                  "key": "date",
+                  "value": "Sun, 20 Sep 2026 14:08:27 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"id\": \"32f8b3e6-317b-4653-aec1-894c42fd928f\",\n    \"equipmentId\": \"54dc1be4-0855-4187-9773-0d80da013b57\",\n    \"title\": \"Updated inverter inspection\",\n    \"description\": \"Inspect and diagnose the inverter before scheduled maintenance.\",\n    \"priority\": \"critical\",\n    \"plannedAt\": \"2026-10-01T10:00:00.000Z\",\n    \"status\": \"in_progress\",\n    \"createdAt\": \"2026-09-20T14:07:52.507Z\",\n    \"updatedAt\": \"2026-09-20T14:08:27.847Z\"\n  }\n}"
             }
           ]
         },
@@ -2040,7 +2842,12 @@
           ],
           "request": {
             "method": "PATCH",
-            "header": [],
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}"
+              }
+            ],
             "body": {
               "mode": "raw",
               "raw": "{\r\n  \"status\": \"done\"\r\n}",
@@ -2190,6 +2997,138 @@
               ],
               "cookie": [],
               "body": "{\n  \"data\": {\n    \"id\": \"8ce8842a-934e-4b5a-92d7-7927582a6692\",\n    \"equipmentId\": \"a51d5843-cd1e-4da2-bae8-b0cc1b847d6a\",\n    \"title\": \"Updated inverter inspection\",\n    \"description\": \"Inspect and diagnose the inverter before scheduled maintenance.\",\n    \"priority\": \"critical\",\n    \"plannedAt\": \"2026-10-01T10:00:00.000Z\",\n    \"status\": \"done\",\n    \"createdAt\": \"2026-09-19T07:34:38.069Z\",\n    \"updatedAt\": \"2026-09-19T07:36:18.990Z\"\n  }\n}"
+            },
+            {
+              "name": "Complete Request",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "X-API-Key",
+                    "value": "{{apiKey}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"status\": \"done\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/requests/{{maintenanceRequestId}}/status",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "requests",
+                    "{{maintenanceRequestId}}",
+                    "status"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "ratelimit-policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "ratelimit-limit",
+                  "value": "100"
+                },
+                {
+                  "key": "ratelimit-remaining",
+                  "value": "97"
+                },
+                {
+                  "key": "ratelimit-reset",
+                  "value": "29"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "380"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"17c-q+5iQMwIzOGmZ56NwnkdjB4jVZQ\""
+                },
+                {
+                  "key": "date",
+                  "value": "Sun, 20 Sep 2026 14:08:44 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"id\": \"32f8b3e6-317b-4653-aec1-894c42fd928f\",\n    \"equipmentId\": \"54dc1be4-0855-4187-9773-0d80da013b57\",\n    \"title\": \"Updated inverter inspection\",\n    \"description\": \"Inspect and diagnose the inverter before scheduled maintenance.\",\n    \"priority\": \"critical\",\n    \"plannedAt\": \"2026-10-01T10:00:00.000Z\",\n    \"status\": \"done\",\n    \"createdAt\": \"2026-09-20T14:07:52.507Z\",\n    \"updatedAt\": \"2026-09-20T14:08:44.437Z\"\n  }\n}"
             }
           ]
         },
@@ -2208,7 +3147,12 @@
           ],
           "request": {
             "method": "DELETE",
-            "header": [],
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}"
+              }
+            ],
             "url": {
               "raw": "{{baseUrl}}/api/requests/{{maintenanceRequestId}}",
               "host": [
@@ -2326,6 +3270,116 @@
               ],
               "cookie": [],
               "body": ""
+            },
+            {
+              "name": "Request",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "X-API-Key",
+                    "value": "{{apiKey}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/requests/{{maintenanceRequestId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "requests",
+                    "{{maintenanceRequestId}}"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "ratelimit-policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "ratelimit-limit",
+                  "value": "100"
+                },
+                {
+                  "key": "ratelimit-remaining",
+                  "value": "96"
+                },
+                {
+                  "key": "ratelimit-reset",
+                  "value": "15"
+                },
+                {
+                  "key": "date",
+                  "value": "Sun, 20 Sep 2026 14:08:57 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": ""
             }
           ]
         }
@@ -2349,7 +3403,12 @@
           ],
           "request": {
             "method": "POST",
-            "header": [],
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}"
+              }
+            ],
             "body": {
               "mode": "raw",
               "raw": "{\r\n  \"name\": \"Broken Equipment\",\r\n  \"type\": \"sensor\",\r\n}",
@@ -2495,6 +3554,136 @@
               ],
               "cookie": [],
               "body": "{\n  \"error\": {\n    \"code\": \"BAD_REQUEST\",\n    \"message\": \"Malformed JSON body\",\n    \"requestId\": \"5ad8557c-9dac-4119-958b-9db11fb75813\"\n  }\n}"
+            },
+            {
+              "name": "400 Malformed JSON",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-API-Key",
+                    "value": "{{apiKey}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"Broken Equipment\",\r\n  \"type\": \"sensor\",\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/equipment",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "equipment"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "ratelimit-policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "ratelimit-limit",
+                  "value": "100"
+                },
+                {
+                  "key": "ratelimit-remaining",
+                  "value": "95"
+                },
+                {
+                  "key": "ratelimit-reset",
+                  "value": "1"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "115"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"73-EhJK6s1V7tkHRh9fEts2NXV6J5M\""
+                },
+                {
+                  "key": "date",
+                  "value": "Sun, 20 Sep 2026 14:09:11 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"error\": {\n    \"code\": \"BAD_REQUEST\",\n    \"message\": \"Malformed JSON body\",\n    \"requestId\": \"cabd051e-fab7-410c-b8b5-5e17ada61f90\"\n  }\n}"
             }
           ]
         },
@@ -2513,7 +3702,12 @@
           ],
           "request": {
             "method": "POST",
-            "header": [],
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}"
+              }
+            ],
             "body": {
               "mode": "raw",
               "raw": "{\r\n  \"name\": \"X\",\r\n  \"type\": \"invalid-type\",\r\n  \"serialNumber\": \"\",\r\n  \"location\": {\r\n    \"lat\": 200,\r\n    \"lon\": 300\r\n  },\r\n  \"status\": \"unknown\",\r\n  \"installedAt\": \"2035-01-15\"\r\n}",
@@ -2659,6 +3853,136 @@
               ],
               "cookie": [],
               "body": "{\n  \"error\": {\n    \"code\": \"VALIDATION_ERROR\",\n    \"message\": \"Request validation failed\",\n    \"details\": [\n      {\n        \"field\": \"name\",\n        \"message\": \"Too small: expected string to have >=3 characters\"\n      },\n      {\n        \"field\": \"type\",\n        \"message\": \"Invalid option: expected one of \\\"turbine\\\"|\\\"inverter\\\"|\\\"sensor\\\"|\\\"substation\\\"\"\n      },\n      {\n        \"field\": \"serialNumber\",\n        \"message\": \"Too small: expected string to have >=1 characters\"\n      },\n      {\n        \"field\": \"location.lat\",\n        \"message\": \"Too big: expected number to be <=90\"\n      },\n      {\n        \"field\": \"location.lon\",\n        \"message\": \"Too big: expected number to be <=180\"\n      },\n      {\n        \"field\": \"status\",\n        \"message\": \"Invalid option: expected one of \\\"operational\\\"|\\\"maintenance\\\"|\\\"fault\\\"|\\\"decommissioned\\\"\"\n      },\n      {\n        \"field\": \"installedAt\",\n        \"message\": \"Invalid installation date\"\n      }\n    ],\n    \"requestId\": \"682a5aa0-ed4e-4c55-a401-729b035b8a4b\"\n  }\n}"
+            },
+            {
+              "name": "422 Invalid Equipment",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-API-Key",
+                    "value": "{{apiKey}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"X\",\r\n  \"type\": \"invalid-type\",\r\n  \"serialNumber\": \"\",\r\n  \"location\": {\r\n    \"lat\": 200,\r\n    \"lon\": 300\r\n  },\r\n  \"status\": \"unknown\",\r\n  \"installedAt\": \"2035-01-15\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/equipment",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "equipment"
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "ratelimit-policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "ratelimit-limit",
+                  "value": "100"
+                },
+                {
+                  "key": "ratelimit-remaining",
+                  "value": "99"
+                },
+                {
+                  "key": "ratelimit-reset",
+                  "value": "60"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "749"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"2ed-JKReVkvONN7I89T/s7UR7U3Fwo8\""
+                },
+                {
+                  "key": "date",
+                  "value": "Sun, 20 Sep 2026 14:09:26 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"error\": {\n    \"code\": \"VALIDATION_ERROR\",\n    \"message\": \"Request validation failed\",\n    \"details\": [\n      {\n        \"field\": \"name\",\n        \"message\": \"Too small: expected string to have >=3 characters\"\n      },\n      {\n        \"field\": \"type\",\n        \"message\": \"Invalid option: expected one of \\\"turbine\\\"|\\\"inverter\\\"|\\\"sensor\\\"|\\\"substation\\\"\"\n      },\n      {\n        \"field\": \"serialNumber\",\n        \"message\": \"Too small: expected string to have >=1 characters\"\n      },\n      {\n        \"field\": \"location.lat\",\n        \"message\": \"Too big: expected number to be <=90\"\n      },\n      {\n        \"field\": \"location.lon\",\n        \"message\": \"Too big: expected number to be <=180\"\n      },\n      {\n        \"field\": \"status\",\n        \"message\": \"Invalid option: expected one of \\\"operational\\\"|\\\"maintenance\\\"|\\\"fault\\\"|\\\"decommissioned\\\"\"\n      },\n      {\n        \"field\": \"installedAt\",\n        \"message\": \"Invalid installation date\"\n      }\n    ],\n    \"requestId\": \"da057cd2-17be-42cd-8f79-6a5210cf8048\"\n  }\n}"
             }
           ]
         },
@@ -2825,7 +4149,12 @@
           ],
           "request": {
             "method": "POST",
-            "header": [],
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}"
+              }
+            ],
             "body": {
               "mode": "raw",
               "raw": "{\r\n  \"name\": \"Duplicate Inverter\",\r\n  \"type\": \"inverter\",\r\n  \"serialNumber\": \"INVERT-002\",\r\n  \"location\": {\r\n    \"lat\": 55.7558,\r\n    \"lon\": 37.6173\r\n  },\r\n  \"status\": \"operational\",\r\n  \"installedAt\": \"2025-01-15\"\r\n}",
@@ -2971,6 +4300,136 @@
               ],
               "cookie": [],
               "body": "{\n  \"error\": {\n    \"code\": \"CONFLICT\",\n    \"message\": \"Equipment with serial number \\\"INVERT-002\\\" already exists\",\n    \"requestId\": \"0311f003-17e8-4d66-8fde-ccd7d8fdc75a\"\n  }\n}"
+            },
+            {
+              "name": "409 Duplicate Serial Number",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-API-Key",
+                    "value": "{{apiKey}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"Duplicate Inverter\",\r\n  \"type\": \"inverter\",\r\n  \"serialNumber\": \"INVERT-002\",\r\n  \"location\": {\r\n    \"lat\": 55.7558,\r\n    \"lon\": 37.6173\r\n  },\r\n  \"status\": \"operational\",\r\n  \"installedAt\": \"2025-01-15\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/equipment",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "equipment"
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "ratelimit-policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "ratelimit-limit",
+                  "value": "100"
+                },
+                {
+                  "key": "ratelimit-remaining",
+                  "value": "98"
+                },
+                {
+                  "key": "ratelimit-reset",
+                  "value": "45"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "151"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"97-LfppAjOx5DWTKq194/Bq96gBJhY\""
+                },
+                {
+                  "key": "date",
+                  "value": "Sun, 20 Sep 2026 14:09:42 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"error\": {\n    \"code\": \"CONFLICT\",\n    \"message\": \"Equipment with serial number \\\"INVERT-002\\\" already exists\",\n    \"requestId\": \"95d9c51f-6a76-4a31-9bb2-d6f0a8c1a1ee\"\n  }\n}"
             }
           ]
         },
@@ -2989,7 +4448,12 @@
           ],
           "request": {
             "method": "DELETE",
-            "header": [],
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}"
+              }
+            ],
             "url": {
               "raw": "{{baseUrl}}/api/equipment/{{equipmentId}}",
               "host": [
@@ -3119,6 +4583,128 @@
               ],
               "cookie": [],
               "body": "{\n  \"error\": {\n    \"code\": \"CONFLICT\",\n    \"message\": \"Equipment with open maintenance requests cannot be deleted\",\n    \"requestId\": \"bff2614e-981c-41ff-9d1b-d1c630c0388c\"\n  }\n}"
+            },
+            {
+              "name": "409 Delete Equipment With Open Request",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "X-API-Key",
+                    "value": "{{apiKey}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/equipment/{{equipmentId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "equipment",
+                    "{{equipmentId}}"
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "ratelimit-policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "ratelimit-limit",
+                  "value": "100"
+                },
+                {
+                  "key": "ratelimit-remaining",
+                  "value": "97"
+                },
+                {
+                  "key": "ratelimit-reset",
+                  "value": "6"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "151"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"97-fT5t9EF3+hNA07kfDRumuJYmTvk\""
+                },
+                {
+                  "key": "date",
+                  "value": "Sun, 20 Sep 2026 14:10:21 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"error\": {\n    \"code\": \"CONFLICT\",\n    \"message\": \"Equipment with open maintenance requests cannot be deleted\",\n    \"requestId\": \"59912155-f2d2-4e29-894a-e7af60aa519c\"\n  }\n}"
             }
           ]
         },
@@ -3137,7 +4723,12 @@
           ],
           "request": {
             "method": "PATCH",
-            "header": [],
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}"
+              }
+            ],
             "body": {
               "mode": "raw",
               "raw": "{\r\n  \"status\": \"new\"\r\n}",
@@ -3287,6 +4878,138 @@
               ],
               "cookie": [],
               "body": "{\n  \"error\": {\n    \"code\": \"CONFLICT\",\n    \"message\": \"Cannot change request status from \\\"in_progress\\\" to \\\"new\\\"\",\n    \"requestId\": \"0b9188b3-8f96-44c9-9943-32afdc7b3878\"\n  }\n}"
+            },
+            {
+              "name": "409 Invalid Status Transition",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "X-API-Key",
+                    "value": "{{apiKey}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"status\": \"new\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/requests/{{maintenanceRequestId}}/status",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "requests",
+                    "{{maintenanceRequestId}}",
+                    "status"
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "ratelimit-policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "ratelimit-limit",
+                  "value": "100"
+                },
+                {
+                  "key": "ratelimit-remaining",
+                  "value": "97"
+                },
+                {
+                  "key": "ratelimit-reset",
+                  "value": "39"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "145"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"91-ucrxm8EFALaUJsMyvTF70LE1QFo\""
+                },
+                {
+                  "key": "date",
+                  "value": "Sun, 20 Sep 2026 14:11:00 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"error\": {\n    \"code\": \"CONFLICT\",\n    \"message\": \"Cannot change request status from \\\"new\\\" to \\\"new\\\"\",\n    \"requestId\": \"9e261881-4a8e-4208-b4f5-aad8eec24a19\"\n  }\n}"
             }
           ]
         },
@@ -3439,6 +5162,213 @@
               "body": "{\n  \"error\": {\n    \"code\": \"RATE_LIMIT_EXCEEDED\",\n    \"message\": \"Too many requests\",\n    \"requestId\": \"e5cff6b0-0b63-4ffe-8b79-976d83d40d9b\"\n  }\n}"
             }
           ]
+        },
+        {
+          "name": "401 Missing API Key",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 401', function () {\r\n  pm.response.to.have.status(401);\r\n});\r\n\r\npm.test('Error code is UNAUTHORIZED', function () {\r\n  const json = pm.response.json();\r\n\r\n  pm.expect(json.error.code).to.eql('UNAUTHORIZED');\r\n});\r\n\r\npm.test('Response contains requestId', function () {\r\n  const json = pm.response.json();\r\n\r\n  pm.expect(json.error.requestId).to.be.a('string');\r\n  pm.expect(json.error.requestId).to.not.be.empty;\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Auth Test Sensor\",\r\n  \"type\": \"sensor\",\r\n  \"serialNumber\": \"AUTH-MISSING-KEY-001\",\r\n  \"location\": {\r\n    \"lat\": 55.7558,\r\n    \"lon\": 37.6173\r\n  },\r\n  \"status\": \"operational\",\r\n  \"installedAt\": \"2026-01-15\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/equipment",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "equipment"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Missing API Key",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"Auth Test Sensor\",\r\n  \"type\": \"sensor\",\r\n  \"serialNumber\": \"AUTH-MISSING-KEY-001\",\r\n  \"location\": {\r\n    \"lat\": 55.7558,\r\n    \"lon\": 37.6173\r\n  },\r\n  \"status\": \"operational\",\r\n  \"installedAt\": \"2026-01-15\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/equipment",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "equipment"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "ratelimit-policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "ratelimit-limit",
+                  "value": "100"
+                },
+                {
+                  "key": "ratelimit-remaining",
+                  "value": "99"
+                },
+                {
+                  "key": "ratelimit-reset",
+                  "value": "60"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "123"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"7b-3dFsksWYjmemKAMgGzJcGRW98+0\""
+                },
+                {
+                  "key": "date",
+                  "value": "Sun, 20 Sep 2026 13:58:19 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"error\": {\n    \"code\": \"UNAUTHORIZED\",\n    \"message\": \"Invalid or missing API key\",\n    \"requestId\": \"2a563802-9bb4-4af9-b2fd-a126a23ca01e\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "401 Invalid API Key",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 401', function () {\r\n  pm.response.to.have.status(401);\r\n});\r\n\r\npm.test('Error code is UNAUTHORIZED', function () {\r\n  const json = pm.response.json();\r\n\r\n  pm.expect(json.error.code).to.eql('UNAUTHORIZED');\r\n});\r\n\r\npm.test('Error message describes authentication failure', function () {\r\n  const json = pm.response.json();\r\n\r\n  pm.expect(json.error.message).to.eql('Invalid or missing API key');\r\n});\r\n\r\npm.test('Response contains requestId', function () {\r\n  const json = pm.response.json();\r\n\r\n  pm.expect(json.error.requestId).to.be.a('string');\r\n  pm.expect(json.error.requestId).to.not.be.empty;\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "invalid-api-key"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Auth Test Sensor\",\r\n  \"type\": \"sensor\",\r\n  \"serialNumber\": \"AUTH-INVALID-KEY-001\",\r\n  \"location\": {\r\n    \"lat\": 55.7558,\r\n    \"lon\": 37.6173\r\n  },\r\n  \"status\": \"operational\",\r\n  \"installedAt\": \"2026-01-15\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/equipment",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "equipment"
+              ]
+            }
+          },
+          "response": []
         }
       ]
     }
@@ -3455,6 +5385,10 @@
     {
       "key": "equipmentId",
       "value": ""
+    },
+    {
+      "key": "apiKey",
+      "value": "local-development-api-key"
     }
   ]
 }
