@@ -3,22 +3,26 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Equipment Maintenance</title>
+
     <link rel="stylesheet" href="/styles.css" />
 </head>
 
 <body>
 <main class="container">
-    <header>
-        <h1>Заявки на обслуживание</h1>
-        <p>Управление заявками на обслуживание оборудования</p>
+    <header class="page-header">
+        <h1 class="page-title">Заявки на обслуживание</h1>
+        <p class="page-subtitle">
+            Управление заявками на обслуживание оборудования
+        </p>
     </header>
 
-    <section>
-        <h2>Фильтры</h2>
+    <section class="panel">
+        <h2 class="panel-title">Фильтры</h2>
 
-        <form id="filters-form">
-            <label>
+        <form id="filters-form" class="form form-filters">
+            <label class="form-field">
                 Статус
                 <select id="status-filter" name="status">
                     <option value="">Все</option>
@@ -29,7 +33,7 @@
                 </select>
             </label>
 
-            <label>
+            <label class="form-field">
                 Приоритет
                 <select id="priority-filter" name="priority">
                     <option value="">Все</option>
@@ -40,24 +44,40 @@
                 </select>
             </label>
 
-            <button type="submit">Применить</button>
-            <button type="button" id="reset-filters">Сбросить</button>
+            <button class="button" type="submit">
+                Применить
+            </button>
+
+            <button
+                    id="reset-filters"
+                    class="button"
+                    type="button"
+            >
+                Сбросить
+            </button>
         </form>
     </section>
 
-    <section>
-        <h2>Список заявок</h2>
+    <section class="panel">
+        <h2 class="panel-title">Список заявок</h2>
 
-        <p id="requests-message" role="status"></p>
+        <p
+                id="requests-message"
+                class="message"
+                role="status"
+        ></p>
 
-        <div id="requests-list"></div>
+        <div
+                id="requests-list"
+                class="requests-list"
+        ></div>
     </section>
 
-    <section>
-        <h2>Создать заявку</h2>
+    <section class="panel">
+        <h2 class="panel-title">Создать заявку</h2>
 
-        <form id="create-request-form">
-            <label>
+        <form id="create-request-form" class="form">
+            <label class="form-field">
                 API key
                 <input
                         id="api-key"
@@ -68,7 +88,7 @@
                 />
             </label>
 
-            <label>
+            <label class="form-field">
                 ID оборудования
                 <input
                         id="equipment-id"
@@ -78,7 +98,7 @@
                 />
             </label>
 
-            <label>
+            <label class="form-field">
                 Название
                 <input
                         id="request-title"
@@ -90,7 +110,7 @@
                 />
             </label>
 
-            <label>
+            <label class="form-field">
                 Описание
                 <textarea
                         id="request-description"
@@ -99,9 +119,13 @@
                 ></textarea>
             </label>
 
-            <label>
+            <label class="form-field">
                 Приоритет
-                <select id="request-priority" name="priority" required>
+                <select
+                        id="request-priority"
+                        name="priority"
+                        required
+                >
                     <option value="low">Низкий</option>
                     <option value="medium" selected>Средний</option>
                     <option value="high">Высокий</option>
@@ -109,7 +133,7 @@
                 </select>
             </label>
 
-            <label>
+            <label class="form-field">
                 Плановая дата
                 <input
                         id="planned-at"
@@ -118,10 +142,19 @@
                 />
             </label>
 
-            <button type="submit">Создать заявку</button>
+            <button
+                    class="button button-primary"
+                    type="submit"
+            >
+                Создать заявку
+            </button>
         </form>
 
-        <p id="create-message" role="status"></p>
+        <p
+                id="create-message"
+                class="message"
+                role="status"
+        ></p>
     </section>
 </main>
 
