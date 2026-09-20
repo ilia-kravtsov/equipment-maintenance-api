@@ -1,6 +1,7 @@
 import request from 'supertest';
 
 import { app } from '../src/app.js';
+import { TEST_API_KEY } from './testConfig.js';
 
 describe('Equipment API', () => {
   let equipmentId: string;
@@ -21,6 +22,7 @@ describe('Equipment API', () => {
 
       const response = await request(app)
         .post('/api/equipment')
+        .set('X-API-Key', TEST_API_KEY)
         .send(equipment);
 
       equipmentId = response.body.data.id as string;
@@ -48,6 +50,7 @@ describe('Equipment API', () => {
     it('should update equipment', async () => {
       const response = await request(app)
         .patch(`/api/equipment/${equipmentId}`)
+        .set('X-API-Key', TEST_API_KEY)
         .send({
           name: 'Updated Main Turbine',
           status: 'maintenance',
@@ -95,6 +98,7 @@ describe('Equipment API', () => {
   describe('DELETE /api/equipment/:id', () => {
     it('should delete equipment', async () => {
       const response = await request(app)
+        .set('X-API-Key', TEST_API_KEY)
         .delete(`/api/equipment/${equipmentId}`);
 
       expect(response.status).toBe(204);

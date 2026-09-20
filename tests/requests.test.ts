@@ -1,6 +1,7 @@
 import request from 'supertest';
 
 import { app } from '../src/app.js';
+import { TEST_API_KEY } from './testConfig.js';
 
 describe('Maintenance Requests API', () => {
   let equipmentId: string;
@@ -9,6 +10,7 @@ describe('Maintenance Requests API', () => {
   beforeAll(async () => {
     const response = await request(app)
       .post('/api/equipment')
+      .set('X-API-Key', TEST_API_KEY)
       .send({
         name: 'Request Test Turbine',
         type: 'turbine',
@@ -37,6 +39,7 @@ describe('Maintenance Requests API', () => {
 
       const response = await request(app)
         .post('/api/requests')
+        .set('X-API-Key', TEST_API_KEY)
         .send(maintenanceRequest);
 
       expect(response.status).toBe(201);
@@ -71,6 +74,7 @@ describe('Maintenance Requests API', () => {
     it('should update maintenance request', async () => {
       const response = await request(app)
         .patch(`/api/requests/${requestId}`)
+        .set('X-API-Key', TEST_API_KEY)
         .send({
           title: 'Inspect turbine bearings and rotor',
           priority: 'critical',
@@ -89,6 +93,7 @@ describe('Maintenance Requests API', () => {
     it('should return filtered paginated request list', async () => {
       const response = await request(app)
         .get('/api/requests')
+        .set('X-API-Key', TEST_API_KEY)
         .query({
           equipmentId,
           priority: 'critical',
@@ -143,6 +148,7 @@ describe('Maintenance Requests API', () => {
     it('should change status from new to in_progress', async () => {
       const response = await request(app)
         .patch(`/api/requests/${requestId}/status`)
+        .set('X-API-Key', TEST_API_KEY)
         .send({
           status: 'in_progress',
         });
@@ -155,6 +161,7 @@ describe('Maintenance Requests API', () => {
     it('should change status from in_progress to done', async () => {
       const response = await request(app)
         .patch(`/api/requests/${requestId}/status`)
+        .set('X-API-Key', TEST_API_KEY)
         .send({
           status: 'done',
         });
@@ -168,7 +175,8 @@ describe('Maintenance Requests API', () => {
   describe('DELETE /api/requests/:id', () => {
     it('should delete maintenance request', async () => {
       const response = await request(app)
-        .delete(`/api/requests/${requestId}`);
+        .delete(`/api/requests/${requestId}`)
+        .set('X-API-Key', TEST_API_KEY)
 
       expect(response.status).toBe(204);
       expect(response.body).toEqual({});
