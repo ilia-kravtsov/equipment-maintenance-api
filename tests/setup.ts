@@ -1,1 +1,3 @@
-process.env.API_KEY = 'test-api-key';
+import { TEST_API_KEY } from './testConfig.js';
+
+process.env.API_KEY = TEST_API_KEY;
