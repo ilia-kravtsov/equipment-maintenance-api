@@ -1,7 +1,6 @@
 import type { ErrorRequestHandler } from 'express';
 import { ValidationError } from '../errors/validationError.js';
 import { AppError } from '../errors/appError.js';
-import { logger } from '../config/logger.js';
 
 const statusByErrorCode: Record<string, number> = {
   WEATHER_SERVICE_ERROR: 502,
@@ -12,6 +11,7 @@ const statusByErrorCode: Record<string, number> = {
   NOT_FOUND: 404,
   CONFLICT: 409,
   RATE_LIMIT_EXCEEDED: 429,
+  UNAUTHORIZED: 401,
 };
 
 export const errorHandler: ErrorRequestHandler = (error, _req, res, _next) => {

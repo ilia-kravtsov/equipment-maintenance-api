@@ -11,6 +11,7 @@ import {
   updateEquipmentSchema,
   equipmentListQuerySchema,
 } from '../validators/equipmentValidator.js';
+import { requireApiKey } from '../middlewares/requireApiKey.js';
 
 import { validateQuery } from '../middlewares/validateQuery.js';
 
@@ -27,6 +28,7 @@ export const createEquipmentRouter = (
 
   router.post(
     '/',
+    requireApiKey,
     validateBody(createEquipmentSchema),
     equipmentController.create,
   );
@@ -51,6 +53,7 @@ export const createEquipmentRouter = (
 
   router.patch<EquipmentParams>(
     '/:id',
+    requireApiKey,
     validateParams<EquipmentParams>(idParamsSchema),
     validateBody<EquipmentParams>(updateEquipmentSchema),
     equipmentController.update,
@@ -58,6 +61,7 @@ export const createEquipmentRouter = (
 
   router.delete<EquipmentParams>(
     '/:id',
+    requireApiKey,
     validateParams<EquipmentParams>(idParamsSchema),
     equipmentController.delete,
   );

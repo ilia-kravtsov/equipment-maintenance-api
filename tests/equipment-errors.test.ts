@@ -1,11 +1,13 @@
 import request from 'supertest';
 
 import { app } from '../src/app.js';
+import { TEST_API_KEY } from './testConfig.js';
 
 describe('Equipment API errors', () => {
   it('should return 422 for invalid equipment data', async () => {
     const response = await request(app)
       .post('/api/equipment')
+      .set('X-API-Key', TEST_API_KEY)
       .send({
         name: 'AB',
         type: 'unknown',
@@ -50,12 +52,14 @@ describe('Equipment API errors', () => {
 
     const firstResponse = await request(app)
       .post('/api/equipment')
+      .set('X-API-Key', TEST_API_KEY)
       .send(equipment);
 
     expect(firstResponse.status).toBe(201);
 
     const secondResponse = await request(app)
       .post('/api/equipment')
+      .set('X-API-Key', TEST_API_KEY)
       .send(equipment);
 
     expect(secondResponse.status).toBe(409);

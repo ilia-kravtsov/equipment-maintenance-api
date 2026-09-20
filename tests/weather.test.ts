@@ -3,6 +3,7 @@ import request from 'supertest';
 import { app } from '../src/app.js';
 import * as forecastClient from '../src/api/forecastClient.js';
 import { TimeoutError } from '../src/errors/httpErrors.js';
+import { TEST_API_KEY } from './testConfig.js';
 
 describe('Weather API', () => {
   let equipmentId: string;
@@ -10,6 +11,7 @@ describe('Weather API', () => {
   beforeAll(async () => {
     const response = await request(app)
       .post('/api/equipment')
+      .set('X-API-Key', TEST_API_KEY)
       .send({
         name: 'Weather Test Sensor',
         type: 'sensor',
