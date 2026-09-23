@@ -8,19 +8,11 @@ import type {
   UpdateMaintenanceRequestInput,
   UpdateMaintenanceRequestStatusInput,
   MaintenanceRequestListQuery,
-  RequestPriority,
 } from '../models/maintenanceRequest.js';
 import type { EquipmentRepository } from '../repositories/equipmentRepository.js';
 import type { MaintenanceRequestRepository } from '../repositories/maintenanceRequestRepository.js';
 import { ConflictError } from '../errors/conflictError.js';
 import type { PaginatedResult } from '../models/pagination.js';
-
-const priorityOrder: Record<RequestPriority, number> = {
-  low: 1,
-  medium: 2,
-  high: 3,
-  critical: 4,
-};
 
 const allowedStatusTransitions: Record<RequestStatus, RequestStatus[]> = {
   new: ['in_progress', 'rejected'],
@@ -38,73 +30,7 @@ export class MaintenanceRequestService {
   async getAll(
     query: MaintenanceRequestListQuery,
   ): Promise<PaginatedResult<MaintenanceRequest>> {
-    let requests = await this.requestRepository.findAll();
-
-    if (query.status !== undefined) {
-      requests = requests.filter((request) => request.status === query.status);
-    }
-
-    if (query.priority !== undefined) {
-      requests = requests.filter(
-        (request) => request.priority === query.priority,
-      );
-    }
-
-    if (query.equipmentId !== undefined) {
-      requests = requests.filter(
-        (request) => request.equipmentId === query.equipmentId,
-      );
-    }
-
-    if (query.createdFrom !== undefined) {
-      const createdFrom = new Date(query.createdFrom);
-
-      requests = requests.filter(
-        (request) => new Date(request.createdAt) >= createdFrom,
-      );
-    }
-
-    if (query.createdTo !== undefined) {
-      const createdTo = new Date(query.createdTo);
-
-      requests = requests.filter(
-        (request) => new Date(request.createdAt) <= createdTo,
-      );
-    }
-
-    if (query.sortBy !== undefined) {
-      const sortBy = query.sortBy;
-      const direction = query.order === 'desc' ? -1 : 1;
-
-      requests = [...requests].sort((a, b) => {
-        if (sortBy === 'priority') {
-          return (
-            (priorityOrder[a.priority] - priorityOrder[b.priority]) * direction
-          );
-        }
-
-        const first = a[sortBy] ?? '';
-        const second = b[sortBy] ?? '';
-
-        return String(first).localeCompare(String(second)) * direction;
-      });
-    }
-
-    const total = requests.length;
-
-    const start = (query.page - 1) * query.limit;
-    const end = start + query.limit;
-
-    const data = requests.slice(start, end);
-
-    return {
-      data,
-      meta: {
-        total,
-        page: query.page,
-        limit: query.limit,
-      },
-    };
+    return this.requestRepository.findAll(query);
   }
 
   async getById(id: string): Promise<MaintenanceRequest> {
