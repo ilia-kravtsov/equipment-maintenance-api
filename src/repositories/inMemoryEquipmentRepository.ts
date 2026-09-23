@@ -4,27 +4,32 @@ import type { EquipmentRepository } from './equipmentRepository.js';
 export class InMemoryEquipmentRepository implements EquipmentRepository {
   private readonly equipment = new Map<string, Equipment>();
 
-  findAll(): Equipment[] {
+  async findAll(): Promise<Equipment[]> {
     return Array.from(this.equipment.values());
   }
 
-  findById(id: string): Equipment | undefined {
+  async findById(id: string): Promise<Equipment | undefined> {
     return this.equipment.get(id);
   }
 
-  findBySerialNumber(serialNumber: string): Equipment | undefined {
+  async findBySerialNumber(
+    serialNumber: string,
+  ): Promise<Equipment | undefined> {
     return Array.from(this.equipment.values()).find(
       (equipment) => equipment.serialNumber === serialNumber,
     );
   }
 
-  create(equipment: Equipment): Equipment {
+  async create(equipment: Equipment): Promise<Equipment> {
     this.equipment.set(equipment.id, equipment);
 
     return equipment;
   }
 
-  update(id: string, equipment: Equipment): Equipment | undefined {
+  async update(
+    id: string,
+    equipment: Equipment,
+  ): Promise<Equipment | undefined> {
     if (!this.equipment.has(id)) {
       return undefined;
     }
@@ -34,7 +39,7 @@ export class InMemoryEquipmentRepository implements EquipmentRepository {
     return equipment;
   }
 
-  delete(id: string): boolean {
+  async delete(id: string): Promise<boolean> {
     return this.equipment.delete(id);
   }
 }

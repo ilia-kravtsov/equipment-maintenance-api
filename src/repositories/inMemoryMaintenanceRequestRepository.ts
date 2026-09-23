@@ -4,30 +4,34 @@ import type { MaintenanceRequestRepository } from './maintenanceRequestRepositor
 export class InMemoryMaintenanceRequestRepository implements MaintenanceRequestRepository {
   private readonly requests = new Map<string, MaintenanceRequest>();
 
-  findAll(): MaintenanceRequest[] {
+  async findAll(): Promise<MaintenanceRequest[]> {
     return Array.from(this.requests.values());
   }
 
-  findById(id: string): MaintenanceRequest | undefined {
+  async findById(id: string): Promise<MaintenanceRequest | undefined> {
     return this.requests.get(id);
   }
 
-  findByEquipmentId(equipmentId: string): MaintenanceRequest[] {
+  async findByEquipmentId(
+    equipmentId: string,
+  ): Promise<MaintenanceRequest[]> {
     return Array.from(this.requests.values()).filter(
       (request) => request.equipmentId === equipmentId,
     );
   }
 
-  create(request: MaintenanceRequest): MaintenanceRequest {
+  async create(
+    request: MaintenanceRequest,
+  ): Promise<MaintenanceRequest> {
     this.requests.set(request.id, request);
 
     return request;
   }
 
-  update(
+  async update(
     id: string,
     request: MaintenanceRequest,
-  ): MaintenanceRequest | undefined {
+  ): Promise<MaintenanceRequest | undefined> {
     if (!this.requests.has(id)) {
       return undefined;
     }
@@ -37,7 +41,7 @@ export class InMemoryMaintenanceRequestRepository implements MaintenanceRequestR
     return request;
   }
 
-  delete(id: string): boolean {
+  async delete(id: string): Promise<boolean> {
     return this.requests.delete(id);
   }
 }
