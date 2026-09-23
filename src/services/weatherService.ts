@@ -20,7 +20,7 @@ export class WeatherService {
   constructor(private readonly equipmentService: EquipmentService) {}
 
   async getByEquipmentId(equipmentId: string): Promise<EquipmentWeather> {
-    const equipment = this.equipmentService.getById(equipmentId);
+    const equipment = await this.equipmentService.getById(equipmentId);
 
     let forecast: ForecastResult;
 
