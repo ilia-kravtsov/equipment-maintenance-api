@@ -20,40 +20,7 @@ export class EquipmentService {
   async getAll(
     query: EquipmentListQuery,
   ): Promise<PaginatedResult<Equipment>> {
-    let equipment = await this.equipmentRepository.findAll();
-
-    if (query.status !== undefined) {
-      equipment = equipment.filter((item) => item.status === query.status);
-    }
-
-    if (query.type !== undefined) {
-      equipment = equipment.filter((item) => item.type === query.type);
-    }
-
-    if (query.sortBy !== undefined) {
-      const sortBy = query.sortBy;
-      const direction = query.order === 'desc' ? -1 : 1;
-
-      equipment = [...equipment].sort((a, b) => {
-        return String(a[sortBy]).localeCompare(String(b[sortBy])) * direction;
-      });
-    }
-
-    const total = equipment.length;
-
-    const start = (query.page - 1) * query.limit;
-    const end = start + query.limit;
-
-    const data = equipment.slice(start, end);
-
-    return {
-      data,
-      meta: {
-        total,
-        page: query.page,
-        limit: query.limit,
-      },
-    };
+    return this.equipmentRepository.findAll(query);
   }
 
   async getById(id: string): Promise<Equipment> {
