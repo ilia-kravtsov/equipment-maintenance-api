@@ -20,28 +20,54 @@ export class EquipmentController {
     private readonly weatherService: WeatherService,
   ) {}
 
-  getAll = (_req: Request, res: Response): void => {
-    const query = res.locals.validatedQuery as EquipmentListQuery;
+  getAll = async (
+    _req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
+    try {
+      const query = res.locals.validatedQuery as EquipmentListQuery;
 
-    const result = this.equipmentService.getAll(query);
+      const result = await this.equipmentService.getAll(query);
 
-    res.status(200).json(result);
+      res.status(200).json(result);
+    } catch (error) {
+      next(error);
+    }
   };
 
-  getRequests = (req: Request<EquipmentParams>, res: Response): void => {
-    const requests = this.requestService.getByEquipmentId(req.params.id);
+  getRequests = async (
+    req: Request<EquipmentParams>,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
+    try {
+      const requests = await this.requestService.getByEquipmentId(
+        req.params.id,
+      );
 
-    res.status(200).json({
-      data: requests,
-    });
+      res.status(200).json({
+        data: requests,
+      });
+    } catch (error) {
+      next(error);
+    }
   };
 
-  getById = (req: Request<EquipmentParams>, res: Response): void => {
-    const equipment = this.equipmentService.getById(req.params.id);
+  getById = async (
+    req: Request<EquipmentParams>,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
+    try {
+      const equipment = await this.equipmentService.getById(req.params.id);
 
-    res.status(200).json({
-      data: equipment,
-    });
+      res.status(200).json({
+        data: equipment,
+      });
+    } catch (error) {
+      next(error);
+    }
   };
 
   getWeather = async (
@@ -60,30 +86,54 @@ export class EquipmentController {
     }
   };
 
-  create = (req: Request, res: Response): void => {
-    const equipment = this.equipmentService.create(
-      req.body as CreateEquipmentInput,
-    );
+  create = async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
+    try {
+      const equipment = await this.equipmentService.create(
+        req.body as CreateEquipmentInput,
+      );
 
-    res.status(201).location(`/api/equipment/${equipment.id}`).json({
-      data: equipment,
-    });
+      res.status(201).location(`/api/equipment/${equipment.id}`).json({
+        data: equipment,
+      });
+    } catch (error) {
+      next(error);
+    }
   };
 
-  update = (req: Request<EquipmentParams>, res: Response): void => {
-    const equipment = this.equipmentService.update(
-      req.params.id,
-      req.body as UpdateEquipmentInput,
-    );
+  update = async (
+    req: Request<EquipmentParams>,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
+    try {
+      const equipment = await this.equipmentService.update(
+        req.params.id,
+        req.body as UpdateEquipmentInput,
+      );
 
-    res.status(200).json({
-      data: equipment,
-    });
+      res.status(200).json({
+        data: equipment,
+      });
+    } catch (error) {
+      next(error);
+    }
   };
 
-  delete = (req: Request<EquipmentParams>, res: Response): void => {
-    this.equipmentService.delete(req.params.id);
+  delete = async (
+    req: Request<EquipmentParams>,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
+    try {
+      await this.equipmentService.delete(req.params.id);
 
-    res.status(204).send();
+      res.status(204).send();
+    } catch (error) {
+      next(error);
+    }
   };
 }

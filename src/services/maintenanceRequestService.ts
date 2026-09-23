@@ -35,10 +35,10 @@ export class MaintenanceRequestService {
     private readonly equipmentRepository: EquipmentRepository,
   ) {}
 
-  getAll(
+  async getAll(
     query: MaintenanceRequestListQuery,
-  ): PaginatedResult<MaintenanceRequest> {
-    let requests = this.requestRepository.findAll();
+  ): Promise<PaginatedResult<MaintenanceRequest>> {
+    let requests = await this.requestRepository.findAll();
 
     if (query.status !== undefined) {
       requests = requests.filter((request) => request.status === query.status);
@@ -107,8 +107,8 @@ export class MaintenanceRequestService {
     };
   }
 
-  getById(id: string): MaintenanceRequest {
-    const request = this.requestRepository.findById(id);
+  async getById(id: string): Promise<MaintenanceRequest> {
+    const request = await this.requestRepository.findById(id);
 
     if (request === undefined) {
       throw new NotFoundError('Maintenance request not found');
@@ -117,8 +117,10 @@ export class MaintenanceRequestService {
     return request;
   }
 
-  getByEquipmentId(equipmentId: string): MaintenanceRequest[] {
-    const equipment = this.equipmentRepository.findById(equipmentId);
+  async getByEquipmentId(
+    equipmentId: string,
+  ): Promise<MaintenanceRequest[]> {
+    const equipment = await this.equipmentRepository.findById(equipmentId);
 
     if (equipment === undefined) {
       throw new NotFoundError('Equipment not found');
@@ -127,8 +129,12 @@ export class MaintenanceRequestService {
     return this.requestRepository.findByEquipmentId(equipmentId);
   }
 
-  create(input: CreateMaintenanceRequestInput): MaintenanceRequest {
-    const equipment = this.equipmentRepository.findById(input.equipmentId);
+  async create(
+    input: CreateMaintenanceRequestInput,
+  ): Promise<MaintenanceRequest> {
+    const equipment = await this.equipmentRepository.findById(
+      input.equipmentId,
+    );
 
     if (equipment === undefined) {
       throw new NotFoundError('Equipment not found');
@@ -147,8 +153,11 @@ export class MaintenanceRequestService {
     return this.requestRepository.create(request);
   }
 
-  update(id: string, input: UpdateMaintenanceRequestInput): MaintenanceRequest {
-    const existingRequest = this.getById(id);
+  async update(
+    id: string,
+    input: UpdateMaintenanceRequestInput,
+  ): Promise<MaintenanceRequest> {
+    const existingRequest = await this.getById(id);
 
     const updatedRequest: MaintenanceRequest = {
       ...existingRequest,
@@ -160,7 +169,7 @@ export class MaintenanceRequestService {
       updatedAt: new Date().toISOString(),
     };
 
-    const result = this.requestRepository.update(id, updatedRequest);
+    const result = await this.requestRepository.update(id, updatedRequest);
 
     if (result === undefined) {
       throw new NotFoundError('Maintenance request not found');
@@ -169,11 +178,11 @@ export class MaintenanceRequestService {
     return result;
   }
 
-  updateStatus(
+  async updateStatus(
     id: string,
     input: UpdateMaintenanceRequestStatusInput,
-  ): MaintenanceRequest {
-    const existingRequest = this.getById(id);
+  ): Promise<MaintenanceRequest> {
+    const existingRequest = await this.getById(id);
 
     const allowedStatuses = allowedStatusTransitions[existingRequest.status];
 
@@ -189,7 +198,7 @@ export class MaintenanceRequestService {
       updatedAt: new Date().toISOString(),
     };
 
-    const result = this.requestRepository.update(id, updatedRequest);
+    const result = await this.requestRepository.update(id, updatedRequest);
 
     if (result === undefined) {
       throw new NotFoundError('Maintenance request not found');
@@ -198,8 +207,8 @@ export class MaintenanceRequestService {
     return result;
   }
 
-  delete(id: string): void {
-    const deleted = this.requestRepository.delete(id);
+  async delete(id: string): Promise<void> {
+    const deleted = await this.requestRepository.delete(id);
 
     if (!deleted) {
       throw new NotFoundError('Maintenance request not found');
