@@ -3,6 +3,7 @@ import 'dotenv/config';
 import { getDatabaseConfig } from '../../config/database.js';
 import { logger } from '../../config/logger.js';
 import { createAdminSequelize } from '../createAdminSequelize.js';
+import { handleDatabaseScriptError } from '../handleDatabaseScriptError.js';
 
 const setupAppRole = async (): Promise<void> => {
   const config = getDatabaseConfig();
@@ -74,30 +75,5 @@ const setupAppRole = async (): Promise<void> => {
 };
 
 setupAppRole().catch((error: unknown) => {
-  const original =
-    error instanceof Error && 'original' in error
-      ? error.original
-      : undefined;
-
-  const databaseCode =
-    typeof original === 'object' &&
-    original !== null &&
-    'code' in original &&
-    typeof original.code === 'string'
-      ? original.code
-      : undefined;
-
-  logger.error(
-    {
-      errorName: error instanceof Error ? error.name : 'UnknownError',
-      databaseCode,
-      configurationError:
-        error instanceof Error && error.constructor === Error
-          ? error.message
-          : undefined,
-    },
-    'Application database role setup failed',
-  );
-
-  process.exitCode = 1;
+  handleDatabaseScriptError(error, 'Application database role setup failed');
 });
