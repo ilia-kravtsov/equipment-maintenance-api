@@ -11,7 +11,12 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint src",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "db:setup-role": "tsx src/database/scripts/setupAppRole.ts",
+    "db:migrate:status": "tsx src/database/scripts/migrate.ts status",
+    "db:migrate": "tsx src/database/scripts/migrate.ts up",
+    "db:migrate:undo": "tsx src/database/scripts/migrate.ts down",
+    "db:migrate:undo:all": "tsx src/database/scripts/migrate.ts down-all"
   },
   "repository": {
     "type": "git",
