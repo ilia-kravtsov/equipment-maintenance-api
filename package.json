@@ -11,7 +11,12 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint src",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "db:setup-role": "tsx src/database/scripts/setupAppRole.ts",
+    "db:migrate:status": "tsx src/database/scripts/migrate.ts status",
+    "db:migrate": "tsx src/database/scripts/migrate.ts up",
+    "db:migrate:undo": "tsx src/database/scripts/migrate.ts down",
+    "db:migrate:undo:all": "tsx src/database/scripts/migrate.ts down-all"
   },
   "repository": {
     "type": "git",
@@ -48,8 +53,12 @@
     "express": "^5.2.1",
     "express-rate-limit": "^8.7.0",
     "helmet": "^8.3.0",
+    "pg": "^8.23.0",
+    "pg-hstore": "^2.3.4",
     "pino": "^10.3.1",
     "pino-http": "^11.0.0",
+    "sequelize": "^6.37.8",
+    "umzug": "^3.8.3",
     "zod": "^4.6.5"
   }
 }
