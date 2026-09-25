@@ -1,37 +1,12 @@
 import 'dotenv/config';
 
-import { Sequelize } from 'sequelize';
 import { getDatabaseConfig } from '../../config/database.js';
 import { logger } from '../../config/logger.js';
-import { readRequiredString } from '../../config/env.js';
+import { createAdminSequelize } from '../createAdminSequelize.js';
 
 const setupAppRole = async (): Promise<void> => {
   const config = getDatabaseConfig();
-
-  const owner = readRequiredString('POSTGRES_USER');
-  const ownerPassword = readRequiredString('POSTGRES_PASSWORD');
-
-  if (config.username === owner) {
-    throw new Error('DB_USER must differ from POSTGRES_USER');
-  }
-
-  const sequelize = new Sequelize(
-    config.database,
-    owner,
-    ownerPassword,
-    {
-      dialect: 'postgres',
-      host: config.host,
-      port: config.port,
-      logging: false,
-      pool: {
-        max: 1,
-        min: 0,
-        acquire: config.pool.acquire,
-        idle: config.pool.idle,
-      },
-    },
-  );
+  const sequelize = createAdminSequelize();
 
   try {
     await sequelize.authenticate();
