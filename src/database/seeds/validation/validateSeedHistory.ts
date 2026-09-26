@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 
-import { maintenanceRequestSeeds } from './data/maintenanceRequests.js';
-import { requestStatusHistorySeeds } from './data/requestStatusHistory.js';
+import { maintenanceRequestSeeds } from '../data/maintenanceRequests.js';
+import { requestStatusHistorySeeds } from '../data/requestStatusHistory.js';
 
 export const validateSeedHistory = (): void => {
   assert.equal(requestStatusHistorySeeds.length, 70, 'Expected 70 events');

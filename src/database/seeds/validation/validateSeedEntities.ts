@@ -1,10 +1,10 @@
 import assert from 'node:assert/strict';
 
-import { siteSeeds } from './data/sites.js';
-import { equipmentSeeds } from './data/equipment.js';
-import { equipmentPassportSeeds } from './data/equipmentPassports.js';
-import { technicianSeeds } from './data/technicians.js';
-import { maintenanceRequestSeeds } from './data/maintenanceRequests.js';
+import { siteSeeds } from '../data/sites.js';
+import { equipmentSeeds } from '../data/equipment.js';
+import { equipmentPassportSeeds } from '../data/equipmentPassports.js';
+import { technicianSeeds } from '../data/technicians.js';
+import { maintenanceRequestSeeds } from '../data/maintenanceRequests.js';
 
 const assertUnique = (values: string[], description: string): void => {
   assert.equal(

@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 
-import { maintenanceRequestSeeds } from './data/maintenanceRequests.js';
-import { requestAssigneeSeeds } from './data/requestAssignees.js';
-import { technicianSeeds } from './data/technicians.js';
+import { maintenanceRequestSeeds } from '../data/maintenanceRequests.js';
+import { requestAssigneeSeeds } from '../data/requestAssignees.js';
+import { technicianSeeds } from '../data/technicians.js';
 
 export const validateSeedAssignments = (): void => {
   assert.equal(requestAssigneeSeeds.length, 40, 'Expected 40 assignments');
