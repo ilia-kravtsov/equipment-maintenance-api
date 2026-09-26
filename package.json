@@ -16,7 +16,8 @@
     "db:migrate:status": "tsx src/database/scripts/migrate.ts status",
     "db:migrate": "tsx src/database/scripts/migrate.ts up",
     "db:migrate:undo": "tsx src/database/scripts/migrate.ts down",
-    "db:migrate:undo:all": "tsx src/database/scripts/migrate.ts down-all"
+    "db:migrate:undo:all": "tsx src/database/scripts/migrate.ts down-all",
+    "db:check-models": "tsx src/database/scripts/checkModels.ts"
   },
   "repository": {
     "type": "git",
