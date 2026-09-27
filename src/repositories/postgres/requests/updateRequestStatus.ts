@@ -58,7 +58,13 @@ export const updateRequestStatus = async (
         }
       }
 
-      await request.update({ status }, { transaction });
+      await request.update(
+        { status },
+        {
+          transaction,
+          returning: true,
+        },
+      );
 
       await RequestStatusHistoryModel.create(
         {
