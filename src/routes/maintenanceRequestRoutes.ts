@@ -15,6 +15,7 @@ import {
   importMaintenanceRequestsSchema,
 } from '../validators/maintenanceRequestValidator.js';
 import { requireApiKey } from '../middlewares/requireApiKey.js';
+import { validatePagination } from '../middlewares/validatePagination.js';
 
 export const createMaintenanceRequestRouter = (
   requestController: MaintenanceRequestController,
@@ -23,6 +24,7 @@ export const createMaintenanceRequestRouter = (
 
   router.get(
     '/',
+    validatePagination,
     validateQuery(maintenanceRequestListQuerySchema),
     requestController.getAll,
   );

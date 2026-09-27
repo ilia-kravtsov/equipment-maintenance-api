@@ -14,11 +14,19 @@ import {
 import { requireApiKey } from '../middlewares/requireApiKey.js';
 
 import { validateQuery } from '../middlewares/validateQuery.js';
+import { validatePagination } from '../middlewares/validatePagination.js';
 
 export const createEquipmentRouter = (
   equipmentController: EquipmentController,
 ): Router => {
   const router = Router();
+
+  router.get(
+    '/',
+    validatePagination,
+    validateQuery(equipmentListQuerySchema),
+    equipmentController.getAll,
+  );
 
   router.get(
     '/',
