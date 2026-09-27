@@ -2,6 +2,7 @@ import type { Attributes } from 'sequelize';
 
 import type { EquipmentModel } from '../../database/models/equipmentModel.js';
 import type { Equipment } from '../../models/equipment.js';
+import { toEquipmentPassport } from './equipmentPassportMapper.js';
 
 type EquipmentWriteAttributes = Pick<
   Attributes<EquipmentModel>,
@@ -27,6 +28,14 @@ export const toEquipment = (model: EquipmentModel): Equipment => {
     },
     status: model.status,
     installedAt: model.installedAt,
+    ...(model.passport === undefined
+      ? {}
+      : {
+        passport:
+          model.passport === null
+            ? null
+            : toEquipmentPassport(model.passport),
+      }),
   };
 };
 
