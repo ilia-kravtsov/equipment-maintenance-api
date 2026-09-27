@@ -2,6 +2,7 @@ import type { Attributes } from 'sequelize';
 
 import type { MaintenanceRequestModel } from '../../database/models/maintenanceRequestModel.js';
 import type { MaintenanceRequest } from '../../models/maintenanceRequest.js';
+import { toRequestAssignee } from './requestAssigneeMapper.js';
 
 type MaintenanceRequestWriteAttributes = Pick<
   Attributes<MaintenanceRequestModel>,
@@ -33,6 +34,11 @@ export const toMaintenanceRequest = (
     ...(model.plannedAt === null
       ? {}
       : { plannedAt: model.plannedAt.toISOString() }),
+    ...(model.assignments === undefined
+      ? {}
+      : {
+        assignees: model.assignments.map(toRequestAssignee),
+      }),
   };
 };
 

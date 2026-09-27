@@ -6,6 +6,12 @@ export interface RequestAssigneeInput {
   hours: number;
 }
 
+export interface RequestAssignee extends RequestAssigneeInput {
+  fullName: string;
+  specialization: string;
+  employeeNumber: string;
+}
+
 export interface AssignRequestAssigneesInput {
   assignees: RequestAssigneeInput[];
 }

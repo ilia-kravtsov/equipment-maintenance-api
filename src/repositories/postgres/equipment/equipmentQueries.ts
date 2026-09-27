@@ -7,6 +7,7 @@ import type {
 } from '../../../models/equipment.js';
 import type { PaginatedResult } from '../../../models/pagination.js';
 import { toEquipment } from '../../mappers/equipmentMapper.js';
+import { EquipmentPassportModel } from '../../../database/models/equipmentPassportModel.js';
 
 const attributes: Array<keyof Attributes<EquipmentModel>> = [
   'id',
@@ -68,7 +69,23 @@ export const findAllEquipment = async (
 export const findEquipmentById = async (
   id: string,
 ): Promise<Equipment | undefined> => {
-  const model = await EquipmentModel.findByPk(id, { attributes });
+  const model = await EquipmentModel.findByPk(id, {
+    attributes,
+    include: [
+      {
+        model: EquipmentPassportModel,
+        as: 'passport',
+        attributes: [
+          'equipmentId',
+          'manufacturer',
+          'model',
+          'ratedPowerKw',
+          'lastVerifiedAt',
+        ],
+        required: false,
+      },
+    ],
+  });
 
   return model === null ? undefined : toEquipment(model);
 };

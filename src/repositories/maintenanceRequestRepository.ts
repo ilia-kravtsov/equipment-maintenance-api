@@ -5,6 +5,7 @@ import type {
   UpdateMaintenanceRequestInput,
 } from '../models/maintenanceRequest.js';
 import type { PaginatedResult } from '../models/pagination.js';
+import type { RequestStatusHistory } from '../models/requestStatusHistory.js';
 
 export interface MaintenanceRequestRepository {
   findAll(
@@ -12,6 +13,8 @@ export interface MaintenanceRequestRepository {
   ): Promise<PaginatedResult<MaintenanceRequest>>;
 
   findById(id: string): Promise<MaintenanceRequest | undefined>;
+
+  findHistory(requestId: string): Promise<RequestStatusHistory[]>;
 
   findByEquipmentId(
     equipmentId: string,

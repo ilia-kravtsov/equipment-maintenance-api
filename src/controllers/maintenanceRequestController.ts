@@ -54,6 +54,22 @@ export class MaintenanceRequestController {
     }
   };
 
+  getHistory = async (
+    req: Request<MaintenanceRequestParams>,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
+    try {
+      const history = await this.requestService.getHistory(req.params.id);
+
+      res.status(200).json({
+        data: history,
+      });
+    } catch (error: unknown) {
+      next(error);
+    }
+  };
+
   create = async (
     req: Request,
     res: Response,

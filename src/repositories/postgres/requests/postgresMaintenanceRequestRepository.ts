@@ -17,6 +17,8 @@ import {
 } from './requestQueries.js';
 import { updateRequest } from './updateRequest.js';
 import { updateRequestStatus } from './updateRequestStatus.js';
+import type { RequestStatusHistory } from '../../../models/requestStatusHistory.js';
+import { findRequestHistory } from './requestHistoryQueries.js';
 
 export class PostgresMaintenanceRequestRepository
   implements MaintenanceRequestRepository
@@ -31,6 +33,10 @@ export class PostgresMaintenanceRequestRepository
 
   findById(id: string): Promise<MaintenanceRequest | undefined> {
     return findRequestById(id);
+  }
+
+  findHistory(requestId: string): Promise<RequestStatusHistory[]> {
+    return findRequestHistory(requestId);
   }
 
   findByEquipmentId(

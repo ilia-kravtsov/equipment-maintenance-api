@@ -1,3 +1,5 @@
+import type { EquipmentPassport } from './equipmentPassport.js';
+
 export const equipmentTypes = [
   'turbine',
   'inverter',
@@ -29,9 +31,10 @@ export interface Equipment {
   location: EquipmentLocation;
   status: EquipmentStatus;
   installedAt: string;
+  passport?: EquipmentPassport | null;
 }
 
-export type CreateEquipmentInput = Omit<Equipment, 'id'>;
+export type CreateEquipmentInput = Omit<Equipment, 'id' | 'passport'>;
 
 export type UpdateEquipmentInput = Partial<CreateEquipmentInput>;
 

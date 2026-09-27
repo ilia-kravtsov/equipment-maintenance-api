@@ -4,8 +4,10 @@ import {
   type InferAttributes,
   type InferCreationAttributes,
   type Sequelize,
+  type NonAttribute,
 } from 'sequelize';
 import type { RequestAssigneeRole } from '../../models/requestAssignee.js';
+import type { TechnicianModel } from './technicianModel.js';
 
 export class RequestAssigneeModel extends Model<
   InferAttributes<RequestAssigneeModel>,
@@ -15,6 +17,7 @@ export class RequestAssigneeModel extends Model<
   declare technicianId: string;
   declare role: RequestAssigneeRole;
   declare hours: string;
+  declare technician?: NonAttribute<TechnicianModel>;
 }
 
 export const initRequestAssigneeModel = (sequelize: Sequelize): void => {

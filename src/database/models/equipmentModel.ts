@@ -6,6 +6,7 @@ import {
   type InferAttributes,
   type InferCreationAttributes,
   type Sequelize,
+  type NonAttribute,
 } from 'sequelize';
 
 import {
@@ -14,6 +15,7 @@ import {
   type EquipmentStatus,
   type EquipmentType,
 } from '../../models/equipment.js';
+import type { EquipmentPassportModel } from './equipmentPassportModel.js';
 
 export class EquipmentModel extends Model<
   InferAttributes<EquipmentModel>,
@@ -29,6 +31,7 @@ export class EquipmentModel extends Model<
   declare status: EquipmentStatus;
   declare installedAt: string;
   declare deletedAt: Date | null;
+  declare passport?: NonAttribute<EquipmentPassportModel | null>;
 }
 
 export const initEquipmentModel = (sequelize: Sequelize): void => {
