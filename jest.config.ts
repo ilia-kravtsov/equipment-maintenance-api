@@ -20,6 +20,8 @@ const config: Config = {
     ],
   },
   setupFiles: ['<rootDir>/tests/setup.ts'],
+  setupFilesAfterEnv: ['<rootDir>/tests/setupDatabase.ts'],
+  maxWorkers: 1,
 };
 
 export default config;
