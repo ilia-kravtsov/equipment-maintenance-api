@@ -26,6 +26,10 @@ import { PostgresSiteSummaryRepository } from './repositories/postgres/reports/p
 import { SiteSummaryService } from './services/siteSummaryService.js';
 import { SiteSummaryController } from './controllers/siteSummaryController.js';
 import { createSiteRouter } from './routes/siteRoutes.js';
+import { PostgresEquipmentLoadRepository } from './repositories/postgres/reports/postgresEquipmentLoadRepository.js';
+import { EquipmentLoadService } from './services/equipmentLoadService.js';
+import { EquipmentLoadController } from './controllers/equipmentLoadController.js';
+import { createReportRouter } from './routes/reportRoutes.js';
 
 export const app = express();
 
@@ -35,6 +39,7 @@ const equipmentRepository = new PostgresEquipmentRepository(sequelize);
 const requestRepository = new PostgresMaintenanceRequestRepository(sequelize);
 const requestAssigneeRepository = new PostgresRequestAssigneeRepository(sequelize);
 const siteSummaryRepository = new PostgresSiteSummaryRepository(sequelize);
+const equipmentLoadRepository = new PostgresEquipmentLoadRepository(sequelize);
 
 const equipmentService = new EquipmentService(
   equipmentRepository,
@@ -47,6 +52,7 @@ const requestService = new MaintenanceRequestService(
 );
 const requestAssigneeService = new RequestAssigneeService(requestAssigneeRepository);
 const siteSummaryService = new SiteSummaryService(siteSummaryRepository);
+const equipmentLoadService = new EquipmentLoadService(equipmentLoadRepository);
 
 const equipmentController = new EquipmentController(
   equipmentService,
@@ -58,6 +64,7 @@ const requestAssigneeController = new RequestAssigneeController(requestAssigneeS
 const siteSummaryController = new SiteSummaryController(
   siteSummaryService,
 );
+const equipmentLoadController = new EquipmentLoadController(equipmentLoadService);
 
 app.use(requestId);
 
@@ -93,6 +100,8 @@ app.use(
 );
 
 app.use('/api/sites', createSiteRouter(siteSummaryController));
+
+app.use('/api/reports', createReportRouter(equipmentLoadController));
 
 app.use(notFoundHandler);
 
