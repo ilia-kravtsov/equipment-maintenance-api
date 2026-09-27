@@ -28,12 +28,6 @@ export const createEquipmentRouter = (
     equipmentController.getAll,
   );
 
-  router.get(
-    '/',
-    validateQuery(equipmentListQuerySchema),
-    equipmentController.getAll,
-  );
-
   router.post(
     '/',
     requireApiKey,
