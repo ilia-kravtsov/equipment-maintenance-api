@@ -22,6 +22,10 @@ import { PostgresRequestAssigneeRepository } from './repositories/postgres/reque
 import { RequestAssigneeService } from './services/requestAssigneeService.js';
 import { RequestAssigneeController } from './controllers/requestAssigneeController.js';
 import { createRequestAssigneeRouter } from './routes/requestAssigneeRoutes.js';
+import { PostgresSiteSummaryRepository } from './repositories/postgres/reports/postgresSiteSummaryRepository.js';
+import { SiteSummaryService } from './services/siteSummaryService.js';
+import { SiteSummaryController } from './controllers/siteSummaryController.js';
+import { createSiteRouter } from './routes/siteRoutes.js';
 
 export const app = express();
 
@@ -30,6 +34,7 @@ initModels(sequelize);
 const equipmentRepository = new PostgresEquipmentRepository(sequelize);
 const requestRepository = new PostgresMaintenanceRequestRepository(sequelize);
 const requestAssigneeRepository = new PostgresRequestAssigneeRepository(sequelize);
+const siteSummaryRepository = new PostgresSiteSummaryRepository(sequelize);
 
 const equipmentService = new EquipmentService(
   equipmentRepository,
@@ -41,6 +46,7 @@ const requestService = new MaintenanceRequestService(
   equipmentRepository,
 );
 const requestAssigneeService = new RequestAssigneeService(requestAssigneeRepository);
+const siteSummaryService = new SiteSummaryService(siteSummaryRepository);
 
 const equipmentController = new EquipmentController(
   equipmentService,
@@ -49,6 +55,9 @@ const equipmentController = new EquipmentController(
 );
 const requestController = new MaintenanceRequestController(requestService);
 const requestAssigneeController = new RequestAssigneeController(requestAssigneeService);
+const siteSummaryController = new SiteSummaryController(
+  siteSummaryService,
+);
 
 app.use(requestId);
 
@@ -82,6 +91,8 @@ app.use(
   '/api/requests',
   createRequestAssigneeRouter(requestAssigneeController),
 );
+
+app.use('/api/sites', createSiteRouter(siteSummaryController));
 
 app.use(notFoundHandler);
 
