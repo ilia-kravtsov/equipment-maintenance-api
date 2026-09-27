@@ -36,7 +36,7 @@ export const updateRequestStatus = async (
         return undefined;
       }
 
-      const previousStatus = request.status;
+      const previousStatus: RequestStatus = request.status;
 
       if (!allowedTransitions[previousStatus].includes(status)) {
         throw new ConflictError(
