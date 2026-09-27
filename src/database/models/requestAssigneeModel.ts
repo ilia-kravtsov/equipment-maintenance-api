@@ -5,8 +5,7 @@ import {
   type InferCreationAttributes,
   type Sequelize,
 } from 'sequelize';
-
-export type AssigneeRole = 'lead' | 'member';
+import type { RequestAssigneeRole } from '../../models/requestAssignee.js';
 
 export class RequestAssigneeModel extends Model<
   InferAttributes<RequestAssigneeModel>,
@@ -14,7 +13,7 @@ export class RequestAssigneeModel extends Model<
 > {
   declare requestId: string;
   declare technicianId: string;
-  declare role: AssigneeRole;
+  declare role: RequestAssigneeRole;
   declare hours: string;
 }
 
