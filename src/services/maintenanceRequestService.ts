@@ -43,6 +43,7 @@ export class MaintenanceRequestService {
 
   async getByEquipmentId(
     equipmentId: string,
+    query: MaintenanceRequestListQuery,
   ): Promise<MaintenanceRequest[]> {
     const equipment = await this.equipmentRepository.findById(equipmentId);
 
@@ -50,7 +51,12 @@ export class MaintenanceRequestService {
       throw new NotFoundError('Equipment not found');
     }
 
-    return this.requestRepository.findByEquipmentId(equipmentId);
+    const result = await this.requestRepository.findAll({
+      ...query,
+      equipmentId,
+    });
+
+    return result.data;
   }
 
   async create(

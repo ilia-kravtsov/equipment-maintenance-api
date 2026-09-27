@@ -8,6 +8,7 @@ import type {
 import type { EquipmentService } from '../services/equipmentService.js';
 import type { MaintenanceRequestService } from '../services/maintenanceRequestService.js';
 import type { WeatherService } from '../services/weatherService.js';
+import type { MaintenanceRequestListQuery } from '../models/maintenanceRequest.js';
 
 export interface EquipmentParams extends ParamsDictionary {
   id: string;
@@ -42,14 +43,17 @@ export class EquipmentController {
     next: NextFunction,
   ): Promise<void> => {
     try {
+      const query = res.locals.validatedQuery as MaintenanceRequestListQuery;
+
       const requests = await this.requestService.getByEquipmentId(
         req.params.id,
+        query,
       );
 
       res.status(200).json({
         data: requests,
       });
-    } catch (error) {
+    } catch (error: unknown) {
       next(error);
     }
   };

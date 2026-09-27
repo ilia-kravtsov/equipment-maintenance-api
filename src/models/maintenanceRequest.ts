@@ -28,7 +28,7 @@ export interface MaintenanceRequest {
 
 export type CreateMaintenanceRequestInput = Omit<
   MaintenanceRequest,
-  'id' | 'status' | 'createdAt' | 'updatedAt'
+  'id' | 'status' | 'createdAt' | 'updatedAt' | 'assignees'
 >;
 
 export type UpdateMaintenanceRequestInput = Partial<
