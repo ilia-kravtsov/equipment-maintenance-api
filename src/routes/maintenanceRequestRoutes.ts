@@ -47,6 +47,12 @@ export const createMaintenanceRequestRouter = (
     requestController.getById,
   );
 
+  router.get<MaintenanceRequestParams>(
+    '/:id/history',
+    validateParams<MaintenanceRequestParams>(idParamsSchema),
+    requestController.getHistory,
+  );
+
   router.patch<MaintenanceRequestParams>(
     '/:id',
     requireApiKey,
