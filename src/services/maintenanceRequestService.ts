@@ -11,6 +11,7 @@ import type {
 import type { EquipmentRepository } from '../repositories/equipmentRepository.js';
 import type { MaintenanceRequestRepository } from '../repositories/maintenanceRequestRepository.js';
 import type { PaginatedResult } from '../models/pagination.js';
+import type { RequestStatusHistory } from '../models/requestStatusHistory.js';
 
 export class MaintenanceRequestService {
   constructor(
@@ -32,6 +33,12 @@ export class MaintenanceRequestService {
     }
 
     return request;
+  }
+
+  async getHistory(id: string): Promise<RequestStatusHistory[]> {
+    await this.getById(id);
+
+    return this.requestRepository.findHistory(id);
   }
 
   async getByEquipmentId(
