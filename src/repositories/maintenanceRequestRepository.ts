@@ -1,6 +1,8 @@
 import type {
   MaintenanceRequest,
   MaintenanceRequestListQuery,
+  RequestStatus,
+  UpdateMaintenanceRequestInput,
 } from '../models/maintenanceRequest.js';
 import type { PaginatedResult } from '../models/pagination.js';
 
@@ -19,7 +21,12 @@ export interface MaintenanceRequestRepository {
 
   update(
     id: string,
-    request: MaintenanceRequest,
+    input: UpdateMaintenanceRequestInput,
+  ): Promise<MaintenanceRequest | undefined>;
+
+  updateStatus(
+    id: string,
+    status: RequestStatus,
   ): Promise<MaintenanceRequest | undefined>;
 
   delete(id: string): Promise<boolean>;

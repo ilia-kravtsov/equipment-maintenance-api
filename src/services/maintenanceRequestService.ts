@@ -4,22 +4,13 @@ import { NotFoundError } from '../errors/notFoundError.js';
 import type {
   CreateMaintenanceRequestInput,
   MaintenanceRequest,
-  RequestStatus,
   UpdateMaintenanceRequestInput,
   UpdateMaintenanceRequestStatusInput,
   MaintenanceRequestListQuery,
 } from '../models/maintenanceRequest.js';
 import type { EquipmentRepository } from '../repositories/equipmentRepository.js';
 import type { MaintenanceRequestRepository } from '../repositories/maintenanceRequestRepository.js';
-import { ConflictError } from '../errors/conflictError.js';
 import type { PaginatedResult } from '../models/pagination.js';
-
-const allowedStatusTransitions: Record<RequestStatus, RequestStatus[]> = {
-  new: ['in_progress', 'rejected'],
-  in_progress: ['done', 'rejected'],
-  done: [],
-  rejected: [],
-};
 
 export class MaintenanceRequestService {
   constructor(
@@ -83,54 +74,29 @@ export class MaintenanceRequestService {
     id: string,
     input: UpdateMaintenanceRequestInput,
   ): Promise<MaintenanceRequest> {
-    const existingRequest = await this.getById(id);
+    const request = await this.requestRepository.update(id, input);
 
-    const updatedRequest: MaintenanceRequest = {
-      ...existingRequest,
-      ...input,
-      id: existingRequest.id,
-      equipmentId: existingRequest.equipmentId,
-      status: existingRequest.status,
-      createdAt: existingRequest.createdAt,
-      updatedAt: new Date().toISOString(),
-    };
-
-    const result = await this.requestRepository.update(id, updatedRequest);
-
-    if (result === undefined) {
+    if (request === undefined) {
       throw new NotFoundError('Maintenance request not found');
     }
 
-    return result;
+    return request;
   }
 
   async updateStatus(
     id: string,
     input: UpdateMaintenanceRequestStatusInput,
   ): Promise<MaintenanceRequest> {
-    const existingRequest = await this.getById(id);
+    const request = await this.requestRepository.updateStatus(
+      id,
+      input.status,
+    );
 
-    const allowedStatuses = allowedStatusTransitions[existingRequest.status];
-
-    if (!allowedStatuses.includes(input.status)) {
-      throw new ConflictError(
-        `Cannot change request status from "${existingRequest.status}" to "${input.status}"`,
-      );
-    }
-
-    const updatedRequest: MaintenanceRequest = {
-      ...existingRequest,
-      status: input.status,
-      updatedAt: new Date().toISOString(),
-    };
-
-    const result = await this.requestRepository.update(id, updatedRequest);
-
-    if (result === undefined) {
+    if (request === undefined) {
       throw new NotFoundError('Maintenance request not found');
     }
 
-    return result;
+    return request;
   }
 
   async delete(id: string): Promise<void> {

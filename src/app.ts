@@ -1,11 +1,9 @@
 import express from 'express';
 import { EquipmentController } from './controllers/equipmentController.js';
 import { errorHandler } from './middlewares/errorHandler.js';
-import { InMemoryEquipmentRepository } from './repositories/inMemoryEquipmentRepository.js';
 import { createEquipmentRouter } from './routes/equipmentRoutes.js';
 import { EquipmentService } from './services/equipmentService.js';
 import { MaintenanceRequestController } from './controllers/maintenanceRequestController.js';
-import { InMemoryMaintenanceRequestRepository } from './repositories/inMemoryMaintenanceRequestRepository.js';
 import { createMaintenanceRequestRouter } from './routes/maintenanceRequestRoutes.js';
 import { MaintenanceRequestService } from './services/maintenanceRequestService.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
@@ -16,11 +14,18 @@ import helmet from 'helmet';
 import { corsMiddleware } from './middlewares/corsMiddleware.js';
 import { apiRateLimiter } from './middlewares/rateLimitMiddleware.js';
 import { requestLogger } from './middlewares/requestLogger.js';
+import { sequelize } from './database/sequelize.js';
+import { initModels } from './database/models/initModels.js';
+import { PostgresEquipmentRepository } from './repositories/postgres/equipment/postgresEquipmentRepository.js';
+import { PostgresMaintenanceRequestRepository } from './repositories/postgres/requests/postgresMaintenanceRequestRepository.js';
 
 export const app = express();
 
-const equipmentRepository = new InMemoryEquipmentRepository();
-const requestRepository = new InMemoryMaintenanceRequestRepository();
+initModels(sequelize);
+
+const equipmentRepository = new PostgresEquipmentRepository(sequelize);
+const requestRepository = new PostgresMaintenanceRequestRepository(sequelize);
+
 const equipmentService = new EquipmentService(
   equipmentRepository,
   requestRepository,
