@@ -2,6 +2,7 @@ import request from 'supertest';
 
 import { app } from '../src/app.js';
 import { TEST_API_KEY } from './testConfig.js';
+import { assignTestTechnician } from './helpers/assignTestTechnician.js';
 
 const createEquipment = async (serialNumber: string) => {
   const response = await request(app)
@@ -71,6 +72,7 @@ describe('Maintenance Requests API errors', () => {
     expect(createResponse.status).toBe(201);
 
     const maintenanceRequestId = createResponse.body.data.id as string;
+    await assignTestTechnician(maintenanceRequestId);
 
     await request(app)
       .patch(`/api/requests/${maintenanceRequestId}/status`)

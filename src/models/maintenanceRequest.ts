@@ -1,3 +1,5 @@
+import type { RequestAssignee } from './requestAssignee.js';
+
 export const requestPriorities = ['low', 'medium', 'high', 'critical'] as const;
 
 export type RequestPriority = (typeof requestPriorities)[number];
@@ -21,11 +23,12 @@ export interface MaintenanceRequest {
   plannedAt?: string;
   createdAt: string;
   updatedAt: string;
+  assignees?: RequestAssignee[];
 }
 
 export type CreateMaintenanceRequestInput = Omit<
   MaintenanceRequest,
-  'id' | 'status' | 'createdAt' | 'updatedAt'
+  'id' | 'status' | 'createdAt' | 'updatedAt' | 'assignees'
 >;
 
 export type UpdateMaintenanceRequestInput = Partial<

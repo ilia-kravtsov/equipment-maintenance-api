@@ -17,45 +17,14 @@ export class EquipmentService {
     private readonly requestRepository: MaintenanceRequestRepository,
   ) {}
 
-  getAll(query: EquipmentListQuery): PaginatedResult<Equipment> {
-    let equipment = this.equipmentRepository.findAll();
-
-    if (query.status !== undefined) {
-      equipment = equipment.filter((item) => item.status === query.status);
-    }
-
-    if (query.type !== undefined) {
-      equipment = equipment.filter((item) => item.type === query.type);
-    }
-
-    if (query.sortBy !== undefined) {
-      const sortBy = query.sortBy;
-      const direction = query.order === 'desc' ? -1 : 1;
-
-      equipment = [...equipment].sort((a, b) => {
-        return String(a[sortBy]).localeCompare(String(b[sortBy])) * direction;
-      });
-    }
-
-    const total = equipment.length;
-
-    const start = (query.page - 1) * query.limit;
-    const end = start + query.limit;
-
-    const data = equipment.slice(start, end);
-
-    return {
-      data,
-      meta: {
-        total,
-        page: query.page,
-        limit: query.limit,
-      },
-    };
+  async getAll(
+    query: EquipmentListQuery,
+  ): Promise<PaginatedResult<Equipment>> {
+    return this.equipmentRepository.findAll(query);
   }
 
-  getById(id: string): Equipment {
-    const equipment = this.equipmentRepository.findById(id);
+  async getById(id: string): Promise<Equipment> {
+    const equipment = await this.equipmentRepository.findById(id);
 
     if (equipment === undefined) {
       throw new NotFoundError('Equipment not found');
@@ -64,10 +33,9 @@ export class EquipmentService {
     return equipment;
   }
 
-  create(input: CreateEquipmentInput): Equipment {
-    const existingEquipment = this.equipmentRepository.findBySerialNumber(
-      input.serialNumber,
-    );
+  async create(input: CreateEquipmentInput): Promise<Equipment> {
+    const existingEquipment =
+      await this.equipmentRepository.findBySerialNumber(input.serialNumber);
 
     if (existingEquipment !== undefined) {
       throw new ConflictError(
@@ -83,8 +51,11 @@ export class EquipmentService {
     return this.equipmentRepository.create(equipment);
   }
 
-  update(id: string, input: UpdateEquipmentInput): Equipment {
-    const existingEquipment = this.equipmentRepository.findById(id);
+  async update(
+    id: string,
+    input: UpdateEquipmentInput,
+  ): Promise<Equipment> {
+    const existingEquipment = await this.equipmentRepository.findById(id);
 
     if (existingEquipment === undefined) {
       throw new NotFoundError('Equipment not found');
@@ -95,7 +66,7 @@ export class EquipmentService {
       input.serialNumber !== existingEquipment.serialNumber
     ) {
       const equipmentWithSameSerialNumber =
-        this.equipmentRepository.findBySerialNumber(input.serialNumber);
+        await this.equipmentRepository.findBySerialNumber(input.serialNumber);
 
       if (equipmentWithSameSerialNumber !== undefined) {
         throw new ConflictError(
@@ -110,7 +81,7 @@ export class EquipmentService {
       id: existingEquipment.id,
     };
 
-    const updatedEquipmentResult = this.equipmentRepository.update(
+    const updatedEquipmentResult = await this.equipmentRepository.update(
       id,
       updatedEquipment,
     );
@@ -122,10 +93,10 @@ export class EquipmentService {
     return updatedEquipmentResult;
   }
 
-  delete(id: string): void {
-    this.getById(id);
+  async delete(id: string): Promise<void> {
+    await this.getById(id);
 
-    const requests = this.requestRepository.findByEquipmentId(id);
+    const requests = await this.requestRepository.findByEquipmentId(id);
 
     const hasOpenRequests = requests.some(
       (request) => request.status === 'new' || request.status === 'in_progress',
@@ -137,6 +108,6 @@ export class EquipmentService {
       );
     }
 
-    this.equipmentRepository.delete(id);
+    await this.equipmentRepository.delete(id);
   }
 }

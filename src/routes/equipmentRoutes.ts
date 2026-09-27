@@ -14,6 +14,8 @@ import {
 import { requireApiKey } from '../middlewares/requireApiKey.js';
 
 import { validateQuery } from '../middlewares/validateQuery.js';
+import { validatePagination } from '../middlewares/validatePagination.js';
+import { maintenanceRequestListQuerySchema } from '../validators/maintenanceRequestValidator.js';
 
 export const createEquipmentRouter = (
   equipmentController: EquipmentController,
@@ -22,6 +24,7 @@ export const createEquipmentRouter = (
 
   router.get(
     '/',
+    validatePagination,
     validateQuery(equipmentListQuerySchema),
     equipmentController.getAll,
   );
@@ -36,6 +39,8 @@ export const createEquipmentRouter = (
   router.get<EquipmentParams>(
     '/:id/requests',
     validateParams<EquipmentParams>(idParamsSchema),
+    validatePagination,
+    validateQuery(maintenanceRequestListQuerySchema),
     equipmentController.getRequests,
   );
 
