@@ -2,6 +2,7 @@ import request from 'supertest';
 
 import { app } from '../src/app.js';
 import { TEST_API_KEY } from './testConfig.js';
+import { assignTestTechnician } from './helpers/assignTestTechnician.js';
 
 describe('Maintenance Requests API', () => {
   let equipmentId: string;
@@ -146,6 +147,7 @@ describe('Maintenance Requests API', () => {
 
   describe('PATCH /api/requests/:id/status', () => {
     it('should change status from new to in_progress', async () => {
+      await assignTestTechnician(requestId);
       const response = await request(app)
         .patch(`/api/requests/${requestId}/status`)
         .set('X-API-Key', TEST_API_KEY)
