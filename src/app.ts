@@ -18,6 +18,10 @@ import { sequelize } from './database/sequelize.js';
 import { initModels } from './database/models/initModels.js';
 import { PostgresEquipmentRepository } from './repositories/postgres/equipment/postgresEquipmentRepository.js';
 import { PostgresMaintenanceRequestRepository } from './repositories/postgres/requests/postgresMaintenanceRequestRepository.js';
+import { PostgresRequestAssigneeRepository } from './repositories/postgres/requests/postgresRequestAssigneeRepository.js';
+import { RequestAssigneeService } from './services/requestAssigneeService.js';
+import { RequestAssigneeController } from './controllers/requestAssigneeController.js';
+import { createRequestAssigneeRouter } from './routes/requestAssigneeRoutes.js';
 
 export const app = express();
 
@@ -25,17 +29,18 @@ initModels(sequelize);
 
 const equipmentRepository = new PostgresEquipmentRepository(sequelize);
 const requestRepository = new PostgresMaintenanceRequestRepository(sequelize);
+const requestAssigneeRepository = new PostgresRequestAssigneeRepository(sequelize);
 
 const equipmentService = new EquipmentService(
   equipmentRepository,
   requestRepository,
 );
 const weatherService = new WeatherService(equipmentService);
-
 const requestService = new MaintenanceRequestService(
   requestRepository,
   equipmentRepository,
 );
+const requestAssigneeService = new RequestAssigneeService(requestAssigneeRepository);
 
 const equipmentController = new EquipmentController(
   equipmentService,
@@ -43,6 +48,7 @@ const equipmentController = new EquipmentController(
   weatherService,
 );
 const requestController = new MaintenanceRequestController(requestService);
+const requestAssigneeController = new RequestAssigneeController(requestAssigneeService);
 
 app.use(requestId);
 
@@ -71,6 +77,11 @@ app.get('/api/health', (_req, res) => {
 app.use('/api/equipment', createEquipmentRouter(equipmentController));
 
 app.use('/api/requests', createMaintenanceRequestRouter(requestController));
+
+app.use(
+  '/api/requests',
+  createRequestAssigneeRouter(requestAssigneeController),
+);
 
 app.use(notFoundHandler);
 
