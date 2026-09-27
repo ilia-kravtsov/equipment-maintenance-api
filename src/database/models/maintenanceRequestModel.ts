@@ -6,6 +6,7 @@ import {
   type InferAttributes,
   type InferCreationAttributes,
   type Sequelize,
+  type NonAttribute,
 } from 'sequelize';
 
 import {
@@ -14,6 +15,7 @@ import {
   type RequestPriority,
   type RequestStatus,
 } from '../../models/maintenanceRequest.js';
+import type { RequestAssigneeModel } from './requestAssigneeModel.js';
 
 export class MaintenanceRequestModel extends Model<
   InferAttributes<MaintenanceRequestModel>,
@@ -30,6 +32,7 @@ export class MaintenanceRequestModel extends Model<
   declare createdAt: CreationOptional<Date>;
   declare updatedAt: CreationOptional<Date>;
   declare deletedAt: Date | null;
+  declare assignments?: NonAttribute<RequestAssigneeModel[]>;
 }
 
 export const initMaintenanceRequestModel = (
