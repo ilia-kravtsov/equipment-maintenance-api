@@ -10,6 +10,8 @@ import {
   buildRequestOrder,
   buildRequestWhere,
 } from './requestQueryOptions.js';
+import { RequestAssigneeModel } from '../../../database/models/requestAssigneeModel.js';
+import { TechnicianModel } from '../../../database/models/technicianModel.js';
 
 export const findAllRequests = async (
   query: MaintenanceRequestListQuery,
@@ -37,6 +39,27 @@ export const findRequestById = async (
 ): Promise<MaintenanceRequest | undefined> => {
   const model = await MaintenanceRequestModel.findByPk(id, {
     attributes: requestAttributes,
+    include: [
+      {
+        model: RequestAssigneeModel,
+        as: 'assignments',
+        attributes: ['requestId', 'technicianId', 'role', 'hours'],
+        required: false,
+        include: [
+          {
+            model: TechnicianModel,
+            as: 'technician',
+            attributes: [
+              'id',
+              'fullName',
+              'specialization',
+              'employeeNumber',
+            ],
+            required: true,
+          },
+        ],
+      },
+    ],
   });
 
   return model === null ? undefined : toMaintenanceRequest(model);
