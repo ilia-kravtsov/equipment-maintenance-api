@@ -30,6 +30,12 @@ import { PostgresEquipmentLoadRepository } from './repositories/postgres/reports
 import { EquipmentLoadService } from './services/equipmentLoadService.js';
 import { EquipmentLoadController } from './controllers/equipmentLoadController.js';
 import { createReportRouter } from './routes/reportRoutes.js';
+import { AuthController } from './controllers/authController.js';
+import { createRequireAuth } from './middlewares/requireAuth.js';
+import { PostgresRefreshSessionRepository } from './repositories/postgres/auth/postgresRefreshSessionRepository.js';
+import { PostgresUserRepository } from './repositories/postgres/users/postgresUserRepository.js';
+import { createAuthRouter } from './routes/authRoutes.js';
+import { AuthService } from './services/authService.js';
 
 export const app = express();
 
@@ -40,6 +46,8 @@ const requestRepository = new PostgresMaintenanceRequestRepository(sequelize);
 const requestAssigneeRepository = new PostgresRequestAssigneeRepository(sequelize);
 const siteSummaryRepository = new PostgresSiteSummaryRepository(sequelize);
 const equipmentLoadRepository = new PostgresEquipmentLoadRepository(sequelize);
+const userRepository = new PostgresUserRepository();
+const refreshSessionRepository = new PostgresRefreshSessionRepository();
 
 const equipmentService = new EquipmentService(
   equipmentRepository,
@@ -53,6 +61,10 @@ const requestService = new MaintenanceRequestService(
 const requestAssigneeService = new RequestAssigneeService(requestAssigneeRepository);
 const siteSummaryService = new SiteSummaryService(siteSummaryRepository);
 const equipmentLoadService = new EquipmentLoadService(equipmentLoadRepository);
+const authService = new AuthService(
+  userRepository,
+  refreshSessionRepository,
+);
 
 const equipmentController = new EquipmentController(
   equipmentService,
@@ -65,6 +77,9 @@ const siteSummaryController = new SiteSummaryController(
   siteSummaryService,
 );
 const equipmentLoadController = new EquipmentLoadController(equipmentLoadService);
+const authController = new AuthController(authService);
+
+const requireAuth = createRequireAuth(authService);
 
 app.use(requestId);
 
@@ -89,6 +104,11 @@ app.get('/api/health', (_req, res) => {
     status: 'ok',
   });
 });
+
+app.use(
+  '/api/auth',
+  createAuthRouter(authController, requireAuth),
+);
 
 app.use('/api/equipment', createEquipmentRouter(equipmentController));
 
