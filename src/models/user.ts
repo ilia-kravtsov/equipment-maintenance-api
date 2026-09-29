@@ -24,3 +24,8 @@ export interface LoginInput {
   email: string;
   password: string;
 }
+
+export interface CreateUserInput {
+  email: string;
+  passwordHash: string;
+}
