@@ -10,6 +10,10 @@ const authConfigSchema = z.object({
     .default(7),
   bcryptRounds: z.coerce.number().int().min(10).max(14)
     .default(12),
+  loginRateLimitWindowMs: z.coerce.number().int().min(1000).max(86400000)
+    .default(900000),
+  loginRateLimitMax: z.coerce.number().int().min(1).max(1000)
+    .default(10),
 });
 
 export const getAuthConfig = () => {
@@ -18,5 +22,7 @@ export const getAuthConfig = () => {
     accessTokenTtlSeconds: process.env.ACCESS_TOKEN_TTL_SECONDS,
     refreshSessionTtlDays: process.env.REFRESH_SESSION_TTL_DAYS,
     bcryptRounds: process.env.BCRYPT_ROUNDS,
+    loginRateLimitWindowMs: process.env.LOGIN_RATE_LIMIT_WINDOW_MS,
+    loginRateLimitMax: process.env.LOGIN_RATE_LIMIT_MAX,
   });
 };
