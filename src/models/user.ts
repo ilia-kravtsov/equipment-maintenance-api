@@ -15,15 +15,14 @@ export interface UserWithPasswordHash extends User {
   passwordHash: string;
 }
 
-export interface RegisterUserInput {
+export interface CredentialsInput {
   email: string;
   password: string;
 }
 
-export interface LoginInput {
-  email: string;
-  password: string;
-}
+export type RegisterUserInput = CredentialsInput;
+
+export type LoginInput = CredentialsInput;
 
 export interface CreateUserInput {
   email: string;

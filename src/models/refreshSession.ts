@@ -7,3 +7,9 @@ export interface RefreshSession {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface CreateRefreshSessionInput {
+  userId: string;
+  tokenHash: string;
+  expiresAt: string;
+}
