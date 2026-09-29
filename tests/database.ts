@@ -31,6 +31,8 @@ export const resetTestDatabase = async (): Promise<void> => {
 
     await testAdminSequelize.query(
       `TRUNCATE TABLE
+         public.refresh_sessions,
+         public.users,
          public.request_status_history,
          public.request_assignees,
          public.maintenance_requests,
