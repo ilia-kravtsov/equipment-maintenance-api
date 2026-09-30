@@ -7,8 +7,8 @@ import { ConflictError } from '../../../errors/conflictError.js';
 import type {
   MaintenanceRequest,
   RequestStatus,
-} from '../../../models/maintenanceRequest.js';
-import { toMaintenanceRequest } from '../../mappers/maintenanceRequestMapper.js';
+} from '../../../models/requests/maintenanceRequest.js';
+import { toMaintenanceRequest } from '../mappers/maintenanceRequestMapper.js';
 
 const allowedTransitions: Record<RequestStatus, readonly RequestStatus[]> = {
   new: ['in_progress', 'rejected'],

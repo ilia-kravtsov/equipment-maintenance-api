@@ -1,6 +1,6 @@
 import { QueryTypes, type Sequelize } from 'sequelize';
 
-import type { RegisterUserInput } from '../models/user.js';
+import type { RegisterUserInput } from '../models/auth/user.js';
 import { hashPassword } from '../security/password.js';
 import { registerUserSchema } from '../validators/authValidator.js';
 

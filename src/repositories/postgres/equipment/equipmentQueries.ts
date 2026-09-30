@@ -4,9 +4,9 @@ import { EquipmentModel } from '../../../database/models/equipmentModel.js';
 import type {
   Equipment,
   EquipmentListQuery,
-} from '../../../models/equipment.js';
-import type { PaginatedResult } from '../../../models/pagination.js';
-import { toEquipment } from '../../mappers/equipmentMapper.js';
+} from '../../../models/equipment/equipment.js';
+import type { PaginatedResult } from '../../../models/shared/pagination.js';
+import { toEquipment } from '../mappers/equipmentMapper.js';
 import { EquipmentPassportModel } from '../../../database/models/equipmentPassportModel.js';
 
 const attributes: Array<keyof Attributes<EquipmentModel>> = [

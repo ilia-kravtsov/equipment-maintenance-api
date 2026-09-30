@@ -14,7 +14,7 @@ import {
   equipmentTypes,
   type EquipmentStatus,
   type EquipmentType,
-} from '../../models/equipment.js';
+} from '../../models/equipment/equipment.js';
 import type { EquipmentPassportModel } from './equipmentPassportModel.js';
 
 export class EquipmentModel extends Model<

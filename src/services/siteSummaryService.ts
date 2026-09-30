@@ -1,6 +1,6 @@
 import { NotFoundError } from '../errors/notFoundError.js';
-import type { SiteSummary } from '../models/siteSummary.js';
-import type { SiteSummaryRepository } from '../repositories/siteSummaryRepository.js';
+import type { SiteSummary } from '../models/reports/siteSummary.js';
+import type { SiteSummaryRepository } from '../repositories/contracts/siteSummaryRepository.js';
 
 export class SiteSummaryService {
   constructor(

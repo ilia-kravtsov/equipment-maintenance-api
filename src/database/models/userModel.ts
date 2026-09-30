@@ -8,7 +8,7 @@ import {
   type Sequelize,
 } from 'sequelize';
 
-import { userRoles, type UserRole } from '../../models/user.js';
+import { userRoles, type UserRole } from '../../models/auth/user.js';
 
 export class UserModel extends Model<
   InferAttributes<UserModel>,

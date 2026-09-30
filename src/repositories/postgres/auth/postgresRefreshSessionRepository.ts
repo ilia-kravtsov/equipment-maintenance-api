@@ -4,9 +4,9 @@ import { RefreshSessionModel } from '../../../database/models/refreshSessionMode
 import type {
   CreateRefreshSessionInput,
   RefreshSession,
-} from '../../../models/refreshSession.js';
-import { toRefreshSession } from '../../mappers/refreshSessionMapper.js';
-import type { RefreshSessionRepository } from '../../refreshSessionRepository.js';
+} from '../../../models/auth/refreshSession.js';
+import { toRefreshSession } from '../mappers/refreshSessionMapper.js';
+import type { RefreshSessionRepository } from '../../contracts/refreshSessionRepository.js';
 
 export class PostgresRefreshSessionRepository
   implements RefreshSessionRepository

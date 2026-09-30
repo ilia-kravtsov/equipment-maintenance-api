@@ -6,7 +6,7 @@ import {
   type Sequelize,
   type NonAttribute,
 } from 'sequelize';
-import type { RequestAssigneeRole } from '../../models/requestAssignee.js';
+import type { RequestAssigneeRole } from '../../models/requests/requestAssignee.js';
 import type { TechnicianModel } from './technicianModel.js';
 
 export class RequestAssigneeModel extends Model<

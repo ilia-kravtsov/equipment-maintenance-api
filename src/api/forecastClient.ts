@@ -1,6 +1,6 @@
 import { config } from '../config/index.js';
 import { InvalidJsonError } from '../errors/httpErrors.js';
-import type { ForecastResult } from '../models/weather.js';
+import type { ForecastResult } from '../models/weather/weather.js';
 
 import { fetchJson } from './httpClient.js';
 

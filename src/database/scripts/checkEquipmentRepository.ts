@@ -5,7 +5,7 @@ import { randomUUID } from 'node:crypto';
 
 import { logger } from '../../config/logger.js';
 import { ConflictError } from '../../errors/conflictError.js';
-import type { Equipment } from '../../models/equipment.js';
+import type { Equipment } from '../../models/equipment/equipment.js';
 import { PostgresEquipmentRepository } from '../../repositories/postgres/equipment/postgresEquipmentRepository.js';
 import { handleDatabaseScriptError } from '../handleDatabaseScriptError.js';
 import { EquipmentModel } from '../models/equipmentModel.js';

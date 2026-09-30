@@ -1,12 +1,12 @@
 import { Router } from 'express';
-import { validateParams } from '../middlewares/validateParams.js';
+import { validateParams } from '../middlewares/validation/validateParams.js';
 import { idParamsSchema } from '../validators/commonValidator.js';
 import {
   type MaintenanceRequestController,
   type MaintenanceRequestParams,
 } from '../controllers/maintenanceRequestController.js';
-import { validateQuery } from '../middlewares/validateQuery.js';
-import { validateBody } from '../middlewares/validateBody.js';
+import { validateQuery } from '../middlewares/validation/validateQuery.js';
+import { validateBody } from '../middlewares/validation/validateBody.js';
 import {
   createMaintenanceRequestSchema,
   updateMaintenanceRequestSchema,
@@ -14,8 +14,8 @@ import {
   maintenanceRequestListQuerySchema,
   importMaintenanceRequestsSchema,
 } from '../validators/maintenanceRequestValidator.js';
-import { requireApiKey } from '../middlewares/requireApiKey.js';
-import { validatePagination } from '../middlewares/validatePagination.js';
+import { requireApiKey } from '../middlewares/auth/requireApiKey.js';
+import { validatePagination } from '../middlewares/validation/validatePagination.js';
 
 export const createMaintenanceRequestRouter = (
   requestController: MaintenanceRequestController,

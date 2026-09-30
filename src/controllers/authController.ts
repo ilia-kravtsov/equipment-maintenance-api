@@ -6,12 +6,12 @@ import type {
 import type { ParamsDictionary } from 'express-serve-static-core';
 
 import { UnauthorizedError } from '../errors/unauthorizedError.js';
-import type { AuthLocals } from '../middlewares/requireAuth.js';
-import type { AuthSessionResult } from '../models/auth.js';
+import type { AuthLocals } from '../middlewares/auth/requireAuth.js';
+import type { AuthSessionResult } from '../models/auth/auth.js';
 import type {
   LoginInput,
   RegisterUserInput,
-} from '../models/user.js';
+} from '../models/auth/user.js';
 import {
   clearRefreshCookie,
   readRefreshCookie,
