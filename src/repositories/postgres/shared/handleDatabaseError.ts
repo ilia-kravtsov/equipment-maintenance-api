@@ -3,8 +3,8 @@ import {
   UniqueConstraintError,
 } from 'sequelize';
 
-import { ConflictError } from '../errors/conflictError.js';
-import { NotFoundError } from '../errors/notFoundError.js';
+import { ConflictError } from '../../../errors/conflictError.js';
+import { NotFoundError } from '../../../errors/notFoundError.js';
 
 interface DatabaseErrorMessages {
   unique: string;

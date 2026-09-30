@@ -7,8 +7,8 @@ import type {
   UpdateEquipmentInput,
   EquipmentListQuery,
 } from '../models/equipment/equipment.js';
-import type { EquipmentRepository } from '../repositories/equipmentRepository.js';
-import type { MaintenanceRequestRepository } from '../repositories/maintenanceRequestRepository.js';
+import type { EquipmentRepository } from '../repositories/contracts/equipmentRepository.js';
+import type { MaintenanceRequestRepository } from '../repositories/contracts/maintenanceRequestRepository.js';
 import type { PaginatedResult } from '../models/shared/pagination.js';
 
 export class EquipmentService {

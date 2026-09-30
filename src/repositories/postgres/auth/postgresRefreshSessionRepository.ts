@@ -5,8 +5,8 @@ import type {
   CreateRefreshSessionInput,
   RefreshSession,
 } from '../../../models/auth/refreshSession.js';
-import { toRefreshSession } from '../../mappers/refreshSessionMapper.js';
-import type { RefreshSessionRepository } from '../../refreshSessionRepository.js';
+import { toRefreshSession } from '../mappers/refreshSessionMapper.js';
+import type { RefreshSessionRepository } from '../../contracts/refreshSessionRepository.js';
 
 export class PostgresRefreshSessionRepository
   implements RefreshSessionRepository

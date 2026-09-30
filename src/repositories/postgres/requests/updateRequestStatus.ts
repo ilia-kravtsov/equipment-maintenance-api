@@ -8,7 +8,7 @@ import type {
   MaintenanceRequest,
   RequestStatus,
 } from '../../../models/requests/maintenanceRequest.js';
-import { toMaintenanceRequest } from '../../mappers/maintenanceRequestMapper.js';
+import { toMaintenanceRequest } from '../mappers/maintenanceRequestMapper.js';
 
 const allowedTransitions: Record<RequestStatus, readonly RequestStatus[]> = {
   new: ['in_progress', 'rejected'],

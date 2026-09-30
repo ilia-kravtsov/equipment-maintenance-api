@@ -3,9 +3,9 @@ import type {
   MaintenanceRequestListQuery,
   RequestStatus,
   UpdateMaintenanceRequestInput,
-} from '../models/requests/maintenanceRequest.js';
-import type { PaginatedResult } from '../models/shared/pagination.js';
-import type { RequestStatusHistory } from '../models/requests/requestStatusHistory.js';
+} from '../../models/requests/maintenanceRequest.js';
+import type { PaginatedResult } from '../../models/shared/pagination.js';
+import type { RequestStatusHistory } from '../../models/requests/requestStatusHistory.js';
 
 export interface MaintenanceRequestRepository {
   findAll(

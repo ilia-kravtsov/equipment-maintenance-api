@@ -2,7 +2,7 @@ import type {
   EquipmentLoad,
   EquipmentLoadQuery,
 } from '../models/reports/equipmentLoad.js';
-import type { EquipmentLoadRepository } from '../repositories/equipmentLoadRepository.js';
+import type { EquipmentLoadRepository } from '../repositories/contracts/equipmentLoadRepository.js';
 
 export class EquipmentLoadService {
   constructor(

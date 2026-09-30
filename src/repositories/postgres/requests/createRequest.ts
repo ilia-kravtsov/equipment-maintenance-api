@@ -6,11 +6,11 @@ import { RequestStatusHistoryModel } from '../../../database/models/requestStatu
 import { ConflictError } from '../../../errors/conflictError.js';
 import { NotFoundError } from '../../../errors/notFoundError.js';
 import type { MaintenanceRequest } from '../../../models/requests/maintenanceRequest.js';
-import { handleDatabaseError } from '../../handleDatabaseError.js';
+import { handleDatabaseError } from '../shared/handleDatabaseError.js';
 import {
   toMaintenanceRequest,
   toMaintenanceRequestWriteAttributes,
-} from '../../mappers/maintenanceRequestMapper.js';
+} from '../mappers/maintenanceRequestMapper.js';
 
 export const createRequest = async (
   sequelize: Sequelize,

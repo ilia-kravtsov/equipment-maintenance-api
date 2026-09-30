@@ -4,7 +4,7 @@ import type {
   EquipmentLoad,
   EquipmentLoadQuery,
 } from '../../../models/reports/equipmentLoad.js';
-import type { EquipmentLoadRepository } from '../../equipmentLoadRepository.js';
+import type { EquipmentLoadRepository } from '../../contracts/equipmentLoadRepository.js';
 
 interface EquipmentLoadRow {
   equipmentId: string;

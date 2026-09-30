@@ -6,7 +6,7 @@ import type {
   EquipmentListQuery,
 } from '../../../models/equipment/equipment.js';
 import type { PaginatedResult } from '../../../models/shared/pagination.js';
-import { toEquipment } from '../../mappers/equipmentMapper.js';
+import { toEquipment } from '../mappers/equipmentMapper.js';
 import { EquipmentPassportModel } from '../../../database/models/equipmentPassportModel.js';
 
 const attributes: Array<keyof Attributes<EquipmentModel>> = [

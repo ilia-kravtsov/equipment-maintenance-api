@@ -7,8 +7,8 @@ import type {
   RegisterUserInput,
   User,
 } from '../models/auth/user.js';
-import type { RefreshSessionRepository } from '../repositories/refreshSessionRepository.js';
-import type { UserRepository } from '../repositories/userRepository.js';
+import type { RefreshSessionRepository } from '../repositories/contracts/refreshSessionRepository.js';
+import type { UserRepository } from '../repositories/contracts/userRepository.js';
 import {
   signAccessToken,
   verifyAccessToken,

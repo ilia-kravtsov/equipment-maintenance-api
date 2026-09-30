@@ -4,12 +4,12 @@ import type {
   User,
   UserWithPasswordHash,
 } from '../../../models/auth/user.js';
-import { handleDatabaseError } from '../../handleDatabaseError.js';
+import { handleDatabaseError } from '../shared/handleDatabaseError.js';
 import {
   toUser,
   toUserWithPasswordHash,
-} from '../../mappers/userMapper.js';
-import type { UserRepository } from '../../userRepository.js';
+} from '../mappers/userMapper.js';
+import type { UserRepository } from '../../contracts/userRepository.js';
 
 export class PostgresUserRepository implements UserRepository {
   async create(input: CreateUserInput): Promise<User> {

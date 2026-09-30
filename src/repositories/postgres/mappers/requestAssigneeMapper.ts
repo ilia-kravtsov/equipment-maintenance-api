@@ -1,5 +1,5 @@
-import type { RequestAssigneeModel } from '../../database/models/requestAssigneeModel.js';
-import type { RequestAssignee } from '../../models/requests/requestAssignee.js';
+import type { RequestAssigneeModel } from '../../../database/models/requestAssigneeModel.js';
+import type { RequestAssignee } from '../../../models/requests/requestAssignee.js';
 
 export const toRequestAssignee = (
   model: RequestAssigneeModel,

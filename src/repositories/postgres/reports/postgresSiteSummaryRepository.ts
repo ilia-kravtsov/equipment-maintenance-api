@@ -1,7 +1,7 @@
 import { QueryTypes, type Sequelize } from 'sequelize';
 
 import type { SiteSummary } from '../../../models/reports/siteSummary.js';
-import type { SiteSummaryRepository } from '../../siteSummaryRepository.js';
+import type { SiteSummaryRepository } from '../../contracts/siteSummaryRepository.js';
 
 const siteSummarySql = `
   SELECT

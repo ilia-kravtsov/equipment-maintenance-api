@@ -1,5 +1,5 @@
 import type { RequestAssigneeInput } from '../models/requests/requestAssignee.js';
-import type { RequestAssigneeRepository } from '../repositories/requestAssigneeRepository.js';
+import type { RequestAssigneeRepository } from '../repositories/contracts/requestAssigneeRepository.js';
 
 export class RequestAssigneeService {
   constructor(

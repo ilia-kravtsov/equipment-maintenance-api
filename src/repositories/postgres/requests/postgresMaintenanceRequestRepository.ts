@@ -7,7 +7,7 @@ import type {
   UpdateMaintenanceRequestInput,
 } from '../../../models/requests/maintenanceRequest.js';
 import type { PaginatedResult } from '../../../models/shared/pagination.js';
-import type { MaintenanceRequestRepository } from '../../maintenanceRequestRepository.js';
+import type { MaintenanceRequestRepository } from '../../contracts/maintenanceRequestRepository.js';
 import { createRequest } from './createRequest.js';
 import { deleteRequest } from './deleteRequest.js';
 import {

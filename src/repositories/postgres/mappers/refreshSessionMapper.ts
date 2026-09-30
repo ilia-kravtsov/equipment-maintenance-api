@@ -1,5 +1,5 @@
-import type { RefreshSessionModel } from '../../database/models/refreshSessionModel.js';
-import type { RefreshSession } from '../../models/auth/refreshSession.js';
+import type { RefreshSessionModel } from '../../../database/models/refreshSessionModel.js';
+import type { RefreshSession } from '../../../models/auth/refreshSession.js';
 
 export const toRefreshSession = (
   model: RefreshSessionModel,

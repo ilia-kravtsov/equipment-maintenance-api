@@ -5,7 +5,7 @@ import type {
   EquipmentListQuery,
 } from '../../../models/equipment/equipment.js';
 import type { PaginatedResult } from '../../../models/shared/pagination.js';
-import type { EquipmentRepository } from '../../equipmentRepository.js';
+import type { EquipmentRepository } from '../../contracts/equipmentRepository.js';
 import {
   findAllEquipment,
   findEquipmentById,

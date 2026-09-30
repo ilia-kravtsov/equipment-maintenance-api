@@ -4,7 +4,7 @@ import type {
   MaintenanceRequestListQuery,
 } from '../../../models/requests/maintenanceRequest.js';
 import type { PaginatedResult } from '../../../models/shared/pagination.js';
-import { toMaintenanceRequest } from '../../mappers/maintenanceRequestMapper.js';
+import { toMaintenanceRequest } from '../mappers/maintenanceRequestMapper.js';
 import {
   requestAttributes,
   buildRequestOrder,

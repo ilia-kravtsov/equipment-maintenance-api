@@ -5,7 +5,7 @@ import type {
   MaintenanceRequest,
   UpdateMaintenanceRequestInput,
 } from '../../../models/requests/maintenanceRequest.js';
-import { toMaintenanceRequest } from '../../mappers/maintenanceRequestMapper.js';
+import { toMaintenanceRequest } from '../mappers/maintenanceRequestMapper.js';
 
 type RequestUpdateAttributes = Partial<
   Pick<

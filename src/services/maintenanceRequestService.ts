@@ -8,8 +8,8 @@ import type {
   UpdateMaintenanceRequestStatusInput,
   MaintenanceRequestListQuery,
 } from '../models/requests/maintenanceRequest.js';
-import type { EquipmentRepository } from '../repositories/equipmentRepository.js';
-import type { MaintenanceRequestRepository } from '../repositories/maintenanceRequestRepository.js';
+import type { EquipmentRepository } from '../repositories/contracts/equipmentRepository.js';
+import type { MaintenanceRequestRepository } from '../repositories/contracts/maintenanceRequestRepository.js';
 import type { PaginatedResult } from '../models/shared/pagination.js';
 import type { RequestStatusHistory } from '../models/requests/requestStatusHistory.js';
 

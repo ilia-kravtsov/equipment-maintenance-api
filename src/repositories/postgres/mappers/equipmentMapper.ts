@@ -1,7 +1,7 @@
 import type { Attributes } from 'sequelize';
 
-import type { EquipmentModel } from '../../database/models/equipmentModel.js';
-import type { Equipment } from '../../models/equipment/equipment.js';
+import type { EquipmentModel } from '../../../database/models/equipmentModel.js';
+import type { Equipment } from '../../../models/equipment/equipment.js';
 import { toEquipmentPassport } from './equipmentPassportMapper.js';
 
 type EquipmentWriteAttributes = Pick<

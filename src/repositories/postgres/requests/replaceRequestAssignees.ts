@@ -5,7 +5,7 @@ import { RequestAssigneeModel } from '../../../database/models/requestAssigneeMo
 import { NotFoundError } from '../../../errors/notFoundError.js';
 import { ValidationError } from '../../../errors/validationError.js';
 import type { RequestAssigneeInput } from '../../../models/requests/requestAssignee.js';
-import { handleDatabaseError } from '../../handleDatabaseError.js';
+import { handleDatabaseError } from '../shared/handleDatabaseError.js';
 
 export const replaceRequestAssignees = async (
   sequelize: Sequelize,

@@ -1,7 +1,7 @@
 import type {
   CreateRefreshSessionInput,
   RefreshSession,
-} from '../models/auth/refreshSession.js';
+} from '../../models/auth/refreshSession.js';
 
 export interface RefreshSessionRepository {
   create(input: CreateRefreshSessionInput): Promise<RefreshSession>;

@@ -4,11 +4,11 @@ import { EquipmentModel } from '../../../database/models/equipmentModel.js';
 import { MaintenanceRequestModel } from '../../../database/models/maintenanceRequestModel.js';
 import { ConflictError } from '../../../errors/conflictError.js';
 import type { Equipment } from '../../../models/equipment/equipment.js';
-import { handleDatabaseError } from '../../handleDatabaseError.js';
+import { handleDatabaseError } from '../shared/handleDatabaseError.js';
 import {
   toEquipment,
   toEquipmentWriteAttributes,
-} from '../../mappers/equipmentMapper.js';
+} from '../mappers/equipmentMapper.js';
 
 export const createEquipment = async (
   equipment: Equipment,
