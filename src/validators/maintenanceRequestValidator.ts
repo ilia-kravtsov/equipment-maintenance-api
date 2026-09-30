@@ -3,7 +3,7 @@ import { z } from 'zod';
 import {
   requestPriorities,
   requestStatuses,
-} from '../models/maintenanceRequest.js';
+} from '../models/requests/maintenanceRequest.js';
 
 export const createMaintenanceRequestSchema = z.object({
   equipmentId: z.uuid(),

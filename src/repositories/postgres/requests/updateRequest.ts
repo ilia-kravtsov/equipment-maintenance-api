@@ -4,7 +4,7 @@ import { MaintenanceRequestModel } from '../../../database/models/maintenanceReq
 import type {
   MaintenanceRequest,
   UpdateMaintenanceRequestInput,
-} from '../../../models/maintenanceRequest.js';
+} from '../../../models/requests/maintenanceRequest.js';
 import { toMaintenanceRequest } from '../../mappers/maintenanceRequestMapper.js';
 
 type RequestUpdateAttributes = Partial<

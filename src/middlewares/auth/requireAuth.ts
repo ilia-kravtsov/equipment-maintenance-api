@@ -1,7 +1,7 @@
 import type { RequestHandler } from 'express';
 
 import { UnauthorizedError } from '../../errors/unauthorizedError.js';
-import type { User } from '../../models/user.js';
+import type { User } from '../../models/auth/user.js';
 import type { AuthService } from '../../services/authService.js';
 
 export interface AuthLocals {

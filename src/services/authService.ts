@@ -1,12 +1,12 @@
 import { getAuthConfig } from '../config/auth.js';
 import { UnauthorizedError } from '../errors/unauthorizedError.js';
-import type { AuthSessionResult } from '../models/auth.js';
-import type { RefreshSession } from '../models/refreshSession.js';
+import type { AuthSessionResult } from '../models/auth/auth.js';
+import type { RefreshSession } from '../models/auth/refreshSession.js';
 import type {
   LoginInput,
   RegisterUserInput,
   User,
-} from '../models/user.js';
+} from '../models/auth/user.js';
 import type { RefreshSessionRepository } from '../repositories/refreshSessionRepository.js';
 import type { UserRepository } from '../repositories/userRepository.js';
 import {

@@ -2,7 +2,7 @@ import type { UserModel } from '../../database/models/userModel.js';
 import type {
   User,
   UserWithPasswordHash,
-} from '../../models/user.js';
+} from '../../models/auth/user.js';
 
 export const toUser = (model: UserModel): User => {
   return {

@@ -1,4 +1,4 @@
-import type { RequestAssigneeInput } from '../models/requestAssignee.js';
+import type { RequestAssigneeInput } from '../models/requests/requestAssignee.js';
 import type { RequestAssigneeRepository } from '../repositories/requestAssigneeRepository.js';
 
 export class RequestAssigneeService {

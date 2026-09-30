@@ -3,7 +3,7 @@ import type {
   CreateUserInput,
   User,
   UserWithPasswordHash,
-} from '../../../models/user.js';
+} from '../../../models/auth/user.js';
 import { handleDatabaseError } from '../../handleDatabaseError.js';
 import {
   toUser,

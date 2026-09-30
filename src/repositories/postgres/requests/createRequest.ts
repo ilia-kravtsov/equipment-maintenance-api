@@ -5,7 +5,7 @@ import { MaintenanceRequestModel } from '../../../database/models/maintenanceReq
 import { RequestStatusHistoryModel } from '../../../database/models/requestStatusHistoryModel.js';
 import { ConflictError } from '../../../errors/conflictError.js';
 import { NotFoundError } from '../../../errors/notFoundError.js';
-import type { MaintenanceRequest } from '../../../models/maintenanceRequest.js';
+import type { MaintenanceRequest } from '../../../models/requests/maintenanceRequest.js';
 import { handleDatabaseError } from '../../handleDatabaseError.js';
 import {
   toMaintenanceRequest,

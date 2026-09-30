@@ -1,7 +1,7 @@
 import type {
   EquipmentLoad,
   EquipmentLoadQuery,
-} from '../models/equipmentLoad.js';
+} from '../models/reports/equipmentLoad.js';
 import type { EquipmentLoadRepository } from '../repositories/equipmentLoadRepository.js';
 
 export class EquipmentLoadService {

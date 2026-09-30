@@ -3,8 +3,8 @@ import type { Sequelize } from 'sequelize';
 import type {
   Equipment,
   EquipmentListQuery,
-} from '../../../models/equipment.js';
-import type { PaginatedResult } from '../../../models/pagination.js';
+} from '../../../models/equipment/equipment.js';
+import type { PaginatedResult } from '../../../models/shared/pagination.js';
 import type { EquipmentRepository } from '../../equipmentRepository.js';
 import {
   findAllEquipment,

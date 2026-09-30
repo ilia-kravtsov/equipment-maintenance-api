@@ -6,10 +6,10 @@ import type {
   Equipment,
   UpdateEquipmentInput,
   EquipmentListQuery,
-} from '../models/equipment.js';
+} from '../models/equipment/equipment.js';
 import type { EquipmentRepository } from '../repositories/equipmentRepository.js';
 import type { MaintenanceRequestRepository } from '../repositories/maintenanceRequestRepository.js';
-import type { PaginatedResult } from '../models/pagination.js';
+import type { PaginatedResult } from '../models/shared/pagination.js';
 
 export class EquipmentService {
   constructor(

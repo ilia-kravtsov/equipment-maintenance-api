@@ -4,11 +4,11 @@ import type {
   CreateEquipmentInput,
   UpdateEquipmentInput,
   EquipmentListQuery,
-} from '../models/equipment.js';
+} from '../models/equipment/equipment.js';
 import type { EquipmentService } from '../services/equipmentService.js';
 import type { MaintenanceRequestService } from '../services/maintenanceRequestService.js';
 import type { WeatherService } from '../services/weatherService.js';
-import type { MaintenanceRequestListQuery } from '../models/maintenanceRequest.js';
+import type { MaintenanceRequestListQuery } from '../models/requests/maintenanceRequest.js';
 
 export interface EquipmentParams extends ParamsDictionary {
   id: string;

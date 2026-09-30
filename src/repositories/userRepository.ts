@@ -2,7 +2,7 @@ import type {
   CreateUserInput,
   User,
   UserWithPasswordHash,
-} from '../models/user.js';
+} from '../models/auth/user.js';
 
 export interface UserRepository {
   create(input: CreateUserInput): Promise<User>;

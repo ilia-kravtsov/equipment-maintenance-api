@@ -1,5 +1,5 @@
 import type { EquipmentPassportModel } from '../../database/models/equipmentPassportModel.js';
-import type { EquipmentPassport } from '../../models/equipmentPassport.js';
+import type { EquipmentPassport } from '../../models/equipment/equipmentPassport.js';
 
 export const toEquipmentPassport = (
   model: EquipmentPassportModel,

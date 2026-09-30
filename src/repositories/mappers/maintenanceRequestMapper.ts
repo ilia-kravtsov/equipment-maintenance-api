@@ -1,7 +1,7 @@
 import type { Attributes } from 'sequelize';
 
 import type { MaintenanceRequestModel } from '../../database/models/maintenanceRequestModel.js';
-import type { MaintenanceRequest } from '../../models/maintenanceRequest.js';
+import type { MaintenanceRequest } from '../../models/requests/maintenanceRequest.js';
 import { toRequestAssignee } from './requestAssigneeMapper.js';
 
 type MaintenanceRequestWriteAttributes = Pick<

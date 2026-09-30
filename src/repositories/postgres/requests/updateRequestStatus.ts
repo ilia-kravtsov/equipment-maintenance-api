@@ -7,7 +7,7 @@ import { ConflictError } from '../../../errors/conflictError.js';
 import type {
   MaintenanceRequest,
   RequestStatus,
-} from '../../../models/maintenanceRequest.js';
+} from '../../../models/requests/maintenanceRequest.js';
 import { toMaintenanceRequest } from '../../mappers/maintenanceRequestMapper.js';
 
 const allowedTransitions: Record<RequestStatus, readonly RequestStatus[]> = {

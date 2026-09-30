@@ -3,7 +3,7 @@ import { Op, type Sequelize } from 'sequelize';
 import { EquipmentModel } from '../../../database/models/equipmentModel.js';
 import { MaintenanceRequestModel } from '../../../database/models/maintenanceRequestModel.js';
 import { ConflictError } from '../../../errors/conflictError.js';
-import type { Equipment } from '../../../models/equipment.js';
+import type { Equipment } from '../../../models/equipment/equipment.js';
 import { handleDatabaseError } from '../../handleDatabaseError.js';
 import {
   toEquipment,

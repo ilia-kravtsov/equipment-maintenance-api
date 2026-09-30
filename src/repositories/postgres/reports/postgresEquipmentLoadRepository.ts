@@ -3,7 +3,7 @@ import { QueryTypes, type Sequelize } from 'sequelize';
 import type {
   EquipmentLoad,
   EquipmentLoadQuery,
-} from '../../../models/equipmentLoad.js';
+} from '../../../models/reports/equipmentLoad.js';
 import type { EquipmentLoadRepository } from '../../equipmentLoadRepository.js';
 
 interface EquipmentLoadRow {

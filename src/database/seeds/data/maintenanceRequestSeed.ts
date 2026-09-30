@@ -1,7 +1,7 @@
 import type {
   RequestPriority,
   RequestStatus,
-} from '../../../models/maintenanceRequest.js';
+} from '../../../models/requests/maintenanceRequest.js';
 
 export interface MaintenanceRequestSeed {
   id: string;

@@ -4,7 +4,7 @@ import { MaintenanceRequestModel } from '../../../database/models/maintenanceReq
 import { RequestAssigneeModel } from '../../../database/models/requestAssigneeModel.js';
 import { NotFoundError } from '../../../errors/notFoundError.js';
 import { ValidationError } from '../../../errors/validationError.js';
-import type { RequestAssigneeInput } from '../../../models/requestAssignee.js';
+import type { RequestAssigneeInput } from '../../../models/requests/requestAssignee.js';
 import { handleDatabaseError } from '../../handleDatabaseError.js';
 
 export const replaceRequestAssignees = async (

@@ -1,7 +1,7 @@
 import type {
   RequestPriority,
   RequestStatus,
-} from './maintenanceRequest.js';
+} from '../requests/maintenanceRequest.js';
 
 export interface SiteSummary {
   siteId: string;

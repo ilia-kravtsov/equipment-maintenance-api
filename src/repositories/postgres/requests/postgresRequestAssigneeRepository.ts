@@ -1,6 +1,6 @@
 import type { Sequelize } from 'sequelize';
 
-import type { RequestAssigneeInput } from '../../../models/requestAssignee.js';
+import type { RequestAssigneeInput } from '../../../models/requests/requestAssignee.js';
 import type { RequestAssigneeRepository } from '../../requestAssigneeRepository.js';
 import { removeRequestAssignee } from './removeRequestAssignee.js';
 import { replaceRequestAssignees } from './replaceRequestAssignees.js';
