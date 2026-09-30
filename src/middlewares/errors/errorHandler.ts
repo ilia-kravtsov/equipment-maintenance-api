@@ -12,6 +12,7 @@ const statusByErrorCode: Record<string, number> = {
   CONFLICT: 409,
   RATE_LIMIT_EXCEEDED: 429,
   UNAUTHORIZED: 401,
+  FORBIDDEN: 403,
 };
 
 export const errorHandler: ErrorRequestHandler = (error, _req, res, _next) => {
