@@ -1,7 +1,7 @@
 import type { ErrorRequestHandler } from 'express';
 
-import { BadRequestError } from '../errors/badRequestError.js';
-import { PayloadTooLargeError } from '../errors/payloadTooLargeError.js';
+import { BadRequestError } from '../../errors/badRequestError.js';
+import { PayloadTooLargeError } from '../../errors/payloadTooLargeError.js';
 
 export const jsonErrorHandler: ErrorRequestHandler = (
   error,

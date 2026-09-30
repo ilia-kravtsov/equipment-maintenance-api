@@ -1,7 +1,7 @@
 import { rateLimit } from 'express-rate-limit';
 
-import { getAuthConfig } from '../config/auth.js';
-import { RateLimitError } from '../errors/rateLimitError.js';
+import { getAuthConfig } from '../../config/auth.js';
+import { RateLimitError } from '../../errors/rateLimitError.js';
 
 export const createLoginRateLimiter = () => {
   const config = getAuthConfig();

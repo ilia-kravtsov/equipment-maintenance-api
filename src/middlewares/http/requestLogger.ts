@@ -1,8 +1,8 @@
 import type { Request, Response } from 'express';
 import { pinoHttp } from 'pino-http';
 
-import { logger } from '../config/logger.js';
-import {AppError} from "../errors/appError.js";
+import { logger } from '../../config/logger.js';
+import {AppError} from "../../errors/appError.js";
 
 const createLogObject = (
   req: Request,

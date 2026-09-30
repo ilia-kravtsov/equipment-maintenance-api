@@ -1,6 +1,6 @@
 import type { ErrorRequestHandler } from 'express';
-import { ValidationError } from '../errors/validationError.js';
-import { AppError } from '../errors/appError.js';
+import { ValidationError } from '../../errors/validationError.js';
+import { AppError } from '../../errors/appError.js';
 
 const statusByErrorCode: Record<string, number> = {
   WEATHER_SERVICE_ERROR: 502,

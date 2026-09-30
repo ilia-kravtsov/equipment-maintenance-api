@@ -4,8 +4,8 @@ import type { ZodType } from 'zod';
 import {
   ValidationError,
   type ValidationErrorDetail,
-} from '../errors/validationError.js';
-import { BadRequestError } from "../errors/badRequestError.js";
+} from '../../errors/validationError.js';
+import { BadRequestError } from "../../errors/badRequestError.js";
 
 export const validateQuery = (
   schema: ZodType,

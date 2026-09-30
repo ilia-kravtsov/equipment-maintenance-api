@@ -1,6 +1,6 @@
 import type { NextFunction, Request, Response } from 'express';
-import { config } from '../config/index.js';
-import { UnauthorizedError } from '../errors/unauthorizedError.js';
+import { config } from '../../config/index.js';
+import { UnauthorizedError } from '../../errors/unauthorizedError.js';
 
 export const requireApiKey = (
   req: Request,

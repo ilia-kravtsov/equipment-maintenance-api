@@ -6,7 +6,7 @@ import type {
 import type { ParamsDictionary } from 'express-serve-static-core';
 
 import { UnauthorizedError } from '../errors/unauthorizedError.js';
-import type { AuthLocals } from '../middlewares/requireAuth.js';
+import type { AuthLocals } from '../middlewares/auth/requireAuth.js';
 import type { AuthSessionResult } from '../models/auth.js';
 import type {
   LoginInput,

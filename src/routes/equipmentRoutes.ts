@@ -1,20 +1,20 @@
 import { Router } from 'express';
-import { validateParams } from '../middlewares/validateParams.js';
+import { validateParams } from '../middlewares/validation/validateParams.js';
 import { idParamsSchema } from '../validators/commonValidator.js';
 import {
   type EquipmentController,
   type EquipmentParams,
 } from '../controllers/equipmentController.js';
-import { validateBody } from '../middlewares/validateBody.js';
+import { validateBody } from '../middlewares/validation/validateBody.js';
 import {
   createEquipmentSchema,
   updateEquipmentSchema,
   equipmentListQuerySchema,
 } from '../validators/equipmentValidator.js';
-import { requireApiKey } from '../middlewares/requireApiKey.js';
+import { requireApiKey } from '../middlewares/auth/requireApiKey.js';
 
-import { validateQuery } from '../middlewares/validateQuery.js';
-import { validatePagination } from '../middlewares/validatePagination.js';
+import { validateQuery } from '../middlewares/validation/validateQuery.js';
+import { validatePagination } from '../middlewares/validation/validatePagination.js';
 import { maintenanceRequestListQuerySchema } from '../validators/maintenanceRequestValidator.js';
 
 export const createEquipmentRouter = (

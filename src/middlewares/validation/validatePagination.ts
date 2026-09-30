@@ -1,7 +1,7 @@
 import type { RequestHandler } from 'express';
 import { z } from 'zod';
 
-import { BadRequestError } from '../errors/badRequestError.js';
+import { BadRequestError } from '../../errors/badRequestError.js';
 
 const positiveInteger = z.string()
   .regex(/^\d+$/)

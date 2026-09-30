@@ -5,9 +5,9 @@ import type {
   RequestAssigneeParams,
   RemoveRequestAssigneeParams,
 } from '../controllers/requestAssigneeController.js';
-import { requireApiKey } from '../middlewares/requireApiKey.js';
-import { validateBody } from '../middlewares/validateBody.js';
-import { validateParams } from '../middlewares/validateParams.js';
+import { requireApiKey } from '../middlewares/auth/requireApiKey.js';
+import { validateBody } from '../middlewares/validation/validateBody.js';
+import { validateParams } from '../middlewares/validation/validateParams.js';
 import { idParamsSchema } from '../validators/commonValidator.js';
 import {
   assignRequestAssigneesSchema,

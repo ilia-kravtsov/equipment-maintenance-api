@@ -2,8 +2,8 @@ import cookieParser from 'cookie-parser';
 import { Router, type RequestHandler } from 'express';
 
 import type { AuthController } from '../controllers/authController.js';
-import { createLoginRateLimiter } from '../middlewares/loginRateLimiter.js';
-import { validateBody } from '../middlewares/validateBody.js';
+import { createLoginRateLimiter } from '../middlewares/auth/loginRateLimiter.js';
+import { validateBody } from '../middlewares/validation/validateBody.js';
 import {
   loginSchema,
   registerUserSchema,

@@ -5,7 +5,7 @@ import type { ZodType } from 'zod';
 import {
   ValidationError,
   type ValidationErrorDetail,
-} from '../errors/validationError.js';
+} from '../../errors/validationError.js';
 
 export const validateParams = <P extends ParamsDictionary = ParamsDictionary>(
   schema: ZodType,
