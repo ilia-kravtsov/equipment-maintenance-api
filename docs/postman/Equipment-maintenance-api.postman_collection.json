@@ -18324,6 +18324,3109 @@
           ]
         }
       ]
+    },
+    {
+      "name": "Case 4 - Authentication",
+      "item": [
+        {
+          "name": "Case 4 - Register viewer - 201",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status is 201\", () => {\r\n  pm.response.to.have.status(201);\r\n});\r\n\r\npm.test(\"Registered user is a viewer without secrets\", () => {\r\n  const user = pm.response.json().data;\r\n\r\n  pm.expect(user.role).to.eql(\"viewer\");\r\n  pm.expect(user.technicianId).to.eql(null);\r\n  pm.expect(user).not.to.have.property(\"password\");\r\n  pm.expect(user).not.to.have.property(\"passwordHash\");\r\n});"
+                ]
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableCookies": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"{{authEmail}}\",\r\n  \"password\": \"{{authPassword}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/register",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Case 4 - Register viewer - 201",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"{{authEmail}}\",\r\n  \"password\": \"{{authPassword}}\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/auth/register",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "auth",
+                    "register"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "ratelimit-policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "ratelimit-limit",
+                  "value": "100"
+                },
+                {
+                  "key": "ratelimit-remaining",
+                  "value": "99"
+                },
+                {
+                  "key": "ratelimit-reset",
+                  "value": "60"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "no-store"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "205"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"cd-UiVb3f+2/1HJnWieY2Bdh0P7zVw\""
+                },
+                {
+                  "key": "date",
+                  "value": "Wed, 30 Sep 2026 10:12:37 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"id\": \"e8386f6d-ed6d-49e0-a8d6-a61ff9e9da09\",\n    \"email\": \"auth-check-001@example.com\",\n    \"role\": \"viewer\",\n    \"technicianId\": null,\n    \"createdAt\": \"2026-09-30T10:12:37.631Z\",\n    \"updatedAt\": \"2026-09-30T10:12:37.631Z\"\n  }\n}"
+            },
+            {
+              "name": "Case 4 - Register viewer - 409 - the same email",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"{{authEmail}}\",\r\n  \"password\": \"{{authPassword}}\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/auth/register",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "auth",
+                    "register"
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "ratelimit-policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "ratelimit-limit",
+                  "value": "100"
+                },
+                {
+                  "key": "ratelimit-remaining",
+                  "value": "98"
+                },
+                {
+                  "key": "ratelimit-reset",
+                  "value": "37"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "no-store"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "130"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"82-4TsbiwCXtXPbigJRdaNqLAbS/OQ\""
+                },
+                {
+                  "key": "date",
+                  "value": "Wed, 30 Sep 2026 10:13:01 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"error\": {\n    \"code\": \"CONFLICT\",\n    \"message\": \"A user with this email already exists\",\n    \"requestId\": \"abd98ef1-4fbb-437d-bb6d-b88eec586479\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Case 4 - Login - 200",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status is 200\", () => {\r\n  pm.response.to.have.status(200);\r\n});\r\n\r\nif (pm.response.code === 200) {\r\n  const data = pm.response.json().data;\r\n  const cookie = pm.response.headers.get(\"Set-Cookie\") || \"\";\r\n  const match = cookie.match(/(?:^|;\\s*)refresh_token=([^;]+)/);\r\n\r\n  pm.test(\"Refresh cookie has required attributes\", () => {\r\n    pm.expect(match).not.to.eql(null);\r\n    pm.expect(cookie).to.include(\"HttpOnly\");\r\n    pm.expect(cookie).to.include(\"Secure\");\r\n    pm.expect(cookie).to.include(\"SameSite=Lax\");\r\n    pm.expect(cookie).to.include(\"Path=/api/auth\");\r\n  });\r\n\r\n  pm.test(\"JSON contains no refresh token or password hash\", () => {\r\n    pm.expect(data).not.to.have.property(\"refreshToken\");\r\n    pm.expect(data.user).not.to.have.property(\"passwordHash\");\r\n  });\r\n\r\n  if (match) {\r\n    pm.collectionVariables.set(\"authAccessToken\", data.accessToken);\r\n    pm.collectionVariables.set(\"authRefreshToken\", match[1]);\r\n    pm.collectionVariables.unset(\"authOldRefreshToken\");\r\n  }\r\n}"
+                ]
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableCookies": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"{{authEmail}}\",\r\n  \"password\": \"{{authPassword}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Case 4 - Login - 200",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"{{authEmail}}\",\r\n  \"password\": \"{{authPassword}}\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/auth/login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "",
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "10;w=900"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "10"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "9"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "900"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-store"
+                },
+                {
+                  "key": "Set-Cookie",
+                  "value": "refresh_token=REDACTED_REFRESH_TOKEN; Path=/api/auth; Expires=Wed, 07 Oct 2026 11:09:07 GMT; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "618"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"26a-zmKLbVqOsthW/aWnYp+SfPD/DLM\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 30 Sep 2026 11:09:07 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\n    \"data\": {\n        \"user\": {\n            \"id\": \"a0abc83b-cfe6-43ce-9cee-3e0bc182bfc6\",\n            \"email\": \"auth-check-002@example.com\",\n            \"role\": \"viewer\",\n            \"technicianId\": null,\n            \"createdAt\": \"2026-09-30T10:55:44.688Z\",\n            \"updatedAt\": \"2026-09-30T10:55:44.688Z\"\n        },\n        \"accessToken\": \"REDACTED_ACCESS_TOKEN\",\n        \"accessTokenExpiresIn\": 900\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Case 4 - Get current user - 200",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status is 200\", () => {\r",
+                  "  pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Current user is a viewer without secrets\", () => {\r",
+                  "  const user = pm.response.json().data;\r",
+                  "\r",
+                  "  pm.expect(user.role).to.eql(\"viewer\");\r",
+                  "  pm.expect(user).not.to.have.property(\"passwordHash\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableCookies": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{authAccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/me",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "me"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Case 4 - Get current user - 200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/auth/me",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "auth",
+                    "me"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "ratelimit-policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "ratelimit-limit",
+                  "value": "100"
+                },
+                {
+                  "key": "ratelimit-remaining",
+                  "value": "99"
+                },
+                {
+                  "key": "ratelimit-reset",
+                  "value": "60"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "no-store"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "205"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"cd-UiVb3f+2/1HJnWieY2Bdh0P7zVw\""
+                },
+                {
+                  "key": "date",
+                  "value": "Wed, 30 Sep 2026 10:18:33 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"id\": \"e8386f6d-ed6d-49e0-a8d6-a61ff9e9da09\",\n    \"email\": \"auth-check-001@example.com\",\n    \"role\": \"viewer\",\n    \"technicianId\": null,\n    \"createdAt\": \"2026-09-30T10:12:37.631Z\",\n    \"updatedAt\": \"2026-09-30T10:12:37.631Z\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Case 4 - Get current admin - 200",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status is 200\", () => {\r",
+                  "  pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Current user is an administrator\", () => {\r",
+                  "  const user = pm.response.json().data;\r",
+                  "\r",
+                  "  pm.expect(user.role).to.eql(\"admin\");\r",
+                  "  pm.expect(user).not.to.have.property(\"passwordHash\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableCookies": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{authAccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/me",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "me"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Case 4 - Get current admin - 200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/auth/me",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "auth",
+                    "me"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "ratelimit-policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "ratelimit-limit",
+                  "value": "100"
+                },
+                {
+                  "key": "ratelimit-remaining",
+                  "value": "99"
+                },
+                {
+                  "key": "ratelimit-reset",
+                  "value": "60"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "no-store"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "192"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"c0-fiOhDmIth1GqaYxZHQWMNg4GMQE\""
+                },
+                {
+                  "key": "date",
+                  "value": "Wed, 30 Sep 2026 10:47:42 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"id\": \"bf82f290-3c04-4747-87cf-02e6afcc76fc\",\n    \"email\": \"ivanov@mail.ru\",\n    \"role\": \"admin\",\n    \"technicianId\": null,\n    \"createdAt\": \"2026-09-30T09:05:52.481Z\",\n    \"updatedAt\": \"2026-09-30T09:05:52.481Z\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Case 4 - Refresh session - 200",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status is 200\", () => {\r",
+                  "  pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "if (pm.response.code === 200) {\r",
+                  "  const data = pm.response.json().data;\r",
+                  "  const cookie = pm.response.headers.get(\"Set-Cookie\") || \"\";\r",
+                  "  const match = cookie.match(/(?:^|;\\s*)refresh_token=([^;]+)/);\r",
+                  "  const previousToken = pm.collectionVariables.get(\"authRefreshToken\");\r",
+                  "\r",
+                  "  pm.test(\"Refresh token is rotated\", () => {\r",
+                  "    pm.expect(match).not.to.eql(null);\r",
+                  "\r",
+                  "    if (match) {\r",
+                  "      pm.expect(match[1]).not.to.eql(previousToken);\r",
+                  "    }\r",
+                  "  });\r",
+                  "\r",
+                  "  if (match) {\r",
+                  "    pm.collectionVariables.set(\"authOldRefreshToken\", previousToken);\r",
+                  "    pm.collectionVariables.set(\"authRefreshToken\", match[1]);\r",
+                  "    pm.collectionVariables.set(\"authAccessToken\", data.accessToken);\r",
+                  "  }\r",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableCookies": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Cookie",
+                "value": "refresh_token={{authRefreshToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/refresh",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "refresh"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Case 4 - Refresh session - 200",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Cookie",
+                    "value": "refresh_token={{authRefreshToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/auth/refresh",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "auth",
+                    "refresh"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "ratelimit-policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "ratelimit-limit",
+                  "value": "100"
+                },
+                {
+                  "key": "ratelimit-remaining",
+                  "value": "98"
+                },
+                {
+                  "key": "ratelimit-reset",
+                  "value": "40"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "no-store"
+                },
+                {
+                  "key": "set-cookie",
+                  "value": "refresh_token=REDACTED_REFRESH_TOKEN; Path=/api/auth; Expires=Wed, 07 Oct 2026 10:25:48 GMT; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "618"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"26a-xDpPX1S/z+tF7Anc6ehDYT7OZ7o\""
+                },
+                {
+                  "key": "date",
+                  "value": "Wed, 30 Sep 2026 10:26:09 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"user\": {\n      \"id\": \"e8386f6d-ed6d-49e0-a8d6-a61ff9e9da09\",\n      \"email\": \"auth-check-001@example.com\",\n      \"role\": \"viewer\",\n      \"technicianId\": null,\n      \"createdAt\": \"2026-09-30T10:12:37.631Z\",\n      \"updatedAt\": \"2026-09-30T10:12:37.631Z\"\n    },\n    \"accessToken\": \"REDACTED_ACCESS_TOKEN\",\n    \"accessTokenExpiresIn\": 900\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Case 4 - Reuse old refresh token - 401",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Old refresh token is rejected\", () => {\r",
+                  "  pm.response.to.have.status(401);\r",
+                  "  pm.expect(pm.response.json().error.code).to.eql(\"UNAUTHORIZED\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableCookies": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Cookie",
+                "value": "refresh_token={{authOldRefreshToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/refresh",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "refresh"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Case 4 - Reuse old refresh token - 401",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Cookie",
+                    "value": "refresh_token={{authOldRefreshToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/auth/refresh",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "auth",
+                    "refresh"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "ratelimit-policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "ratelimit-limit",
+                  "value": "100"
+                },
+                {
+                  "key": "ratelimit-remaining",
+                  "value": "99"
+                },
+                {
+                  "key": "ratelimit-reset",
+                  "value": "60"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "no-store"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "129"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"81-z8NCNQPxhIaDWyiWBhF7B0FeX9k\""
+                },
+                {
+                  "key": "date",
+                  "value": "Wed, 30 Sep 2026 10:27:37 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"error\": {\n    \"code\": \"UNAUTHORIZED\",\n    \"message\": \"Invalid or expired refresh token\",\n    \"requestId\": \"c4833f0d-2e7c-475d-aef6-5a66f2e5dbb0\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Case 4 - Logout - 204",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Logout returns 204 with an empty body\", () => {\r",
+                  "  pm.response.to.have.status(204);\r",
+                  "  pm.expect(pm.response.text()).to.eql(\"\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Refresh cookie is cleared\", () => {\r",
+                  "  const cookie = pm.response.headers.get(\"Set-Cookie\") || \"\";\r",
+                  "\r",
+                  "  pm.expect(cookie).to.include(\"refresh_token=;\");\r",
+                  "  pm.expect(cookie).to.include(\r",
+                  "    \"Expires=Thu, 01 Jan 1970 00:00:00 GMT\"\r",
+                  "  );\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableCookies": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Cookie",
+                "value": "refresh_token={{authRefreshToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/logout",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "logout"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Case 4 - Logout - 204",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Cookie",
+                    "value": "refresh_token={{authRefreshToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/auth/logout",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "auth",
+                    "logout"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "ratelimit-policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "ratelimit-limit",
+                  "value": "100"
+                },
+                {
+                  "key": "ratelimit-remaining",
+                  "value": "99"
+                },
+                {
+                  "key": "ratelimit-reset",
+                  "value": "60"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "no-store"
+                },
+                {
+                  "key": "set-cookie",
+                  "value": "refresh_token=; Path=/api/auth; Expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "date",
+                  "value": "Wed, 30 Sep 2026 10:28:48 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": ""
+            }
+          ]
+        },
+        {
+          "name": "Case 4 - Get current user after logout - 401",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Access token from the revoked session is rejected\", () => {\r",
+                  "  pm.response.to.have.status(401);\r",
+                  "  pm.expect(pm.response.json().error.code).to.eql(\"UNAUTHORIZED\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableCookies": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{authAccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/me",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "me"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Case 4 - Get current user after logout - 401",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/auth/me",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "auth",
+                    "me"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "ratelimit-policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "ratelimit-limit",
+                  "value": "100"
+                },
+                {
+                  "key": "ratelimit-remaining",
+                  "value": "99"
+                },
+                {
+                  "key": "ratelimit-reset",
+                  "value": "60"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "no-store"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "124"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"7c-sklCrFA9a9/r0Qo+Q2B7uVhILFo\""
+                },
+                {
+                  "key": "date",
+                  "value": "Wed, 30 Sep 2026 10:30:11 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"error\": {\n    \"code\": \"UNAUTHORIZED\",\n    \"message\": \"Session is no longer active\",\n    \"requestId\": \"fafae688-2624-4979-b349-fcbcc63eb461\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Case 4 - Register duplicate email - 409",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Duplicate email returns 409\", () => {\r",
+                  "  pm.response.to.have.status(409);\r",
+                  "  pm.expect(pm.response.json().error.code).to.eql(\"CONFLICT\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableCookies": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"{{authEmail}}\",\r\n  \"password\": \"{{authPassword}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/register",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Case 4 - Register duplicate email - 409",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"{{authEmail}}\",\r\n  \"password\": \"{{authPassword}}\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/auth/register",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "auth",
+                    "register"
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "ratelimit-policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "ratelimit-limit",
+                  "value": "100"
+                },
+                {
+                  "key": "ratelimit-remaining",
+                  "value": "99"
+                },
+                {
+                  "key": "ratelimit-reset",
+                  "value": "60"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "no-store"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "130"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"82-GOiMcFMm8Tn9npVdHurHRs/LAks\""
+                },
+                {
+                  "key": "date",
+                  "value": "Wed, 30 Sep 2026 10:33:01 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"error\": {\n    \"code\": \"CONFLICT\",\n    \"message\": \"A user with this email already exists\",\n    \"requestId\": \"d7f7bcb0-d6af-40da-b15d-0360dcdd5604\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Case 4 - Register with admin role - 422",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Registration rejects the role field\", () => {\r",
+                  "  pm.response.to.have.status(422);\r",
+                  "  pm.expect(pm.response.json().error.code).to.eql(\"VALIDATION_ERROR\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableCookies": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"{{authEmail}}\",\r\n  \"password\": \"{{authPassword}}\",\r\n  \"role\": \"admin\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/register",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Case 4 - Register with admin role - 422",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"{{authEmail}}\",\r\n  \"password\": \"{{authPassword}}\",\r\n  \"role\": \"admin\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/auth/register",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "auth",
+                    "register"
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "ratelimit-policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "ratelimit-limit",
+                  "value": "100"
+                },
+                {
+                  "key": "ratelimit-remaining",
+                  "value": "98"
+                },
+                {
+                  "key": "ratelimit-reset",
+                  "value": "3"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "no-store"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "190"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"be-108X3sd5240gRJGPCLTqeFya9GU\""
+                },
+                {
+                  "key": "date",
+                  "value": "Wed, 30 Sep 2026 10:33:58 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"error\": {\n    \"code\": \"VALIDATION_ERROR\",\n    \"message\": \"Request validation failed\",\n    \"details\": [\n      {\n        \"field\": \"\",\n        \"message\": \"Unrecognized key: \\\"role\\\"\"\n      }\n    ],\n    \"requestId\": \"d9e5954a-c7ac-4c30-bc6a-ecc0b72a78d9\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Case 4 - Login with wrong password - 401",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Invalid credentials return a generic error\", () => {\r",
+                  "  pm.response.to.have.status(401);\r",
+                  "\r",
+                  "  const error = pm.response.json().error;\r",
+                  "  pm.expect(error.code).to.eql(\"UNAUTHORIZED\");\r",
+                  "  pm.expect(error.message).to.eql(\"Invalid email or password\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableCookies": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"{{authEmail}}\",\r\n  \"password\": \"Definitely-wrong-password-456\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Case 4 - Login with wrong password - 401",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"{{authEmail}}\",\r\n  \"password\": \"Definitely-wrong-password-456\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/auth/login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "ratelimit-policy",
+                  "value": "10;w=900"
+                },
+                {
+                  "key": "ratelimit-limit",
+                  "value": "10"
+                },
+                {
+                  "key": "ratelimit-remaining",
+                  "value": "9"
+                },
+                {
+                  "key": "ratelimit-reset",
+                  "value": "900"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "no-store"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "122"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"7a-rHGFBmj4h7Z1CKmmy5LAfnA+PMc\""
+                },
+                {
+                  "key": "date",
+                  "value": "Wed, 30 Sep 2026 10:34:46 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"error\": {\n    \"code\": \"UNAUTHORIZED\",\n    \"message\": \"Invalid email or password\",\n    \"requestId\": \"4a7c4048-fdf9-4439-a613-9a27c89a7865\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Case 4 - Login with unknown email - 401",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Invalid credentials return a generic error\", () => {\r",
+                  "  pm.response.to.have.status(401);\r",
+                  "\r",
+                  "  const error = pm.response.json().error;\r",
+                  "  pm.expect(error.code).to.eql(\"UNAUTHORIZED\");\r",
+                  "  pm.expect(error.message).to.eql(\"Invalid email or password\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableCookies": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"missing-{{$guid}}@example.com\",\r\n  \"password\": \"Definitely-wrong-password-456\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Case 4 - Login with unknown email - 401",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"missing-{{$guid}}@example.com\",\r\n  \"password\": \"Definitely-wrong-password-456\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/auth/login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "ratelimit-policy",
+                  "value": "10;w=900"
+                },
+                {
+                  "key": "ratelimit-limit",
+                  "value": "10"
+                },
+                {
+                  "key": "ratelimit-remaining",
+                  "value": "8"
+                },
+                {
+                  "key": "ratelimit-reset",
+                  "value": "808"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "no-store"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "122"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"7a-e+IhsHJkj71ZhcMRzBv0ZdhC09w\""
+                },
+                {
+                  "key": "date",
+                  "value": "Wed, 30 Sep 2026 10:36:18 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"error\": {\n    \"code\": \"UNAUTHORIZED\",\n    \"message\": \"Invalid email or password\",\n    \"requestId\": \"3ef45717-6617-4b7f-af93-78f3cc94a27d\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Case 4 - Get current user without token - 401",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Missing access token returns 401\", () => {\r",
+                  "  pm.response.to.have.status(401);\r",
+                  "  pm.expect(pm.response.json().error.code).to.eql(\"UNAUTHORIZED\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableCookies": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/me",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "me"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Case 4 - Get current user without token - 401",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/auth/me",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "auth",
+                    "me"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "ratelimit-policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "ratelimit-limit",
+                  "value": "100"
+                },
+                {
+                  "key": "ratelimit-remaining",
+                  "value": "98"
+                },
+                {
+                  "key": "ratelimit-reset",
+                  "value": "9"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "no-store"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "128"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"80-KbSAf5vx1/qX0EOpnCo4FcU8YgI\""
+                },
+                {
+                  "key": "date",
+                  "value": "Wed, 30 Sep 2026 10:37:09 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"error\": {\n    \"code\": \"UNAUTHORIZED\",\n    \"message\": \"Missing or invalid Bearer token\",\n    \"requestId\": \"e758bf4a-f6d8-43dc-9b53-6d92d68ff9f7\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Case 4 - Refresh without cookie - 401",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Missing refresh cookie returns 401\", () => {\r",
+                  "  pm.response.to.have.status(401);\r",
+                  "  pm.expect(pm.response.json().error.code).to.eql(\"UNAUTHORIZED\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableCookies": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/refresh",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "refresh"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Case 4 - Refresh without cookie - 401",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/auth/refresh",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "auth",
+                    "refresh"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "ratelimit-policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "ratelimit-limit",
+                  "value": "100"
+                },
+                {
+                  "key": "ratelimit-remaining",
+                  "value": "99"
+                },
+                {
+                  "key": "ratelimit-reset",
+                  "value": "60"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "no-store"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "129"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"81-msRgpj7eQqWB0WKSeBcTt/54G3s\""
+                },
+                {
+                  "key": "date",
+                  "value": "Wed, 30 Sep 2026 10:37:53 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"error\": {\n    \"code\": \"UNAUTHORIZED\",\n    \"message\": \"Invalid or expired refresh token\",\n    \"requestId\": \"fc18b23e-8daa-443d-9f92-c953d9212a8d\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Case 4 - Refresh after logout - 401",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Revoked refresh token returns 401\", () => {\r",
+                  "  pm.response.to.have.status(401);\r",
+                  "  pm.expect(pm.response.json().error.code).to.eql(\"UNAUTHORIZED\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableCookies": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Cookie",
+                "value": "refresh_token={{authRefreshToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/refresh",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "refresh"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Case 4 - Refresh after logout - 401",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Cookie",
+                    "value": "refresh_token={{authRefreshToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/auth/refresh",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "auth",
+                    "refresh"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "ratelimit-policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "ratelimit-limit",
+                  "value": "100"
+                },
+                {
+                  "key": "ratelimit-remaining",
+                  "value": "98"
+                },
+                {
+                  "key": "ratelimit-reset",
+                  "value": "48"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "no-store"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "129"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"81-SkwZ6GfK8bB86kXBnMxeJdD+QKQ\""
+                },
+                {
+                  "key": "date",
+                  "value": "Wed, 30 Sep 2026 10:39:09 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"error\": {\n    \"code\": \"UNAUTHORIZED\",\n    \"message\": \"Invalid or expired refresh token\",\n    \"requestId\": \"118f0aa9-8898-47f4-b39f-a9616b3942f2\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Case 4 - Login admin - 200",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status is 200\", () => {\r",
+                  "  pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "if (pm.response.code === 200) {\r",
+                  "  const data = pm.response.json().data;\r",
+                  "  const cookie = pm.response.headers.get(\"Set-Cookie\") || \"\";\r",
+                  "  const match = cookie.match(/(?:^|;\\s*)refresh_token=([^;]+)/);\r",
+                  "\r",
+                  "  pm.test(\"Refresh cookie has required attributes\", () => {\r",
+                  "    pm.expect(match).not.to.eql(null);\r",
+                  "    pm.expect(cookie).to.include(\"HttpOnly\");\r",
+                  "    pm.expect(cookie).to.include(\"Secure\");\r",
+                  "    pm.expect(cookie).to.include(\"SameSite=Lax\");\r",
+                  "    pm.expect(cookie).to.include(\"Path=/api/auth\");\r",
+                  "  });\r",
+                  "\r",
+                  "  pm.test(\"JSON contains no refresh token or password hash\", () => {\r",
+                  "    pm.expect(data).not.to.have.property(\"refreshToken\");\r",
+                  "    pm.expect(data.user).not.to.have.property(\"passwordHash\");\r",
+                  "  });\r",
+                  "\r",
+                  "  if (match) {\r",
+                  "    pm.collectionVariables.set(\"authAccessToken\", data.accessToken);\r",
+                  "    pm.collectionVariables.set(\"authRefreshToken\", match[1]);\r",
+                  "    pm.collectionVariables.unset(\"authOldRefreshToken\");\r",
+                  "  }\r",
+                  "\r",
+                  "  pm.test(\"User has the admin role\", () => {\r",
+                  "  pm.expect(pm.response.json().data.user.role).to.eql(\"admin\");\r",
+                  "});\r",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableCookies": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"{{authAdminEmail}}\",\r\n  \"password\": \"{{authAdminPassword}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Case 4 - Login admin - 200",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"{{authAdminEmail}}\",\r\n  \"password\": \"{{authAdminPassword}}\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/auth/login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "ratelimit-policy",
+                  "value": "10;w=900"
+                },
+                {
+                  "key": "ratelimit-limit",
+                  "value": "10"
+                },
+                {
+                  "key": "ratelimit-remaining",
+                  "value": "7"
+                },
+                {
+                  "key": "ratelimit-reset",
+                  "value": "502"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "no-store"
+                },
+                {
+                  "key": "set-cookie",
+                  "value": "refresh_token=REDACTED_REFRESH_TOKEN; Path=/api/auth; Expires=Wed, 07 Oct 2026 10:41:24 GMT; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "605"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"25d-JGODlALMHm3SjLoL08LmhwWiySk\""
+                },
+                {
+                  "key": "date",
+                  "value": "Wed, 30 Sep 2026 10:41:24 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"user\": {\n      \"id\": \"bf82f290-3c04-4747-87cf-02e6afcc76fc\",\n      \"email\": \"ivanov@mail.ru\",\n      \"role\": \"admin\",\n      \"technicianId\": null,\n      \"createdAt\": \"2026-09-30T09:05:52.481Z\",\n      \"updatedAt\": \"2026-09-30T09:05:52.481Z\"\n    },\n    \"accessToken\": \"REDACTED_ACCESS_TOKEN\",\n    \"accessTokenExpiresIn\": 900\n  }\n}"
+            },
+            {
+              "name": "Case 4 - Login admin - 200",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"{{authAdminEmail}}\",\r\n  \"password\": \"{{authAdminPassword}}\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/auth/login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "content-security-policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "cross-origin-opener-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "cross-origin-resource-policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "origin-agent-cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-dns-prefetch-control",
+                  "value": "off"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "ratelimit-policy",
+                  "value": "10;w=900"
+                },
+                {
+                  "key": "ratelimit-limit",
+                  "value": "10"
+                },
+                {
+                  "key": "ratelimit-remaining",
+                  "value": "7"
+                },
+                {
+                  "key": "ratelimit-reset",
+                  "value": "129"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "no-store"
+                },
+                {
+                  "key": "set-cookie",
+                  "value": "refresh_token=REDACTED_REFRESH_TOKEN; Path=/api/auth; Expires=Wed, 07 Oct 2026 10:47:37 GMT; HttpOnly; Secure; SameSite=Lax"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "605"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"25d-RxRNbFRE+LUwRPArOChKc47t9eM\""
+                },
+                {
+                  "key": "date",
+                  "value": "Wed, 30 Sep 2026 10:47:37 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": {\n    \"user\": {\n      \"id\": \"bf82f290-3c04-4747-87cf-02e6afcc76fc\",\n      \"email\": \"ivanov@mail.ru\",\n      \"role\": \"admin\",\n      \"technicianId\": null,\n      \"createdAt\": \"2026-09-30T09:05:52.481Z\",\n      \"updatedAt\": \"2026-09-30T09:05:52.481Z\"\n    },\n    \"accessToken\": \"REDACTED_ACCESS_TOKEN\",\n    \"accessTokenExpiresIn\": 900\n  }\n}"
+            }
+          ]
+        }
+      ],
+      "auth": {
+        "type": "noauth"
+      }
     }
   ],
   "auth": {
@@ -18341,6 +21444,30 @@
       }
     ]
   },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
   "variable": [
     {
       "key": "baseUrl",
@@ -18393,6 +21520,34 @@
     {
       "key": "requestWithoutAssigneesId",
       "value": "3ffcab81-1063-4e7b-927a-5517cbf011df"
+    },
+    {
+      "key": "authEmail",
+      "value": "auth-check-002@example.com"
+    },
+    {
+      "key": "authPassword",
+      "value": ""
+    },
+    {
+      "key": "authAccessToken",
+      "secret": true
+    },
+    {
+      "key": "authRefreshToken",
+      "value": ""
+    },
+    {
+      "key": "authAdminEmail",
+      "value": "ivanov@mail.ru"
+    },
+    {
+      "key": "authAdminPassword",
+      "value": ""
+    },
+    {
+      "key": "authOldRefreshToken",
+      "value": ""
     }
   ]
 }
