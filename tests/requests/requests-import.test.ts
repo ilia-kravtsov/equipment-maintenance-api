@@ -2,6 +2,14 @@ import request from 'supertest';
 
 import { app } from '../../src/app.js';
 import { TEST_API_KEY } from '../testConfig.js';
+import { createTestSession } from '../helpers/createTestSession.js';
+
+let adminAccessToken: string;
+
+beforeAll(async () => {
+  const session = await createTestSession('admin');
+  adminAccessToken = session.accessToken;
+});
 
 describe('Maintenance Requests bulk import', () => {
   let equipmentId: string;
@@ -9,7 +17,7 @@ describe('Maintenance Requests bulk import', () => {
   beforeAll(async () => {
     const response = await request(app)
       .post('/api/equipment')
-      .set('X-API-Key', TEST_API_KEY)
+      .set('Authorization', `Bearer ${adminAccessToken}`)
       .send({
         name: 'Bulk Import Test Sensor',
         type: 'sensor',

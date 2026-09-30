@@ -3,11 +3,12 @@ import request from 'supertest';
 import { app } from '../../src/app.js';
 import { TEST_API_KEY } from '../testConfig.js';
 import { assignTestTechnician } from '../helpers/assignTestTechnician.js';
+import { createTestSession } from '../helpers/createTestSession.js';
 
 const createEquipment = async (serialNumber: string) => {
   const response = await request(app)
     .post('/api/equipment')
-    .set('X-API-Key', TEST_API_KEY)
+    .set('Authorization', `Bearer ${adminAccessToken}`)
     .send({
       name: 'Request Error Test Equipment',
       type: 'sensor',
@@ -24,6 +25,13 @@ const createEquipment = async (serialNumber: string) => {
 
   return response.body.data.id as string;
 };
+
+let adminAccessToken: string;
+
+beforeAll(async () => {
+  const session = await createTestSession('admin');
+  adminAccessToken = session.accessToken;
+});
 
 describe('Maintenance Requests API errors', () => {
   it('should return 422 for invalid maintenance request data', async () => {
@@ -112,7 +120,7 @@ describe('Maintenance Requests API errors', () => {
 
     const response = await request(app)
       .delete(`/api/equipment/${equipmentId}`)
-      .set('X-API-Key', TEST_API_KEY)
+      .set('Authorization', `Bearer ${adminAccessToken}`)
 
     expect(response.status).toBe(409);
     expect(response.body.error.code).toBe('CONFLICT');

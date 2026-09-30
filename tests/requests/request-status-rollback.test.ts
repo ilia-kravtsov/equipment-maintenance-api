@@ -5,14 +5,22 @@ import { sequelize } from '../../src/database/sequelize.js';
 import { MaintenanceRequestModel } from '../../src/database/models/maintenanceRequestModel.js';
 import { RequestStatusHistoryModel } from '../../src/database/models/requestStatusHistoryModel.js';
 import { updateRequestStatus } from '../../src/repositories/postgres/requests/updateRequestStatus.js';
-import { TEST_API_KEY } from '../testConfig.js';
 import { assignTestTechnician } from '../helpers/assignTestTechnician.js';
+import { createTestSession } from '../helpers/createTestSession.js';
+import { TEST_API_KEY } from '../testConfig.js';
+
+let adminAccessToken: string;
+
+beforeAll(async () => {
+  const session = await createTestSession('admin');
+  adminAccessToken = session.accessToken;
+});
 
 describe('Request status transaction rollback', () => {
   it('restores the request when history insertion fails and permits a retry', async () => {
     const equipmentResponse = await request(app)
       .post('/api/equipment')
-      .set('X-API-Key', TEST_API_KEY)
+      .set('Authorization', `Bearer ${adminAccessToken}`)
       .send({
         name: 'Status rollback equipment',
         type: 'sensor',
