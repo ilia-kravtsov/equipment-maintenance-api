@@ -5,6 +5,8 @@ import { TechnicianModel } from './technicianModel.js';
 import { MaintenanceRequestModel } from './maintenanceRequestModel.js';
 import { RequestStatusHistoryModel } from './requestStatusHistoryModel.js';
 import { RequestAssigneeModel } from './requestAssigneeModel.js';
+import { UserModel } from './userModel.js';
+import { RefreshSessionModel } from './refreshSessionModel.js';
 
 export const associateModels = (): void => {
   SiteModel.hasMany(EquipmentModel, {
@@ -112,6 +114,34 @@ export const associateModels = (): void => {
     foreignKey: 'technicianId',
     otherKey: 'requestId',
     onDelete: 'RESTRICT',
+    onUpdate: 'CASCADE',
+  });
+
+  TechnicianModel.hasOne(UserModel, {
+    as: 'user',
+    foreignKey: 'technicianId',
+    onDelete: 'RESTRICT',
+    onUpdate: 'CASCADE',
+  });
+
+  UserModel.belongsTo(TechnicianModel, {
+    as: 'technician',
+    foreignKey: 'technicianId',
+    onDelete: 'RESTRICT',
+    onUpdate: 'CASCADE',
+  });
+
+  UserModel.hasMany(RefreshSessionModel, {
+    as: 'refreshSessions',
+    foreignKey: 'userId',
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  });
+
+  RefreshSessionModel.belongsTo(UserModel, {
+    as: 'user',
+    foreignKey: 'userId',
+    onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
   });
 };
