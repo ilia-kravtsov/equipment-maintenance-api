@@ -19,7 +19,8 @@
     "db:migrate:undo:all": "tsx src/database/scripts/migrate.ts down-all",
     "db:check-models": "tsx src/database/scripts/checkModels.ts",
     "db:seed": "tsx src/database/scripts/seed.ts",
-    "db:bootstrap-admin": "tsx src/database/scripts/createInitialAdmin.ts"
+    "db:bootstrap-admin": "tsx src/database/scripts/createInitialAdmin.ts",
+    "db:bootstrap-admin:prod": "node dist/database/scripts/createInitialAdmin.js"
   },
   "repository": {
     "type": "git",
