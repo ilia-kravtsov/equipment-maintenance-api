@@ -113,7 +113,10 @@ app.use(
   createAuthRouter(authController, requireAuth),
 );
 
-app.use('/api/equipment', createEquipmentRouter(equipmentController));
+app.use(
+  '/api/equipment',
+  createEquipmentRouter(equipmentController, requireAuth),
+);
 
 app.use('/api/requests', createMaintenanceRequestRouter(requestController));
 
