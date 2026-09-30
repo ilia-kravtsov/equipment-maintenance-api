@@ -1,7 +1,7 @@
 import {
   loginSchema,
   registerUserSchema,
-} from '../src/validators/authValidator.js';
+} from '../../src/validators/authValidator.js';
 
 describe('Authentication validation', () => {
   it('normalizes email without changing the password', () => {

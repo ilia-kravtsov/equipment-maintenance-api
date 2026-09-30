@@ -1,9 +1,9 @@
 import { randomUUID } from 'node:crypto';
 
-import { initModels } from '../src/database/models/initModels.js';
-import { sequelize } from '../src/database/sequelize.js';
-import { ConflictError } from '../src/errors/conflictError.js';
-import { PostgresUserRepository } from '../src/repositories/postgres/users/postgresUserRepository.js';
+import { initModels } from '../../src/database/models/initModels.js';
+import { sequelize } from '../../src/database/sequelize.js';
+import { ConflictError } from '../../src/errors/conflictError.js';
+import { PostgresUserRepository } from '../../src/repositories/postgres/users/postgresUserRepository.js';
 
 initModels(sequelize);
 

@@ -1,16 +1,16 @@
 import express from 'express';
 import request from 'supertest';
 
-import { getAuthConfig } from '../src/config/auth.js';
-import { AuthController } from '../src/controllers/authController.js';
-import { UnauthorizedError } from '../src/errors/unauthorizedError.js';
-import { errorHandler } from '../src/middlewares/errorHandler.js';
-import { requestId } from '../src/middlewares/requestId.js';
-import { createRequireAuth } from '../src/middlewares/requireAuth.js';
-import { PostgresRefreshSessionRepository } from '../src/repositories/postgres/auth/postgresRefreshSessionRepository.js';
-import { PostgresUserRepository } from '../src/repositories/postgres/users/postgresUserRepository.js';
-import { createAuthRouter } from '../src/routes/authRoutes.js';
-import { AuthService } from '../src/services/authService.js';
+import { getAuthConfig } from '../../src/config/auth.js';
+import { AuthController } from '../../src/controllers/authController.js';
+import { UnauthorizedError } from '../../src/errors/unauthorizedError.js';
+import { errorHandler } from '../../src/middlewares/errorHandler.js';
+import { requestId } from '../../src/middlewares/requestId.js';
+import { createRequireAuth } from '../../src/middlewares/requireAuth.js';
+import { PostgresRefreshSessionRepository } from '../../src/repositories/postgres/auth/postgresRefreshSessionRepository.js';
+import { PostgresUserRepository } from '../../src/repositories/postgres/users/postgresUserRepository.js';
+import { createAuthRouter } from '../../src/routes/authRoutes.js';
+import { AuthService } from '../../src/services/authService.js';
 
 describe('Login rate limiting', () => {
   it('returns 429 after the allowed number of failed login attempts', async () => {

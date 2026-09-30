@@ -1,8 +1,8 @@
 import request from 'supertest';
 
-import { app } from '../src/app.js';
-import { TEST_API_KEY } from './testConfig.js';
-import { assignTestTechnician } from './helpers/assignTestTechnician.js';
+import { app } from '../../src/app.js';
+import { TEST_API_KEY } from '../testConfig.js';
+import { assignTestTechnician } from '../helpers/assignTestTechnician.js';
 
 const createEquipment = async (serialNumber: string) => {
   const response = await request(app)

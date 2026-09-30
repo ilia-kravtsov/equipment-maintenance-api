@@ -2,7 +2,7 @@ import { randomUUID } from 'node:crypto';
 
 import request from 'supertest';
 
-import { app } from '../src/app.js';
+import { app } from '../../src/app.js';
 
 const createCredentials = () => ({
   email: `http-auth-${randomUUID()}@example.com`,

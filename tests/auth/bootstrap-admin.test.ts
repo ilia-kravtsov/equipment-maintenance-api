@@ -1,11 +1,11 @@
 import { randomUUID } from 'node:crypto';
 
-import { bootstrapAdmin } from '../src/database/bootstrapAdmin.js';
-import { initModels } from '../src/database/models/initModels.js';
-import { sequelize } from '../src/database/sequelize.js';
-import { PostgresUserRepository } from '../src/repositories/postgres/users/postgresUserRepository.js';
-import { verifyPassword } from '../src/security/password.js';
-import { testAdminSequelize } from './database.js';
+import { bootstrapAdmin } from '../../src/database/bootstrapAdmin.js';
+import { initModels } from '../../src/database/models/initModels.js';
+import { sequelize } from '../../src/database/sequelize.js';
+import { PostgresUserRepository } from '../../src/repositories/postgres/users/postgresUserRepository.js';
+import { verifyPassword } from '../../src/security/password.js';
+import { testAdminSequelize } from '../database.js';
 
 initModels(sequelize);
 

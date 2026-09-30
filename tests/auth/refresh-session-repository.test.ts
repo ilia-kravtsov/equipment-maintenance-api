@@ -1,10 +1,10 @@
 import { randomBytes, randomUUID } from 'node:crypto';
 
-import { initModels } from '../src/database/models/initModels.js';
-import { RefreshSessionModel } from '../src/database/models/refreshSessionModel.js';
-import { sequelize } from '../src/database/sequelize.js';
-import { PostgresRefreshSessionRepository } from '../src/repositories/postgres/auth/postgresRefreshSessionRepository.js';
-import { PostgresUserRepository } from '../src/repositories/postgres/users/postgresUserRepository.js';
+import { initModels } from '../../src/database/models/initModels.js';
+import { RefreshSessionModel } from '../../src/database/models/refreshSessionModel.js';
+import { sequelize } from '../../src/database/sequelize.js';
+import { PostgresRefreshSessionRepository } from '../../src/repositories/postgres/auth/postgresRefreshSessionRepository.js';
+import { PostgresUserRepository } from '../../src/repositories/postgres/users/postgresUserRepository.js';
 
 initModels(sequelize);
 

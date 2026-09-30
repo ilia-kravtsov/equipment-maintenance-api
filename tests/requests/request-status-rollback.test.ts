@@ -1,12 +1,12 @@
 import request from 'supertest';
 
-import { app } from '../src/app.js';
-import { sequelize } from '../src/database/sequelize.js';
-import { MaintenanceRequestModel } from '../src/database/models/maintenanceRequestModel.js';
-import { RequestStatusHistoryModel } from '../src/database/models/requestStatusHistoryModel.js';
-import { updateRequestStatus } from '../src/repositories/postgres/requests/updateRequestStatus.js';
-import { TEST_API_KEY } from './testConfig.js';
-import { assignTestTechnician } from './helpers/assignTestTechnician.js';
+import { app } from '../../src/app.js';
+import { sequelize } from '../../src/database/sequelize.js';
+import { MaintenanceRequestModel } from '../../src/database/models/maintenanceRequestModel.js';
+import { RequestStatusHistoryModel } from '../../src/database/models/requestStatusHistoryModel.js';
+import { updateRequestStatus } from '../../src/repositories/postgres/requests/updateRequestStatus.js';
+import { TEST_API_KEY } from '../testConfig.js';
+import { assignTestTechnician } from '../helpers/assignTestTechnician.js';
 
 describe('Request status transaction rollback', () => {
   it('restores the request when history insertion fails and permits a retry', async () => {

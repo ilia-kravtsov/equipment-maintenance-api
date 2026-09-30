@@ -2,20 +2,20 @@ import { randomUUID } from 'node:crypto';
 
 import jwt from 'jsonwebtoken';
 
-import { getAuthConfig } from '../src/config/auth.js';
-import { UnauthorizedError } from '../src/errors/unauthorizedError.js';
+import { getAuthConfig } from '../../src/config/auth.js';
+import { UnauthorizedError } from '../../src/errors/unauthorizedError.js';
 import {
   signAccessToken,
   verifyAccessToken,
-} from '../src/security/accessToken.js';
+} from '../../src/security/accessToken.js';
 import {
   hashPassword,
   verifyPassword,
-} from '../src/security/password.js';
+} from '../../src/security/password.js';
 import {
   generateRefreshToken,
   hashRefreshToken,
-} from '../src/security/refreshToken.js';
+} from '../../src/security/refreshToken.js';
 
 describe('Password security', () => {
   it('uses a different salt and verifies the password', async () => {

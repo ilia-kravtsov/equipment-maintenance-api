@@ -1,16 +1,16 @@
 import { randomUUID } from 'node:crypto';
 
-import { initModels } from '../src/database/models/initModels.js';
-import { RefreshSessionModel } from '../src/database/models/refreshSessionModel.js';
-import { UserModel } from '../src/database/models/userModel.js';
-import { sequelize } from '../src/database/sequelize.js';
-import { UnauthorizedError } from '../src/errors/unauthorizedError.js';
-import { PostgresRefreshSessionRepository } from '../src/repositories/postgres/auth/postgresRefreshSessionRepository.js';
-import { PostgresUserRepository } from '../src/repositories/postgres/users/postgresUserRepository.js';
-import { verifyAccessToken } from '../src/security/accessToken.js';
-import { verifyPassword } from '../src/security/password.js';
-import { hashRefreshToken } from '../src/security/refreshToken.js';
-import { AuthService } from '../src/services/authService.js';
+import { initModels } from '../../src/database/models/initModels.js';
+import { RefreshSessionModel } from '../../src/database/models/refreshSessionModel.js';
+import { UserModel } from '../../src/database/models/userModel.js';
+import { sequelize } from '../../src/database/sequelize.js';
+import { UnauthorizedError } from '../../src/errors/unauthorizedError.js';
+import { PostgresRefreshSessionRepository } from '../../src/repositories/postgres/auth/postgresRefreshSessionRepository.js';
+import { PostgresUserRepository } from '../../src/repositories/postgres/users/postgresUserRepository.js';
+import { verifyAccessToken } from '../../src/security/accessToken.js';
+import { verifyPassword } from '../../src/security/password.js';
+import { hashRefreshToken } from '../../src/security/refreshToken.js';
+import { AuthService } from '../../src/services/authService.js';
 
 initModels(sequelize);
 

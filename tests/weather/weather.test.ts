@@ -1,9 +1,9 @@
 import request from 'supertest';
 
-import { app } from '../src/app.js';
-import * as forecastClient from '../src/api/forecastClient.js';
-import { TimeoutError } from '../src/errors/httpErrors.js';
-import { TEST_API_KEY } from './testConfig.js';
+import { app } from '../../src/app.js';
+import * as forecastClient from '../../src/api/forecastClient.js';
+import { TimeoutError } from '../../src/errors/httpErrors.js';
+import { TEST_API_KEY } from '../testConfig.js';
 
 describe('Weather API', () => {
   let equipmentId: string;

@@ -1,8 +1,8 @@
 import request from 'supertest';
 
-import { app } from '../src/app.js';
-import { TEST_API_KEY } from './testConfig.js';
-import { assignTestTechnician } from './helpers/assignTestTechnician.js';
+import { app } from '../../src/app.js';
+import { TEST_API_KEY } from '../testConfig.js';
+import { assignTestTechnician } from '../helpers/assignTestTechnician.js';
 
 describe('Maintenance Requests API', () => {
   let equipmentId: string;

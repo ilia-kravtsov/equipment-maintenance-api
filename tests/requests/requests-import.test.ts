@@ -1,7 +1,7 @@
 import request from 'supertest';
 
-import { app } from '../src/app.js';
-import { TEST_API_KEY } from './testConfig.js';
+import { app } from '../../src/app.js';
+import { TEST_API_KEY } from '../testConfig.js';
 
 describe('Maintenance Requests bulk import', () => {
   let equipmentId: string;

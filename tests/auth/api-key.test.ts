@@ -1,6 +1,6 @@
 import request from 'supertest';
-import { app } from '../src/app.js';
-import { TEST_API_KEY } from './testConfig.js';
+import { app } from '../../src/app.js';
+import { TEST_API_KEY } from '../testConfig.js';
 
 const equipment = {
   name: 'Auth Test Sensor',
