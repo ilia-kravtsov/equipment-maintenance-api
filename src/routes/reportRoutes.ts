@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
 import type { EquipmentLoadController } from '../controllers/equipmentLoadController.js';
-import { validateQuery } from '../middlewares/validateQuery.js';
+import { validateQuery } from '../middlewares/validation/validateQuery.js';
 import { equipmentLoadQuerySchema } from '../validators/equipmentLoadValidator.js';
 
 export const createReportRouter = (

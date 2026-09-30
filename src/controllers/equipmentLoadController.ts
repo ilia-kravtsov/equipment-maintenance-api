@@ -1,6 +1,6 @@
 import type { NextFunction, Request, Response } from 'express';
 
-import type { EquipmentLoadQuery } from '../models/equipmentLoad.js';
+import type { EquipmentLoadQuery } from '../models/reports/equipmentLoad.js';
 import type { EquipmentLoadService } from '../services/equipmentLoadService.js';
 
 export class EquipmentLoadController {

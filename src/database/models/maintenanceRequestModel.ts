@@ -14,7 +14,7 @@ import {
   requestStatuses,
   type RequestPriority,
   type RequestStatus,
-} from '../../models/maintenanceRequest.js';
+} from '../../models/requests/maintenanceRequest.js';
 import type { RequestAssigneeModel } from './requestAssigneeModel.js';
 
 export class MaintenanceRequestModel extends Model<

@@ -6,13 +6,13 @@ import type {
   UpdateMaintenanceRequestInput,
   UpdateMaintenanceRequestStatusInput,
   MaintenanceRequestListQuery,
-} from '../models/maintenanceRequest.js';
+} from '../models/requests/maintenanceRequest.js';
 import type { MaintenanceRequestService } from '../services/maintenanceRequestService.js';
 import { AppError } from '../errors/appError.js';
 import type {
   BulkImportItemResult,
   BulkImportResult,
-} from '../models/bulkImport.js';
+} from '../models/requests/bulkImport.js';
 import { createMaintenanceRequestSchema } from '../validators/maintenanceRequestValidator.js';
 
 export interface MaintenanceRequestParams extends ParamsDictionary {

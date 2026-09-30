@@ -1,5 +1,5 @@
 import { RequestStatusHistoryModel } from '../../../database/models/requestStatusHistoryModel.js';
-import type { RequestStatusHistory } from '../../../models/requestStatusHistory.js';
+import type { RequestStatusHistory } from '../../../models/requests/requestStatusHistory.js';
 
 export const findRequestHistory = async (
   requestId: string,

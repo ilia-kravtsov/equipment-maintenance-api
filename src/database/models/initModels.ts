@@ -8,6 +8,8 @@ import { initMaintenanceRequestModel } from './maintenanceRequestModel.js';
 import { initRequestStatusHistoryModel } from './requestStatusHistoryModel.js';
 import { initRequestAssigneeModel } from './requestAssigneeModel.js';
 import { associateModels } from './associateModels.js';
+import { initUserModel } from './userModel.js';
+import { initRefreshSessionModel } from './refreshSessionModel.js';
 
 let initializedSequelize: Sequelize | undefined;
 
@@ -29,6 +31,8 @@ export const initModels = (sequelize: Sequelize): void => {
   initMaintenanceRequestModel(sequelize);
   initRequestStatusHistoryModel(sequelize);
   initRequestAssigneeModel(sequelize);
+  initUserModel(sequelize);
+  initRefreshSessionModel(sequelize);
 
   associateModels();
 

@@ -1,7 +1,7 @@
 import type {
   EquipmentStatus,
   EquipmentType,
-} from '../../../models/equipment.js';
+} from '../../../models/equipment/equipment.js';
 
 import { equipmentIds } from './equipmentIds.js';
 import { siteIds } from './sites.js';

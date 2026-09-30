@@ -1,6 +1,6 @@
 import { randomUUID } from 'node:crypto';
 
-import type { RequestStatus } from '../../../models/maintenanceRequest.js';
+import type { RequestStatus } from '../../../models/requests/maintenanceRequest.js';
 import { maintenanceRequestSeeds } from './maintenanceRequests.js';
 import { requestIds } from './requestIds.js';
 

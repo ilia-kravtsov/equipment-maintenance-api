@@ -5,9 +5,9 @@ import type {
   MaintenanceRequestListQuery,
   RequestStatus,
   UpdateMaintenanceRequestInput,
-} from '../../../models/maintenanceRequest.js';
-import type { PaginatedResult } from '../../../models/pagination.js';
-import type { MaintenanceRequestRepository } from '../../maintenanceRequestRepository.js';
+} from '../../../models/requests/maintenanceRequest.js';
+import type { PaginatedResult } from '../../../models/shared/pagination.js';
+import type { MaintenanceRequestRepository } from '../../contracts/maintenanceRequestRepository.js';
 import { createRequest } from './createRequest.js';
 import { deleteRequest } from './deleteRequest.js';
 import {
@@ -17,7 +17,7 @@ import {
 } from './requestQueries.js';
 import { updateRequest } from './updateRequest.js';
 import { updateRequestStatus } from './updateRequestStatus.js';
-import type { RequestStatusHistory } from '../../../models/requestStatusHistory.js';
+import type { RequestStatusHistory } from '../../../models/requests/requestStatusHistory.js';
 import { findRequestHistory } from './requestHistoryQueries.js';
 
 export class PostgresMaintenanceRequestRepository

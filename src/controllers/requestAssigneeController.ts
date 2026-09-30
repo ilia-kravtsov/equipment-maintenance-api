@@ -1,7 +1,7 @@
 import type { NextFunction, Request, Response } from 'express';
 import type { ParamsDictionary } from 'express-serve-static-core';
 
-import type { RequestAssigneeInput } from '../models/requestAssignee.js';
+import type { RequestAssigneeInput } from '../models/requests/requestAssignee.js';
 import type { RequestAssigneeService } from '../services/requestAssigneeService.js';
 
 export interface RequestAssigneeParams extends ParamsDictionary {

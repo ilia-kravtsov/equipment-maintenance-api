@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { equipmentStatuses, equipmentTypes } from '../models/equipment.js';
+import { equipmentStatuses, equipmentTypes } from '../models/equipment/equipment.js';
 
 const locationSchema = z.object({
   lat: z.number().min(-90).max(90),

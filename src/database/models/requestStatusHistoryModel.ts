@@ -11,7 +11,7 @@ import {
 import {
   requestStatuses,
   type RequestStatus,
-} from '../../models/maintenanceRequest.js';
+} from '../../models/requests/maintenanceRequest.js';
 
 export class RequestStatusHistoryModel extends Model<
   InferAttributes<RequestStatusHistoryModel>,

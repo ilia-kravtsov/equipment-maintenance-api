@@ -4,7 +4,7 @@ import type {
   SiteSummaryController,
   SiteSummaryParams,
 } from '../controllers/siteSummaryController.js';
-import { validateParams } from '../middlewares/validateParams.js';
+import { validateParams } from '../middlewares/validation/validateParams.js';
 import { idParamsSchema } from '../validators/commonValidator.js';
 
 export const createSiteRouter = (

@@ -3,8 +3,8 @@ import { QueryTypes, type Sequelize } from 'sequelize';
 import type {
   EquipmentLoad,
   EquipmentLoadQuery,
-} from '../../../models/equipmentLoad.js';
-import type { EquipmentLoadRepository } from '../../equipmentLoadRepository.js';
+} from '../../../models/reports/equipmentLoad.js';
+import type { EquipmentLoadRepository } from '../../contracts/equipmentLoadRepository.js';
 
 interface EquipmentLoadRow {
   equipmentId: string;

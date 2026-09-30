@@ -2,9 +2,9 @@ import { MaintenanceRequestModel } from '../../../database/models/maintenanceReq
 import type {
   MaintenanceRequest,
   MaintenanceRequestListQuery,
-} from '../../../models/maintenanceRequest.js';
-import type { PaginatedResult } from '../../../models/pagination.js';
-import { toMaintenanceRequest } from '../../mappers/maintenanceRequestMapper.js';
+} from '../../../models/requests/maintenanceRequest.js';
+import type { PaginatedResult } from '../../../models/shared/pagination.js';
+import { toMaintenanceRequest } from '../mappers/maintenanceRequestMapper.js';
 import {
   requestAttributes,
   buildRequestOrder,

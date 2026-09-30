@@ -7,7 +7,7 @@ import {
 } from 'sequelize';
 
 import type {MaintenanceRequestModel} from '../../../database/models/maintenanceRequestModel.js';
-import type {MaintenanceRequestListQuery} from '../../../models/maintenanceRequest.js';
+import type {MaintenanceRequestListQuery} from '../../../models/requests/maintenanceRequest.js';
 
 export const requestAttributes: Array<keyof Attributes<MaintenanceRequestModel>> = [
   'id',
