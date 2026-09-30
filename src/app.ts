@@ -36,6 +36,7 @@ import { PostgresRefreshSessionRepository } from './repositories/postgres/auth/p
 import { PostgresUserRepository } from './repositories/postgres/users/postgresUserRepository.js';
 import { createAuthRouter } from './routes/authRoutes.js';
 import { AuthService } from './services/authService.js';
+import { createDocsRouter } from './routes/docsRoutes.js';
 
 export const app = express();
 
@@ -96,6 +97,8 @@ app.use(
     limit: '100kb',
   }),
 );
+
+app.use(createDocsRouter());
 
 app.use(express.static('public'));
 
