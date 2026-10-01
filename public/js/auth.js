@@ -56,12 +56,8 @@ export const initAuth = () => {
                 );
             }
 
-            accessToken = body.data.accessToken;
-
             applySession(body.data);
             setMessage(message, 'Вход выполнен', 'success');
-
-            document.dispatchEvent(new Event('auth:login'));
         } catch (error) {
             setMessage(
                 message,
