@@ -7,12 +7,15 @@ import { RequestStatusHistoryModel } from '../../src/database/models/requestStat
 import { updateRequestStatus } from '../../src/repositories/postgres/requests/updateRequestStatus.js';
 import { assignTestTechnician } from '../helpers/assignTestTechnician.js';
 import { createTestSession } from '../helpers/createTestSession.js';
+import type { User } from '../../src/models/auth/user.js';
 
 let adminAccessToken: string;
+let adminUser: User;
 
 beforeAll(async () => {
   const session = await createTestSession('admin');
   adminAccessToken = session.accessToken;
+  adminUser = session.user;
 });
 
 describe('Request status transaction rollback', () => {
@@ -54,7 +57,7 @@ describe('Request status transaction rollback', () => {
 
     try {
       await expect(
-        updateRequestStatus(sequelize, requestId, 'in_progress'),
+        updateRequestStatus(sequelize, requestId, 'in_progress', adminUser),
       ).rejects.toThrow('Forced history insertion failure');
       expect(historyInsert).toHaveBeenCalledTimes(1);
     } finally {
@@ -67,7 +70,7 @@ describe('Request status transaction rollback', () => {
     expect(await RequestStatusHistoryModel.count({ where: { requestId } }))
       .toBe(historyCount);
 
-    const updated = await updateRequestStatus(sequelize, requestId, 'in_progress');
+    const updated = await updateRequestStatus(sequelize, requestId, 'in_progress', adminUser);
     expect(updated?.status).toBe('in_progress');
     expect(await RequestStatusHistoryModel.count({ where: { requestId } }))
       .toBe(historyCount + 1);

@@ -68,7 +68,7 @@ export const createMaintenanceRequestRouter = (
 
   router.patch<MaintenanceRequestParams>(
     '/:id/status',
-    requireRoles('admin'),
+    requireRoles('technician', 'admin'),
     validateParams<MaintenanceRequestParams>(idParamsSchema),
     validateBody<MaintenanceRequestParams>(
       updateMaintenanceRequestStatusSchema,
