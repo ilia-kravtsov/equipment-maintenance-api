@@ -113,18 +113,27 @@ app.use(
   createAuthRouter(authController, requireAuth),
 );
 
-app.use('/api/equipment', createEquipmentRouter(equipmentController));
+app.use(
+  '/api/equipment',
+  createEquipmentRouter(equipmentController, requireAuth),
+);
 
-app.use('/api/requests', createMaintenanceRequestRouter(requestController));
+app.use('/api/requests', createMaintenanceRequestRouter(requestController, requireAuth));
 
 app.use(
   '/api/requests',
-  createRequestAssigneeRouter(requestAssigneeController),
+  createRequestAssigneeRouter(requestAssigneeController, requireAuth),
 );
 
-app.use('/api/sites', createSiteRouter(siteSummaryController));
+app.use(
+  '/api/sites',
+  createSiteRouter(siteSummaryController, requireAuth),
+);
 
-app.use('/api/reports', createReportRouter(equipmentLoadController));
+app.use(
+  '/api/reports',
+  createReportRouter(equipmentLoadController, requireAuth),
+);
 
 app.use(notFoundHandler);
 

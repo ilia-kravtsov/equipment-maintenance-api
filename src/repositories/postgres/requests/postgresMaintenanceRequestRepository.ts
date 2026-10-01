@@ -19,6 +19,7 @@ import { updateRequest } from './updateRequest.js';
 import { updateRequestStatus } from './updateRequestStatus.js';
 import type { RequestStatusHistory } from '../../../models/requests/requestStatusHistory.js';
 import { findRequestHistory } from './requestHistoryQueries.js';
+import type { User } from '../../../models/auth/user.js';
 
 export class PostgresMaintenanceRequestRepository
   implements MaintenanceRequestRepository
@@ -59,8 +60,9 @@ export class PostgresMaintenanceRequestRepository
   updateStatus(
     id: string,
     status: RequestStatus,
+    user: User,
   ): Promise<MaintenanceRequest | undefined> {
-    return updateRequestStatus(this.sequelize, id, status);
+    return updateRequestStatus(this.sequelize, id, status, user);
   }
 
   delete(id: string): Promise<boolean> {

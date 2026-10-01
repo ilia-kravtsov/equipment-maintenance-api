@@ -1,13 +1,20 @@
 import request from 'supertest';
 
 import { app } from '../../src/app.js';
-import { TEST_API_KEY } from '../testConfig.js';
+import { createTestSession } from '../helpers/createTestSession.js';
+
+let adminAccessToken: string;
+
+beforeAll(async () => {
+  const session = await createTestSession('admin');
+  adminAccessToken = session.accessToken;
+});
 
 describe('Equipment API errors', () => {
   it('should return 422 for invalid equipment data', async () => {
     const response = await request(app)
       .post('/api/equipment')
-      .set('X-API-Key', TEST_API_KEY)
+      .set('Authorization', `Bearer ${adminAccessToken}`)
       .send({
         name: 'AB',
         type: 'unknown',
@@ -30,7 +37,8 @@ describe('Equipment API errors', () => {
     const nonexistentId = '00000000-0000-4000-8000-000000000000';
 
     const response = await request(app)
-      .get(`/api/equipment/${nonexistentId}`);
+      .get(`/api/equipment/${nonexistentId}`)
+      .set('Authorization', `Bearer ${adminAccessToken}`);
 
     expect(response.status).toBe(404);
     expect(response.body.error.code).toBe('NOT_FOUND');
@@ -52,14 +60,14 @@ describe('Equipment API errors', () => {
 
     const firstResponse = await request(app)
       .post('/api/equipment')
-      .set('X-API-Key', TEST_API_KEY)
+      .set('Authorization', `Bearer ${adminAccessToken}`)
       .send(equipment);
 
     expect(firstResponse.status).toBe(201);
 
     const secondResponse = await request(app)
       .post('/api/equipment')
-      .set('X-API-Key', TEST_API_KEY)
+      .set('Authorization', `Bearer ${adminAccessToken}`)
       .send(equipment);
 
     expect(secondResponse.status).toBe(409);

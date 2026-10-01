@@ -12,6 +12,7 @@ import type { EquipmentRepository } from '../repositories/contracts/equipmentRep
 import type { MaintenanceRequestRepository } from '../repositories/contracts/maintenanceRequestRepository.js';
 import type { PaginatedResult } from '../models/shared/pagination.js';
 import type { RequestStatusHistory } from '../models/requests/requestStatusHistory.js';
+import type { User } from '../models/auth/user.js';
 
 export class MaintenanceRequestService {
   constructor(
@@ -99,10 +100,12 @@ export class MaintenanceRequestService {
   async updateStatus(
     id: string,
     input: UpdateMaintenanceRequestStatusInput,
+    user: User,
   ): Promise<MaintenanceRequest> {
     const request = await this.requestRepository.updateStatus(
       id,
       input.status,
+      user,
     );
 
     if (request === undefined) {

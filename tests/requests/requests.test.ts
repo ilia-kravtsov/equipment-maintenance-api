@@ -1,8 +1,15 @@
 import request from 'supertest';
 
 import { app } from '../../src/app.js';
-import { TEST_API_KEY } from '../testConfig.js';
 import { assignTestTechnician } from '../helpers/assignTestTechnician.js';
+import { createTestSession } from '../helpers/createTestSession.js';
+
+let adminAccessToken: string;
+
+beforeAll(async () => {
+  const session = await createTestSession('admin');
+  adminAccessToken = session.accessToken;
+});
 
 describe('Maintenance Requests API', () => {
   let equipmentId: string;
@@ -11,7 +18,7 @@ describe('Maintenance Requests API', () => {
   beforeAll(async () => {
     const response = await request(app)
       .post('/api/equipment')
-      .set('X-API-Key', TEST_API_KEY)
+      .set('Authorization', `Bearer ${adminAccessToken}`)
       .send({
         name: 'Request Test Turbine',
         type: 'turbine',
@@ -40,7 +47,7 @@ describe('Maintenance Requests API', () => {
 
       const response = await request(app)
         .post('/api/requests')
-        .set('X-API-Key', TEST_API_KEY)
+        .set('Authorization', `Bearer ${adminAccessToken}`)
         .send(maintenanceRequest);
 
       expect(response.status).toBe(201);
@@ -62,7 +69,8 @@ describe('Maintenance Requests API', () => {
   describe('GET /api/requests/:id', () => {
     it('should return maintenance request by id', async () => {
       const response = await request(app)
-        .get(`/api/requests/${requestId}`);
+        .get(`/api/requests/${requestId}`)
+        .set('Authorization', `Bearer ${adminAccessToken}`)
 
       expect(response.status).toBe(200);
       expect(response.body.data.id).toBe(requestId);
@@ -75,7 +83,7 @@ describe('Maintenance Requests API', () => {
     it('should update maintenance request', async () => {
       const response = await request(app)
         .patch(`/api/requests/${requestId}`)
-        .set('X-API-Key', TEST_API_KEY)
+        .set('Authorization', `Bearer ${adminAccessToken}`)
         .send({
           title: 'Inspect turbine bearings and rotor',
           priority: 'critical',
@@ -94,7 +102,7 @@ describe('Maintenance Requests API', () => {
     it('should return filtered paginated request list', async () => {
       const response = await request(app)
         .get('/api/requests')
-        .set('X-API-Key', TEST_API_KEY)
+        .set('Authorization', `Bearer ${adminAccessToken}`)
         .query({
           equipmentId,
           priority: 'critical',
@@ -129,7 +137,8 @@ describe('Maintenance Requests API', () => {
   describe('GET /api/equipment/:id/requests', () => {
     it('should return requests for specific equipment', async () => {
       const response = await request(app)
-        .get(`/api/equipment/${equipmentId}/requests`);
+        .get(`/api/equipment/${equipmentId}/requests`)
+        .set('Authorization', `Bearer ${adminAccessToken}`);
 
       expect(response.status).toBe(200);
       expect(Array.isArray(response.body.data)).toBe(true);
@@ -150,7 +159,7 @@ describe('Maintenance Requests API', () => {
       await assignTestTechnician(requestId);
       const response = await request(app)
         .patch(`/api/requests/${requestId}/status`)
-        .set('X-API-Key', TEST_API_KEY)
+        .set('Authorization', `Bearer ${adminAccessToken}`)
         .send({
           status: 'in_progress',
         });
@@ -163,7 +172,7 @@ describe('Maintenance Requests API', () => {
     it('should change status from in_progress to done', async () => {
       const response = await request(app)
         .patch(`/api/requests/${requestId}/status`)
-        .set('X-API-Key', TEST_API_KEY)
+        .set('Authorization', `Bearer ${adminAccessToken}`)
         .send({
           status: 'done',
         });
@@ -178,7 +187,7 @@ describe('Maintenance Requests API', () => {
     it('should delete maintenance request', async () => {
       const response = await request(app)
         .delete(`/api/requests/${requestId}`)
-        .set('X-API-Key', TEST_API_KEY)
+        .set('Authorization', `Bearer ${adminAccessToken}`)
 
       expect(response.status).toBe(204);
       expect(response.body).toEqual({});
@@ -186,7 +195,8 @@ describe('Maintenance Requests API', () => {
 
     it('should return 404 for deleted maintenance request', async () => {
       const response = await request(app)
-        .get(`/api/requests/${requestId}`);
+        .get(`/api/requests/${requestId}`)
+        .set('Authorization', `Bearer ${adminAccessToken}`)
 
       expect(response.status).toBe(404);
       expect(response.body.error.code).toBe('NOT_FOUND');

@@ -41,17 +41,6 @@ const parseCorsOrigins = (value: string | undefined): string[] => {
     .filter((origin) => origin.length > 0);
 };
 
-const parseRequiredString = (
-  value: string | undefined,
-  name: string,
-): string => {
-  if (value === undefined || value.trim().length === 0) {
-    throw new Error(`${name} is required`);
-  }
-
-  return value;
-};
-
 export const config = {
   get port(): number {
     return parsePort(process.env.PORT);
@@ -101,9 +90,5 @@ export const config = {
       100,
       'RATE_LIMIT_MAX',
     );
-  },
-
-  get apiKey(): string {
-    return parseRequiredString(process.env.API_KEY, 'API_KEY');
   },
 };

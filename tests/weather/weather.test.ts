@@ -3,7 +3,14 @@ import request from 'supertest';
 import { app } from '../../src/app.js';
 import * as forecastClient from '../../src/api/forecastClient.js';
 import { TimeoutError } from '../../src/errors/httpErrors.js';
-import { TEST_API_KEY } from '../testConfig.js';
+import { createTestSession } from '../helpers/createTestSession.js';
+
+let adminAccessToken: string;
+
+beforeAll(async () => {
+  const session = await createTestSession('admin');
+  adminAccessToken = session.accessToken;
+});
 
 describe('Weather API', () => {
   let equipmentId: string;
@@ -11,7 +18,7 @@ describe('Weather API', () => {
   beforeAll(async () => {
     const response = await request(app)
       .post('/api/equipment')
-      .set('X-API-Key', TEST_API_KEY)
+      .set('Authorization', `Bearer ${adminAccessToken}`)
       .send({
         name: 'Weather Test Sensor',
         type: 'sensor',
@@ -59,7 +66,8 @@ describe('Weather API', () => {
     );
 
     const response = await request(app)
-      .get(`/api/equipment/${equipmentId}/weather`);
+      .get(`/api/equipment/${equipmentId}/weather`)
+      .set('Authorization', `Bearer ${adminAccessToken}`);
 
     expect(response.status).toBe(200);
     expect(response.body.data.equipmentId).toBe(equipmentId);
@@ -94,7 +102,8 @@ describe('Weather API', () => {
     );
 
     const response = await request(app)
-      .get(`/api/equipment/${equipmentId}/weather`);
+      .get(`/api/equipment/${equipmentId}/weather`)
+      .set('Authorization', `Bearer ${adminAccessToken}`);
 
     expect(response.status).toBe(502);
     expect(response.body.error.code).toBe('WEATHER_SERVICE_ERROR');
@@ -107,7 +116,8 @@ describe('Weather API', () => {
       .mockRejectedValue(new TimeoutError(5000));
 
     const response = await request(app)
-      .get(`/api/equipment/${equipmentId}/weather`);
+      .get(`/api/equipment/${equipmentId}/weather`)
+      .set('Authorization', `Bearer ${adminAccessToken}`);
 
     expect(response.status).toBe(504);
     expect(response.body.error.code).toBe('WEATHER_TIMEOUT');

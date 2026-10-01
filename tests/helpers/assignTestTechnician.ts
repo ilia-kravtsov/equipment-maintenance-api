@@ -4,7 +4,7 @@ import { testAdminSequelize } from '../database.js';
 
 export const assignTestTechnician = async (
   requestId: string,
-): Promise<void> => {
+): Promise<string> => {
   if (
     process.env.NODE_ENV !== 'test' ||
     testAdminSequelize.getDatabaseName() !== 'equipment_maintenance_test'
@@ -45,4 +45,6 @@ export const assignTestTechnician = async (
       },
     );
   });
+
+  return technicianId;
 };

@@ -1,6 +1,7 @@
 import request from 'supertest';
 
 import { app } from '../../src/app.js';
+import { createTestSession } from '../helpers/createTestSession.js';
 import { TEST_API_KEY } from '../testConfig.js';
 
 interface RequestItem {
@@ -8,6 +9,13 @@ interface RequestItem {
   equipmentId: string;
   priority: string;
 }
+
+let adminAccessToken: string;
+
+beforeAll(async () => {
+  const session = await createTestSession('admin');
+  adminAccessToken = session.accessToken;
+});
 
 describe('Equipment requests pagination', () => {
   let equipmentId: string;
@@ -18,7 +26,7 @@ describe('Equipment requests pagination', () => {
   const createEquipment = async (serialNumber: string): Promise<string> => {
     const response = await request(app)
       .post('/api/equipment')
-      .set('X-API-Key', TEST_API_KEY)
+      .set('Authorization', `Bearer ${adminAccessToken}`)
       .send({
         name: 'Pagination test equipment',
         type: 'sensor',
@@ -38,7 +46,7 @@ describe('Equipment requests pagination', () => {
   ): Promise<string> => {
     const response = await request(app)
       .post('/api/requests')
-      .set('X-API-Key', TEST_API_KEY)
+      .set('Authorization', `Bearer ${adminAccessToken}`)
       .send({
         equipmentId: targetEquipmentId,
         title: `Pagination test request ${priority}`,
@@ -64,16 +72,19 @@ describe('Equipment requests pagination', () => {
 
     const first = await request(app)
       .get(url)
+      .set('Authorization', `Bearer ${adminAccessToken}`)
       .query({ ...query, page: 1 })
       .expect(200);
 
     const second = await request(app)
       .get(url)
+      .set('Authorization', `Bearer ${adminAccessToken}`)
       .query({ ...query, page: 2 })
       .expect(200);
 
     const third = await request(app)
       .get(url)
+      .set('Authorization', `Bearer ${adminAccessToken}`)
       .query({ ...query, page: 3 })
       .expect(200);
 
@@ -89,6 +100,7 @@ describe('Equipment requests pagination', () => {
   it('filters requests by priority', async () => {
     const response = await request(app)
       .get(`/api/equipment/${equipmentId}/requests`)
+      .set('Authorization', `Bearer ${adminAccessToken}`)
       .query({ priority: 'high' })
       .expect(200);
 
@@ -103,6 +115,7 @@ describe('Equipment requests pagination', () => {
   it('uses the equipment ID from the path instead of the query', async () => {
     const response = await request(app)
       .get(`/api/equipment/${equipmentId}/requests`)
+      .set('Authorization', `Bearer ${adminAccessToken}`)
       .query({ equipmentId: otherEquipmentId })
       .expect(200);
 
@@ -122,6 +135,7 @@ describe('Equipment requests pagination', () => {
   ])('rejects invalid pagination %j', async (query) => {
     const response = await request(app)
       .get(`/api/equipment/${equipmentId}/requests`)
+      .set('Authorization', `Bearer ${adminAccessToken}`)
       .query(query)
       .expect(400);
 
@@ -133,6 +147,7 @@ describe('Equipment requests pagination', () => {
       .get(
         '/api/equipment/00000000-0000-4000-8000-000000000001/requests',
       )
+      .set('Authorization', `Bearer ${adminAccessToken}`)
       .expect(404);
 
     expect(response.body.error.code).toBe('NOT_FOUND');

@@ -6,6 +6,7 @@ import type {
 } from '../../models/requests/maintenanceRequest.js';
 import type { PaginatedResult } from '../../models/shared/pagination.js';
 import type { RequestStatusHistory } from '../../models/requests/requestStatusHistory.js';
+import type { User } from '../../models/auth/user.js';
 
 export interface MaintenanceRequestRepository {
   findAll(
@@ -30,6 +31,7 @@ export interface MaintenanceRequestRepository {
   updateStatus(
     id: string,
     status: RequestStatus,
+    user: User,
   ): Promise<MaintenanceRequest | undefined>;
 
   delete(id: string): Promise<boolean>;
