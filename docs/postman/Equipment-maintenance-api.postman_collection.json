@@ -18329,7 +18329,7 @@
       "name": "Case 4 - Authentication",
       "item": [
         {
-          "name": "Case 4 - Register viewer - 201",
+          "name": "Register viewer - 201",
           "event": [
             {
               "listen": "test",
@@ -18370,7 +18370,7 @@
           },
           "response": [
             {
-              "name": "Case 4 - Register viewer - 201",
+              "name": "Register viewer - 201",
               "originalRequest": {
                 "method": "POST",
                 "header": [],
@@ -18500,7 +18500,7 @@
               "body": "{\n  \"data\": {\n    \"id\": \"e8386f6d-ed6d-49e0-a8d6-a61ff9e9da09\",\n    \"email\": \"auth-check-001@example.com\",\n    \"role\": \"viewer\",\n    \"technicianId\": null,\n    \"createdAt\": \"2026-09-30T10:12:37.631Z\",\n    \"updatedAt\": \"2026-09-30T10:12:37.631Z\"\n  }\n}"
             },
             {
-              "name": "Case 4 - Register viewer - 409 - the same email",
+              "name": "Register viewer - 409 - the same email",
               "originalRequest": {
                 "method": "POST",
                 "header": [],
@@ -18632,7 +18632,7 @@
           ]
         },
         {
-          "name": "Case 4 - Login - 200",
+          "name": "Login - 200",
           "event": [
             {
               "listen": "test",
@@ -18673,7 +18673,7 @@
           },
           "response": [
             {
-              "name": "Case 4 - Login - 200",
+              "name": "Login - 200",
               "originalRequest": {
                 "method": "POST",
                 "header": [],
@@ -18815,7 +18815,7 @@
           ]
         },
         {
-          "name": "Case 4 - Get current user - 200",
+          "name": "Get current user - 200",
           "event": [
             {
               "listen": "test",
@@ -18868,7 +18868,7 @@
           },
           "response": [
             {
-              "name": "Case 4 - Get current user - 200",
+              "name": "Get current user - 200",
               "originalRequest": {
                 "method": "GET",
                 "header": [],
@@ -18991,7 +18991,7 @@
           ]
         },
         {
-          "name": "Case 4 - Get current admin - 200",
+          "name": "Get current admin - 200",
           "event": [
             {
               "listen": "test",
@@ -19044,7 +19044,7 @@
           },
           "response": [
             {
-              "name": "Case 4 - Get current admin - 200",
+              "name": "Get current admin - 200",
               "originalRequest": {
                 "method": "GET",
                 "header": [],
@@ -19167,7 +19167,7 @@
           ]
         },
         {
-          "name": "Case 4 - Refresh session - 200",
+          "name": "Refresh session - 200",
           "event": [
             {
               "listen": "test",
@@ -19229,7 +19229,7 @@
           },
           "response": [
             {
-              "name": "Case 4 - Refresh session - 200",
+              "name": "Refresh session - 200",
               "originalRequest": {
                 "method": "POST",
                 "header": [
@@ -19361,7 +19361,7 @@
           ]
         },
         {
-          "name": "Case 4 - Reuse old refresh token - 401",
+          "name": "Reuse old refresh token - 401",
           "event": [
             {
               "listen": "test",
@@ -19403,7 +19403,7 @@
           },
           "response": [
             {
-              "name": "Case 4 - Reuse old refresh token - 401",
+              "name": "Reuse old refresh token - 401",
               "originalRequest": {
                 "method": "POST",
                 "header": [
@@ -19531,7 +19531,7 @@
           ]
         },
         {
-          "name": "Case 4 - Logout - 204",
+          "name": "Logout - 204",
           "event": [
             {
               "listen": "test",
@@ -19582,7 +19582,7 @@
           },
           "response": [
             {
-              "name": "Case 4 - Logout - 204",
+              "name": "Logout - 204",
               "originalRequest": {
                 "method": "POST",
                 "header": [
@@ -19702,7 +19702,7 @@
           ]
         },
         {
-          "name": "Case 4 - Get current user after logout - 401",
+          "name": "Get current user after logout - 401",
           "event": [
             {
               "listen": "test",
@@ -19749,7 +19749,7 @@
           },
           "response": [
             {
-              "name": "Case 4 - Get current user after logout - 401",
+              "name": "Get current user after logout - 401",
               "originalRequest": {
                 "method": "GET",
                 "header": [],
@@ -19872,7 +19872,7 @@
           ]
         },
         {
-          "name": "Case 4 - Register duplicate email - 409",
+          "name": "Register duplicate email - 409",
           "event": [
             {
               "listen": "test",
@@ -19918,7 +19918,7 @@
           },
           "response": [
             {
-              "name": "Case 4 - Register duplicate email - 409",
+              "name": "Register duplicate email - 409",
               "originalRequest": {
                 "method": "POST",
                 "header": [],
@@ -20050,7 +20050,7 @@
           ]
         },
         {
-          "name": "Case 4 - Register with admin role - 422",
+          "name": "Register with admin role - 422",
           "event": [
             {
               "listen": "test",
@@ -20096,7 +20096,7 @@
           },
           "response": [
             {
-              "name": "Case 4 - Register with admin role - 422",
+              "name": "Register with admin role - 422",
               "originalRequest": {
                 "method": "POST",
                 "header": [],
@@ -20228,7 +20228,7 @@
           ]
         },
         {
-          "name": "Case 4 - Login with wrong password - 401",
+          "name": "Login with wrong password - 401",
           "event": [
             {
               "listen": "test",
@@ -20277,7 +20277,7 @@
           },
           "response": [
             {
-              "name": "Case 4 - Login with wrong password - 401",
+              "name": "Login with wrong password - 401",
               "originalRequest": {
                 "method": "POST",
                 "header": [],
@@ -20409,7 +20409,7 @@
           ]
         },
         {
-          "name": "Case 4 - Login with unknown email - 401",
+          "name": "Login with unknown email - 401",
           "event": [
             {
               "listen": "test",
@@ -20458,7 +20458,7 @@
           },
           "response": [
             {
-              "name": "Case 4 - Login with unknown email - 401",
+              "name": "Login with unknown email - 401",
               "originalRequest": {
                 "method": "POST",
                 "header": [],
@@ -20590,7 +20590,7 @@
           ]
         },
         {
-          "name": "Case 4 - Get current user without token - 401",
+          "name": "Get current user without token - 401",
           "event": [
             {
               "listen": "test",
@@ -20627,7 +20627,7 @@
           },
           "response": [
             {
-              "name": "Case 4 - Get current user without token - 401",
+              "name": "Get current user without token - 401",
               "originalRequest": {
                 "method": "GET",
                 "header": [],
@@ -20750,7 +20750,7 @@
           ]
         },
         {
-          "name": "Case 4 - Refresh without cookie - 401",
+          "name": "Refresh without cookie - 401",
           "event": [
             {
               "listen": "test",
@@ -20787,7 +20787,7 @@
           },
           "response": [
             {
-              "name": "Case 4 - Refresh without cookie - 401",
+              "name": "Refresh without cookie - 401",
               "originalRequest": {
                 "method": "POST",
                 "header": [],
@@ -20910,7 +20910,7 @@
           ]
         },
         {
-          "name": "Case 4 - Refresh after logout - 401",
+          "name": "Refresh after logout - 401",
           "event": [
             {
               "listen": "test",
@@ -20952,7 +20952,7 @@
           },
           "response": [
             {
-              "name": "Case 4 - Refresh after logout - 401",
+              "name": "Refresh after logout - 401",
               "originalRequest": {
                 "method": "POST",
                 "header": [
@@ -21080,7 +21080,7 @@
           ]
         },
         {
-          "name": "Case 4 - Login admin - 200",
+          "name": "Login admin - 200",
           "event": [
             {
               "listen": "test",
@@ -21154,7 +21154,7 @@
           },
           "response": [
             {
-              "name": "Case 4 - Login admin - 200",
+              "name": "Login admin - 200",
               "originalRequest": {
                 "method": "POST",
                 "header": [],
@@ -21288,7 +21288,7 @@
               "body": "{\n  \"data\": {\n    \"user\": {\n      \"id\": \"bf82f290-3c04-4747-87cf-02e6afcc76fc\",\n      \"email\": \"ivanov@mail.ru\",\n      \"role\": \"admin\",\n      \"technicianId\": null,\n      \"createdAt\": \"2026-09-30T09:05:52.481Z\",\n      \"updatedAt\": \"2026-09-30T09:05:52.481Z\"\n    },\n    \"accessToken\": \"REDACTED_ACCESS_TOKEN\",\n    \"accessTokenExpiresIn\": 900\n  }\n}"
             },
             {
-              "name": "Case 4 - Login admin - 200",
+              "name": "Login admin - 200",
               "originalRequest": {
                 "method": "POST",
                 "header": [],
@@ -21427,6 +21427,3095 @@
       "auth": {
         "type": "noauth"
       }
+    },
+    {
+      "name": "Case 4 - Reference management",
+      "item": [
+        {
+          "name": "Create site - 201",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {\r",
+                  "  pm.collectionVariables.set(\r",
+                  "    'referenceSiteId',\r",
+                  "    pm.response.json().data.id,\r",
+                  "  );\r",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiI2MzlkYjk1MC1kODVkLTRmZGMtOGFiYS00MWFmNjA2NmI2ZTciLCJ0eXBlIjoiYWNjZXNzIiwiaWF0IjoxNzkwODc2OTEwLCJleHAiOjE3OTA4Nzc4MTAsImF1ZCI6ImVxdWlwbWVudC1tYWludGVuYW5jZS1hcGkiLCJpc3MiOiJlcXVpcG1lbnQtbWFpbnRlbmFuY2UtYXBpIiwic3ViIjoiYmY4MmYyOTAtM2MwNC00NzQ3LTg3Y2YtMDJlNmFmY2M3NmZjIn0.HAqBueJYjAXfoAAcb2wkgUrH7y8MT9eOnCp-WEpeC7E",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Тестовая площадка\",\r\n  \"code\": \"REF-SITE-001\",\r\n  \"region\": \"Ставропольский край\",\r\n  \"latitude\": 45.0448,\r\n  \"longitude\": 41.969\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/sites",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sites"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Create site - 201",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"Тестовая площадка\",\r\n  \"code\": \"REF-SITE-001\",\r\n  \"region\": \"Ставропольский край\",\r\n  \"latitude\": 45.0448,\r\n  \"longitude\": 41.969\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/sites",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "sites"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "99"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "60"
+                },
+                {
+                  "key": "Location",
+                  "value": "/api/sites/8ae3017d-b4fd-4601-8081-fcde3a642286"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "206"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"ce-bGn1zF3d3Tm371IPKIwhBY3gQPI\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 01 Oct 2026 17:49:26 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": {\n        \"id\": \"8ae3017d-b4fd-4601-8081-fcde3a642286\",\n        \"name\": \"Тестовая площадка\",\n        \"code\": \"REF-SITE-001\",\n        \"region\": \"Ставропольский край\",\n        \"latitude\": 45.0448,\n        \"longitude\": 41.969\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "List sites - 200",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {\r",
+                  "  pm.collectionVariables.set(\r",
+                  "    'referenceSiteId',\r",
+                  "    pm.response.json().data.id,\r",
+                  "  );\r",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiI2MzlkYjk1MC1kODVkLTRmZGMtOGFiYS00MWFmNjA2NmI2ZTciLCJ0eXBlIjoiYWNjZXNzIiwiaWF0IjoxNzkwODc2OTEwLCJleHAiOjE3OTA4Nzc4MTAsImF1ZCI6ImVxdWlwbWVudC1tYWludGVuYW5jZS1hcGkiLCJpc3MiOiJlcXVpcG1lbnQtbWFpbnRlbmFuY2UtYXBpIiwic3ViIjoiYmY4MmYyOTAtM2MwNC00NzQ3LTg3Y2YtMDJlNmFmY2M3NmZjIn0.HAqBueJYjAXfoAAcb2wkgUrH7y8MT9eOnCp-WEpeC7E",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/sites",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sites"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "List sites - 200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/sites",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "sites"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "99"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "60"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "797"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"31d-qvrMPo/b3ZDUxiCT9Y/oQ4lYMJc\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 01 Oct 2026 17:50:38 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": [\n        {\n            \"id\": \"6c80a525-9be1-4fc2-b437-962de8db4eb3\",\n            \"name\": \"Северная площадка\",\n            \"code\": \"SITE-NORTH\",\n            \"region\": \"Мурманская область\",\n            \"latitude\": 68.9707,\n            \"longitude\": 33.0749\n        },\n        {\n            \"id\": \"8ae3017d-b4fd-4601-8081-fcde3a642286\",\n            \"name\": \"Тестовая площадка\",\n            \"code\": \"REF-SITE-001\",\n            \"region\": \"Ставропольский край\",\n            \"latitude\": 45.0448,\n            \"longitude\": 41.969\n        },\n        {\n            \"id\": \"dc244d28-9d1f-45d7-ace2-326e466ced39\",\n            \"name\": \"Центральная площадка\",\n            \"code\": \"SITE-CENTRAL\",\n            \"region\": \"Московская область\",\n            \"latitude\": 55.9116,\n            \"longitude\": 37.7308\n        },\n        {\n            \"id\": \"4f9e8eb5-926c-4799-80ee-0dc25a6ce434\",\n            \"name\": \"Южная площадка\",\n            \"code\": \"SITE-SOUTH\",\n            \"region\": \"Ставропольский край\",\n            \"latitude\": 45.0448,\n            \"longitude\": 41.9692\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get site - 200",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{authAccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/sites/{{referenceSiteId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sites",
+                "{{referenceSiteId}}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get site - 200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/sites/{{referenceSiteId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "sites",
+                    "{{referenceSiteId}}"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "99"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "60"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "206"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"ce-bGn1zF3d3Tm371IPKIwhBY3gQPI\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 01 Oct 2026 17:54:05 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": {\n        \"id\": \"8ae3017d-b4fd-4601-8081-fcde3a642286\",\n        \"name\": \"Тестовая площадка\",\n        \"code\": \"REF-SITE-001\",\n        \"region\": \"Ставропольский край\",\n        \"latitude\": 45.0448,\n        \"longitude\": 41.969\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update site - 200",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{authAccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Тестовая площадка 2\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/sites/{{referenceSiteId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sites",
+                "{{referenceSiteId}}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Update site - 200",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Тестовая площадка 2\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/sites/{{referenceSiteId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "sites",
+                    "{{referenceSiteId}}"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "97"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "28"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "208"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"d0-vVxilmXES9dmtbAWr7v3g05MFXY\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 01 Oct 2026 17:54:38 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": {\n        \"id\": \"8ae3017d-b4fd-4601-8081-fcde3a642286\",\n        \"name\": \"Тестовая площадка 2\",\n        \"code\": \"REF-SITE-001\",\n        \"region\": \"Ставропольский край\",\n        \"latitude\": 45.0448,\n        \"longitude\": 41.969\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Duplicate site code - 409",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{authAccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Тестовая площадка\",\r\n  \"code\": \"REF-SITE-001\",\r\n  \"region\": \"Ставропольский край\",\r\n  \"latitude\": 45.0448,\r\n  \"longitude\": 41.969\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/sites",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sites"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Duplicate site code - 409",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"Тестовая площадка\",\r\n  \"code\": \"REF-SITE-001\",\r\n  \"region\": \"Ставропольский край\",\r\n  \"latitude\": 45.0448,\r\n  \"longitude\": 41.969\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/sites",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "sites"
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "99"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "60"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "127"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"7f-6YvlnhI53mMCdN4uKb58OIHK63w\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 01 Oct 2026 17:55:45 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"error\": {\n        \"code\": \"CONFLICT\",\n        \"message\": \"Site with this code already exists\",\n        \"requestId\": \"7c5971e1-52a5-4ae2-9892-b41a631a3765\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create technician - 201",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {\r",
+                  "  pm.collectionVariables.set(\r",
+                  "    'referenceTechnicianId',\r",
+                  "    pm.response.json().data.id,\r",
+                  "  );\r",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiI2MzlkYjk1MC1kODVkLTRmZGMtOGFiYS00MWFmNjA2NmI2ZTciLCJ0eXBlIjoiYWNjZXNzIiwiaWF0IjoxNzkwODc2OTEwLCJleHAiOjE3OTA4Nzc4MTAsImF1ZCI6ImVxdWlwbWVudC1tYWludGVuYW5jZS1hcGkiLCJpc3MiOiJlcXVpcG1lbnQtbWFpbnRlbmFuY2UtYXBpIiwic3ViIjoiYmY4MmYyOTAtM2MwNC00NzQ3LTg3Y2YtMDJlNmFmY2M3NmZjIn0.HAqBueJYjAXfoAAcb2wkgUrH7y8MT9eOnCp-WEpeC7E",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"fullName\": \"Иван Петров\",\r\n  \"specialization\": \"Обслуживание турбин\",\r\n  \"employeeNumber\": \"REF-TECH-001\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/technicians",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "technicians"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Create technician - 201",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"fullName\": \"Иван Петров\",\r\n  \"specialization\": \"Обслуживание турбин\",\r\n  \"employeeNumber\": \"REF-TECH-001\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/technicians",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "technicians"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "99"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "60"
+                },
+                {
+                  "key": "Location",
+                  "value": "/api/technicians/d3fc3263-bea6-46f4-ada9-8ea9d00f7545"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "178"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"b2-+F0agtinrvu8uOhouP0Nd4icLv4\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 01 Oct 2026 17:58:39 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": {\n        \"id\": \"d3fc3263-bea6-46f4-ada9-8ea9d00f7545\",\n        \"fullName\": \"Иван Петров\",\n        \"specialization\": \"Обслуживание турбин\",\n        \"employeeNumber\": \"REF-TECH-001\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "List technicians - 200",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{authAccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/technicians",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "technicians"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "List technicians - 200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/technicians",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "technicians"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "99"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "60"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "2081"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"821-CmdnUVe4CkXkJ6p3TPB0vT2nRz8\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 01 Oct 2026 17:59:50 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": [\n        {\n            \"id\": \"1d11851c-91bb-4589-b639-3604822df1f4\",\n            \"fullName\": \"Волков Дмитрий Павлович\",\n            \"specialization\": \"Релейная защита и автоматика\",\n            \"employeeNumber\": \"TECH-003\"\n        },\n        {\n            \"id\": \"d3fc3263-bea6-46f4-ada9-8ea9d00f7545\",\n            \"fullName\": \"Иван Петров\",\n            \"specialization\": \"Обслуживание турбин\",\n            \"employeeNumber\": \"REF-TECH-001\"\n        },\n        {\n            \"id\": \"e930c96b-ea97-47d8-bd06-31a4091139b8\",\n            \"fullName\": \"Кузнецов Михаил Олегович\",\n            \"specialization\": \"Диагностика механического оборудования\",\n            \"employeeNumber\": \"TECH-004\"\n        },\n        {\n            \"id\": \"0f7275d4-cdfc-4946-88a3-db6ce3e2ab9e\",\n            \"fullName\": \"Лебедев Павел Андреевич\",\n            \"specialization\": \"Обслуживание ветрогенераторов\",\n            \"employeeNumber\": \"TECH-006\"\n        },\n        {\n            \"id\": \"27dbd384-68b1-45a2-86b0-fd11065aa2bb\",\n            \"fullName\": \"Морозова Елена Сергеевна\",\n            \"specialization\": \"Обслуживание инверторов\",\n            \"employeeNumber\": \"TECH-002\"\n        },\n        {\n            \"id\": \"ac9b52ab-9429-4973-80ef-22e0485f26f7\",\n            \"fullName\": \"Новикова Мария Алексеевна\",\n            \"specialization\": \"Метрология и поверка приборов\",\n            \"employeeNumber\": \"TECH-007\"\n        },\n        {\n            \"id\": \"4c9bcf5e-8bbd-47f5-b40e-6bd167a87c02\",\n            \"fullName\": \"Орлова Анна Игоревна\",\n            \"specialization\": \"Ремонт механических узлов\",\n            \"employeeNumber\": \"TECH-005\"\n        },\n        {\n            \"id\": \"ececb6b0-d316-481d-a3dd-0d6d5c216f6f\",\n            \"fullName\": \"Петров Илья Романович\",\n            \"specialization\": \"Диагностика измерительных датчиков\",\n            \"employeeNumber\": \"TECH-008\"\n        },\n        {\n            \"id\": \"1f43cebd-162c-493d-8044-3968e790626c\",\n            \"fullName\": \"Смирнова Ольга Денисовна\",\n            \"specialization\": \"Промышленная автоматизация\",\n            \"employeeNumber\": \"TECH-009\"\n        },\n        {\n            \"id\": \"c2ef06b9-a9fa-4a33-85c1-4ff69177d3e5\",\n            \"fullName\": \"Соколов Андрей Викторович\",\n            \"specialization\": \"Обслуживание силового электрооборудования\",\n            \"employeeNumber\": \"TECH-001\"\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get technician - 200",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{authAccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/technicians/{{referenceTechnicianId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "technicians",
+                "{{referenceTechnicianId}}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get technician - 200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/technicians/{{referenceTechnicianId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "technicians",
+                    "{{referenceTechnicianId}}"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "98"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "11"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "178"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"b2-+F0agtinrvu8uOhouP0Nd4icLv4\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 01 Oct 2026 18:00:40 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": {\n        \"id\": \"d3fc3263-bea6-46f4-ada9-8ea9d00f7545\",\n        \"fullName\": \"Иван Петров\",\n        \"specialization\": \"Обслуживание турбин\",\n        \"employeeNumber\": \"REF-TECH-001\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update technician - 200",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{authAccessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"specialization\": \"Диагностика оборудования\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/technicians/{{referenceTechnicianId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "technicians",
+                "{{referenceTechnicianId}}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Update technician - 200",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"specialization\": \"Диагностика оборудования\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/technicians/{{referenceTechnicianId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "technicians",
+                    "{{referenceTechnicianId}}"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "99"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "60"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "188"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"bc-EvwVG6DExMwSrFL950lx6Vz3v10\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 01 Oct 2026 18:01:42 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": {\n        \"id\": \"d3fc3263-bea6-46f4-ada9-8ea9d00f7545\",\n        \"fullName\": \"Иван Петров\",\n        \"specialization\": \"Диагностика оборудования\",\n        \"employeeNumber\": \"REF-TECH-001\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Duplicate employee number - 409",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiI2MzlkYjk1MC1kODVkLTRmZGMtOGFiYS00MWFmNjA2NmI2ZTciLCJ0eXBlIjoiYWNjZXNzIiwiaWF0IjoxNzkwODc2OTEwLCJleHAiOjE3OTA4Nzc4MTAsImF1ZCI6ImVxdWlwbWVudC1tYWludGVuYW5jZS1hcGkiLCJpc3MiOiJlcXVpcG1lbnQtbWFpbnRlbmFuY2UtYXBpIiwic3ViIjoiYmY4MmYyOTAtM2MwNC00NzQ3LTg3Y2YtMDJlNmFmY2M3NmZjIn0.HAqBueJYjAXfoAAcb2wkgUrH7y8MT9eOnCp-WEpeC7E",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"fullName\": \"Иван Петров\",\r\n  \"specialization\": \"Обслуживание турбин\",\r\n  \"employeeNumber\": \"REF-TECH-001\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/technicians",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "technicians"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Duplicate employee number - 409",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"fullName\": \"Иван Петров\",\r\n  \"specialization\": \"Обслуживание турбин\",\r\n  \"employeeNumber\": \"REF-TECH-001\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/technicians",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "technicians"
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "99"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "60"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "144"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"90-L1puZvEdFHNa1AZbqPCQ1/KiwDE\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 01 Oct 2026 18:02:54 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"error\": {\n        \"code\": \"CONFLICT\",\n        \"message\": \"Technician with this employee number already exists\",\n        \"requestId\": \"5f6fd277-5d27-4b54-bdf8-e46dd22ef34c\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "List sites without token - 401",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/sites",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sites"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "List sites without token - 401",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/sites",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "sites"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "98"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "47"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "128"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"80-hj2eLZRgCnU/XksenvTEw16T58Y\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 01 Oct 2026 18:06:47 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"error\": {\n        \"code\": \"UNAUTHORIZED\",\n        \"message\": \"Missing or invalid Bearer token\",\n        \"requestId\": \"cf7a213d-4c9d-438d-82ad-4eea08218f13\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "List technicians without token - 401",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/technicians",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "technicians"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "List technicians without token - 401",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/technicians",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "technicians"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "99"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "60"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "128"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"80-iQwk7Fzx65HgChPy6G6Mz/sEcl4\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 01 Oct 2026 18:07:36 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"error\": {\n        \"code\": \"UNAUTHORIZED\",\n        \"message\": \"Missing or invalid Bearer token\",\n        \"requestId\": \"a432b38a-40a0-43fb-ac2c-eadb512ee5f7\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "List sites as viewer - 200",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiI4NmJkYjc0MS02YjgzLTQ3ODMtYWJlMy1mZjhkMDU4ODIyY2IiLCJ0eXBlIjoiYWNjZXNzIiwiaWF0IjoxNzkwODc4MDgxLCJleHAiOjE3OTA4Nzg5ODEsImF1ZCI6ImVxdWlwbWVudC1tYWludGVuYW5jZS1hcGkiLCJpc3MiOiJlcXVpcG1lbnQtbWFpbnRlbmFuY2UtYXBpIiwic3ViIjoiYTBhYmM4M2ItY2ZlNi00M2NlLTljZWUtM2UwYmMxODJiZmM2In0.IxLpYLkgpZGIbNo132dGF-YgtqCO4nMxz2RtrU1vWxM",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/sites",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sites"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "List sites as viewer - 200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/sites",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "sites"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "99"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "60"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "799"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"31f-ptkW3BGzAbvymk1iOeIjQTQP5ss\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 01 Oct 2026 18:09:51 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": [\n        {\n            \"id\": \"6c80a525-9be1-4fc2-b437-962de8db4eb3\",\n            \"name\": \"Северная площадка\",\n            \"code\": \"SITE-NORTH\",\n            \"region\": \"Мурманская область\",\n            \"latitude\": 68.9707,\n            \"longitude\": 33.0749\n        },\n        {\n            \"id\": \"8ae3017d-b4fd-4601-8081-fcde3a642286\",\n            \"name\": \"Тестовая площадка 2\",\n            \"code\": \"REF-SITE-001\",\n            \"region\": \"Ставропольский край\",\n            \"latitude\": 45.0448,\n            \"longitude\": 41.969\n        },\n        {\n            \"id\": \"dc244d28-9d1f-45d7-ace2-326e466ced39\",\n            \"name\": \"Центральная площадка\",\n            \"code\": \"SITE-CENTRAL\",\n            \"region\": \"Московская область\",\n            \"latitude\": 55.9116,\n            \"longitude\": 37.7308\n        },\n        {\n            \"id\": \"4f9e8eb5-926c-4799-80ee-0dc25a6ce434\",\n            \"name\": \"Южная площадка\",\n            \"code\": \"SITE-SOUTH\",\n            \"region\": \"Ставропольский край\",\n            \"latitude\": 45.0448,\n            \"longitude\": 41.9692\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "List technicians as viewer - 200",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiI4NmJkYjc0MS02YjgzLTQ3ODMtYWJlMy1mZjhkMDU4ODIyY2IiLCJ0eXBlIjoiYWNjZXNzIiwiaWF0IjoxNzkwODc4MDgxLCJleHAiOjE3OTA4Nzg5ODEsImF1ZCI6ImVxdWlwbWVudC1tYWludGVuYW5jZS1hcGkiLCJpc3MiOiJlcXVpcG1lbnQtbWFpbnRlbmFuY2UtYXBpIiwic3ViIjoiYTBhYmM4M2ItY2ZlNi00M2NlLTljZWUtM2UwYmMxODJiZmM2In0.IxLpYLkgpZGIbNo132dGF-YgtqCO4nMxz2RtrU1vWxM",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/technicians",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "technicians"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "List technicians as viewer - 200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/technicians",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "technicians"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "98"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "8"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "2091"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"82b-cayYAey4+/EsafWNJA/ESs2lTzg\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 01 Oct 2026 18:10:43 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": [\n        {\n            \"id\": \"1d11851c-91bb-4589-b639-3604822df1f4\",\n            \"fullName\": \"Волков Дмитрий Павлович\",\n            \"specialization\": \"Релейная защита и автоматика\",\n            \"employeeNumber\": \"TECH-003\"\n        },\n        {\n            \"id\": \"d3fc3263-bea6-46f4-ada9-8ea9d00f7545\",\n            \"fullName\": \"Иван Петров\",\n            \"specialization\": \"Диагностика оборудования\",\n            \"employeeNumber\": \"REF-TECH-001\"\n        },\n        {\n            \"id\": \"e930c96b-ea97-47d8-bd06-31a4091139b8\",\n            \"fullName\": \"Кузнецов Михаил Олегович\",\n            \"specialization\": \"Диагностика механического оборудования\",\n            \"employeeNumber\": \"TECH-004\"\n        },\n        {\n            \"id\": \"0f7275d4-cdfc-4946-88a3-db6ce3e2ab9e\",\n            \"fullName\": \"Лебедев Павел Андреевич\",\n            \"specialization\": \"Обслуживание ветрогенераторов\",\n            \"employeeNumber\": \"TECH-006\"\n        },\n        {\n            \"id\": \"27dbd384-68b1-45a2-86b0-fd11065aa2bb\",\n            \"fullName\": \"Морозова Елена Сергеевна\",\n            \"specialization\": \"Обслуживание инверторов\",\n            \"employeeNumber\": \"TECH-002\"\n        },\n        {\n            \"id\": \"ac9b52ab-9429-4973-80ef-22e0485f26f7\",\n            \"fullName\": \"Новикова Мария Алексеевна\",\n            \"specialization\": \"Метрология и поверка приборов\",\n            \"employeeNumber\": \"TECH-007\"\n        },\n        {\n            \"id\": \"4c9bcf5e-8bbd-47f5-b40e-6bd167a87c02\",\n            \"fullName\": \"Орлова Анна Игоревна\",\n            \"specialization\": \"Ремонт механических узлов\",\n            \"employeeNumber\": \"TECH-005\"\n        },\n        {\n            \"id\": \"ececb6b0-d316-481d-a3dd-0d6d5c216f6f\",\n            \"fullName\": \"Петров Илья Романович\",\n            \"specialization\": \"Диагностика измерительных датчиков\",\n            \"employeeNumber\": \"TECH-008\"\n        },\n        {\n            \"id\": \"1f43cebd-162c-493d-8044-3968e790626c\",\n            \"fullName\": \"Смирнова Ольга Денисовна\",\n            \"specialization\": \"Промышленная автоматизация\",\n            \"employeeNumber\": \"TECH-009\"\n        },\n        {\n            \"id\": \"c2ef06b9-a9fa-4a33-85c1-4ff69177d3e5\",\n            \"fullName\": \"Соколов Андрей Викторович\",\n            \"specialization\": \"Обслуживание силового электрооборудования\",\n            \"employeeNumber\": \"TECH-001\"\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create site as viewer - 403",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiI4NmJkYjc0MS02YjgzLTQ3ODMtYWJlMy1mZjhkMDU4ODIyY2IiLCJ0eXBlIjoiYWNjZXNzIiwiaWF0IjoxNzkwODc4MDgxLCJleHAiOjE3OTA4Nzg5ODEsImF1ZCI6ImVxdWlwbWVudC1tYWludGVuYW5jZS1hcGkiLCJpc3MiOiJlcXVpcG1lbnQtbWFpbnRlbmFuY2UtYXBpIiwic3ViIjoiYTBhYmM4M2ItY2ZlNi00M2NlLTljZWUtM2UwYmMxODJiZmM2In0.IxLpYLkgpZGIbNo132dGF-YgtqCO4nMxz2RtrU1vWxM",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Площадка для проверки прав\",\r\n  \"code\": \"REF-DENIED-SITE-001\",\r\n  \"region\": \"Ставропольский край\",\r\n  \"latitude\": 45.0448,\r\n  \"longitude\": 41.969\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/sites",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sites"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Create site as viewer - 403",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"Площадка для проверки прав\",\r\n  \"code\": \"REF-DENIED-SITE-001\",\r\n  \"region\": \"Ставропольский край\",\r\n  \"latitude\": 45.0448,\r\n  \"longitude\": 41.969\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/sites",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "sites"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "98"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "46"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "118"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"76-PHpAlvuZ2abJ91lWRhQ77JrDpHI\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 01 Oct 2026 18:12:34 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"error\": {\n        \"code\": \"FORBIDDEN\",\n        \"message\": \"Insufficient permissions\",\n        \"requestId\": \"f05bf4bc-faff-4cf9-91d9-de34209bf86e\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create technician as viewer - 403",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiI4NmJkYjc0MS02YjgzLTQ3ODMtYWJlMy1mZjhkMDU4ODIyY2IiLCJ0eXBlIjoiYWNjZXNzIiwiaWF0IjoxNzkwODc4MDgxLCJleHAiOjE3OTA4Nzg5ODEsImF1ZCI6ImVxdWlwbWVudC1tYWludGVuYW5jZS1hcGkiLCJpc3MiOiJlcXVpcG1lbnQtbWFpbnRlbmFuY2UtYXBpIiwic3ViIjoiYTBhYmM4M2ItY2ZlNi00M2NlLTljZWUtM2UwYmMxODJiZmM2In0.IxLpYLkgpZGIbNo132dGF-YgtqCO4nMxz2RtrU1vWxM",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"fullName\": \"Специалист для проверки прав\",\r\n  \"specialization\": \"Диагностика оборудования\",\r\n  \"employeeNumber\": \"REF-DENIED-TECH-001\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/technicians",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "technicians"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Create technician as viewer - 403",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"fullName\": \"Специалист для проверки прав\",\r\n  \"specialization\": \"Диагностика оборудования\",\r\n  \"employeeNumber\": \"REF-DENIED-TECH-001\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/technicians",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "technicians"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "99"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "60"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "118"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"76-+yqnWRjHVV5HKK7992cf+3KWomY\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 01 Oct 2026 18:13:33 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"error\": {\n        \"code\": \"FORBIDDEN\",\n        \"message\": \"Insufficient permissions\",\n        \"requestId\": \"49c72341-6641-425d-8bf4-8e6a6f5ddba7\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete site - 204",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiI5MmU4ZmUyMi0xMjkyLTRkZTktYWM0NS0xZDQ2YmFhY2ZiODMiLCJ0eXBlIjoiYWNjZXNzIiwiaWF0IjoxNzkwODc4NDU1LCJleHAiOjE3OTA4NzkzNTUsImF1ZCI6ImVxdWlwbWVudC1tYWludGVuYW5jZS1hcGkiLCJpc3MiOiJlcXVpcG1lbnQtbWFpbnRlbmFuY2UtYXBpIiwic3ViIjoiYmY4MmYyOTAtM2MwNC00NzQ3LTg3Y2YtMDJlNmFmY2M3NmZjIn0.0HFV3NgqRspIotUCbASJtibysDNszRRKwD8Lfcm9oHA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/sites/{{referenceSiteId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sites",
+                "{{referenceSiteId}}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Delete site - 204",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/sites/{{referenceSiteId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "sites",
+                    "{{referenceSiteId}}"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "98"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "45"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 01 Oct 2026 18:15:24 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": null
+            }
+          ]
+        },
+        {
+          "name": "Delete technician - 204",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiI5MmU4ZmUyMi0xMjkyLTRkZTktYWM0NS0xZDQ2YmFhY2ZiODMiLCJ0eXBlIjoiYWNjZXNzIiwiaWF0IjoxNzkwODc4NDU1LCJleHAiOjE3OTA4NzkzNTUsImF1ZCI6ImVxdWlwbWVudC1tYWludGVuYW5jZS1hcGkiLCJpc3MiOiJlcXVpcG1lbnQtbWFpbnRlbmFuY2UtYXBpIiwic3ViIjoiYmY4MmYyOTAtM2MwNC00NzQ3LTg3Y2YtMDJlNmFmY2M3NmZjIn0.0HFV3NgqRspIotUCbASJtibysDNszRRKwD8Lfcm9oHA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/technicians/{{referenceTechnicianId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "technicians",
+                "{{referenceTechnicianId}}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Delete technician - 204",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/technicians/{{referenceTechnicianId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "technicians",
+                    "{{referenceTechnicianId}}"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "99"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "60"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 01 Oct 2026 18:16:19 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": null
+            }
+          ]
+        },
+        {
+          "name": "Get deleted site - 404",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiI5MmU4ZmUyMi0xMjkyLTRkZTktYWM0NS0xZDQ2YmFhY2ZiODMiLCJ0eXBlIjoiYWNjZXNzIiwiaWF0IjoxNzkwODc4NDU1LCJleHAiOjE3OTA4NzkzNTUsImF1ZCI6ImVxdWlwbWVudC1tYWludGVuYW5jZS1hcGkiLCJpc3MiOiJlcXVpcG1lbnQtbWFpbnRlbmFuY2UtYXBpIiwic3ViIjoiYmY4MmYyOTAtM2MwNC00NzQ3LTg3Y2YtMDJlNmFmY2M3NmZjIn0.0HFV3NgqRspIotUCbASJtibysDNszRRKwD8Lfcm9oHA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/sites/{{referenceSiteId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sites",
+                "{{referenceSiteId}}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get deleted site - 404",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/sites/{{referenceSiteId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "sites",
+                    "{{referenceSiteId}}"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "99"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "60"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "108"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"6c-MtmCCtGzsVzxFk2LCwRzwWc9Ehg\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 01 Oct 2026 18:17:39 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"error\": {\n        \"code\": \"NOT_FOUND\",\n        \"message\": \"Site not found\",\n        \"requestId\": \"ede09955-04ac-4061-bcc6-293d58525de9\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get deleted technician - 404",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiI5MmU4ZmUyMi0xMjkyLTRkZTktYWM0NS0xZDQ2YmFhY2ZiODMiLCJ0eXBlIjoiYWNjZXNzIiwiaWF0IjoxNzkwODc4NDU1LCJleHAiOjE3OTA4NzkzNTUsImF1ZCI6ImVxdWlwbWVudC1tYWludGVuYW5jZS1hcGkiLCJpc3MiOiJlcXVpcG1lbnQtbWFpbnRlbmFuY2UtYXBpIiwic3ViIjoiYmY4MmYyOTAtM2MwNC00NzQ3LTg3Y2YtMDJlNmFmY2M3NmZjIn0.0HFV3NgqRspIotUCbASJtibysDNszRRKwD8Lfcm9oHA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/technicians/{{referenceTechnicianId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "technicians",
+                "{{referenceTechnicianId}}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get deleted technician - 404",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/technicians/{{referenceTechnicianId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "technicians",
+                    "{{referenceTechnicianId}}"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "98"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "31"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "114"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"72-jCVuohWKXOeY+mr3s9D/FwZaK44\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 01 Oct 2026 18:18:09 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"error\": {\n        \"code\": \"NOT_FOUND\",\n        \"message\": \"Technician not found\",\n        \"requestId\": \"7346b0ff-d6a3-48e6-adaa-85ad65de37e7\"\n    }\n}"
+            }
+          ]
+        }
+      ]
     }
   ],
   "auth": {
@@ -21546,7 +24635,11 @@
       "value": ""
     },
     {
-      "key": "authOldRefreshToken",
+      "key": "referenceSiteId",
+      "value": ""
+    },
+    {
+      "key": "referenceTechnicianId",
       "value": ""
     }
   ]

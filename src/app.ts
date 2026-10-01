@@ -37,6 +37,13 @@ import { PostgresUserRepository } from './repositories/postgres/users/postgresUs
 import { createAuthRouter } from './routes/authRoutes.js';
 import { AuthService } from './services/authService.js';
 import { createDocsRouter } from './routes/docsRoutes.js';
+import { PostgresSiteRepository } from './repositories/postgres/sites/postgresSiteRepository.js';
+import { SiteService } from './services/siteService.js';
+import { SiteController } from './controllers/siteController.js';
+import { PostgresTechnicianRepository } from './repositories/postgres/technicians/postgresTechnicianRepository.js';
+import { TechnicianService } from './services/technicianService.js';
+import { TechnicianController } from './controllers/technicianController.js';
+import { createTechnicianRouter } from './routes/technicianRoutes.js';
 
 export const app = express();
 
@@ -49,6 +56,8 @@ const siteSummaryRepository = new PostgresSiteSummaryRepository(sequelize);
 const equipmentLoadRepository = new PostgresEquipmentLoadRepository(sequelize);
 const userRepository = new PostgresUserRepository();
 const refreshSessionRepository = new PostgresRefreshSessionRepository();
+const siteRepository = new PostgresSiteRepository();
+const technicianRepository = new PostgresTechnicianRepository();
 
 const equipmentService = new EquipmentService(
   equipmentRepository,
@@ -66,6 +75,8 @@ const authService = new AuthService(
   userRepository,
   refreshSessionRepository,
 );
+const siteService = new SiteService(siteRepository);
+const technicianService = new TechnicianService(technicianRepository);
 
 const equipmentController = new EquipmentController(
   equipmentService,
@@ -79,6 +90,8 @@ const siteSummaryController = new SiteSummaryController(
 );
 const equipmentLoadController = new EquipmentLoadController(equipmentLoadService);
 const authController = new AuthController(authService);
+const siteController = new SiteController(siteService);
+const technicianController = new TechnicianController(technicianService);
 
 const requireAuth = createRequireAuth(authService);
 
@@ -127,12 +140,17 @@ app.use(
 
 app.use(
   '/api/sites',
-  createSiteRouter(siteSummaryController, requireAuth),
+  createSiteRouter(siteController, siteSummaryController, requireAuth),
 );
 
 app.use(
   '/api/reports',
   createReportRouter(equipmentLoadController, requireAuth),
+);
+
+app.use(
+  '/api/technicians',
+  createTechnicianRouter(technicianController, requireAuth),
 );
 
 app.use(notFoundHandler);
