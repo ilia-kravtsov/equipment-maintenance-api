@@ -22,18 +22,19 @@
         <h2 class="panel-title">Доступ к API</h2>
 
         <div class="form-field">
-            <label for="api-key">API key</label>
+            <label for="access-token">Access token</label>
             <input
-                    id="api-key"
+                    id="access-token"
                     type="password"
                     autocomplete="off"
-                    placeholder="Введите API key"
+                    spellcheck="false"
+                    placeholder="Введите access token без Bearer"
             />
         </div>
 
         <p class="panel-hint">
-            Ключ используется для защищённых запросов и не сохраняется
-            в браузере
+            Получите токен через POST /api/auth/login
+            Токен используется для всех запросов и не сохраняется после закрытия страницы
         </p>
     </section>
 

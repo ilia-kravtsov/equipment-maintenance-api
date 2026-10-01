@@ -5,7 +5,6 @@ import {
 } from './ui.js';
 
 export const initEquipment = ({
-                                  apiKeyInput,
                                   createEquipmentForm,
                                   equipmentMessage,
                                   equipmentIdInput,
@@ -15,8 +14,6 @@ export const initEquipment = ({
                                   showWeatherButton,
                               }) => {
     let currentEquipmentId = null;
-
-    const getApiKey = () => apiKeyInput.value.trim();
 
     const renderWeather = (forecast) => {
         weatherList.replaceChildren();
@@ -92,7 +89,6 @@ export const initEquipment = ({
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-API-Key': getApiKey(),
                 },
                 body: JSON.stringify(payload),
             });

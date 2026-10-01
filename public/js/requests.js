@@ -5,7 +5,6 @@ import {
 } from './ui.js';
 
 export const initRequests = ({
-                                 apiKeyInput,
                                  createRequestForm,
                                  createMessage,
                                  equipmentIdInput,
@@ -14,8 +13,6 @@ export const initRequests = ({
                                  requestsList,
                                  requestsMessage,
                              }) => {
-    const getApiKey = () => apiKeyInput.value.trim();
-
     const renderRequests = (requests) => {
         requestsList.replaceChildren();
 
@@ -111,7 +108,6 @@ export const initRequests = ({
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-API-Key': getApiKey(),
                 },
                 body: JSON.stringify(payload),
             });
@@ -156,5 +152,8 @@ export const initRequests = ({
         },
     );
 
-    void loadRequests();
+    setMessage(
+        requestsMessage,
+        'Введите access token и примените фильтры для загрузки заявок',
+    );
 };
