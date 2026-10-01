@@ -122,7 +122,7 @@ app.use('/api/requests', createMaintenanceRequestRouter(requestController, requi
 
 app.use(
   '/api/requests',
-  createRequestAssigneeRouter(requestAssigneeController),
+  createRequestAssigneeRouter(requestAssigneeController, requireAuth),
 );
 
 app.use('/api/sites', createSiteRouter(siteSummaryController));
