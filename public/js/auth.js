@@ -10,6 +10,8 @@ export const initAuth = () => {
     const logoutButton = document.querySelector('#logout-button');
     const message = document.querySelector('#auth-message');
     const toggleModeButton = document.querySelector('#toggle-auth-mode');
+    const equipmentPanel = document.querySelector('#create-equipment-panel');
+    const requestPanel = document.querySelector('#create-request-panel');
 
     let isRegistration = false;
 
@@ -51,6 +53,8 @@ export const initAuth = () => {
         loginForm.hidden = true;
         sessionPanel.hidden = false;
 
+        equipmentPanel.hidden = session.user.role !== 'admin';
+        requestPanel.hidden = !['admin', 'technician'].includes(session.user.role);
         document.dispatchEvent(new Event('auth:login'));
     };
 
