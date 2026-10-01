@@ -9,6 +9,7 @@ import { commonResponses } from './responses.js';
 import { paginationSchemas } from './schemas/paginationSchemas.js';
 import { equipmentSchemas } from './schemas/equipmentSchemas.js';
 import { weatherSchemas } from './schemas/weatherSchemas.js';
+import { equipmentPaths } from './paths/equipmentPaths.js';
 
 export const openapiDocument: OpenAPIV3.Document = {
   openapi: '3.0.3',
@@ -16,7 +17,9 @@ export const openapiDocument: OpenAPIV3.Document = {
     title: 'Equipment Maintenance API',
     version: '1.0.0',
     description:
-      'Authentication API documentation. Other application endpoints are not yet described in this specification.',
+      'Документация аутентификации и оборудования. ' +
+      'Чтение доступно всем авторизованным пользователям; ' +
+      'изменение оборудования - только admin.',
   },
   servers: [
     {
@@ -28,11 +31,16 @@ export const openapiDocument: OpenAPIV3.Document = {
   tags: [
     {
       name: 'Authentication',
-      description: 'User registration, authentication and session management.',
+      description: 'User registration, authentication and session management',
+    },
+    {
+      name: 'Equipment',
+      description: 'Оборудование, паспорта и прогноз погоды',
     },
   ],
   paths: {
     ...authPaths,
+    ...equipmentPaths,
   },
   components: {
     schemas: {
