@@ -9,6 +9,34 @@ export const initAuth = () => {
     const sessionUser = document.querySelector('#session-user');
     const logoutButton = document.querySelector('#logout-button');
     const message = document.querySelector('#auth-message');
+    const toggleModeButton = document.querySelector('#toggle-auth-mode');
+
+    let isRegistration = false;
+
+    toggleModeButton.addEventListener('click', () => {
+        isRegistration = !isRegistration;
+
+        loginButton.textContent = isRegistration
+            ? 'Зарегистрироваться'
+            : 'Войти';
+
+        toggleModeButton.textContent = isRegistration
+            ? 'Уже есть учётная запись'
+            : 'Создать учётную запись';
+
+        passwordInput.autocomplete = isRegistration
+            ? 'new-password'
+            : 'current-password';
+
+        if (isRegistration) {
+            passwordInput.minLength = 8;
+        } else {
+            passwordInput.removeAttribute('minlength');
+        }
+
+        passwordInput.value = '';
+        setMessage(message, '');
+    });
 
     let accessToken = '';
 
@@ -18,7 +46,7 @@ export const initAuth = () => {
         accessToken = session.accessToken;
 
         sessionUser.textContent =
-            `${session.user.email} · ${session.user.role}`;
+            `${session.user.email} - ${session.user.role}`;
 
         loginForm.hidden = true;
         sessionPanel.hidden = false;
@@ -29,12 +57,19 @@ export const initAuth = () => {
     loginForm.addEventListener('submit', async (event) => {
         event.preventDefault();
         loginButton.disabled = true;
-        setMessage(message, 'Вход...');
+        toggleModeButton.disabled = true;
+
+        setMessage(
+            message,
+            isRegistration ? 'Регистрация...' : 'Вход...',
+        );
 
         const formData = new FormData(loginForm);
 
         try {
-            const response = await fetch('/api/auth/login', {
+            const endpoint = isRegistration ? 'register' : 'login';
+
+            const response = await fetch(`/api/auth/${endpoint}`, {
                 method: 'POST',
                 credentials: 'same-origin',
                 headers: {
@@ -49,26 +84,35 @@ export const initAuth = () => {
             const body = await response.json();
 
             if (!response.ok) {
-                throw new Error(
-                    response.status === 401
+                const errorMessage = isRegistration && response.status === 409
+                    ? 'Этот email уже зарегистрирован'
+                    : response.status === 401
                         ? 'Неверный email или пароль'
-                        : body?.error?.message ?? 'Не удалось войти',
-                );
+                        : body?.error?.message ?? 'Не удалось выполнить запрос';
+
+                throw new Error(errorMessage);
             }
 
-            applySession(body.data);
-            setMessage(message, 'Вход выполнен', 'success');
+            if (isRegistration) {
+                toggleModeButton.disabled = false;
+                toggleModeButton.click();
+                setMessage(message, 'Учётная запись создана. Введите пароль и войдите', 'success');
+            } else {
+                applySession(body.data);
+                setMessage(message, 'Вход выполнен', 'success');
+            }
         } catch (error) {
             setMessage(
                 message,
                 error instanceof Error
                     ? error.message
-                    : 'Не удалось войти',
+                    : 'Не удалось выполнить запрос',
                 'error',
             );
         } finally {
             passwordInput.value = '';
             loginButton.disabled = false;
+            toggleModeButton.disabled = false;
         }
     });
 
@@ -104,6 +148,7 @@ export const initAuth = () => {
 
     const restoreSession = async () => {
         loginButton.disabled = true;
+        toggleModeButton.disabled = true;
         setMessage(message, 'Проверка сессии...');
 
         try {
@@ -135,6 +180,7 @@ export const initAuth = () => {
             );
         } finally {
             loginButton.disabled = false;
+            toggleModeButton.disabled = false;
         }
     };
 

@@ -234,6 +234,10 @@ textarea {
     color: var(--color-success);
 }
 
+[hidden] {
+    display: none !important;
+}
+
 @media (max-width: 600px) {
     .form-row {
         grid-template-columns: 1fr;
