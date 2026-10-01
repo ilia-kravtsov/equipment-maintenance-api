@@ -4,6 +4,9 @@ import { authPaths } from './paths/authPaths.js';
 import { authSchemas } from './schemas/authSchemas.js';
 import { errorSchemas } from './schemas/errorSchemas.js';
 import { securitySchemes } from './securitySchemes.js';
+import { commonParameters } from './parameters.js';
+import { commonResponses } from './responses.js';
+import { paginationSchemas } from './schemas/paginationSchemas.js';
 
 export const openapiDocument: OpenAPIV3.Document = {
   openapi: '3.0.3',
@@ -19,6 +22,7 @@ export const openapiDocument: OpenAPIV3.Document = {
       description: 'Current server',
     },
   ],
+  security: [{ bearerAuth: [] }],
   tags: [
     {
       name: 'Authentication',
@@ -32,7 +36,10 @@ export const openapiDocument: OpenAPIV3.Document = {
     schemas: {
       ...authSchemas,
       ...errorSchemas,
+      ...paginationSchemas,
     },
+    parameters: commonParameters,
+    responses: commonResponses,
     securitySchemes,
   },
 };
