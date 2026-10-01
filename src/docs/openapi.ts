@@ -7,6 +7,8 @@ import { securitySchemes } from './securitySchemes.js';
 import { commonParameters } from './parameters.js';
 import { commonResponses } from './responses.js';
 import { paginationSchemas } from './schemas/paginationSchemas.js';
+import { equipmentSchemas } from './schemas/equipmentSchemas.js';
+import { weatherSchemas } from './schemas/weatherSchemas.js';
 
 export const openapiDocument: OpenAPIV3.Document = {
   openapi: '3.0.3',
@@ -37,6 +39,8 @@ export const openapiDocument: OpenAPIV3.Document = {
       ...authSchemas,
       ...errorSchemas,
       ...paginationSchemas,
+      ...equipmentSchemas,
+      ...weatherSchemas,
     },
     parameters: commonParameters,
     responses: commonResponses,
