@@ -37,6 +37,9 @@ import { PostgresUserRepository } from './repositories/postgres/users/postgresUs
 import { createAuthRouter } from './routes/authRoutes.js';
 import { AuthService } from './services/authService.js';
 import { createDocsRouter } from './routes/docsRoutes.js';
+import { PostgresSiteRepository } from './repositories/postgres/sites/postgresSiteRepository.js';
+import { SiteService } from './services/siteService.js';
+import { SiteController } from './controllers/siteController.js';
 
 export const app = express();
 
@@ -49,6 +52,7 @@ const siteSummaryRepository = new PostgresSiteSummaryRepository(sequelize);
 const equipmentLoadRepository = new PostgresEquipmentLoadRepository(sequelize);
 const userRepository = new PostgresUserRepository();
 const refreshSessionRepository = new PostgresRefreshSessionRepository();
+const siteRepository = new PostgresSiteRepository();
 
 const equipmentService = new EquipmentService(
   equipmentRepository,
@@ -66,6 +70,7 @@ const authService = new AuthService(
   userRepository,
   refreshSessionRepository,
 );
+const siteService = new SiteService(siteRepository);
 
 const equipmentController = new EquipmentController(
   equipmentService,
@@ -79,6 +84,7 @@ const siteSummaryController = new SiteSummaryController(
 );
 const equipmentLoadController = new EquipmentLoadController(equipmentLoadService);
 const authController = new AuthController(authService);
+const siteController = new SiteController(siteService);
 
 const requireAuth = createRequireAuth(authService);
 
@@ -127,7 +133,7 @@ app.use(
 
 app.use(
   '/api/sites',
-  createSiteRouter(siteSummaryController, requireAuth),
+  createSiteRouter(siteController, siteSummaryController, requireAuth),
 );
 
 app.use(
