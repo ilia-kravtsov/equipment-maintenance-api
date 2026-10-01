@@ -19,23 +19,40 @@
     </header>
 
     <section class="panel">
-        <h2 class="panel-title">Доступ к API</h2>
+        <h2 class="panel-title">Учётная запись</h2>
 
-        <div class="form-field">
-            <label for="access-token">Access token</label>
-            <input
-                    id="access-token"
-                    type="password"
-                    autocomplete="off"
-                    spellcheck="false"
-                    placeholder="Введите access token без Bearer"
-            />
+        <form class="login-form" id="login-form">
+            <div class="form-field">
+                <label for="auth-email">Email</label>
+                <input
+                        id="auth-email"
+                        name="email"
+                        type="email"
+                        autocomplete="username"
+                        required
+                />
+            </div>
+
+            <div class="form-field">
+                <label for="auth-password">Пароль</label>
+                <input
+                        id="auth-password"
+                        name="password"
+                        type="password"
+                        autocomplete="current-password"
+                        required
+                />
+            </div>
+
+            <button type="submit">Войти</button>
+        </form>
+
+        <div id="session-panel" hidden>
+            <p id="session-user"></p>
+            <button id="logout-button" type="button">Выйти</button>
         </div>
 
-        <p class="panel-hint">
-            Получите токен через POST /api/auth/login
-            Токен используется для всех запросов и не сохраняется после закрытия страницы
-        </p>
+        <p id="auth-message" class="message" role="status"></p>
     </section>
 
     <section class="panel">

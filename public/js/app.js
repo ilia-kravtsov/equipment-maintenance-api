@@ -1,8 +1,6 @@
 import { initEquipment } from './equipment.js';
 import { initRequests } from './requests.js';
-import { configureApi } from './api.js';
-
-const accessTokenInput = document.querySelector('#access-token');
+import { initAuth } from './auth.js';
 
 const createEquipmentForm = document.querySelector('#create-equipment-form');
 const equipmentMessage = document.querySelector('#equipment-message');
@@ -21,7 +19,7 @@ const resetFiltersButton = document.querySelector('#reset-filters');
 const requestsList = document.querySelector('#requests-list');
 const requestsMessage = document.querySelector('#requests-message');
 
-configureApi(() => accessTokenInput.value);
+initAuth();
 
 initEquipment({
     createEquipmentForm,

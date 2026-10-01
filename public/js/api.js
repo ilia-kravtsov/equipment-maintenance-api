@@ -18,7 +18,7 @@ export const apiRequest = async (url, options = {}) => {
     const token = getAccessToken().trim();
 
     if (!token) {
-        throw new Error('Введите access token');
+        throw new Error('Войдите в учётную запись');
     }
 
     const headers = new Headers(options.headers);
@@ -35,7 +35,7 @@ export const apiRequest = async (url, options = {}) => {
 
     if (response.status === 401) {
         throw new Error(
-            'Токен недействителен или срок его действия истёк. Получите новый токен.',
+            'Сессия недействительна или срок действия токена истёк. Выйдите и войдите снова',
         );
     }
 

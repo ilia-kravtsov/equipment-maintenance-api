@@ -152,8 +152,12 @@ export const initRequests = ({
         },
     );
 
+    document.addEventListener('auth:login', () => {
+        void loadRequests();
+    });
+
     setMessage(
         requestsMessage,
-        'Введите access token и примените фильтры для загрузки заявок',
+        'Войдите в учётную запись для загрузки заявок',
     );
 };
