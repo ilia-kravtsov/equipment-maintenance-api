@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router, type RequestHandler } from 'express';
 
 import type {
   SiteSummaryController,
@@ -9,8 +9,11 @@ import { idParamsSchema } from '../validators/commonValidator.js';
 
 export const createSiteRouter = (
   siteSummaryController: SiteSummaryController,
+  requireAuth: RequestHandler,
 ): Router => {
   const router = Router();
+
+  router.use(requireAuth);
 
   router.get<SiteSummaryParams>(
     '/:id/summary',

@@ -125,9 +125,15 @@ app.use(
   createRequestAssigneeRouter(requestAssigneeController, requireAuth),
 );
 
-app.use('/api/sites', createSiteRouter(siteSummaryController));
+app.use(
+  '/api/sites',
+  createSiteRouter(siteSummaryController, requireAuth),
+);
 
-app.use('/api/reports', createReportRouter(equipmentLoadController));
+app.use(
+  '/api/reports',
+  createReportRouter(equipmentLoadController, requireAuth),
+);
 
 app.use(notFoundHandler);
 
