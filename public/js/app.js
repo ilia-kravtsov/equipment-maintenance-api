@@ -19,8 +19,6 @@ const resetFiltersButton = document.querySelector('#reset-filters');
 const requestsList = document.querySelector('#requests-list');
 const requestsMessage = document.querySelector('#requests-message');
 
-initAuth();
-
 initEquipment({
     createEquipmentForm,
     equipmentMessage,
@@ -40,3 +38,5 @@ initRequests({
     requestsList,
     requestsMessage,
 });
+
+initAuth();

@@ -14,6 +14,18 @@ export const initAuth = () => {
 
     configureApi(() => accessToken);
 
+    const applySession = (session) => {
+        accessToken = session.accessToken;
+
+        sessionUser.textContent =
+            `${session.user.email} · ${session.user.role}`;
+
+        loginForm.hidden = true;
+        sessionPanel.hidden = false;
+
+        document.dispatchEvent(new Event('auth:login'));
+    };
+
     loginForm.addEventListener('submit', async (event) => {
         event.preventDefault();
         loginButton.disabled = true;
@@ -46,12 +58,7 @@ export const initAuth = () => {
 
             accessToken = body.data.accessToken;
 
-            const user = body.data.user;
-            sessionUser.textContent = `${user.email} · ${user.role}`;
-
-            loginForm.hidden = true;
-            sessionPanel.hidden = false;
-
+            applySession(body.data);
             setMessage(message, 'Вход выполнен', 'success');
 
             document.dispatchEvent(new Event('auth:login'));
@@ -98,4 +105,42 @@ export const initAuth = () => {
             logoutButton.disabled = false;
         }
     });
+
+    const restoreSession = async () => {
+        loginButton.disabled = true;
+        setMessage(message, 'Проверка сессии...');
+
+        try {
+            const response = await fetch('/api/auth/refresh', {
+                method: 'POST',
+                credentials: 'same-origin',
+            });
+
+            if (response.status === 401) {
+                setMessage(message, 'Войдите в учётную запись');
+                return;
+            }
+
+            if (!response.ok) {
+                throw new Error('Не удалось восстановить сессию');
+            }
+
+            const body = await response.json();
+
+            applySession(body.data);
+            setMessage(message, 'Сессия восстановлена', 'success');
+        } catch (error) {
+            setMessage(
+                message,
+                error instanceof Error
+                    ? error.message
+                    : 'Не удалось восстановить сессию',
+                'error',
+            );
+        } finally {
+            loginButton.disabled = false;
+        }
+    };
+
+    void restoreSession();
 };
