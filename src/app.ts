@@ -118,7 +118,7 @@ app.use(
   createEquipmentRouter(equipmentController, requireAuth),
 );
 
-app.use('/api/requests', createMaintenanceRequestRouter(requestController));
+app.use('/api/requests', createMaintenanceRequestRouter(requestController, requireAuth));
 
 app.use(
   '/api/requests',

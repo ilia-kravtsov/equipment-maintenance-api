@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router, type RequestHandler } from 'express';
 import { validateParams } from '../middlewares/validation/validateParams.js';
 import { idParamsSchema } from '../validators/commonValidator.js';
 import {
@@ -14,13 +14,16 @@ import {
   maintenanceRequestListQuerySchema,
   importMaintenanceRequestsSchema,
 } from '../validators/maintenanceRequestValidator.js';
-import { requireApiKey } from '../middlewares/auth/requireApiKey.js';
+import { requireRoles } from '../middlewares/auth/requireRoles.js';
 import { validatePagination } from '../middlewares/validation/validatePagination.js';
 
 export const createMaintenanceRequestRouter = (
   requestController: MaintenanceRequestController,
+  requireAuth: RequestHandler,
 ): Router => {
   const router = Router();
+
+  router.use(requireAuth);
 
   router.get(
     '/',
@@ -31,14 +34,14 @@ export const createMaintenanceRequestRouter = (
 
   router.post(
     '/',
-    requireApiKey,
+    requireRoles('technician', 'admin'),
     validateBody(createMaintenanceRequestSchema),
     requestController.create,
   );
 
   router.post(
     '/import',
-    requireApiKey,
+    requireRoles('technician', 'admin'),
     validateBody(importMaintenanceRequestsSchema),
     requestController.importMany,
   );
@@ -57,7 +60,7 @@ export const createMaintenanceRequestRouter = (
 
   router.patch<MaintenanceRequestParams>(
     '/:id',
-    requireApiKey,
+    requireRoles('technician', 'admin'),
     validateParams<MaintenanceRequestParams>(idParamsSchema),
     validateBody<MaintenanceRequestParams>(updateMaintenanceRequestSchema),
     requestController.update,
@@ -65,7 +68,7 @@ export const createMaintenanceRequestRouter = (
 
   router.patch<MaintenanceRequestParams>(
     '/:id/status',
-    requireApiKey,
+    requireRoles('admin'),
     validateParams<MaintenanceRequestParams>(idParamsSchema),
     validateBody<MaintenanceRequestParams>(
       updateMaintenanceRequestStatusSchema,
@@ -75,7 +78,7 @@ export const createMaintenanceRequestRouter = (
 
   router.delete<MaintenanceRequestParams>(
     '/:id',
-    requireApiKey,
+    requireRoles('admin'),
     validateParams<MaintenanceRequestParams>(idParamsSchema),
     requestController.delete,
   );

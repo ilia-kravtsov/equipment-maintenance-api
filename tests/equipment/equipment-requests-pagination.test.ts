@@ -46,7 +46,7 @@ describe('Equipment requests pagination', () => {
   ): Promise<string> => {
     const response = await request(app)
       .post('/api/requests')
-      .set('X-API-Key', TEST_API_KEY)
+      .set('Authorization', `Bearer ${adminAccessToken}`)
       .send({
         equipmentId: targetEquipmentId,
         title: `Pagination test request ${priority}`,

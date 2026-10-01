@@ -1,7 +1,6 @@
 import request from 'supertest';
 
 import { app } from '../../src/app.js';
-import { TEST_API_KEY } from '../testConfig.js';
 import { assignTestTechnician } from '../helpers/assignTestTechnician.js';
 import { createTestSession } from '../helpers/createTestSession.js';
 
@@ -37,7 +36,7 @@ describe('Maintenance Requests API errors', () => {
   it('should return 422 for invalid maintenance request data', async () => {
     const response = await request(app)
       .post('/api/requests')
-      .set('X-API-Key', TEST_API_KEY)
+      .set('Authorization', `Bearer ${adminAccessToken}`)
       .send({
         equipmentId: 'invalid-id',
         title: 'Bad',
@@ -53,7 +52,7 @@ describe('Maintenance Requests API errors', () => {
   it('should return 404 when equipment does not exist', async () => {
     const response = await request(app)
       .post('/api/requests')
-      .set('X-API-Key', TEST_API_KEY)
+      .set('Authorization', `Bearer ${adminAccessToken}`)
       .send({
         equipmentId: '00000000-0000-4000-8000-000000000000',
         title: 'Inspect nonexistent equipment',
@@ -70,7 +69,7 @@ describe('Maintenance Requests API errors', () => {
 
     const createResponse = await request(app)
       .post('/api/requests')
-      .set('X-API-Key', TEST_API_KEY)
+      .set('Authorization', `Bearer ${adminAccessToken}`)
       .send({
         equipmentId,
         title: 'Status transition test',
@@ -84,19 +83,19 @@ describe('Maintenance Requests API errors', () => {
 
     await request(app)
       .patch(`/api/requests/${maintenanceRequestId}/status`)
-      .set('X-API-Key', TEST_API_KEY)
+      .set('Authorization', `Bearer ${adminAccessToken}`)
       .send({ status: 'in_progress' })
       .expect(200);
 
     await request(app)
       .patch(`/api/requests/${maintenanceRequestId}/status`)
-      .set('X-API-Key', TEST_API_KEY)
+      .set('Authorization', `Bearer ${adminAccessToken}`)
       .send({ status: 'done' })
       .expect(200);
 
     const response = await request(app)
       .patch(`/api/requests/${maintenanceRequestId}/status`)
-      .set('X-API-Key', TEST_API_KEY)
+      .set('Authorization', `Bearer ${adminAccessToken}`)
       .send({ status: 'in_progress' });
 
     expect(response.status).toBe(409);
@@ -109,7 +108,7 @@ describe('Maintenance Requests API errors', () => {
 
     const createResponse = await request(app)
       .post('/api/requests')
-      .set('X-API-Key', TEST_API_KEY)
+      .set('Authorization', `Bearer ${adminAccessToken}`)
       .send({
         equipmentId,
         title: 'Open maintenance request',

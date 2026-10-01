@@ -7,7 +7,6 @@ import { RequestStatusHistoryModel } from '../../src/database/models/requestStat
 import { updateRequestStatus } from '../../src/repositories/postgres/requests/updateRequestStatus.js';
 import { assignTestTechnician } from '../helpers/assignTestTechnician.js';
 import { createTestSession } from '../helpers/createTestSession.js';
-import { TEST_API_KEY } from '../testConfig.js';
 
 let adminAccessToken: string;
 
@@ -33,7 +32,7 @@ describe('Request status transaction rollback', () => {
 
     const createResponse = await request(app)
       .post('/api/requests')
-      .set('X-API-Key', TEST_API_KEY)
+      .set('Authorization', `Bearer ${adminAccessToken}`)
       .send({
         equipmentId: equipmentResponse.body.data.id as string,
         title: 'Test status transaction rollback',
