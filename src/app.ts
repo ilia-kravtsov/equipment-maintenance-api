@@ -44,6 +44,7 @@ import { PostgresTechnicianRepository } from './repositories/postgres/technician
 import { TechnicianService } from './services/technicianService.js';
 import { TechnicianController } from './controllers/technicianController.js';
 import { createTechnicianRouter } from './routes/technicianRoutes.js';
+import { createHealthRouter } from './routes/healthRoutes.js';
 
 export const app = express();
 
@@ -103,6 +104,8 @@ app.use(helmet());
 
 app.use(corsMiddleware);
 
+app.use('/api/health', createHealthRouter(sequelize));
+
 app.use('/api', apiRateLimiter);
 
 app.use(
@@ -114,12 +117,6 @@ app.use(
 app.use(createDocsRouter());
 
 app.use(express.static('public'));
-
-app.get('/api/health', (_req, res) => {
-  res.status(200).json({
-    status: 'ok',
-  });
-});
 
 app.use(
   '/api/auth',
