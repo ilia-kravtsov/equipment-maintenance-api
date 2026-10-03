@@ -8,8 +8,11 @@ import { config } from './config/index.js';
 import { logger } from './config/logger.js';
 import { sequelize } from './database/sequelize.js';
 import { handleDatabaseScriptError } from './database/handleDatabaseScriptError.js';
+import { waitForDatabase } from './database/waitForDatabase.js';
 
 const server = createServer(app);
+
+const startupController = new AbortController();
 
 let shuttingDown = false;
 
@@ -19,6 +22,9 @@ const shutdown = async (): Promise<void> => {
   }
 
   shuttingDown = true;
+
+  startupController.abort();
+
   logger.info('Server shutdown started');
 
   const timeout = setTimeout(() => {
@@ -55,7 +61,13 @@ const shutdown = async (): Promise<void> => {
 };
 
 const start = async (): Promise<void> => {
-  await sequelize.authenticate();
+  process.on('SIGINT', () => {
+    void shutdown();
+  });
+
+  process.on('SIGTERM', () => {
+    void shutdown();
+  });
 
   server.listen(config.port);
   await once(server, 'listening');
@@ -65,16 +77,10 @@ const start = async (): Promise<void> => {
       port: config.port,
       environment: config.nodeEnv,
     },
-    'Server started',
+    'HTTP server started',
   );
 
-  process.on('SIGINT', () => {
-    void shutdown();
-  });
-
-  process.on('SIGTERM', () => {
-    void shutdown();
-  });
+  await waitForDatabase(sequelize, startupController.signal);
 };
 
 start().catch(async (error: unknown) => {
