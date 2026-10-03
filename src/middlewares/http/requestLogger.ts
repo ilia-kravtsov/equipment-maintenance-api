@@ -8,18 +8,17 @@ const createLogObject = (
   req: Request,
   res: Response,
   value: Record<string, unknown>,
-) => {
-  const { responseTime, ...rest } = value;
+) => ({
+  requestId: res.locals.requestId,
+  method: req.method,
+  path: req.originalUrl.split('?')[0],
+  status: res.statusCode,
+  durationMs: value.responseTime,
+});
 
-  return {
-    ...rest,
-    requestId: res.locals.requestId,
-    method: req.method,
-    path: req.originalUrl,
-    status: res.statusCode,
-    durationMs: responseTime,
-  };
-};
+const isReadinessFailure = (req: Request, res: Response): boolean =>
+  req.originalUrl.split('?')[0] === '/api/health/ready'
+  && res.statusCode === 503;
 
 export const requestLogger = pinoHttp<Request, Response>({
   logger,
@@ -28,7 +27,11 @@ export const requestLogger = pinoHttp<Request, Response>({
     return res.locals.requestId as string;
   },
 
-  customLogLevel: (_req, res, error) => {
+  customLogLevel: (req, res, error) => {
+    if (isReadinessFailure(req, res)) {
+      return 'warn';
+    }
+
     if (error || res.statusCode >= 500) {
       return 'error';
     }
@@ -52,14 +55,16 @@ export const requestLogger = pinoHttp<Request, Response>({
     const logObject = createLogObject(req, res, value);
     const applicationError = res.locals.error;
 
-    if (applicationError instanceof AppError) {
-      return {
-        ...logObject,
-        code: applicationError.code,
-        errorMessage: applicationError.message,
-      };
-    }
-
-    return logObject;
+    return {
+      ...logObject,
+      ...(applicationError instanceof AppError
+        ? { code: applicationError.code }
+        : {}),
+    };
   },
+
+  customErrorMessage: (req, res) =>
+    isReadinessFailure(req, res)
+      ? 'Readiness check failed'
+      : 'Request failed',
 });

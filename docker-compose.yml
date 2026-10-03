@@ -33,6 +33,7 @@ services:
       DB_POOL_MIN: ${DB_POOL_MIN:-0}
       DB_POOL_ACQUIRE_MS: ${DB_POOL_ACQUIRE_MS:-30000}
       DB_POOL_IDLE_MS: ${DB_POOL_IDLE_MS:-10000}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
 
     healthcheck:
       test:
