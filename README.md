@@ -27,6 +27,10 @@ REST API для учёта оборудования и заявок на его 
 - bcrypt, jsonwebtoken, cookie-parser
 - Jest, Supertest, Docker Compose
 
+## Развёртывание и HTTPS: 
+
+[инструкция](docs/deployment.md)
+
 ## Установка
 
 Требуются:
@@ -317,36 +321,39 @@ URL по умолчанию: `http://localhost:3000`.
 
 Значения ниже — из `.env.example`.
 
-| Переменная | Значение | Назначение                  |
-| --- | --- |-----------------------------|
-| `PORT` | `3000` | Порт API                    |
-| `NODE_ENV` | `development` | Режим для разработки        |
-| `CORS_ORIGINS` | `http://localhost:3000,http://localhost:5173` | Разрешённые origins         |
-| `RATE_LIMIT_WINDOW_MS` | `60000` | Окно лимита `/api`, мс      |
-| `RATE_LIMIT_MAX` | `100` | Запросов за окно            |
-| `WEATHER_API_URL` | `https://api.open-meteo.com/v1/forecast` | Погодный API                |
-| `REQUEST_TIMEOUT_MS` | `5000` | Таймаут внешнего запроса, мс |
-| `WEATHER_MAX_WIND_SPEED` | `15` | Порог ветра, м/с            |
-| `POSTGRES_DB` | `equipment_maintenance` | БД контейнера               |
-| `POSTGRES_USER` | `equipment_owner` | Административная роль       |
-| `POSTGRES_PASSWORD` | Задать | Пароль административной роли |
-| `POSTGRES_PORT` | `5433` | Порт БД на компьютере       |
-| `DB_HOST` | `127.0.0.1` | Адрес БД для локального API |
-| `DB_PORT` | `5433` | Порт подключения            |
-| `DB_NAME` | `equipment_maintenance` | БД приложения               |
-| `DB_USER` | `equipment_app` | Роль приложения             |
-| `DB_PASSWORD` | Задать | Пароль роли приложения      |
-| `DB_POOL_MAX` / `DB_POOL_MIN` | `5` / `0` | Размер пула                 |
-| `DB_POOL_ACQUIRE_MS` | `30000` | Ожидание соединения, мс     |
-| `DB_POOL_IDLE_MS` | `10000` | Простой соединения, мс      |
-| `ACCESS_TOKEN_SECRET` | Задать | Секрет подписи JWT          |
-| `ACCESS_TOKEN_TTL_SECONDS` | `900` | Срок access token, с        |
-| `REFRESH_SESSION_TTL_DAYS` | `7` | Срок refresh-сессии, дни    |
-| `BCRYPT_ROUNDS` | `12` | Cost factor bcrypt          |
-| `LOGIN_RATE_LIMIT_WINDOW_MS` | `900000` | Окно лимита входа, мс       |
-| `LOGIN_RATE_LIMIT_MAX` | `10` | Попыток входа за окно       |
-| `BOOTSTRAP_ADMIN_EMAIL` | Задать | Email администратора  |
-| `BOOTSTRAP_ADMIN_PASSWORD` | Задать | Пароль администратора |
+| Переменная | Значение | Назначение                                             |
+| --- | --- |--------------------------------------------------------|
+| `PORT` | `3000` | Порт API                                               |
+| `NODE_ENV` | `development` | Режим для разработки                                   |
+| `CORS_ORIGINS` | `http://localhost:8080,http://localhost:3000,http://localhost:5173` | Разрешённые origins                                    |
+| `RATE_LIMIT_WINDOW_MS` | `60000` | Окно лимита `/api`, мс                                 |
+| `RATE_LIMIT_MAX` | `100` | Запросов за окно                                       |
+| `WEATHER_API_URL` | `https://api.open-meteo.com/v1/forecast` | Погодный API                                           |
+| `REQUEST_TIMEOUT_MS` | `5000` | Таймаут внешнего запроса, мс                           |
+| `WEATHER_MAX_WIND_SPEED` | `15` | Порог ветра, м/с                                       |
+| `POSTGRES_DB` | `equipment_maintenance` | БД контейнера                                          |
+| `POSTGRES_USER` | `equipment_owner` | Административная роль                                  |
+| `POSTGRES_PASSWORD` | Задать | Пароль административной роли                           |
+| `POSTGRES_PORT` | `5433` | Порт БД на компьютере                                  |
+| `DB_HOST` | `127.0.0.1` | Адрес БД для локального API                            |
+| `DB_PORT` | `5433` | Порт подключения                                       |
+| `DB_NAME` | `equipment_maintenance` | БД приложения                                          |
+| `DB_USER` | `equipment_app` | Роль приложения                                        |
+| `DB_PASSWORD` | Задать | Пароль роли приложения                                 |
+| `DB_POOL_MAX` / `DB_POOL_MIN` | `5` / `0` | Размер пула                                            |
+| `DB_POOL_ACQUIRE_MS` | `30000` | Ожидание соединения, мс                                |
+| `DB_POOL_IDLE_MS` | `10000` | Простой соединения, мс                                 |
+| `ACCESS_TOKEN_SECRET` | Задать | Секрет подписи JWT                                     |
+| `ACCESS_TOKEN_TTL_SECONDS` | `900` | Срок access token, с                                   |
+| `REFRESH_SESSION_TTL_DAYS` | `7` | Срок refresh-сессии, дни                               |
+| `BCRYPT_ROUNDS` | `12` | Cost factor bcrypt                                     |
+| `LOGIN_RATE_LIMIT_WINDOW_MS` | `900000` | Окно лимита входа, мс                                  |
+| `LOGIN_RATE_LIMIT_MAX` | `10` | Попыток входа за окно                                  |
+| `BOOTSTRAP_ADMIN_EMAIL` | Задать | Email администратора                                   |
+| `BOOTSTRAP_ADMIN_PASSWORD` | Задать | Пароль администратора                                  |
+| `LOG_LEVEL` | `info` | Уровень логирования                                    |
+| `HTTP_PORT` | `8080` | Внешний HTTP порт Nginx; на сервере - `80`             |
+| `TRUST_PROXY` | `0` | `0` - отключено, `1` - один прокси, Compose задаёт `1` |
 
 В Compose API использует `DB_HOST=db`, `DB_PORT=5432`
 Локальные значения `.env` менять не требуется
