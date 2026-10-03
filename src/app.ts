@@ -48,6 +48,8 @@ import { createHealthRouter } from './routes/healthRoutes.js';
 
 export const app = express();
 
+app.set('trust proxy', process.env.TRUST_PROXY === '1' ? 1 : false);
+
 initModels(sequelize);
 
 const equipmentRepository = new PostgresEquipmentRepository(sequelize);
