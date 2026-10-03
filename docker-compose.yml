@@ -33,6 +33,7 @@ services:
       DB_POOL_MIN: ${DB_POOL_MIN:-0}
       DB_POOL_ACQUIRE_MS: ${DB_POOL_ACQUIRE_MS:-30000}
       DB_POOL_IDLE_MS: ${DB_POOL_IDLE_MS:-10000}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
 
     healthcheck:
       test:
@@ -40,7 +41,7 @@ services:
           "CMD",
           "node",
           "-e",
-          "fetch('http://localhost:' + process.env.PORT + '/api/health').then(r => { if (!r.ok) process.exit(1) }).catch(() => process.exit(1))",
+          "fetch('http://localhost:' + process.env.PORT + '/api/health/ready').then(r => { if (!r.ok) process.exit(1) }).catch(() => process.exit(1))",
         ]
       interval: 10s
       timeout: 5s
