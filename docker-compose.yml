@@ -4,8 +4,6 @@ services:
       context: .
       dockerfile: Dockerfile
 
-    container_name: equipment-maintenance-api
-
     environment:
       NODE_ENV: production
       PORT: 3000
