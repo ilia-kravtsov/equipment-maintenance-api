@@ -51,6 +51,8 @@ services:
     depends_on:
       db:
         condition: service_healthy
+      init:
+        condition: service_completed_successfully
 
     restart: unless-stopped
 
@@ -80,6 +82,41 @@ services:
       start_period: 10s
 
     restart: unless-stopped
+
+  init:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    environment:
+      NODE_ENV: production
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: ${DB_NAME:?DB_NAME is required}
+      DB_USER: ${DB_USER:?DB_USER is required}
+      DB_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD is required}
+      POSTGRES_USER: ${POSTGRES_USER:?POSTGRES_USER is required}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}
+      ACCESS_TOKEN_SECRET: ${ACCESS_TOKEN_SECRET:?ACCESS_TOKEN_SECRET is required}
+      BCRYPT_ROUNDS: ${BCRYPT_ROUNDS:-12}
+      BOOTSTRAP_ADMIN_EMAIL: ${BOOTSTRAP_ADMIN_EMAIL:?BOOTSTRAP_ADMIN_EMAIL is required}
+      BOOTSTRAP_ADMIN_PASSWORD: ${BOOTSTRAP_ADMIN_PASSWORD:?BOOTSTRAP_ADMIN_PASSWORD is required}
+
+    command:
+      - /bin/sh
+      - -ec
+      - |
+        node dist/database/scripts/setupAppRole.js
+        node dist/database/scripts/migrate.js up
+        node dist/database/scripts/seed.js
+        node dist/database/scripts/createInitialAdmin.js
+
+    depends_on:
+      db:
+        condition: service_healthy
+
+    restart: "no"
 
 volumes:
   postgres_data:
