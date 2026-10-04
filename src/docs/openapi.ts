@@ -19,6 +19,8 @@ import { requestAssigneePaths } from './paths/requestAssigneePaths.js';
 import { requestImportSchemas } from './schemas/requestImportSchemas.js';
 import { requestImportPaths } from './paths/requestImportPaths.js';
 import { equipmentRequestPaths } from './paths/equipmentRequestPaths.js';
+import { referenceSchemas } from './schemas/referenceSchemas.js';
+import { referencePaths } from './paths/referencePaths.js';
 
 export const openapiDocument: OpenAPIV3.Document = {
   openapi: '3.0.3',
@@ -47,6 +49,8 @@ export const openapiDocument: OpenAPIV3.Document = {
       name: 'Maintenance requests',
       description: 'Заявки на обслуживание',
     },
+    { name: 'Sites', description: 'Площадки' },
+    { name: 'Technicians', description: 'Специалисты' },
   ],
   paths: {
     ...authPaths,
@@ -56,6 +60,7 @@ export const openapiDocument: OpenAPIV3.Document = {
     ...requestAssigneePaths,
     ...requestImportPaths,
     ...equipmentRequestPaths,
+    ...referencePaths,
   },
   components: {
     schemas: {
@@ -68,6 +73,7 @@ export const openapiDocument: OpenAPIV3.Document = {
       ...requestAssigneeSchemas,
       ...requestStatusHistorySchemas,
       ...requestImportSchemas,
+      ...referenceSchemas,
     },
     parameters: commonParameters,
     responses: commonResponses,
