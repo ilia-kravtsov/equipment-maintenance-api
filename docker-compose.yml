@@ -102,6 +102,8 @@ services:
       BCRYPT_ROUNDS: ${BCRYPT_ROUNDS:-12}
       BOOTSTRAP_ADMIN_EMAIL: ${BOOTSTRAP_ADMIN_EMAIL:?BOOTSTRAP_ADMIN_EMAIL is required}
       BOOTSTRAP_ADMIN_PASSWORD: ${BOOTSTRAP_ADMIN_PASSWORD:?BOOTSTRAP_ADMIN_PASSWORD is required}
+      GRAFANA_DB_USER: ${GRAFANA_DB_USER:?GRAFANA_DB_USER is required}
+      GRAFANA_DB_PASSWORD: ${GRAFANA_DB_PASSWORD:?GRAFANA_DB_PASSWORD is required}
 
     command:
       - /bin/sh
@@ -109,6 +111,11 @@ services:
       - |
         node dist/database/scripts/setupAppRole.js
         node dist/database/scripts/migrate.js up
+        node dist/database/scripts/seed.js
+        node dist/database/scripts/createInitialAdmin.js
+        node dist/database/scripts/setupAppRole.js
+        node dist/database/scripts/migrate.js up
+        node dist/database/scripts/setupMonitoringRole.js
         node dist/database/scripts/seed.js
         node dist/database/scripts/createInitialAdmin.js
 
