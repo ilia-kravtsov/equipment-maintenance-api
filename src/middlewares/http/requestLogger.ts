@@ -20,6 +20,30 @@ const isReadinessFailure = (req: Request, res: Response): boolean =>
   req.originalUrl.split('?')[0] === '/api/health/ready'
   && res.statusCode === 503;
 
+const getErrorDiagnostics = (error: unknown) => {
+  if (!(error instanceof Error)) {
+    return {};
+  }
+
+  const databaseError = error as Error & {
+    original?: { code?: unknown };
+    parent?: { code?: unknown };
+    code?: unknown;
+  };
+
+  const code =
+    databaseError.original?.code ??
+    databaseError.parent?.code ??
+    databaseError.code;
+
+  return {
+    errorName: error.name,
+    ...(typeof code === 'string' && /^[A-Z0-9_]{2,40}$/.test(code)
+      ? { causeCode: code }
+      : {}),
+  };
+};
+
 export const requestLogger = pinoHttp<Request, Response>({
   logger,
 
@@ -57,6 +81,7 @@ export const requestLogger = pinoHttp<Request, Response>({
 
     return {
       ...logObject,
+      ...getErrorDiagnostics(applicationError),
       ...(applicationError instanceof AppError
         ? { code: applicationError.code }
         : {}),
