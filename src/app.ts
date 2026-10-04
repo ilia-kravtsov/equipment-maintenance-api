@@ -45,6 +45,7 @@ import { TechnicianService } from './services/technicianService.js';
 import { TechnicianController } from './controllers/technicianController.js';
 import { createTechnicianRouter } from './routes/technicianRoutes.js';
 import { createHealthRouter } from './routes/healthRoutes.js';
+import { createMetricsRouter } from './routes/metricsRoutes.js';
 
 export const app = express();
 
@@ -105,6 +106,8 @@ app.use(requestLogger);
 app.use(helmet());
 
 app.use(corsMiddleware);
+
+app.use('/metrics', createMetricsRouter());
 
 app.use('/api/health', createHealthRouter(sequelize));
 
