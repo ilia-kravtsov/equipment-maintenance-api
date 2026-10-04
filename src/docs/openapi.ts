@@ -21,6 +21,10 @@ import { requestImportPaths } from './paths/requestImportPaths.js';
 import { equipmentRequestPaths } from './paths/equipmentRequestPaths.js';
 import { referenceSchemas } from './schemas/referenceSchemas.js';
 import { referencePaths } from './paths/referencePaths.js';
+import { reportSchemas } from './schemas/reportSchemas.js';
+import { reportPaths } from './paths/reportPaths.js';
+import { healthPaths } from './paths/healthPaths.js';
+import { metricsPaths } from './paths/metricsPaths.js';
 
 export const openapiDocument: OpenAPIV3.Document = {
   openapi: '3.0.3',
@@ -51,6 +55,9 @@ export const openapiDocument: OpenAPIV3.Document = {
     },
     { name: 'Sites', description: 'Площадки' },
     { name: 'Technicians', description: 'Специалисты' },
+    { name: 'Reports', description: 'Отчёты по обслуживанию' },
+    { name: 'Health', description: 'Проверки состояния приложения' },
+    { name: 'Monitoring', description: 'Метрики Prometheus' },
   ],
   paths: {
     ...authPaths,
@@ -61,6 +68,9 @@ export const openapiDocument: OpenAPIV3.Document = {
     ...requestImportPaths,
     ...equipmentRequestPaths,
     ...referencePaths,
+    ...reportPaths,
+    ...healthPaths,
+    ...metricsPaths,
   },
   components: {
     schemas: {
@@ -74,6 +84,7 @@ export const openapiDocument: OpenAPIV3.Document = {
       ...requestStatusHistorySchemas,
       ...requestImportSchemas,
       ...referenceSchemas,
+      ...reportSchemas,
     },
     parameters: commonParameters,
     responses: commonResponses,
