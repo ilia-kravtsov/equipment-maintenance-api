@@ -67,7 +67,11 @@ docker compose -f docker-compose.yml -f docker-compose.dev.yml ps -a
 | Readiness | http://localhost:8080/api/health/ready |
 | Grafana | http://localhost:3001/ |
 
-Вход в приложение - через `BOOTSTRAP_ADMIN_EMAIL` и `BOOTSTRAP_ADMIN_PASSWORD`
+Вход в приложение - через 
+
+`BOOTSTRAP_ADMIN_EMAIL`
+
+`BOOTSTRAP_ADMIN_PASSWORD`
 
 Повторный запуск сохраняет данные
 
@@ -194,7 +198,11 @@ npm test -- --runInBand
 npm test -- --runInBand --coverage
 ```
 
-Для запуска тестов с компьютера используются `DB_HOST=127.0.0.1` и `DB_PORT=5433`
+Для запуска тестов с компьютера используются 
+
+`DB_HOST=127.0.0.1` 
+
+`DB_PORT=5433`
 
 Отдельный запуск HTTP сервера не требуется
 
@@ -209,10 +217,10 @@ npm test -- --runInBand --coverage
 
 - Один экземпляр API, лимиты запросов хранятся в памяти процесса
 - HTTPS конфигурация привязана к домену демонстрационного сервера
-- Данные о погодных условиях зависят от доступности Open-Meteo
+- Данные о погодных условиях зависят от доступности Open Meteo
 - Списки площадок и специалистов возвращаются без пагинации
 
 ## Дополнительная документация
 
-- [Развёртывание и эксплуатация](docs/deployment.md)
-- [Архитектура и сценарий защиты](docs/architecture.md)
+- [Развёртывание](docs/deployment.md)
+- [Архитектура](docs/architecture.md)
