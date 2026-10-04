@@ -46,6 +46,10 @@ import { TechnicianController } from './controllers/technicianController.js';
 import { createTechnicianRouter } from './routes/technicianRoutes.js';
 import { createHealthRouter } from './routes/healthRoutes.js';
 import { createMetricsRouter } from './routes/metricsRoutes.js';
+import {
+  httpMetrics,
+  metricsRoutePrefix,
+} from './middlewares/http/httpMetrics.js';
 
 export const app = express();
 
@@ -102,6 +106,21 @@ const requireAuth = createRequireAuth(authService);
 app.use(requestId);
 
 app.use(requestLogger);
+
+app.use('/api', httpMetrics);
+
+app.use(
+  [
+    '/api/auth',
+    '/api/equipment',
+    '/api/requests',
+    '/api/sites',
+    '/api/reports',
+    '/api/technicians',
+    '/api/health',
+  ],
+  metricsRoutePrefix,
+);
 
 app.use(helmet());
 
