@@ -1,4 +1,5 @@
 import type { OpenAPIV3 } from 'openapi-types';
+import { errorResponse } from '../responses.js';
 
 export const authPaths: OpenAPIV3.PathsObject = {
   '/api/auth/register': {
@@ -29,26 +30,8 @@ export const authPaths: OpenAPIV3.PathsObject = {
             },
           },
         },
-        '409': {
-          description: 'Email is already registered.',
-          content: {
-            'application/json': {
-              schema: {
-                $ref: '#/components/schemas/ErrorResponse',
-              },
-            },
-          },
-        },
-        '422': {
-          description: 'Request validation failed.',
-          content: {
-            'application/json': {
-              schema: {
-                $ref: '#/components/schemas/ErrorResponse',
-              },
-            },
-          },
-        },
+        '409': errorResponse('CONFLICT', 'Email is already registered'),
+        '422': { $ref: '#/components/responses/ValidationError' },
       },
     },
   },
@@ -89,36 +72,9 @@ export const authPaths: OpenAPIV3.PathsObject = {
             },
           },
         },
-        '401': {
-          description: 'Invalid email or password.',
-          content: {
-            'application/json': {
-              schema: {
-                $ref: '#/components/schemas/ErrorResponse',
-              },
-            },
-          },
-        },
-        '422': {
-          description: 'Request validation failed.',
-          content: {
-            'application/json': {
-              schema: {
-                $ref: '#/components/schemas/ErrorResponse',
-              },
-            },
-          },
-        },
-        '429': {
-          description: 'Too many login attempts.',
-          content: {
-            'application/json': {
-              schema: {
-                $ref: '#/components/schemas/ErrorResponse',
-              },
-            },
-          },
-        },
+        '401': errorResponse('UNAUTHORIZED', 'Invalid email or password'),
+        '422': { $ref: '#/components/responses/ValidationError' },
+        '429': errorResponse('RATE_LIMIT_EXCEEDED', 'Too many login attempts'),
       },
     },
   },
@@ -149,16 +105,11 @@ export const authPaths: OpenAPIV3.PathsObject = {
             },
           },
         },
-        '401': {
-          description: 'Refresh token is missing, invalid, expired or revoked.',
-          content: {
-            'application/json': {
-              schema: {
-                $ref: '#/components/schemas/ErrorResponse',
-              },
-            },
-          },
-        },
+        '401': errorResponse(
+          'UNAUTHORIZED',
+          'Invalid or expired refresh token',
+          'Refresh token отсутствует, недействителен, истёк или отозван',
+        ),
       },
     },
   },
@@ -204,16 +155,7 @@ export const authPaths: OpenAPIV3.PathsObject = {
             },
           },
         },
-        '401': {
-          description: 'Access token is missing or invalid, or the session is no longer active.',
-          content: {
-            'application/json': {
-              schema: {
-                $ref: '#/components/schemas/ErrorResponse',
-              },
-            },
-          },
-        },
+        '401': { $ref: '#/components/responses/Unauthorized' },
       },
     },
   },
