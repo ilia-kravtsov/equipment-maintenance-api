@@ -1,66 +1,57 @@
-# Развёртывание
+# Развёртывание и эксплуатация
 
-## Стек
+## Сервер
 
-- Ubuntu 24.04, Docker Engine, Docker Compose
-- Nginx - API - PostgreSQL
-- HTTPS: Let's Encrypt, Certbot
-- PostgreSQL доступна только внутри Docker сети
-- Данные БД хранятся в томе `postgres_data`
+- Ubuntu 24.04, Git, Docker Engine с Compose, Certbot, apache2-utils
+- Входящие порты: SSH, TCP 80 и 443
+- A-запись `equipment-maintenance-api.online` указывает на сервер
+- Команды выполняются от root
+- Запуск на произвольном устройстве без изменения конфигурации - по README
 
-## Подготовка
+Проверить инструменты и DNS:
 
-1. Направить A запись домена на IPv4 сервера
-2. Установить Docker Engine, Compose, Git и Certbot
-3. Разрешить входящие TCP 80, 443 и SSH
-4. Клонировать репозиторий в `/opt/equipment-maintenance`
-5. Скопировать `.env.example` в `.env`, выполнить `chmod 600 .env`
-6. Задать отдельные пароли БД, JWT и данные администратора
+```bash
+docker --version
+docker compose version
+certbot --version
+getent ahostsv4 equipment-maintenance-api.online
+```
 
-Параметры серверного `.env`:
+## Подготовка проекта
+
+```bash
+git clone https://github.com/ilia-kravtsov/equipment-maintenance-api.git /opt/equipment-maintenance
+cd /opt/equipment-maintenance
+cp .env.example .env
+chmod 600 .env
+```
+
+Заполнить секреты из README. Для сервера установить:
 
 | Переменная | Значение |
 | --- | --- |
 | `HTTP_PORT` | `80` |
 | `CORS_ORIGINS` | `https://equipment-maintenance-api.online` |
-| `DB_HOST` | `db` |
-| `DB_PORT` | `5432` |
 | `DB_NAME` | Совпадает с `POSTGRES_DB` |
-| `DB_USER` | Отдельная роль приложения, не `POSTGRES_USER` |
 | `LOG_LEVEL` | `info` |
 
-## Подготовка мониторинга
+Compose самостоятельно задаёт API значения `DB_HOST=db`, `DB_PORT=5432`, `TRUST_PROXY=1`
 
-В `.env` задать 
-
-`GRAFANA_ADMIN_USER`
-`GRAFANA_ADMIN_PASSWORD`
-`GRAFANA_DB_USER`
-`GRAFANA_DB_PASSWORD`
-
-Перед запуском HTTPS конфигурации создать файл Basic Auth:
+Создать Basic Auth для Grafana:
 
 ```bash
-apt install -y apache2-utils
 install -d -m 755 /etc/equipment-maintenance
 htpasswd -c /etc/equipment-maintenance/grafana.htpasswd monitoring
 chmod 644 /etc/equipment-maintenance/grafana.htpasswd
 ```
 
-`-c` использовать только при первоначальном создании файла
+Пароль для `monitoring` вводится интерактивно
 
-`init` после миграций настраивает роль мониторинга
+Это отдельная учётная запись, не администратор приложения и не пользователь Grafana
 
-Grafana и Prometheus запускаются общей командой Compose
-Она запускает на сервере приложение, PostgreSQL, init сервис, Nginx, Prometheus и Grafana
+## Сертификат и первый запуск
 
-```bash
-docker compose -f docker-compose.yml -f docker-compose.https.yml up -d --build
-```
-
-## Первый запуск
-
-До запуска Nginx получить сертификат:
+До первого запуска Nginx порт 80 должен быть свободен:
 
 ```bash
 certbot certonly --standalone \
@@ -68,21 +59,50 @@ certbot certonly --standalone \
   -d equipment-maintenance-api.online
 ```
 
-Запустить стек из каталога проекта:
+Запустить весь стек:
 
 ```bash
 mkdir -p /var/www/certbot
 docker compose -f docker-compose.yml -f docker-compose.https.yml up -d --build
+docker compose -f docker-compose.yml -f docker-compose.https.yml ps -a
 ```
 
-Сервис `init` настраивает роль БД, применяет миграции, загружает демонстрационные данные и создаёт администратора
-При повторном запуске существующий пароль администратора не меняется
+`init` создаёт роли, применяет миграции, загружает сиды и создаёт администратора
 
-Для другого домена изменить `deploy/nginx/https.conf`, пути сертификата и `CORS_ORIGINS`
+| Сервис | Ожидаемое состояние |
+| --- | --- |
+| `db`, `api`, `prometheus`, `grafana` | healthy |
+| `init` | Exited (0) |
+| `nginx` | Up |
+
+Проверить:
+
+```bash
+curl -I http://equipment-maintenance-api.online
+curl -fsS https://equipment-maintenance-api.online/api/health/live
+curl -fsS https://equipment-maintenance-api.online/api/health/ready
+```
+
+Ожидается: 
+
+HTTP - `308`
+
+live - `{"status":"ok"}`
+
+ready - `{"status":"ready"}`
+
+| Ресурс | Адрес |
+| --- | --- |
+| Приложение | https://equipment-maintenance-api.online/ |
+| Swagger | https://equipment-maintenance-api.online/api/docs/ |
+| Спецификация | https://equipment-maintenance-api.online/openapi.json |
+| Grafana | https://equipment-maintenance-api.online/grafana/ |
+
+Для Grafana: сначала Basic Auth `monitoring`, затем учётные данные `GRAFANA_ADMIN_*`
 
 ## Продление сертификата
 
-Переключить проверку домена на работающий Nginx:
+После запуска Nginx переключить Certbot на webroot:
 
 ```bash
 certbot reconfigure \
@@ -91,61 +111,196 @@ certbot reconfigure \
   --webroot-path /var/www/certbot
 ```
 
-Создать `/etc/letsencrypt/renewal-hooks/deploy/reload-equipment-nginx.sh`:
+Создать hook:
 
-```sh
+```bash
+mkdir -p /etc/letsencrypt/renewal-hooks/deploy
+
+cat > /etc/letsencrypt/renewal-hooks/deploy/reload-equipment-nginx.sh <<'EOF'
 #!/bin/sh
 set -eu
 
 cd /opt/equipment-maintenance
 /usr/bin/docker compose -f docker-compose.yml -f docker-compose.https.yml exec -T nginx nginx -t
 /usr/bin/docker compose -f docker-compose.yml -f docker-compose.https.yml exec -T nginx nginx -s reload
-```
+EOF
 
-Включить выполнение и проверить продление:
-
-```bash
 chmod 750 /etc/letsencrypt/renewal-hooks/deploy/reload-equipment-nginx.sh
 systemctl enable --now certbot.timer
 certbot renew --cert-name equipment-maintenance-api.online --dry-run --run-deploy-hooks
 ```
 
-## Проверка
+## Рабочие команды
+
+В следующих разделах команды выполняются из каталога проекта
+
+Сокращение действует только в текущем Bash сеансе:
 
 ```bash
-docker compose -f docker-compose.yml -f docker-compose.https.yml ps -a
-curl -I http://equipment-maintenance-api.online
-curl -fsS https://equipment-maintenance-api.online/api/health/ready
+cd /opt/equipment-maintenance
+
+dc() {
+  docker compose -f docker-compose.yml -f docker-compose.https.yml "$@"
+}
 ```
 
-- `db`, `api`: healthy; `init`: Exited (0); `nginx`: Up
-- HTTP: `308` на HTTPS
-- Readiness: `200`, `{"status":"ready"}`
-- UI: вход, загрузка заявок, восстановление сессии после обновления, выход
-
-## Обновление
-
-Из каталога проекта, в выбранной ветке:
+Обновление выбранной ветки:
 
 ```bash
 git pull --ff-only
-docker compose -f docker-compose.yml -f docker-compose.https.yml up -d --build
+dc up -d --build
+dc ps -a
+curl -fsS https://equipment-maintenance-api.online/api/health/ready
 ```
 
-## Остановка
+Перед обновлением с изменением схемы БД создать резервную копию
+
+Остановка с сохранением данных:
 
 ```bash
-docker compose -f docker-compose.yml -f docker-compose.https.yml down
+dc down
 ```
 
-Том БД сохраняется. Флаг `-v` удаляет данные
+Не добавлять `-v`: этот флаг удаляет тома данных
 
-## Локальная разработка
-
-Открыть PostgreSQL для запуска приложения и тестов на компьютере:
+## Логи и метрики
 
 ```bash
-docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d db
+dc logs --tail=100 api nginx
+dc logs --tail=100 db init
+dc logs --tail=100 prometheus grafana
+dc logs -f --tail=100 api
 ```
 
-В локальном `.env`: `DB_HOST=127.0.0.1`, `DB_PORT=5433` при стандартном `POSTGRES_PORT`
+Ошибку API искать по `requestId` из ответа
+
+Метрики внутри сети:
+
+```bash
+dc exec -T api node -e 'fetch("http://localhost:3000/metrics").then(r => r.text()).then(console.log)'
+```
+
+Доступность цели Prometheus:
+
+```bash
+dc exec -T prometheus wget -qO- 'http://localhost:9090/api/v1/query?query=up'
+```
+
+`up{job="equipment-api"} = 1` - сбор метрик работает
+
+В Grafana доступны дашборды: 
+
+Обслуживание - прикладные показатели
+API - технические показатели
+
+Alert rules находятся в разделе Alerting
+
+## Типовые отказы
+
+### Недоступна БД
+
+Признаки: readiness `503`, ошибки соединения в логах API. Liveness может оставаться `200`
+
+```bash
+dc ps -a db api
+dc logs --tail=100 db api
+df -h
+```
+
+- Если БД остановлена: `dc up -d db`
+- Изменение `POSTGRES_PASSWORD` не меняет пароль в уже созданном томе
+- При нехватке места сначала освободить диск
+- После устранения причины проверить readiness и запрос к API
+- API восстанавливает соединение без перезапуска
+
+### Рост доли 5xx
+
+- Проверить технический дашборд: ошибки, RPS, p95
+- Проверить readiness и логи `api`, `nginx`, `db`
+- `502` от Nginx - проверить доступность и состояние API
+
+### Переполнение диска
+
+```bash
+df -h
+df -i
+docker system df
+journalctl --disk-usage
+```
+
+- Проверить рост Docker-логов, резервных копий и томов
+- Перенести старые резервные копии на другое хранилище
+- Удалять только проверенные ненужные образы и файлы
+- Не выполнять очистку Docker с `--volumes`
+- Не удалять файлы PostgreSQL вручную
+- После освобождения места проверить БД, readiness и Grafana
+
+Prometheus ограничен хранением за 7 дней и размером 1 GB, остальные данные требуют контроля места
+
+### Перезапуск Nginx
+
+```bash
+dc logs --tail=100 nginx
+dc run --rm --no-deps nginx nginx -t
+```
+
+Проверить синтаксис, сертификаты и файл Basic Auth. После исправления:
+
+```bash
+dc up -d --no-deps --force-recreate nginx
+```
+
+## Резервная копия БД
+
+```bash
+install -d -m 700 backups
+backup_file="backups/database-$(date -u +%Y%m%dT%H%M%SZ).dump"
+
+dc exec -T db sh -c 'pg_dump -U "$POSTGRES_USER" -d "$POSTGRES_DB" -Fc' > "$backup_file"
+chmod 600 "$backup_file"
+test -s "$backup_file"
+```
+
+Проверить читаемость архива:
+
+```bash
+dc exec -T db pg_restore --list < "$backup_file"
+```
+
+Копию хранить отдельно от сервера
+
+## Откат последней миграции
+
+1. Остановить API и Grafana
+2. Создать резервную копию по инструкции выше
+3. Проверить список миграций и откатить последнюю
+
+```bash
+dc stop api grafana
+```
+
+После резервного копирования:
+
+```bash
+dc run --rm --no-deps init node dist/database/scripts/migrate.js status
+dc run --rm --no-deps init node dist/database/scripts/migrate.js down
+dc run --rm --no-deps init node dist/database/scripts/migrate.js status
+```
+
+Подготовить версию приложения, совместимую с полученной схемой:
+
+```bash
+git switch --detach <коммит>
+dc build api
+dc up -d --no-deps api grafana
+```
+
+Проверить readiness и основные операции
+
+Не запускать обычный `up` со всеми зависимостями сразу после отката: 
+
+`init` может повторно применить отменённую миграцию
+
+`down-all` на рабочей БД не использовать
+
+При необратимой потере данных потребуется восстановление резервной копии
