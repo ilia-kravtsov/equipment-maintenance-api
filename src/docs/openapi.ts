@@ -16,6 +16,9 @@ import { requestStatusHistorySchemas } from './schemas/requestStatusHistorySchem
 import { maintenanceRequestPaths } from './paths/maintenanceRequestPaths.js';
 import { requestWorkflowPaths } from './paths/requestWorkflowPaths.js';
 import { requestAssigneePaths } from './paths/requestAssigneePaths.js';
+import { requestImportSchemas } from './schemas/requestImportSchemas.js';
+import { requestImportPaths } from './paths/requestImportPaths.js';
+import { equipmentRequestPaths } from './paths/equipmentRequestPaths.js';
 
 export const openapiDocument: OpenAPIV3.Document = {
   openapi: '3.0.3',
@@ -51,6 +54,8 @@ export const openapiDocument: OpenAPIV3.Document = {
     ...maintenanceRequestPaths,
     ...requestWorkflowPaths,
     ...requestAssigneePaths,
+    ...requestImportPaths,
+    ...equipmentRequestPaths,
   },
   components: {
     schemas: {
@@ -62,6 +67,7 @@ export const openapiDocument: OpenAPIV3.Document = {
       ...maintenanceRequestSchemas,
       ...requestAssigneeSchemas,
       ...requestStatusHistorySchemas,
+      ...requestImportSchemas,
     },
     parameters: commonParameters,
     responses: commonResponses,
