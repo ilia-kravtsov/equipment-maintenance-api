@@ -1,0 +1,18 @@
+services:
+  db:
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT:-5433}:5432"
+    networks:
+      - backend
+      - development
+
+  grafana:
+    ports:
+      - "127.0.0.1:${GRAFANA_PORT:-3001}:3000"
+    networks:
+      - backend
+      - development
+
+networks:
+  development:
+    internal: false

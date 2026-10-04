@@ -1,11 +1,11 @@
-import { Router } from 'express';
+import { Router, type RequestHandler } from 'express';
 
 import type {
   RequestAssigneeController,
   RequestAssigneeParams,
   RemoveRequestAssigneeParams,
 } from '../controllers/requestAssigneeController.js';
-import { requireApiKey } from '../middlewares/auth/requireApiKey.js';
+import { requireRoles } from '../middlewares/auth/requireRoles.js';
 import { validateBody } from '../middlewares/validation/validateBody.js';
 import { validateParams } from '../middlewares/validation/validateParams.js';
 import { idParamsSchema } from '../validators/commonValidator.js';
@@ -16,12 +16,14 @@ import {
 
 export const createRequestAssigneeRouter = (
   requestAssigneeController: RequestAssigneeController,
+  requireAuth: RequestHandler,
 ): Router => {
   const router = Router();
 
   router.post<RequestAssigneeParams>(
     '/:id/assignees',
-    requireApiKey,
+    requireAuth,
+    requireRoles('admin'),
     validateParams<RequestAssigneeParams>(idParamsSchema),
     validateBody<RequestAssigneeParams>(assignRequestAssigneesSchema),
     requestAssigneeController.replace,
@@ -29,7 +31,8 @@ export const createRequestAssigneeRouter = (
 
   router.delete<RemoveRequestAssigneeParams>(
     '/:id/assignees/:userId',
-    requireApiKey,
+    requireAuth,
+    requireRoles('admin'),
     validateParams<RemoveRequestAssigneeParams>(
       removeRequestAssigneeParamsSchema,
     ),

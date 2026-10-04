@@ -37,8 +37,23 @@ import { PostgresUserRepository } from './repositories/postgres/users/postgresUs
 import { createAuthRouter } from './routes/authRoutes.js';
 import { AuthService } from './services/authService.js';
 import { createDocsRouter } from './routes/docsRoutes.js';
+import { PostgresSiteRepository } from './repositories/postgres/sites/postgresSiteRepository.js';
+import { SiteService } from './services/siteService.js';
+import { SiteController } from './controllers/siteController.js';
+import { PostgresTechnicianRepository } from './repositories/postgres/technicians/postgresTechnicianRepository.js';
+import { TechnicianService } from './services/technicianService.js';
+import { TechnicianController } from './controllers/technicianController.js';
+import { createTechnicianRouter } from './routes/technicianRoutes.js';
+import { createHealthRouter } from './routes/healthRoutes.js';
+import { createMetricsRouter } from './routes/metricsRoutes.js';
+import {
+  httpMetrics,
+  metricsRoutePrefix,
+} from './middlewares/http/httpMetrics.js';
 
 export const app = express();
+
+app.set('trust proxy', process.env.TRUST_PROXY === '1' ? 1 : false);
 
 initModels(sequelize);
 
@@ -49,6 +64,8 @@ const siteSummaryRepository = new PostgresSiteSummaryRepository(sequelize);
 const equipmentLoadRepository = new PostgresEquipmentLoadRepository(sequelize);
 const userRepository = new PostgresUserRepository();
 const refreshSessionRepository = new PostgresRefreshSessionRepository();
+const siteRepository = new PostgresSiteRepository();
+const technicianRepository = new PostgresTechnicianRepository();
 
 const equipmentService = new EquipmentService(
   equipmentRepository,
@@ -66,6 +83,8 @@ const authService = new AuthService(
   userRepository,
   refreshSessionRepository,
 );
+const siteService = new SiteService(siteRepository);
+const technicianService = new TechnicianService(technicianRepository);
 
 const equipmentController = new EquipmentController(
   equipmentService,
@@ -79,6 +98,8 @@ const siteSummaryController = new SiteSummaryController(
 );
 const equipmentLoadController = new EquipmentLoadController(equipmentLoadService);
 const authController = new AuthController(authService);
+const siteController = new SiteController(siteService);
+const technicianController = new TechnicianController(technicianService);
 
 const requireAuth = createRequireAuth(authService);
 
@@ -86,9 +107,30 @@ app.use(requestId);
 
 app.use(requestLogger);
 
+app.use('/api', httpMetrics);
+
+app.use(
+  [
+    '/api/auth',
+    '/api/equipment',
+    '/api/requests',
+    '/api/sites',
+    '/api/reports',
+    '/api/technicians',
+    '/api/health',
+  ],
+  metricsRoutePrefix,
+);
+
 app.use(helmet());
 
 app.use(corsMiddleware);
+
+app.use('/metrics', createMetricsRouter());
+
+app.use('/api/health', createHealthRouter(sequelize));
+
+app.use(createDocsRouter());
 
 app.use('/api', apiRateLimiter);
 
@@ -98,33 +140,39 @@ app.use(
   }),
 );
 
-app.use(createDocsRouter());
-
 app.use(express.static('public'));
-
-app.get('/api/health', (_req, res) => {
-  res.status(200).json({
-    status: 'ok',
-  });
-});
 
 app.use(
   '/api/auth',
   createAuthRouter(authController, requireAuth),
 );
 
-app.use('/api/equipment', createEquipmentRouter(equipmentController));
+app.use(
+  '/api/equipment',
+  createEquipmentRouter(equipmentController, requireAuth),
+);
 
-app.use('/api/requests', createMaintenanceRequestRouter(requestController));
+app.use('/api/requests', createMaintenanceRequestRouter(requestController, requireAuth));
 
 app.use(
   '/api/requests',
-  createRequestAssigneeRouter(requestAssigneeController),
+  createRequestAssigneeRouter(requestAssigneeController, requireAuth),
 );
 
-app.use('/api/sites', createSiteRouter(siteSummaryController));
+app.use(
+  '/api/sites',
+  createSiteRouter(siteController, siteSummaryController, requireAuth),
+);
 
-app.use('/api/reports', createReportRouter(equipmentLoadController));
+app.use(
+  '/api/reports',
+  createReportRouter(equipmentLoadController, requireAuth),
+);
+
+app.use(
+  '/api/technicians',
+  createTechnicianRouter(technicianController, requireAuth),
+);
 
 app.use(notFoundHandler);
 

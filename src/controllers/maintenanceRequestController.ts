@@ -14,6 +14,8 @@ import type {
   BulkImportResult,
 } from '../models/requests/bulkImport.js';
 import { createMaintenanceRequestSchema } from '../validators/maintenanceRequestValidator.js';
+import type { AuthLocals } from '../middlewares/auth/requireAuth.js';
+import { UnauthorizedError } from '../errors/unauthorizedError.js';
 
 export interface MaintenanceRequestParams extends ParamsDictionary {
   id: string;
@@ -200,9 +202,17 @@ export class MaintenanceRequestController {
     next: NextFunction,
   ): Promise<void> => {
     try {
+      const locals: AuthLocals = res.locals;
+      const user = locals.user;
+
+      if (user === undefined) {
+        throw new UnauthorizedError('Authentication required');
+      }
+
       const request = await this.requestService.updateStatus(
         req.params.id,
         req.body as UpdateMaintenanceRequestStatusInput,
+        user,
       );
 
       res.status(200).json({

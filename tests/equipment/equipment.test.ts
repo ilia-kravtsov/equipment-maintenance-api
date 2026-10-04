@@ -1,7 +1,14 @@
 import request from 'supertest';
 
 import { app } from '../../src/app.js';
-import { TEST_API_KEY } from '../testConfig.js';
+import { createTestSession } from '../helpers/createTestSession.js';
+
+let adminAccessToken: string;
+
+beforeAll(async () => {
+  const session = await createTestSession('admin');
+  adminAccessToken = session.accessToken;
+});
 
 describe('Equipment API', () => {
   let equipmentId: string;
@@ -22,7 +29,7 @@ describe('Equipment API', () => {
 
       const response = await request(app)
         .post('/api/equipment')
-        .set('X-API-Key', TEST_API_KEY)
+        .set('Authorization', `Bearer ${adminAccessToken}`)
         .send(equipment);
 
       equipmentId = response.body.data.id as string;
@@ -38,7 +45,8 @@ describe('Equipment API', () => {
   describe('GET /api/equipment/:id', () => {
     it('should return equipment by id', async () => {
       const response = await request(app)
-        .get(`/api/equipment/${equipmentId}`);
+        .get(`/api/equipment/${equipmentId}`)
+        .set('Authorization', `Bearer ${adminAccessToken}`);
 
       expect(response.status).toBe(200);
       expect(response.body.data.id).toBe(equipmentId);
@@ -50,7 +58,7 @@ describe('Equipment API', () => {
     it('should update equipment', async () => {
       const response = await request(app)
         .patch(`/api/equipment/${equipmentId}`)
-        .set('X-API-Key', TEST_API_KEY)
+        .set('Authorization', `Bearer ${adminAccessToken}`)
         .send({
           name: 'Updated Main Turbine',
           status: 'maintenance',
@@ -67,6 +75,7 @@ describe('Equipment API', () => {
     it('should return paginated equipment list', async () => {
       const response = await request(app)
         .get('/api/equipment')
+        .set('Authorization', `Bearer ${adminAccessToken}`)
         .query({
           status: 'maintenance',
           page: 1,
@@ -99,7 +108,7 @@ describe('Equipment API', () => {
     it('should delete equipment', async () => {
       const response = await request(app)
         .delete(`/api/equipment/${equipmentId}`)
-        .set('X-API-Key', TEST_API_KEY)
+        .set('Authorization', `Bearer ${adminAccessToken}`)
 
       expect(response.status).toBe(204);
       expect(response.body).toEqual({});
@@ -107,7 +116,8 @@ describe('Equipment API', () => {
 
     it('should return 404 for deleted equipment', async () => {
       const response = await request(app)
-        .get(`/api/equipment/${equipmentId}`);
+        .get(`/api/equipment/${equipmentId}`)
+        .set('Authorization', `Bearer ${adminAccessToken}`);
 
       expect(response.status).toBe(404);
       expect(response.body.error.code).toBe('NOT_FOUND');

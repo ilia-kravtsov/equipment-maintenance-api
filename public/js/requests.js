@@ -5,7 +5,6 @@ import {
 } from './ui.js';
 
 export const initRequests = ({
-                                 apiKeyInput,
                                  createRequestForm,
                                  createMessage,
                                  equipmentIdInput,
@@ -14,7 +13,15 @@ export const initRequests = ({
                                  requestsList,
                                  requestsMessage,
                              }) => {
-    const getApiKey = () => apiKeyInput.value.trim();
+    const previousButton = document.querySelector('#requests-prev');
+    const nextButton = document.querySelector('#requests-next');
+    const pageLabel = document.querySelector('#requests-page');
+
+    const pageSize = 20;
+    let currentPage = 1;
+    let totalPages = 0;
+    let loadVersion = 0;
+    let activeFilters = '';
 
     const renderRequests = (requests) => {
         requestsList.replaceChildren();
@@ -51,27 +58,60 @@ export const initRequests = ({
         return params.toString();
     };
 
-    const loadRequests = async () => {
+    const loadRequests = async (page = 1) => {
+        const version = ++loadVersion;
+
+        if (page === 1) {
+            activeFilters = getFiltersQuery();
+        }
+
+        previousButton.disabled = true;
+        nextButton.disabled = true;
+        pageLabel.textContent = '';
         setMessage(requestsMessage, 'Загрузка...');
         requestsList.replaceChildren();
 
         try {
-            const query = getFiltersQuery();
-            const url = query
-                ? `/api/requests?${query}`
-                : '/api/requests';
+            const params = new URLSearchParams(activeFilters);
+            params.set('page', String(page));
+            params.set('limit', String(pageSize));
+            params.set('sortBy', 'createdAt');
+            params.set('order', 'desc');
 
-            const body = await apiRequest(url);
+            const body = await apiRequest(`/api/requests?${params}`);
 
+            if (version !== loadVersion) {
+                return;
+            }
+
+            totalPages = Math.ceil(body.meta.total / pageSize);
+
+            if (totalPages > 0 && page > totalPages) {
+                await loadRequests(totalPages);
+                return;
+            }
+
+            currentPage = body.meta.page;
             renderRequests(body.data);
 
-            if (body.data.length > 0) {
+            if (body.meta.total > 0) {
                 setMessage(
                     requestsMessage,
                     `Найдено заявок: ${body.meta.total}`,
                 );
+                pageLabel.textContent =
+                    `Страница ${currentPage} из ${totalPages}`;
+            } else {
+                pageLabel.textContent = 'Нет страниц';
             }
+
+            previousButton.disabled = currentPage <= 1 || totalPages === 0;
+            nextButton.disabled = currentPage >= totalPages;
         } catch (error) {
+            if (version !== loadVersion) {
+                return;
+            }
+
             setMessage(
                 requestsMessage,
                 error instanceof Error
@@ -81,6 +121,18 @@ export const initRequests = ({
             );
         }
     };
+
+    previousButton.addEventListener('click', () => {
+        if (currentPage > 1) {
+            void loadRequests(currentPage - 1);
+        }
+    });
+
+    nextButton.addEventListener('click', () => {
+        if (currentPage < totalPages) {
+            void loadRequests(currentPage + 1);
+        }
+    });
 
     const createRequest = async (event) => {
         event.preventDefault();
@@ -111,7 +163,6 @@ export const initRequests = ({
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-API-Key': getApiKey(),
                 },
                 body: JSON.stringify(payload),
             });
@@ -156,5 +207,12 @@ export const initRequests = ({
         },
     );
 
-    void loadRequests();
+    document.addEventListener('auth:login', () => {
+        void loadRequests();
+    });
+
+    setMessage(
+        requestsMessage,
+        'Войдите в учётную запись для загрузки заявок',
+    );
 };

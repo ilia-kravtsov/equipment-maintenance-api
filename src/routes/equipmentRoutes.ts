@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router, type RequestHandler } from 'express';
 import { validateParams } from '../middlewares/validation/validateParams.js';
 import { idParamsSchema } from '../validators/commonValidator.js';
 import {
@@ -11,7 +11,7 @@ import {
   updateEquipmentSchema,
   equipmentListQuerySchema,
 } from '../validators/equipmentValidator.js';
-import { requireApiKey } from '../middlewares/auth/requireApiKey.js';
+import { requireRoles } from '../middlewares/auth/requireRoles.js';
 
 import { validateQuery } from '../middlewares/validation/validateQuery.js';
 import { validatePagination } from '../middlewares/validation/validatePagination.js';
@@ -19,8 +19,11 @@ import { maintenanceRequestListQuerySchema } from '../validators/maintenanceRequ
 
 export const createEquipmentRouter = (
   equipmentController: EquipmentController,
+  requireAuth: RequestHandler,
 ): Router => {
   const router = Router();
+
+  router.use(requireAuth);
 
   router.get(
     '/',
@@ -31,7 +34,7 @@ export const createEquipmentRouter = (
 
   router.post(
     '/',
-    requireApiKey,
+    requireRoles('admin'),
     validateBody(createEquipmentSchema),
     equipmentController.create,
   );
@@ -58,7 +61,7 @@ export const createEquipmentRouter = (
 
   router.patch<EquipmentParams>(
     '/:id',
-    requireApiKey,
+    requireRoles('admin'),
     validateParams<EquipmentParams>(idParamsSchema),
     validateBody<EquipmentParams>(updateEquipmentSchema),
     equipmentController.update,
@@ -66,7 +69,7 @@ export const createEquipmentRouter = (
 
   router.delete<EquipmentParams>(
     '/:id',
-    requireApiKey,
+    requireRoles('admin'),
     validateParams<EquipmentParams>(idParamsSchema),
     equipmentController.delete,
   );

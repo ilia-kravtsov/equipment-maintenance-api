@@ -1,7 +1,14 @@
 import request from 'supertest';
 
 import { app } from '../../src/app.js';
-import { TEST_API_KEY } from '../testConfig.js';
+import { createTestSession } from '../helpers/createTestSession.js';
+
+let adminAccessToken: string;
+
+beforeAll(async () => {
+  const session = await createTestSession('admin');
+  adminAccessToken = session.accessToken;
+});
 
 describe('Maintenance Requests bulk import', () => {
   let equipmentId: string;
@@ -9,7 +16,7 @@ describe('Maintenance Requests bulk import', () => {
   beforeAll(async () => {
     const response = await request(app)
       .post('/api/equipment')
-      .set('X-API-Key', TEST_API_KEY)
+      .set('Authorization', `Bearer ${adminAccessToken}`)
       .send({
         name: 'Bulk Import Test Sensor',
         type: 'sensor',
@@ -29,7 +36,7 @@ describe('Maintenance Requests bulk import', () => {
   it('should import all valid maintenance requests', async () => {
     const response = await request(app)
       .post('/api/requests/import')
-      .set('X-API-Key', TEST_API_KEY)
+      .set('Authorization', `Bearer ${adminAccessToken}`)
       .send({
         requests: [
           {
@@ -70,7 +77,7 @@ describe('Maintenance Requests bulk import', () => {
   it('should partially import requests when one item is invalid', async () => {
     const response = await request(app)
       .post('/api/requests/import')
-      .set('X-API-Key', TEST_API_KEY)
+      .set('Authorization', `Bearer ${adminAccessToken}`)
       .send({
         requests: [
           {
@@ -117,7 +124,7 @@ describe('Maintenance Requests bulk import', () => {
   it('should report missing equipment without aborting the import', async () => {
     const response = await request(app)
       .post('/api/requests/import')
-      .set('X-API-Key', TEST_API_KEY)
+      .set('Authorization', `Bearer ${adminAccessToken}`)
       .send({
         requests: [
           {
@@ -157,7 +164,7 @@ describe('Maintenance Requests bulk import', () => {
   it('should return 422 for an empty import', async () => {
     const response = await request(app)
       .post('/api/requests/import')
-      .set('X-API-Key', TEST_API_KEY)
+      .set('Authorization', `Bearer ${adminAccessToken}`)
       .send({
         requests: [],
       });
@@ -167,7 +174,7 @@ describe('Maintenance Requests bulk import', () => {
     expect(response.body.error.requestId).toEqual(expect.any(String));
   });
 
-  it('should return 401 without an API key', async () => {
+  it('should return 401 without an access token', async () => {
     const response = await request(app)
       .post('/api/requests/import')
       .send({

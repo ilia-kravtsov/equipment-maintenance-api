@@ -1,7 +1,6 @@
 import { initEquipment } from './equipment.js';
 import { initRequests } from './requests.js';
-
-const apiKeyInput = document.querySelector('#api-key');
+import { initAuth } from './auth.js';
 
 const createEquipmentForm = document.querySelector('#create-equipment-form');
 const equipmentMessage = document.querySelector('#equipment-message');
@@ -21,7 +20,6 @@ const requestsList = document.querySelector('#requests-list');
 const requestsMessage = document.querySelector('#requests-message');
 
 initEquipment({
-    apiKeyInput,
     createEquipmentForm,
     equipmentMessage,
     equipmentIdInput,
@@ -32,7 +30,6 @@ initEquipment({
 });
 
 initRequests({
-    apiKeyInput,
     createRequestForm,
     createMessage,
     equipmentIdInput,
@@ -41,3 +38,5 @@ initRequests({
     requestsList,
     requestsMessage,
 });
+
+initAuth();

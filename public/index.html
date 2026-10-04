@@ -19,25 +19,47 @@
     </header>
 
     <section class="panel">
-        <h2 class="panel-title">Доступ к API</h2>
+        <h2 class="panel-title">Учётная запись</h2>
 
-        <div class="form-field">
-            <label for="api-key">API key</label>
-            <input
-                    id="api-key"
-                    type="password"
-                    autocomplete="off"
-                    placeholder="Введите API key"
-            />
+        <form class="login-form" id="login-form">
+            <div class="form-field">
+                <label for="auth-email">Email</label>
+                <input
+                        id="auth-email"
+                        name="email"
+                        type="email"
+                        autocomplete="username"
+                        required
+                />
+            </div>
+
+            <div class="form-field">
+                <label for="auth-password">Пароль</label>
+                <input
+                        id="auth-password"
+                        name="password"
+                        type="password"
+                        autocomplete="current-password"
+                        required
+                />
+            </div>
+
+            <button type="submit">Войти</button>
+
+            <button id="toggle-auth-mode" type="button">
+                Создать учётную запись
+            </button>
+        </form>
+
+        <div id="session-panel" hidden>
+            <p id="session-user"></p>
+            <button id="logout-button" type="button">Выйти</button>
         </div>
 
-        <p class="panel-hint">
-            Ключ используется для защищённых запросов и не сохраняется
-            в браузере
-        </p>
+        <p id="auth-message" class="message" role="status"></p>
     </section>
 
-    <section class="panel">
+    <section class="panel" id="create-equipment-panel" hidden>
         <h2 class="panel-title">Создать оборудование</h2>
 
         <form id="create-equipment-form" class="form">
@@ -154,7 +176,7 @@
         </div>
     </section>
 
-    <section class="panel">
+    <section class="panel" id="create-request-panel" hidden>
         <h2 class="panel-title">Создать заявку</h2>
 
         <form id="create-request-form" class="form">
@@ -274,6 +296,16 @@
                 id="requests-list"
                 class="requests-list"
         ></div>
+
+        <nav class="pagination" aria-label="Страницы заявок">
+            <button id="requests-prev" class="button" type="button" disabled>
+                Назад
+            </button>
+            <span id="requests-page" role="status" aria-live="polite"></span>
+            <button id="requests-next" class="button" type="button" disabled>
+                Вперёд
+            </button>
+        </nav>
     </section>
 </main>
 
