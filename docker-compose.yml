@@ -182,6 +182,9 @@ services:
       GF_ANALYTICS_REPORTING_ENABLED: "false"
       GF_ANALYTICS_CHECK_FOR_UPDATES: "false"
       GF_ANALYTICS_CHECK_FOR_PLUGIN_UPDATES: "false"
+      GRAFANA_DB_NAME: ${DB_NAME:?DB_NAME is required}
+      GRAFANA_DB_USER: ${GRAFANA_DB_USER:?GRAFANA_DB_USER is required}
+      GRAFANA_DB_PASSWORD: ${GRAFANA_DB_PASSWORD:?GRAFANA_DB_PASSWORD is required}
 
     volumes:
       - grafana_data:/var/lib/grafana
