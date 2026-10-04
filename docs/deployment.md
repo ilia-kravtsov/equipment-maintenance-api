@@ -29,6 +29,35 @@
 | `DB_USER` | Отдельная роль приложения, не `POSTGRES_USER` |
 | `LOG_LEVEL` | `info` |
 
+## Подготовка мониторинга
+
+В `.env` задать 
+
+`GRAFANA_ADMIN_USER`
+`GRAFANA_ADMIN_PASSWORD`
+`GRAFANA_DB_USER`
+`GRAFANA_DB_PASSWORD`
+
+Перед запуском HTTPS конфигурации создать файл Basic Auth:
+
+```bash
+apt install -y apache2-utils
+install -d -m 755 /etc/equipment-maintenance
+htpasswd -c /etc/equipment-maintenance/grafana.htpasswd monitoring
+chmod 644 /etc/equipment-maintenance/grafana.htpasswd
+```
+
+`-c` использовать только при первоначальном создании файла
+
+`init` после миграций настраивает роль мониторинга
+
+Grafana и Prometheus запускаются общей командой Compose
+Она запускает на сервере приложение, PostgreSQL, init сервис, Nginx, Prometheus и Grafana
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.https.yml up -d --build
+```
+
 ## Первый запуск
 
 До запуска Nginx получить сертификат:

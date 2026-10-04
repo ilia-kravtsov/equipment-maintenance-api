@@ -1,0 +1,109 @@
+{
+  "uid": "equipment-maintenance-overview",
+  "title": "Обслуживание - прикладные показатели",
+  "description": "Текущее состояние неудалённых заявок за всё время. Время закрытия рассчитывается для статуса done",
+  "schemaVersion": 39,
+  "version": 1,
+  "editable": false,
+  "timezone": "browser",
+  "refresh": "30s",
+  "timepicker": { "hidden": true },
+  "panels": [
+    {
+      "id": 1,
+      "title": "Заявки по статусам",
+      "type": "barchart",
+      "gridPos": { "x": 0, "y": 0, "w": 12, "h": 8 },
+      "datasource": { "type": "grafana-postgresql-datasource", "uid": "postgres" },
+      "targets": [{
+        "refId": "A",
+        "format": "table",
+        "rawQuery": true,
+        "rawSql": "SELECT s.status AS \"Статус\", COUNT(r.id)::integer AS \"Заявок\" FROM (VALUES ('new', 1), ('in_progress', 2), ('done', 3), ('rejected', 4)) AS s(status, position) LEFT JOIN public.maintenance_requests r ON r.status = s.status AND r.deleted_at IS NULL GROUP BY s.status, s.position ORDER BY s.position"
+      }],
+      "fieldConfig": {
+        "defaults": { "min": 0, "decimals": 0 },
+        "overrides": []
+      }
+    },
+    {
+      "id": 2,
+      "title": "Заявки по приоритетам",
+      "type": "barchart",
+      "gridPos": { "x": 12, "y": 0, "w": 12, "h": 8 },
+      "datasource": { "type": "grafana-postgresql-datasource", "uid": "postgres" },
+      "targets": [{
+        "refId": "A",
+        "format": "table",
+        "rawQuery": true,
+        "rawSql": "SELECT p.priority AS \"Приоритет\", COUNT(r.id)::integer AS \"Заявок\" FROM (VALUES ('low', 1), ('medium', 2), ('high', 3), ('critical', 4)) AS p(priority, position) LEFT JOIN public.maintenance_requests r ON r.priority = p.priority AND r.deleted_at IS NULL GROUP BY p.priority, p.position ORDER BY p.position"
+      }],
+      "fieldConfig": {
+        "defaults": { "min": 0, "decimals": 0 },
+        "overrides": []
+      }
+    },
+    {
+      "id": 3,
+      "title": "Среднее время закрытия, часы",
+      "description": "От создания до последнего перехода в done. Отклонённые заявки не учитываются",
+      "type": "stat",
+      "gridPos": { "x": 0, "y": 8, "w": 12, "h": 6 },
+      "datasource": { "type": "grafana-postgresql-datasource", "uid": "postgres" },
+      "targets": [{
+        "refId": "A",
+        "format": "table",
+        "rawQuery": true,
+        "rawSql": "SELECT AVG(EXTRACT(EPOCH FROM (closure.closed_at - r.created_at)) / 3600.0)::double precision AS \"Часы\" FROM public.maintenance_requests r JOIN LATERAL (SELECT MAX(h.changed_at) AS closed_at FROM public.request_status_history h WHERE h.request_id = r.id AND h.new_status = 'done') closure ON TRUE WHERE r.deleted_at IS NULL AND r.status = 'done'"
+      }],
+      "fieldConfig": {
+        "defaults": { "decimals": 2, "noValue": "Нет закрытых заявок" },
+        "overrides": []
+      },
+      "options": { "graphMode": "none", "colorMode": "value" }
+    },
+    {
+      "id": 4,
+      "title": "Просроченные плановые работы",
+      "description": "Плановая дата прошла, статус new или in_progress.",
+      "type": "stat",
+      "gridPos": { "x": 12, "y": 8, "w": 12, "h": 6 },
+      "datasource": { "type": "grafana-postgresql-datasource", "uid": "postgres" },
+      "targets": [{
+        "refId": "A",
+        "format": "table",
+        "rawQuery": true,
+        "rawSql": "SELECT COUNT(*)::integer AS \"Заявок\" FROM public.maintenance_requests WHERE deleted_at IS NULL AND status IN ('new', 'in_progress') AND planned_at < CURRENT_TIMESTAMP"
+      }],
+      "fieldConfig": {
+        "defaults": {
+          "decimals": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "orange", "value": 1 }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": { "graphMode": "none", "colorMode": "background" }
+    },
+    {
+      "id": 5,
+      "title": "Нагрузка на оборудование",
+      "description": "Неудалённое оборудование; все неудалённые заявки и сумма назначенных часов",
+      "type": "table",
+      "gridPos": { "x": 0, "y": 14, "w": 24, "h": 10 },
+      "datasource": { "type": "grafana-postgresql-datasource", "uid": "postgres" },
+      "targets": [{
+        "refId": "A",
+        "format": "table",
+        "rawQuery": true,
+        "rawSql": "WITH assigned_hours AS (SELECT request_id, SUM(hours) AS hours FROM public.request_assignees GROUP BY request_id) SELECT e.name AS \"Оборудование\", e.serial_number AS \"Серийный номер\", COUNT(r.id)::integer AS \"Заявок\", COALESCE(SUM(a.hours), 0)::double precision AS \"Плановые часы\" FROM public.equipment e LEFT JOIN public.maintenance_requests r ON r.equipment_id = e.id AND r.deleted_at IS NULL LEFT JOIN assigned_hours a ON a.request_id = r.id WHERE e.deleted_at IS NULL GROUP BY e.id, e.name, e.serial_number ORDER BY COUNT(r.id) DESC, e.serial_number"
+      }],
+      "options": { "showHeader": true }
+    }
+  ]
+}
