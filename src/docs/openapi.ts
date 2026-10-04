@@ -10,6 +10,9 @@ import { paginationSchemas } from './schemas/paginationSchemas.js';
 import { equipmentSchemas } from './schemas/equipmentSchemas.js';
 import { weatherSchemas } from './schemas/weatherSchemas.js';
 import { equipmentPaths } from './paths/equipmentPaths.js';
+import { maintenanceRequestSchemas } from './schemas/maintenanceRequestSchemas.js';
+import { requestAssigneeSchemas } from './schemas/requestAssigneeSchemas.js';
+import { requestStatusHistorySchemas } from './schemas/requestStatusHistorySchemas.js';
 
 export const openapiDocument: OpenAPIV3.Document = {
   openapi: '3.0.3',
@@ -49,6 +52,9 @@ export const openapiDocument: OpenAPIV3.Document = {
       ...paginationSchemas,
       ...equipmentSchemas,
       ...weatherSchemas,
+      ...maintenanceRequestSchemas,
+      ...requestAssigneeSchemas,
+      ...requestStatusHistorySchemas,
     },
     parameters: commonParameters,
     responses: commonResponses,
