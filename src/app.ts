@@ -130,6 +130,8 @@ app.use('/metrics', createMetricsRouter());
 
 app.use('/api/health', createHealthRouter(sequelize));
 
+app.use(createDocsRouter());
+
 app.use('/api', apiRateLimiter);
 
 app.use(
@@ -137,8 +139,6 @@ app.use(
     limit: '100kb',
   }),
 );
-
-app.use(createDocsRouter());
 
 app.use(express.static('public'));
 

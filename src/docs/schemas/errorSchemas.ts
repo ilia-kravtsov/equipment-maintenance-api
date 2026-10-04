@@ -13,11 +13,9 @@ export const errorSchemas: Record<string, OpenAPIV3.SchemaObject> = {
         properties: {
           code: {
             type: 'string',
-            example: 'UNAUTHORIZED',
           },
           message: {
             type: 'string',
-            example: 'Invalid email or password',
           },
           requestId: {
             type: 'string',
@@ -25,7 +23,7 @@ export const errorSchemas: Record<string, OpenAPIV3.SchemaObject> = {
           },
           details: {
             type: 'array',
-            description: 'Подробности ошибок валидации, если применимо.',
+            description: 'Подробности ошибок валидации',
             items: {
               type: 'object',
               additionalProperties: false,
@@ -33,11 +31,9 @@ export const errorSchemas: Record<string, OpenAPIV3.SchemaObject> = {
               properties: {
                 field: {
                   type: 'string',
-                  example: 'password',
                 },
                 message: {
                   type: 'string',
-                  example: 'Password must contain at least 8 characters',
                 },
               },
             },

@@ -111,10 +111,6 @@ services:
       - |
         node dist/database/scripts/setupAppRole.js
         node dist/database/scripts/migrate.js up
-        node dist/database/scripts/seed.js
-        node dist/database/scripts/createInitialAdmin.js
-        node dist/database/scripts/setupAppRole.js
-        node dist/database/scripts/migrate.js up
         node dist/database/scripts/setupMonitoringRole.js
         node dist/database/scripts/seed.js
         node dist/database/scripts/createInitialAdmin.js

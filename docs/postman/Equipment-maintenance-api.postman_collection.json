@@ -270,6 +270,294 @@
               "body": "{\n  \"status\": \"ok\"\n}"
             }
           ]
+        },
+        {
+          "name": "Case 4 - Liveness - 200",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Application is alive', () => {\r",
+                  "  pm.response.to.have.status(200);\r",
+                  "  pm.expect(pm.response.json()).to.deep.eql({ status: 'ok' });\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/health/live",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "health",
+                "live"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Case 4 - Liveness - 200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/health/live",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "health",
+                    "live"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 04 Oct 2026 16:29:24 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "15"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-store"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"f-VaSQ4oDUiZblZNAEkkN+sX+q3Sg\""
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"ok\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Case 4 - Readiness - 200",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Application and database are ready', () => {\r",
+                  "  pm.response.to.have.status(200);\r",
+                  "  pm.expect(pm.response.json()).to.deep.eql({ status: 'ready' });\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/health/ready",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "health",
+                "ready"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Case 4 - Readiness - 200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/health/ready",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "health",
+                    "ready"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 04 Oct 2026 16:30:33 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "18"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-store"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"12-4TtQgvFNX2eV2jVHUVwyech4XJg\""
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"ready\"\n}"
+            }
+          ]
         }
       ]
     },
@@ -282,21 +570,39 @@
             {
               "listen": "test",
               "script": {
-                "type": "text/javascript",
                 "exec": [
-                  "pm.test('Status code is 201', () => {\r\n  pm.response.to.have.status(201);\r\n});\r\n\r\npm.test('Created equipment is returned', () => {\r\n  const body = pm.response.json();\r\n\r\n  pm.expect(body).to.have.property('data');\r\n  pm.expect(body.data).to.have.property('id');\r\n  pm.expect(body.data.name).to.eql('Проверка PostgreSQL');\r\n  pm.expect(body.data.serialNumber).to.eql('PG-CHECK-20260927-1020');\r\n});\r\n\r\npm.test('Location header is present', () => {\r\n  pm.expect(pm.response.headers.get('Location')).to.exist;\r\n});\r\n\r\nconst body = pm.response.json();\r\n\r\nif (body.data?.id) {\r\n  pm.collectionVariables.set('equipmentId', body.data.id);\r\n}"
-                ]
+                  "pm.test('Status code is 201', () => {\r",
+                  "  pm.response.to.have.status(201);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test('Created equipment is returned', () => {\r",
+                  "  const body = pm.response.json();\r",
+                  "\r",
+                  "  pm.expect(body).to.have.property('data');\r",
+                  "  pm.expect(body.data).to.have.property('id');\r",
+                  "  pm.expect(body.data.name).to.eql('Проверка PostgreSQL');\r",
+                  "  pm.expect(body.data.serialNumber).to.eql('PG-CHECK-20260927-1020');\r",
+                  "});\r",
+                  "\r",
+                  "pm.test('Location header is present', () => {\r",
+                  "  pm.expect(pm.response.headers.get('Location')).to.exist;\r",
+                  "});\r",
+                  "\r",
+                  "const body = pm.response.json();\r",
+                  "\r",
+                  "if (body.data?.id) {\r",
+                  "  pm.collectionVariables.set('equipmentId', body.data.id);\r",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
               }
             }
           ],
           "request": {
             "method": "POST",
-            "header": [
-              {
-                "key": "X-API-Key",
-                "value": "{{apiKey}}"
-              }
-            ],
+            "header": [],
             "body": {
               "mode": "raw",
               "raw": "{\r\n  \"name\": \"Проверка PostgreSQL\",\r\n  \"type\": \"sensor\",\r\n  \"serialNumber\": \"PG-CHECK-20260927-1020\",\r\n  \"location\": {\r\n    \"lat\": 55.7558,\r\n    \"lon\": 37.6173\r\n  },\r\n  \"status\": \"operational\",\r\n  \"installedAt\": \"2026-09-01\"\r\n}",
@@ -985,10 +1291,32 @@
             {
               "listen": "test",
               "script": {
-                "type": "text/javascript",
                 "exec": [
-                  "pm.test('Status code is 200', () => {\r\n  pm.response.to.have.status(200);\r\n});\r\n\r\npm.test('Equipment is updated', () => {\r\n  const body = pm.response.json();\r\n\r\n  pm.expect(body).to.have.property('data');\r\n  pm.expect(body.data.id).to.eql(\r\n    pm.collectionVariables.get('equipmentId'),\r\n  );\r\n  pm.expect(body.data.name).to.eql('Проверка PostgreSQL — обновлено');\r\n  pm.expect(body.data.status).to.eql('maintenance');\r\n});\r\n\r\npm.test('Unchanged fields are preserved', () => {\r\n  const body = pm.response.json();\r\n\r\n  pm.expect(body.data.serialNumber).to.eql('PG-CHECK-20260927-1020');\r\n  pm.expect(body.data.type).to.eql('sensor');\r\n});"
-                ]
+                  "pm.test('Status code is 200', () => {\r",
+                  "  pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test('Equipment is updated', () => {\r",
+                  "  const body = pm.response.json();\r",
+                  "\r",
+                  "  pm.expect(body).to.have.property('data');\r",
+                  "  pm.expect(body.data.id).to.eql(\r",
+                  "    pm.collectionVariables.get('equipmentId'),\r",
+                  "  );\r",
+                  "  pm.expect(body.data.name).to.eql('Проверка PostgreSQL — обновлено');\r",
+                  "  pm.expect(body.data.status).to.eql('maintenance');\r",
+                  "});\r",
+                  "\r",
+                  "pm.test('Unchanged fields are preserved', () => {\r",
+                  "  const body = pm.response.json();\r",
+                  "\r",
+                  "  pm.expect(body.data.serialNumber).to.eql('PG-CHECK-20260927-1020');\r",
+                  "  pm.expect(body.data.type).to.eql('sensor');\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
               }
             }
           ],
@@ -996,8 +1324,8 @@
             "method": "PATCH",
             "header": [
               {
-                "key": "X-API-Key",
-                "value": "{{apiKey}}"
+                "key": "",
+                "value": ""
               }
             ],
             "body": {
@@ -2336,10 +2664,18 @@
             {
               "listen": "test",
               "script": {
-                "type": "text/javascript",
                 "exec": [
-                  "pm.test('Status code is 204', () => {\r\n  pm.response.to.have.status(204);\r\n});\r\n\r\npm.test('Response body is empty', () => {\r\n  pm.expect(pm.response.text()).to.eql('');\r\n});"
-                ]
+                  "pm.test('Status code is 204', () => {\r",
+                  "  pm.response.to.have.status(204);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test('Response body is empty', () => {\r",
+                  "  pm.expect(pm.response.text()).to.eql('');\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
               }
             }
           ],
@@ -2347,8 +2683,8 @@
             "method": "DELETE",
             "header": [
               {
-                "key": "X-API-Key",
-                "value": "{{apiKey}}"
+                "key": "",
+                "value": ""
               }
             ],
             "url": {
@@ -4879,10 +5215,41 @@
             {
               "listen": "test",
               "script": {
-                "type": "text/javascript",
                 "exec": [
-                  "pm.test('Status code is 201', () => {\r\n  pm.response.to.have.status(201);\r\n});\r\n\r\npm.test('Maintenance request is created', () => {\r\n  const body = pm.response.json();\r\n\r\n  pm.expect(body).to.have.property('data');\r\n  pm.expect(body.data).to.have.property('id');\r\n  pm.expect(body.data.equipmentId).to.eql(\r\n    pm.collectionVariables.get('equipmentId'),\r\n  );\r\n  pm.expect(body.data.title).to.eql('Проверка сохранения заявки');\r\n  pm.expect(body.data.priority).to.eql('high');\r\n  pm.expect(body.data.status).to.eql('new');\r\n});\r\n\r\npm.test('Server-controlled fields are present', () => {\r\n  const request = pm.response.json().data;\r\n\r\n  pm.expect(request).to.have.property('id');\r\n  pm.expect(request).to.have.property('createdAt');\r\n  pm.expect(request).to.have.property('updatedAt');\r\n});\r\n\r\nconst body = pm.response.json();\r\n\r\nif (body.data?.id) {\r\n  pm.collectionVariables.set('maintenanceRequestId', body.data.id);\r\n}"
-                ]
+                  "pm.test('Status code is 201', () => {\r",
+                  "  pm.response.to.have.status(201);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test('Maintenance request is created', () => {\r",
+                  "  const body = pm.response.json();\r",
+                  "\r",
+                  "  pm.expect(body).to.have.property('data');\r",
+                  "  pm.expect(body.data).to.have.property('id');\r",
+                  "  pm.expect(body.data.equipmentId).to.eql(\r",
+                  "    pm.collectionVariables.get('equipmentId'),\r",
+                  "  );\r",
+                  "  pm.expect(body.data.title).to.eql('Проверка сохранения заявки');\r",
+                  "  pm.expect(body.data.priority).to.eql('high');\r",
+                  "  pm.expect(body.data.status).to.eql('new');\r",
+                  "});\r",
+                  "\r",
+                  "pm.test('Server-controlled fields are present', () => {\r",
+                  "  const request = pm.response.json().data;\r",
+                  "\r",
+                  "  pm.expect(request).to.have.property('id');\r",
+                  "  pm.expect(request).to.have.property('createdAt');\r",
+                  "  pm.expect(request).to.have.property('updatedAt');\r",
+                  "});\r",
+                  "\r",
+                  "const body = pm.response.json();\r",
+                  "\r",
+                  "if (body.data?.id) {\r",
+                  "  pm.collectionVariables.set('maintenanceRequestId', body.data.id);\r",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
               }
             }
           ],
@@ -4890,8 +5257,8 @@
             "method": "POST",
             "header": [
               {
-                "key": "X-API-Key",
-                "value": "{{apiKey}}"
+                "key": "",
+                "value": ""
               }
             ],
             "body": {
@@ -5847,10 +6214,30 @@
             {
               "listen": "test",
               "script": {
-                "type": "text/javascript",
                 "exec": [
-                  "pm.test('Status code is 200', () => {\r\n  pm.response.to.have.status(200);\r\n});\r\n\r\npm.test('Maintenance request is updated', () => {\r\n  const body = pm.response.json();\r\n\r\n  pm.expect(body.data.id).to.eql(\r\n    pm.collectionVariables.get('maintenanceRequestId'),\r\n  );\r\n  pm.expect(body.data.title).to.eql('Updated inverter inspection');\r\n  pm.expect(body.data.priority).to.eql('critical');\r\n});\r\n\r\npm.test('Request status remains unchanged', () => {\r\n  const body = pm.response.json();\r\n\r\n  pm.expect(body.data.status).to.eql('new');\r\n});"
-                ]
+                  "pm.test('Status code is 200', () => {\r",
+                  "  pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test('Maintenance request is updated', () => {\r",
+                  "  const body = pm.response.json();\r",
+                  "\r",
+                  "  pm.expect(body.data.id).to.eql(\r",
+                  "    pm.collectionVariables.get('maintenanceRequestId'),\r",
+                  "  );\r",
+                  "  pm.expect(body.data.title).to.eql('Updated inverter inspection');\r",
+                  "  pm.expect(body.data.priority).to.eql('critical');\r",
+                  "});\r",
+                  "\r",
+                  "pm.test('Request status remains unchanged', () => {\r",
+                  "  const body = pm.response.json();\r",
+                  "\r",
+                  "  pm.expect(body.data.status).to.eql('new');\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
               }
             }
           ],
@@ -5858,8 +6245,8 @@
             "method": "PATCH",
             "header": [
               {
-                "key": "X-API-Key",
-                "value": "{{apiKey}}"
+                "key": "",
+                "value": ""
               }
             ],
             "body": {
@@ -6436,10 +6823,32 @@
             {
               "listen": "test",
               "script": {
-                "type": "text/javascript",
                 "exec": [
-                  "pm.test('Status code is 200', () => {\r\n  pm.response.to.have.status(200);\r\n});\r\n\r\npm.test('Request status is changed to in_progress', () => {\r\n  const body = pm.response.json();\r\n\r\n  pm.expect(body).to.have.property('data');\r\n  pm.expect(body.data.id).to.eql(\r\n    pm.collectionVariables.get('maintenanceRequestId'),\r\n  );\r\n  pm.expect(body.data.status).to.eql('in_progress');\r\n});\r\n\r\npm.test('Request still belongs to correct equipment', () => {\r\n  const body = pm.response.json();\r\n\r\n  pm.expect(body.data.equipmentId).to.eql(\r\n    pm.collectionVariables.get('equipmentId'),\r\n  );\r\n});"
-                ]
+                  "pm.test('Status code is 200', () => {\r",
+                  "  pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test('Request status is changed to in_progress', () => {\r",
+                  "  const body = pm.response.json();\r",
+                  "\r",
+                  "  pm.expect(body).to.have.property('data');\r",
+                  "  pm.expect(body.data.id).to.eql(\r",
+                  "    pm.collectionVariables.get('maintenanceRequestId'),\r",
+                  "  );\r",
+                  "  pm.expect(body.data.status).to.eql('in_progress');\r",
+                  "});\r",
+                  "\r",
+                  "pm.test('Request still belongs to correct equipment', () => {\r",
+                  "  const body = pm.response.json();\r",
+                  "\r",
+                  "  pm.expect(body.data.equipmentId).to.eql(\r",
+                  "    pm.collectionVariables.get('equipmentId'),\r",
+                  "  );\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
               }
             }
           ],
@@ -6447,8 +6856,8 @@
             "method": "PATCH",
             "header": [
               {
-                "key": "X-API-Key",
-                "value": "{{apiKey}}"
+                "key": "",
+                "value": ""
               }
             ],
             "body": {
@@ -7401,10 +7810,23 @@
             {
               "listen": "test",
               "script": {
-                "type": "text/javascript",
                 "exec": [
-                  "pm.test('Status code is 200', () => {\r\n  pm.response.to.have.status(200);\r\n});\r\n\r\npm.test('Request status is changed to done', () => {\r\n  const body = pm.response.json();\r\n\r\n  pm.expect(body.data.id).to.eql(\r\n    pm.collectionVariables.get('maintenanceRequestId'),\r\n  );\r\n  pm.expect(body.data.status).to.eql('done');\r\n});"
-                ]
+                  "pm.test('Status code is 200', () => {\r",
+                  "  pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test('Request status is changed to done', () => {\r",
+                  "  const body = pm.response.json();\r",
+                  "\r",
+                  "  pm.expect(body.data.id).to.eql(\r",
+                  "    pm.collectionVariables.get('maintenanceRequestId'),\r",
+                  "  );\r",
+                  "  pm.expect(body.data.status).to.eql('done');\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
               }
             }
           ],
@@ -7412,8 +7834,8 @@
             "method": "PATCH",
             "header": [
               {
-                "key": "X-API-Key",
-                "value": "{{apiKey}}"
+                "key": "",
+                "value": ""
               }
             ],
             "body": {
@@ -7838,10 +8260,18 @@
             {
               "listen": "test",
               "script": {
-                "type": "text/javascript",
                 "exec": [
-                  "pm.test('Status code is 204', () => {\r\n  pm.response.to.have.status(204);\r\n});\r\n\r\npm.test('Response body is empty', () => {\r\n  pm.expect(pm.response.text()).to.eql('');\r\n});"
-                ]
+                  "pm.test('Status code is 204', () => {\r",
+                  "  pm.response.to.have.status(204);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test('Response body is empty', () => {\r",
+                  "  pm.expect(pm.response.text()).to.eql('');\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
               }
             }
           ],
@@ -7849,8 +8279,8 @@
             "method": "DELETE",
             "header": [
               {
-                "key": "X-API-Key",
-                "value": "{{apiKey}}"
+                "key": "",
+                "value": ""
               }
             ],
             "url": {
@@ -8199,10 +8629,39 @@
             {
               "listen": "test",
               "script": {
-                "type": "text/javascript",
                 "exec": [
-                  "pm.test('Status code is 207', () => {\r\n  pm.response.to.have.status(207);\r\n});\r\n\r\npm.test('Response contains bulk import report', () => {\r\n  const body = pm.response.json();\r\n\r\n  pm.expect(body).to.have.property('data');\r\n  pm.expect(body.data.total).to.eql(2);\r\n  pm.expect(body.data.created).to.eql(1);\r\n  pm.expect(body.data.failed).to.eql(1);\r\n  pm.expect(body.data.results).to.be.an('array').with.lengthOf(2);\r\n});\r\n\r\npm.test('Valid request is created', () => {\r\n  const body = pm.response.json();\r\n\r\n  pm.expect(body.data.results[0].status).to.eql('created');\r\n  pm.expect(body.data.results[0].data).to.have.property('id');\r\n});\r\n\r\npm.test('Invalid request is reported without aborting import', () => {\r\n  const body = pm.response.json();\r\n\r\n  pm.expect(body.data.results[1].status).to.eql('failed');\r\n  pm.expect(body.data.results[1].error.code).to.eql('VALIDATION_ERROR');\r\n  pm.expect(body.data.results[1].error.details).to.be.an('array');\r\n});"
-                ]
+                  "pm.test('Status code is 207', () => {\r",
+                  "  pm.response.to.have.status(207);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test('Response contains bulk import report', () => {\r",
+                  "  const body = pm.response.json();\r",
+                  "\r",
+                  "  pm.expect(body).to.have.property('data');\r",
+                  "  pm.expect(body.data.total).to.eql(2);\r",
+                  "  pm.expect(body.data.created).to.eql(1);\r",
+                  "  pm.expect(body.data.failed).to.eql(1);\r",
+                  "  pm.expect(body.data.results).to.be.an('array').with.lengthOf(2);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test('Valid request is created', () => {\r",
+                  "  const body = pm.response.json();\r",
+                  "\r",
+                  "  pm.expect(body.data.results[0].status).to.eql('created');\r",
+                  "  pm.expect(body.data.results[0].data).to.have.property('id');\r",
+                  "});\r",
+                  "\r",
+                  "pm.test('Invalid request is reported without aborting import', () => {\r",
+                  "  const body = pm.response.json();\r",
+                  "\r",
+                  "  pm.expect(body.data.results[1].status).to.eql('failed');\r",
+                  "  pm.expect(body.data.results[1].error.code).to.eql('VALIDATION_ERROR');\r",
+                  "  pm.expect(body.data.results[1].error.details).to.be.an('array');\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
               }
             }
           ],
@@ -8210,8 +8669,8 @@
             "method": "POST",
             "header": [
               {
-                "key": "X-API-Key",
-                "value": "{{apiKey}}"
+                "key": "",
+                "value": ""
               }
             ],
             "body": {
@@ -9467,21 +9926,28 @@
             {
               "listen": "test",
               "script": {
-                "type": "text/javascript",
                 "exec": [
-                  "pm.test('Status code is 400', () => {\r\n  pm.response.to.have.status(400);\r\n});\r\n\r\npm.test('Malformed JSON returns BAD_REQUEST', () => {\r\n  const body = pm.response.json();\r\n\r\n  pm.expect(body.error.code).to.eql('BAD_REQUEST');\r\n  pm.expect(body.error).to.have.property('message');\r\n  pm.expect(body.error).to.have.property('requestId');\r\n});"
-                ]
+                  "pm.test('Status code is 400', () => {\r",
+                  "  pm.response.to.have.status(400);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test('Malformed JSON returns BAD_REQUEST', () => {\r",
+                  "  const body = pm.response.json();\r",
+                  "\r",
+                  "  pm.expect(body.error.code).to.eql('BAD_REQUEST');\r",
+                  "  pm.expect(body.error).to.have.property('message');\r",
+                  "  pm.expect(body.error).to.have.property('requestId');\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
               }
             }
           ],
           "request": {
             "method": "POST",
-            "header": [
-              {
-                "key": "X-API-Key",
-                "value": "{{apiKey}}"
-              }
-            ],
+            "header": [],
             "body": {
               "mode": "raw",
               "raw": "{\r\n  \"name\": \"Broken Equipment\",\r\n  \"type\": \"sensor\",\r\n}",
@@ -9896,21 +10362,40 @@
             {
               "listen": "test",
               "script": {
-                "type": "text/javascript",
                 "exec": [
-                  "pm.test('Status code is 422', () => {\r\n  pm.response.to.have.status(422);\r\n});\r\n\r\npm.test('Validation error has expected structure', () => {\r\n  const body = pm.response.json();\r\n\r\n  pm.expect(body).to.have.property('error');\r\n  pm.expect(body.error.code).to.eql('VALIDATION_ERROR');\r\n  pm.expect(body.error).to.have.property('message');\r\n  pm.expect(body.error).to.have.property('requestId');\r\n  pm.expect(body.error.details).to.be.an('array');\r\n  pm.expect(body.error.details.length).to.be.above(0);\r\n});\r\n\r\npm.test('Validation details contain field errors', () => {\r\n  const details = pm.response.json().error.details;\r\n\r\n  details.forEach((detail) => {\r\n    pm.expect(detail).to.have.property('field');\r\n    pm.expect(detail).to.have.property('message');\r\n  });\r\n});"
-                ]
+                  "pm.test('Status code is 422', () => {\r",
+                  "  pm.response.to.have.status(422);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test('Validation error has expected structure', () => {\r",
+                  "  const body = pm.response.json();\r",
+                  "\r",
+                  "  pm.expect(body).to.have.property('error');\r",
+                  "  pm.expect(body.error.code).to.eql('VALIDATION_ERROR');\r",
+                  "  pm.expect(body.error).to.have.property('message');\r",
+                  "  pm.expect(body.error).to.have.property('requestId');\r",
+                  "  pm.expect(body.error.details).to.be.an('array');\r",
+                  "  pm.expect(body.error.details.length).to.be.above(0);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test('Validation details contain field errors', () => {\r",
+                  "  const details = pm.response.json().error.details;\r",
+                  "\r",
+                  "  details.forEach((detail) => {\r",
+                  "    pm.expect(detail).to.have.property('field');\r",
+                  "    pm.expect(detail).to.have.property('message');\r",
+                  "  });\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
               }
             }
           ],
           "request": {
             "method": "POST",
-            "header": [
-              {
-                "key": "X-API-Key",
-                "value": "{{apiKey}}"
-              }
-            ],
+            "header": [],
             "body": {
               "mode": "raw",
               "raw": "{\r\n  \"name\": \"X\",\r\n  \"type\": \"invalid-type\",\r\n  \"serialNumber\": \"\",\r\n  \"location\": {\r\n    \"lat\": 200,\r\n    \"lon\": 300\r\n  },\r\n  \"status\": \"unknown\",\r\n  \"installedAt\": \"2035-01-15\"\r\n}",
@@ -10590,21 +11075,28 @@
             {
               "listen": "test",
               "script": {
-                "type": "text/javascript",
                 "exec": [
-                  "pm.test('Status code is 409', () => {\r\n  pm.response.to.have.status(409);\r\n});\r\n\r\npm.test('Duplicate serial number returns CONFLICT', () => {\r\n  const body = pm.response.json();\r\n\r\n  pm.expect(body.error.code).to.eql('CONFLICT');\r\n  pm.expect(body.error).to.have.property('message');\r\n  pm.expect(body.error).to.have.property('requestId');\r\n});"
-                ]
+                  "pm.test('Status code is 409', () => {\r",
+                  "  pm.response.to.have.status(409);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test('Duplicate serial number returns CONFLICT', () => {\r",
+                  "  const body = pm.response.json();\r",
+                  "\r",
+                  "  pm.expect(body.error.code).to.eql('CONFLICT');\r",
+                  "  pm.expect(body.error).to.have.property('message');\r",
+                  "  pm.expect(body.error).to.have.property('requestId');\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
               }
             }
           ],
           "request": {
             "method": "POST",
-            "header": [
-              {
-                "key": "X-API-Key",
-                "value": "{{apiKey}}"
-              }
-            ],
+            "header": [],
             "body": {
               "mode": "raw",
               "raw": "{\r\n  \"name\": \"Проверка PostgreSQL\",\r\n  \"type\": \"sensor\",\r\n  \"serialNumber\": \"PG-CHECK-20260927-1020\",\r\n  \"location\": {\r\n    \"lat\": 55.7558,\r\n    \"lon\": 37.6173\r\n  },\r\n  \"status\": \"operational\",\r\n  \"installedAt\": \"2026-09-01\"\r\n}",
@@ -11019,21 +11511,28 @@
             {
               "listen": "test",
               "script": {
-                "type": "text/javascript",
                 "exec": [
-                  "pm.test('Status code is 409', () => {\r\n  pm.response.to.have.status(409);\r\n});\r\n\r\npm.test('Equipment with open request cannot be deleted', () => {\r\n  const body = pm.response.json();\r\n\r\n  pm.expect(body.error.code).to.eql('CONFLICT');\r\n  pm.expect(body.error).to.have.property('message');\r\n  pm.expect(body.error).to.have.property('requestId');\r\n});"
-                ]
+                  "pm.test('Status code is 409', () => {\r",
+                  "  pm.response.to.have.status(409);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test('Equipment with open request cannot be deleted', () => {\r",
+                  "  const body = pm.response.json();\r",
+                  "\r",
+                  "  pm.expect(body.error.code).to.eql('CONFLICT');\r",
+                  "  pm.expect(body.error).to.have.property('message');\r",
+                  "  pm.expect(body.error).to.have.property('requestId');\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
               }
             }
           ],
           "request": {
             "method": "DELETE",
-            "header": [
-              {
-                "key": "X-API-Key",
-                "value": "{{apiKey}}"
-              }
-            ],
+            "header": [],
             "url": {
               "raw": "{{baseUrl}}/api/equipment/{{equipmentId}}",
               "host": [
@@ -11416,21 +11915,28 @@
             {
               "listen": "test",
               "script": {
-                "type": "text/javascript",
                 "exec": [
-                  "pm.test('Status code is 409', () => {\r\n  pm.response.to.have.status(409);\r\n});\r\n\r\npm.test('Invalid status transition returns CONFLICT', () => {\r\n  const body = pm.response.json();\r\n\r\n  pm.expect(body.error.code).to.eql('CONFLICT');\r\n  pm.expect(body.error).to.have.property('message');\r\n  pm.expect(body.error).to.have.property('requestId');\r\n});"
-                ]
+                  "pm.test('Status code is 409', () => {\r",
+                  "  pm.response.to.have.status(409);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test('Invalid status transition returns CONFLICT', () => {\r",
+                  "  const body = pm.response.json();\r",
+                  "\r",
+                  "  pm.expect(body.error.code).to.eql('CONFLICT');\r",
+                  "  pm.expect(body.error).to.have.property('message');\r",
+                  "  pm.expect(body.error).to.have.property('requestId');\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
               }
             }
           ],
           "request": {
             "method": "PATCH",
-            "header": [
-              {
-                "key": "X-API-Key",
-                "value": "{{apiKey}}"
-              }
-            ],
+            "header": [],
             "body": {
               "mode": "raw",
               "raw": "{\r\n  \"status\": \"new\"\r\n}",
@@ -12123,15 +12629,20 @@
           ]
         },
         {
-          "name": "401 Missing API Key",
+          "name": "401 Missing access token",
           "event": [
             {
               "listen": "test",
               "script": {
-                "type": "text/javascript",
                 "exec": [
-                  "pm.test('Status code is 401', function () {\r\n  pm.response.to.have.status(401);\r\n});\r\n\r\npm.test('Error code is UNAUTHORIZED', function () {\r\n  const json = pm.response.json();\r\n\r\n  pm.expect(json.error.code).to.eql('UNAUTHORIZED');\r\n});\r\n\r\npm.test('Response contains requestId', function () {\r\n  const json = pm.response.json();\r\n\r\n  pm.expect(json.error.requestId).to.be.a('string');\r\n  pm.expect(json.error.requestId).to.not.be.empty;\r\n});"
-                ]
+                  "pm.test('Missing or invalid access token returns 401', () => {\r",
+                  "  pm.response.to.have.status(401);\r",
+                  "  pm.expect(pm.response.json().error.code).to.eql('UNAUTHORIZED');\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
               }
             }
           ],
@@ -12163,7 +12674,7 @@
           },
           "response": [
             {
-              "name": "Missing API Key",
+              "name": "401 Missing access token",
               "originalRequest": {
                 "method": "POST",
                 "header": [],
@@ -12189,255 +12700,137 @@
               },
               "status": "Unauthorized",
               "code": 401,
-              "_postman_previewlanguage": "json",
+              "_postman_previewlanguage": null,
               "header": [
                 {
-                  "key": "content-security-policy",
-                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                  "key": "Server",
+                  "value": "nginx"
                 },
                 {
-                  "key": "cross-origin-opener-policy",
-                  "value": "same-origin"
+                  "key": "Date",
+                  "value": "Sun, 04 Oct 2026 16:16:19 GMT"
                 },
                 {
-                  "key": "cross-origin-resource-policy",
-                  "value": "same-origin"
-                },
-                {
-                  "key": "origin-agent-cluster",
-                  "value": "?1"
-                },
-                {
-                  "key": "referrer-policy",
-                  "value": "no-referrer"
-                },
-                {
-                  "key": "strict-transport-security",
-                  "value": "max-age=31536000; includeSubDomains"
-                },
-                {
-                  "key": "x-content-type-options",
-                  "value": "nosniff"
-                },
-                {
-                  "key": "x-dns-prefetch-control",
-                  "value": "off"
-                },
-                {
-                  "key": "x-download-options",
-                  "value": "noopen"
-                },
-                {
-                  "key": "x-frame-options",
-                  "value": "SAMEORIGIN"
-                },
-                {
-                  "key": "x-permitted-cross-domain-policies",
-                  "value": "none"
-                },
-                {
-                  "key": "x-xss-protection",
-                  "value": "0"
-                },
-                {
-                  "key": "vary",
-                  "value": "Origin"
-                },
-                {
-                  "key": "ratelimit-policy",
-                  "value": "100;w=60"
-                },
-                {
-                  "key": "ratelimit-limit",
-                  "value": "100"
-                },
-                {
-                  "key": "ratelimit-remaining",
-                  "value": "99"
-                },
-                {
-                  "key": "ratelimit-reset",
-                  "value": "60"
-                },
-                {
-                  "key": "content-type",
+                  "key": "Content-Type",
                   "value": "application/json; charset=utf-8"
                 },
                 {
-                  "key": "content-length",
-                  "value": "123"
+                  "key": "Content-Length",
+                  "value": "128"
                 },
                 {
-                  "key": "etag",
-                  "value": "W/\"7b-3dFsksWYjmemKAMgGzJcGRW98+0\""
-                },
-                {
-                  "key": "date",
-                  "value": "Sun, 20 Sep 2026 13:58:19 GMT"
-                },
-                {
-                  "key": "connection",
+                  "key": "Connection",
                   "value": "keep-alive"
                 },
                 {
-                  "key": "keep-alive",
-                  "value": "timeout=5"
-                }
-              ],
-              "cookie": [],
-              "body": "{\n  \"error\": {\n    \"code\": \"UNAUTHORIZED\",\n    \"message\": \"Invalid or missing API key\",\n    \"requestId\": \"2a563802-9bb4-4af9-b2fd-a126a23ca01e\"\n  }\n}"
-            },
-            {
-              "name": "Case 3 - 401 Missing API Key",
-              "originalRequest": {
-                "method": "POST",
-                "header": [],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\r\n  \"name\": \"Auth Test Sensor\",\r\n  \"type\": \"sensor\",\r\n  \"serialNumber\": \"AUTH-MISSING-KEY-001\",\r\n  \"location\": {\r\n    \"lat\": 55.7558,\r\n    \"lon\": 37.6173\r\n  },\r\n  \"status\": \"operational\",\r\n  \"installedAt\": \"2026-01-15\"\r\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": {
-                  "raw": "{{baseUrl}}/api/equipment",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "equipment"
-                  ]
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "content-security-policy",
+                  "key": "Content-Security-Policy",
                   "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
                 },
                 {
-                  "key": "cross-origin-opener-policy",
+                  "key": "Cross-Origin-Opener-Policy",
                   "value": "same-origin"
                 },
                 {
-                  "key": "cross-origin-resource-policy",
+                  "key": "Cross-Origin-Resource-Policy",
                   "value": "same-origin"
                 },
                 {
-                  "key": "origin-agent-cluster",
+                  "key": "Origin-Agent-Cluster",
                   "value": "?1"
                 },
                 {
-                  "key": "referrer-policy",
+                  "key": "Referrer-Policy",
                   "value": "no-referrer"
                 },
                 {
-                  "key": "strict-transport-security",
+                  "key": "Strict-Transport-Security",
                   "value": "max-age=31536000; includeSubDomains"
                 },
                 {
-                  "key": "x-content-type-options",
+                  "key": "X-Content-Type-Options",
                   "value": "nosniff"
                 },
                 {
-                  "key": "x-dns-prefetch-control",
+                  "key": "X-DNS-Prefetch-Control",
                   "value": "off"
                 },
                 {
-                  "key": "x-download-options",
+                  "key": "X-Download-Options",
                   "value": "noopen"
                 },
                 {
-                  "key": "x-frame-options",
+                  "key": "X-Frame-Options",
                   "value": "SAMEORIGIN"
                 },
                 {
-                  "key": "x-permitted-cross-domain-policies",
+                  "key": "X-Permitted-Cross-Domain-Policies",
                   "value": "none"
                 },
                 {
-                  "key": "x-xss-protection",
+                  "key": "X-XSS-Protection",
                   "value": "0"
                 },
                 {
-                  "key": "vary",
+                  "key": "Vary",
                   "value": "Origin"
                 },
                 {
-                  "key": "ratelimit-policy",
+                  "key": "RateLimit-Policy",
                   "value": "100;w=60"
                 },
                 {
-                  "key": "ratelimit-limit",
+                  "key": "RateLimit-Limit",
                   "value": "100"
                 },
                 {
-                  "key": "ratelimit-remaining",
+                  "key": "RateLimit-Remaining",
                   "value": "99"
                 },
                 {
-                  "key": "ratelimit-reset",
+                  "key": "RateLimit-Reset",
                   "value": "60"
                 },
                 {
-                  "key": "content-type",
-                  "value": "application/json; charset=utf-8"
-                },
-                {
-                  "key": "content-length",
-                  "value": "123"
-                },
-                {
-                  "key": "etag",
-                  "value": "W/\"7b-tB8hDfCMOPK+aIqcpKFeMh4Up38\""
-                },
-                {
-                  "key": "date",
-                  "value": "Sun, 27 Sep 2026 09:18:02 GMT"
-                },
-                {
-                  "key": "connection",
-                  "value": "keep-alive"
-                },
-                {
-                  "key": "keep-alive",
-                  "value": "timeout=5"
+                  "key": "ETag",
+                  "value": "W/\"80-t82vID9WMwr0xtBik+4w4BVCnLc\""
                 }
               ],
               "cookie": [],
-              "body": "{\n  \"error\": {\n    \"code\": \"UNAUTHORIZED\",\n    \"message\": \"Invalid or missing API key\",\n    \"requestId\": \"c530bf8e-feb2-4434-93aa-8bfa4daa66aa\"\n  }\n}"
+              "body": "{\n    \"error\": {\n        \"code\": \"UNAUTHORIZED\",\n        \"message\": \"Missing or invalid Bearer token\",\n        \"requestId\": \"2146d824-8912-4dee-8c81-3977038267a1\"\n    }\n}"
             }
           ]
         },
         {
-          "name": "401 Invalid API Key",
+          "name": "401 Invalid access token",
           "event": [
             {
               "listen": "test",
               "script": {
-                "type": "text/javascript",
                 "exec": [
-                  "pm.test('Status code is 401', function () {\r\n  pm.response.to.have.status(401);\r\n});\r\n\r\npm.test('Error code is UNAUTHORIZED', function () {\r\n  const json = pm.response.json();\r\n\r\n  pm.expect(json.error.code).to.eql('UNAUTHORIZED');\r\n});\r\n\r\npm.test('Error message describes authentication failure', function () {\r\n  const json = pm.response.json();\r\n\r\n  pm.expect(json.error.message).to.eql('Invalid or missing API key');\r\n});\r\n\r\npm.test('Response contains requestId', function () {\r\n  const json = pm.response.json();\r\n\r\n  pm.expect(json.error.requestId).to.be.a('string');\r\n  pm.expect(json.error.requestId).to.not.be.empty;\r\n});"
-                ]
+                  "pm.test('Missing or invalid access token returns 401', () => {\r",
+                  "  pm.response.to.have.status(401);\r",
+                  "  pm.expect(pm.response.json().error.code).to.eql('UNAUTHORIZED');\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
               }
             }
           ],
           "request": {
             "auth": {
-              "type": "noauth"
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "invalid-token",
+                  "type": "string"
+                }
+              ]
             },
             "method": "POST",
-            "header": [
-              {
-                "key": "X-API-Key",
-                "value": "invalid-api-key"
-              }
-            ],
+            "header": [],
             "body": {
               "mode": "raw",
               "raw": "{\r\n  \"name\": \"Auth Test Sensor\",\r\n  \"type\": \"sensor\",\r\n  \"serialNumber\": \"AUTH-INVALID-KEY-001\",\r\n  \"location\": {\r\n    \"lat\": 55.7558,\r\n    \"lon\": 37.6173\r\n  },\r\n  \"status\": \"operational\",\r\n  \"installedAt\": \"2026-01-15\"\r\n}",
@@ -12460,15 +12853,10 @@
           },
           "response": [
             {
-              "name": "Case 3 - 401 Invalid API Key",
+              "name": "401 Invalid access token",
               "originalRequest": {
                 "method": "POST",
-                "header": [
-                  {
-                    "key": "X-API-Key",
-                    "value": "invalid-api-key"
-                  }
-                ],
+                "header": [],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n  \"name\": \"Auth Test Sensor\",\r\n  \"type\": \"sensor\",\r\n  \"serialNumber\": \"AUTH-INVALID-KEY-001\",\r\n  \"location\": {\r\n    \"lat\": 55.7558,\r\n    \"lon\": 37.6173\r\n  },\r\n  \"status\": \"operational\",\r\n  \"installedAt\": \"2026-01-15\"\r\n}",
@@ -12491,103 +12879,103 @@
               },
               "status": "Unauthorized",
               "code": 401,
-              "_postman_previewlanguage": "json",
+              "_postman_previewlanguage": null,
               "header": [
                 {
-                  "key": "content-security-policy",
-                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                  "key": "Server",
+                  "value": "nginx"
                 },
                 {
-                  "key": "cross-origin-opener-policy",
-                  "value": "same-origin"
+                  "key": "Date",
+                  "value": "Sun, 04 Oct 2026 16:17:23 GMT"
                 },
                 {
-                  "key": "cross-origin-resource-policy",
-                  "value": "same-origin"
-                },
-                {
-                  "key": "origin-agent-cluster",
-                  "value": "?1"
-                },
-                {
-                  "key": "referrer-policy",
-                  "value": "no-referrer"
-                },
-                {
-                  "key": "strict-transport-security",
-                  "value": "max-age=31536000; includeSubDomains"
-                },
-                {
-                  "key": "x-content-type-options",
-                  "value": "nosniff"
-                },
-                {
-                  "key": "x-dns-prefetch-control",
-                  "value": "off"
-                },
-                {
-                  "key": "x-download-options",
-                  "value": "noopen"
-                },
-                {
-                  "key": "x-frame-options",
-                  "value": "SAMEORIGIN"
-                },
-                {
-                  "key": "x-permitted-cross-domain-policies",
-                  "value": "none"
-                },
-                {
-                  "key": "x-xss-protection",
-                  "value": "0"
-                },
-                {
-                  "key": "vary",
-                  "value": "Origin"
-                },
-                {
-                  "key": "ratelimit-policy",
-                  "value": "100;w=60"
-                },
-                {
-                  "key": "ratelimit-limit",
-                  "value": "100"
-                },
-                {
-                  "key": "ratelimit-remaining",
-                  "value": "98"
-                },
-                {
-                  "key": "ratelimit-reset",
-                  "value": "27"
-                },
-                {
-                  "key": "content-type",
+                  "key": "Content-Type",
                   "value": "application/json; charset=utf-8"
                 },
                 {
-                  "key": "content-length",
-                  "value": "123"
+                  "key": "Content-Length",
+                  "value": "128"
                 },
                 {
-                  "key": "etag",
-                  "value": "W/\"7b-/iWYuee9VU84X+X11Qm2FMCqVrc\""
-                },
-                {
-                  "key": "date",
-                  "value": "Sun, 27 Sep 2026 09:18:35 GMT"
-                },
-                {
-                  "key": "connection",
+                  "key": "Connection",
                   "value": "keep-alive"
                 },
                 {
-                  "key": "keep-alive",
-                  "value": "timeout=5"
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "99"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "60"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"80-yLDZ/+7AJIAN7vEVPmtbMhz7TDQ\""
                 }
               ],
               "cookie": [],
-              "body": "{\n  \"error\": {\n    \"code\": \"UNAUTHORIZED\",\n    \"message\": \"Invalid or missing API key\",\n    \"requestId\": \"c064a03c-9125-4b9b-aae0-2bf89e061848\"\n  }\n}"
+              "body": "{\n    \"error\": {\n        \"code\": \"UNAUTHORIZED\",\n        \"message\": \"Invalid or expired access token\",\n        \"requestId\": \"f5e7a899-72a0-40cc-b409-fb4e60e041a8\"\n    }\n}"
             }
           ]
         },
@@ -13166,6 +13554,21 @@
       "item": [
         {
           "name": "409 Cannot start a request without assigned technicians",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Expected response status', () => {\r",
+                  "  pm.response.to.have.status(409);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "method": "PATCH",
             "header": [],
@@ -13318,11 +13721,153 @@
               ],
               "cookie": [],
               "body": "{\n  \"error\": {\n    \"code\": \"CONFLICT\",\n    \"message\": \"Cannot start a maintenance request without assigned technicians\",\n    \"requestId\": \"5b77a5b7-2219-4a49-ae17-7a0e5a78ec51\"\n  }\n}"
+            },
+            {
+              "name": "409 Cannot start a request without assigned technicians",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"status\": \"in_progress\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/requests/{{assigneeRequestId}}/status",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "requests",
+                    "{{assigneeRequestId}}",
+                    "status"
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 04 Oct 2026 18:45:34 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "156"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "98"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "14"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"9c-hmgXUjDJthH3DFqM7ZCqfNikmtg\""
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"error\": {\n        \"code\": \"CONFLICT\",\n        \"message\": \"Cannot start a maintenance request without assigned technicians\",\n        \"requestId\": \"ef4207a0-6d32-4f5b-a219-cd96ba41701e\"\n    }\n}"
             }
           ]
         },
         {
           "name": "Assign the correct crew",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Expected response status', () => {\r",
+                  "  pm.response.to.have.status(204);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "method": "POST",
             "header": [],
@@ -13463,11 +14008,141 @@
               ],
               "cookie": [],
               "body": ""
+            },
+            {
+              "name": "Assign the correct crew",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"assignees\": [\r\n    {\r\n      \"technicianId\": \"{{leadTechnicianId}}\",\r\n      \"role\": \"lead\",\r\n      \"hours\": 4\r\n    },\r\n    {\r\n      \"technicianId\": \"{{memberTechnicianId}}\",\r\n      \"role\": \"member\",\r\n      \"hours\": 2\r\n    }\r\n  ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/requests/{{assigneeRequestId}}/assignees",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "requests",
+                    "{{assigneeRequestId}}",
+                    "assignees"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 04 Oct 2026 18:45:40 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "97"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "8"
+                }
+              ],
+              "cookie": [],
+              "body": null
             }
           ]
         },
         {
           "name": "Replace assignees - no lead - 422",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Expected response status', () => {\r",
+                  "  pm.response.to.have.status(422);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "method": "POST",
             "header": [],
@@ -13620,11 +14295,153 @@
               ],
               "cookie": [],
               "body": "{\n  \"error\": {\n    \"code\": \"VALIDATION_ERROR\",\n    \"message\": \"A request team must have exactly one lead\",\n    \"details\": [\n      {\n        \"field\": \"assignees\",\n        \"message\": \"Exactly one technician must have the lead role\"\n      }\n    ],\n    \"requestId\": \"44842d6f-7abe-4957-b3ab-95759a0b1e11\"\n  }\n}"
+            },
+            {
+              "name": "Replace assignees - no lead - 422",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"assignees\": [\r\n    {\r\n      \"technicianId\": \"{{leadTechnicianId}}\",\r\n      \"role\": \"member\",\r\n      \"hours\": 10\r\n    },\r\n    {\r\n      \"technicianId\": \"{{memberTechnicianId}}\",\r\n      \"role\": \"member\",\r\n      \"hours\": 20\r\n    }\r\n  ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/requests/{{assigneeRequestId}}/assignees",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "requests",
+                    "{{assigneeRequestId}}",
+                    "assignees"
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity",
+              "code": 422,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 04 Oct 2026 18:45:49 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "235"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "99"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "60"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"eb-NR2URog3L8EEk55Hry2reOTbhJU\""
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"error\": {\n        \"code\": \"VALIDATION_ERROR\",\n        \"message\": \"A request team must have exactly one lead\",\n        \"details\": [\n            {\n                \"field\": \"assignees\",\n                \"message\": \"Exactly one technician must have the lead role\"\n            }\n        ],\n        \"requestId\": \"ae9e1e4d-8c1c-4d08-9628-e4e7eb9c88d7\"\n    }\n}"
             }
           ]
         },
         {
           "name": "Replace assignees - two leads - 422",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Expected response status', () => {\r",
+                  "  pm.response.to.have.status(422);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "method": "POST",
             "header": [],
@@ -13777,11 +14594,153 @@
               ],
               "cookie": [],
               "body": "{\n  \"error\": {\n    \"code\": \"VALIDATION_ERROR\",\n    \"message\": \"A request team must have exactly one lead\",\n    \"details\": [\n      {\n        \"field\": \"assignees\",\n        \"message\": \"Exactly one technician must have the lead role\"\n      }\n    ],\n    \"requestId\": \"024c77c3-83ad-47c6-8c55-8bf3956a73b7\"\n  }\n}"
+            },
+            {
+              "name": "Replace assignees - two leads - 422",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"assignees\": [\r\n    {\r\n      \"technicianId\": \"{{leadTechnicianId}}\",\r\n      \"role\": \"lead\",\r\n      \"hours\": 10\r\n    },\r\n    {\r\n      \"technicianId\": \"{{memberTechnicianId}}\",\r\n      \"role\": \"lead\",\r\n      \"hours\": 20\r\n    }\r\n  ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/requests/{{assigneeRequestId}}/assignees",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "requests",
+                    "{{assigneeRequestId}}",
+                    "assignees"
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity",
+              "code": 422,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 04 Oct 2026 18:45:54 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "235"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "98"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "55"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"eb-nEvtrZ2iW7lYjLZT0I+o2App6OM\""
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"error\": {\n        \"code\": \"VALIDATION_ERROR\",\n        \"message\": \"A request team must have exactly one lead\",\n        \"details\": [\n            {\n                \"field\": \"assignees\",\n                \"message\": \"Exactly one technician must have the lead role\"\n            }\n        ],\n        \"requestId\": \"d9dc3b74-93b7-4bdc-a237-62dec7eeefa4\"\n    }\n}"
             }
           ]
         },
         {
           "name": "Replace assignees - empty team - 422",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Expected response status', () => {\r",
+                  "  pm.response.to.have.status(422);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "method": "POST",
             "header": [],
@@ -13934,11 +14893,153 @@
               ],
               "cookie": [],
               "body": "{\n  \"error\": {\n    \"code\": \"VALIDATION_ERROR\",\n    \"message\": \"A request team must have exactly one lead\",\n    \"details\": [\n      {\n        \"field\": \"assignees\",\n        \"message\": \"Exactly one technician must have the lead role\"\n      }\n    ],\n    \"requestId\": \"3a4d2c63-3c68-4f28-958f-5bc19f529019\"\n  }\n}"
+            },
+            {
+              "name": "Replace assignees - empty team - 422",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"assignees\": []\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/requests/{{assigneeRequestId}}/assignees",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "requests",
+                    "{{assigneeRequestId}}",
+                    "assignees"
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity",
+              "code": 422,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 04 Oct 2026 18:46:00 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "235"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "97"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "49"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"eb-LuKKXMrC9qf56fAnfjiuDkY8ejI\""
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"error\": {\n        \"code\": \"VALIDATION_ERROR\",\n        \"message\": \"A request team must have exactly one lead\",\n        \"details\": [\n            {\n                \"field\": \"assignees\",\n                \"message\": \"Exactly one technician must have the lead role\"\n            }\n        ],\n        \"requestId\": \"483d4b8d-7386-4318-accd-325025dea2c4\"\n    }\n}"
             }
           ]
         },
         {
           "name": "Replace assignees - duplicate technician - 409",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Expected response status', () => {\r",
+                  "  pm.response.to.have.status(409);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "method": "POST",
             "header": [],
@@ -14091,11 +15192,153 @@
               ],
               "cookie": [],
               "body": "{\n  \"error\": {\n    \"code\": \"CONFLICT\",\n    \"message\": \"A technician cannot be assigned to the same request twice\",\n    \"requestId\": \"1c195a1c-67c8-40fb-975d-1f26b87266d7\"\n  }\n}"
+            },
+            {
+              "name": "Replace assignees - duplicate technician - 409",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"assignees\": [\r\n    {\r\n      \"technicianId\": \"{{leadTechnicianId}}\",\r\n      \"role\": \"lead\",\r\n      \"hours\": 10\r\n    },\r\n    {\r\n      \"technicianId\": \"{{leadTechnicianId}}\",\r\n      \"role\": \"member\",\r\n      \"hours\": 20\r\n    }\r\n  ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/requests/{{assigneeRequestId}}/assignees",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "requests",
+                    "{{assigneeRequestId}}",
+                    "assignees"
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 04 Oct 2026 18:46:06 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "150"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "96"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "43"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"96-KnqtyCmRvNXVS8yG6pxsWROQMfk\""
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"error\": {\n        \"code\": \"CONFLICT\",\n        \"message\": \"A technician cannot be assigned to the same request twice\",\n        \"requestId\": \"0c6a9d02-f4ce-4d8e-8add-d5dbef73bf95\"\n    }\n}"
             }
           ]
         },
         {
           "name": "Replace assignees - unknown technician - 404",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Expected response status', () => {\r",
+                  "  pm.response.to.have.status(404);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "method": "POST",
             "header": [],
@@ -14248,11 +15491,153 @@
               ],
               "cookie": [],
               "body": "{\n  \"error\": {\n    \"code\": \"NOT_FOUND\",\n    \"message\": \"Maintenance request or technician not found\",\n    \"requestId\": \"e4dbd0cd-233d-4505-8ecd-f6ced5f46516\"\n  }\n}"
+            },
+            {
+              "name": "Replace assignees - unknown technician - 404",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"assignees\": [\r\n    {\r\n      \"technicianId\": \"{{leadTechnicianId}}\",\r\n      \"role\": \"lead\",\r\n      \"hours\": 10\r\n    },\r\n    {\r\n      \"technicianId\": \"00000000-0000-4000-8000-000000000001\",\r\n      \"role\": \"member\",\r\n      \"hours\": 20\r\n    }\r\n  ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/requests/{{assigneeRequestId}}/assignees",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "requests",
+                    "{{assigneeRequestId}}",
+                    "assignees"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 04 Oct 2026 18:46:45 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "137"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "95"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "4"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"89-0tL4YWxpLX4ZU0DkjAsIHBjaoTk\""
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"error\": {\n        \"code\": \"NOT_FOUND\",\n        \"message\": \"Maintenance request or technician not found\",\n        \"requestId\": \"9b7c2d42-e9aa-48e7-8edf-76c6ace1d7b0\"\n    }\n}"
             }
           ]
         },
         {
           "name": "Case 3 - 409 - An attempt to remove the host while a participant is present",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Expected response status', () => {\r",
+                  "  pm.response.to.have.status(409);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "method": "DELETE",
             "header": [],
@@ -14389,11 +15774,145 @@
               ],
               "cookie": [],
               "body": "{\n  \"error\": {\n    \"code\": \"CONFLICT\",\n    \"message\": \"Cannot remove the lead while other technicians remain assigned\",\n    \"requestId\": \"75d2f9ab-4ff5-476e-b1be-98b6574627e0\"\n  }\n}"
+            },
+            {
+              "name": "Case 3 - 409 - An attempt to remove the host while a participant is present",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/requests/{{assigneeRequestId}}/assignees/{{leadTechnicianId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "requests",
+                    "{{assigneeRequestId}}",
+                    "assignees",
+                    "{{leadTechnicianId}}"
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 04 Oct 2026 18:47:00 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "155"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "99"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "60"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"9b-HmyERuX7ztLy6bJklJICufpL1vg\""
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"error\": {\n        \"code\": \"CONFLICT\",\n        \"message\": \"Cannot remove the lead while other technicians remain assigned\",\n        \"requestId\": \"fdb6ba27-3ab5-44e7-9704-c69d041fd3b4\"\n    }\n}"
             }
           ]
         },
         {
           "name": "Withdrawal of a participant",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Expected response status', () => {\r",
+                  "  pm.response.to.have.status(204);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "method": "DELETE",
             "header": [],
@@ -14518,11 +16037,133 @@
               ],
               "cookie": [],
               "body": ""
+            },
+            {
+              "name": "Withdrawal of a participant",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/requests/{{assigneeRequestId}}/assignees/{{memberTechnicianId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "requests",
+                    "{{assigneeRequestId}}",
+                    "assignees",
+                    "{{memberTechnicianId}}"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 04 Oct 2026 18:47:09 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "98"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "52"
+                }
+              ],
+              "cookie": [],
+              "body": null
             }
           ]
         },
         {
           "name": "Removing the same member again",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Expected response status', () => {\r",
+                  "  pm.response.to.have.status(404);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "method": "DELETE",
             "header": [],
@@ -14659,11 +16300,145 @@
               ],
               "cookie": [],
               "body": "{\n  \"error\": {\n    \"code\": \"NOT_FOUND\",\n    \"message\": \"Request assignee not found\",\n    \"requestId\": \"a5b46e41-337a-43b5-96b4-4904f75eb375\"\n  }\n}"
+            },
+            {
+              "name": "Removing the same member again",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/requests/{{assigneeRequestId}}/assignees/{{memberTechnicianId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "requests",
+                    "{{assigneeRequestId}}",
+                    "assignees",
+                    "{{memberTechnicianId}}"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 04 Oct 2026 18:47:15 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "120"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "97"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "45"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"78-d6OwOmOk7Rv+fi9tPBs8+vfciDg\""
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"error\": {\n        \"code\": \"NOT_FOUND\",\n        \"message\": \"Request assignee not found\",\n        \"requestId\": \"a828ca06-96a4-4196-95ca-b27119eafc93\"\n    }\n}"
             }
           ]
         },
         {
           "name": "Start of work with the assigned lead",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Expected response status', () => {\r",
+                  "  pm.response.to.have.status(200);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "method": "PATCH",
             "header": [],
@@ -14816,11 +16591,153 @@
               ],
               "cookie": [],
               "body": "{\n  \"data\": {\n    \"id\": \"b99a4e14-657a-49f1-9ba5-427b011936de\",\n    \"equipmentId\": \"5a3a69cc-92a0-48fe-b391-d31be5eef078\",\n    \"title\": \"Request assignee\",\n    \"priority\": \"high\",\n    \"status\": \"in_progress\",\n    \"createdAt\": \"2026-09-27T12:52:57.768Z\",\n    \"updatedAt\": \"2026-09-27T13:42:45.052Z\",\n    \"description\": \"Заявка для проверки assignee\",\n    \"plannedAt\": \"2026-10-01T10:00:00.000Z\"\n  }\n}"
+            },
+            {
+              "name": "Start of work with the assigned lead",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"status\": \"in_progress\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/requests/{{assigneeRequestId}}/status",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "requests",
+                    "{{assigneeRequestId}}",
+                    "status"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 04 Oct 2026 18:47:21 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "289"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "96"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "40"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"121-q+K1kUOtxPVB0Biuy2UxOyYm9u0\""
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": {\n        \"id\": \"6dd23f79-ca20-47e0-b3c5-317142fe884b\",\n        \"equipmentId\": \"ad9b3ba1-78e0-472c-b0fe-41c2f2e4b283\",\n        \"title\": \"Проверка назначения бригады\",\n        \"priority\": \"high\",\n        \"status\": \"in_progress\",\n        \"createdAt\": \"2026-10-04T18:42:51.779Z\",\n        \"updatedAt\": \"2026-10-04T18:47:21.046Z\"\n    }\n}"
             }
           ]
         },
         {
           "name": "Attempt to remove the last operator during the work",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Expected response status', () => {\r",
+                  "  pm.response.to.have.status(409);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "method": "DELETE",
             "header": [],
@@ -14957,11 +16874,157 @@
               ],
               "cookie": [],
               "body": "{\n  \"error\": {\n    \"code\": \"CONFLICT\",\n    \"message\": \"Cannot remove the last technician from a request in progress\",\n    \"requestId\": \"cd334ec0-9f36-44b6-b52d-2786cfa91fe4\"\n  }\n}"
+            },
+            {
+              "name": "Attempt to remove the last operator during the work",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/requests/{{assigneeRequestId}}/assignees/{{leadTechnicianId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "requests",
+                    "{{assigneeRequestId}}",
+                    "assignees",
+                    "{{leadTechnicianId}}"
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 04 Oct 2026 18:47:28 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "153"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "95"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "33"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"99-IaESuLIBZ1p100Igt6faIS/iXhA\""
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"error\": {\n        \"code\": \"CONFLICT\",\n        \"message\": \"Cannot remove the last technician from a request in progress\",\n        \"requestId\": \"69cd9b5a-015e-4ffa-8ffc-82eb3d49293b\"\n    }\n}"
             }
           ]
         },
         {
           "name": "Get request with assigned technicians - 200",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Request contains the remaining lead', () => {\r",
+                  "  pm.response.to.have.status(200);\r",
+                  "\r",
+                  "  const { data } = pm.response.json();\r",
+                  "  pm.expect(data.id).to.eql(\r",
+                  "    pm.collectionVariables.get('assigneeRequestId'),\r",
+                  "  );\r",
+                  "  pm.expect(data.status).to.eql('in_progress');\r",
+                  "  pm.expect(data.assignees).to.have.lengthOf(1);\r",
+                  "  pm.expect(data.assignees[0].technicianId).to.eql(\r",
+                  "    pm.collectionVariables.get('leadTechnicianId'),\r",
+                  "  );\r",
+                  "  pm.expect(data.assignees[0].role).to.eql('lead');\r",
+                  "  pm.expect(data.assignees[0].hours).to.eql(4);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "method": "GET",
             "header": [],
@@ -15094,6 +17157,123 @@
               ],
               "cookie": [],
               "body": "{\n  \"data\": {\n    \"id\": \"b99a4e14-657a-49f1-9ba5-427b011936de\",\n    \"equipmentId\": \"5a3a69cc-92a0-48fe-b391-d31be5eef078\",\n    \"title\": \"Request assignee\",\n    \"priority\": \"high\",\n    \"status\": \"in_progress\",\n    \"createdAt\": \"2026-09-27T12:52:57.768Z\",\n    \"updatedAt\": \"2026-09-27T13:42:45.052Z\",\n    \"description\": \"Заявка для проверки assignee\",\n    \"plannedAt\": \"2026-10-01T10:00:00.000Z\",\n    \"assignees\": [\n      {\n        \"technicianId\": \"c2ef06b9-a9fa-4a33-85c1-4ff69177d3e5\",\n        \"role\": \"lead\",\n        \"hours\": 4,\n        \"fullName\": \"Соколов Андрей Викторович\",\n        \"specialization\": \"Обслуживание силового электрооборудования\",\n        \"employeeNumber\": \"TECH-001\"\n      },\n      {\n        \"technicianId\": \"27dbd384-68b1-45a2-86b0-fd11065aa2bb\",\n        \"role\": \"member\",\n        \"hours\": 2,\n        \"fullName\": \"Морозова Елена Сергеевна\",\n        \"specialization\": \"Обслуживание инверторов\",\n        \"employeeNumber\": \"TECH-002\"\n      }\n    ]\n  }\n}"
+            },
+            {
+              "name": "Get request with assigned technicians - 200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/requests/{{assigneeRequestId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "requests",
+                    "{{assigneeRequestId}}"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 04 Oct 2026 18:47:34 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "573"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "94"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "26"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"23d-M6Ja7V/pgQOM8MWK8qRW6vIqiH8\""
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": {\n        \"id\": \"6dd23f79-ca20-47e0-b3c5-317142fe884b\",\n        \"equipmentId\": \"ad9b3ba1-78e0-472c-b0fe-41c2f2e4b283\",\n        \"title\": \"Проверка назначения бригады\",\n        \"priority\": \"high\",\n        \"status\": \"in_progress\",\n        \"createdAt\": \"2026-10-04T18:42:51.779Z\",\n        \"updatedAt\": \"2026-10-04T18:47:21.046Z\",\n        \"assignees\": [\n            {\n                \"technicianId\": \"29596ea6-b66f-427d-b595-69abdae359d3\",\n                \"role\": \"lead\",\n                \"hours\": 4,\n                \"fullName\": \"Ведущий тестовой бригады\",\n                \"specialization\": \"Обслуживание оборудования\",\n                \"employeeNumber\": \"LEAD-64cde89f-1524-4a1c-a0dc-6dfa6c4058be\"\n            }\n        ]\n    }\n}"
             }
           ]
         },
@@ -15242,6 +17422,123 @@
               ],
               "cookie": [],
               "body": "{\n  \"data\": {\n    \"id\": \"0a2700b1-e808-4522-b43e-32352979cb6b\",\n    \"name\": \"Ветрогенератор Север 01\",\n    \"type\": \"turbine\",\n    \"serialNumber\": \"NORTH-TRB-001\",\n    \"location\": {\n      \"lat\": 68.9712,\n      \"lon\": 33.0755\n    },\n    \"status\": \"operational\",\n    \"installedAt\": \"2022-06-15\",\n    \"passport\": {\n      \"equipmentId\": \"0a2700b1-e808-4522-b43e-32352979cb6b\",\n      \"manufacturer\": \"Энергосистемы\",\n      \"model\": \"ВГ-2500\",\n      \"ratedPowerKw\": 2500,\n      \"lastVerifiedAt\": \"2026-02-12\"\n    }\n  }\n}"
+            },
+            {
+              "name": "Get equipment with passport - 200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/equipment/{{equipmentWithPassportId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "equipment",
+                    "{{equipmentWithPassportId}}"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 04 Oct 2026 18:47:42 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "425"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "93"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "19"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"1a9-0Y/3aS2Ym9NkALORsC54MyN5Dgo\""
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": {\n        \"id\": \"0a2700b1-e808-4522-b43e-32352979cb6b\",\n        \"name\": \"Ветрогенератор Север 01\",\n        \"type\": \"turbine\",\n        \"serialNumber\": \"NORTH-TRB-001\",\n        \"location\": {\n            \"lat\": 68.9712,\n            \"lon\": 33.0755\n        },\n        \"status\": \"operational\",\n        \"installedAt\": \"2022-06-15\",\n        \"passport\": {\n            \"equipmentId\": \"0a2700b1-e808-4522-b43e-32352979cb6b\",\n            \"manufacturer\": \"Энергосистемы\",\n            \"model\": \"ВГ-2500\",\n            \"ratedPowerKw\": 2500,\n            \"lastVerifiedAt\": \"2026-02-12\"\n        }\n    }\n}"
             }
           ]
         },
@@ -15390,11 +17687,143 @@
               ],
               "cookie": [],
               "body": "{\n  \"data\": {\n    \"id\": \"77d9951c-a4e9-4bc1-99e6-4bab9bf463c8\",\n    \"name\": \"Проверка PostgreSQL — обновлено\",\n    \"type\": \"sensor\",\n    \"serialNumber\": \"PG-CHECK-20260927-1018\",\n    \"location\": {\n      \"lat\": 55.7558,\n      \"lon\": 37.6173\n    },\n    \"status\": \"maintenance\",\n    \"installedAt\": \"2026-09-01\",\n    \"passport\": null\n  }\n}"
+            },
+            {
+              "name": "Get equipment without passport - 200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/equipment/{{equipmentWithoutPassportId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "equipment",
+                    "{{equipmentWithoutPassportId}}"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 04 Oct 2026 18:47:49 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "309"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "92"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "11"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"135-CKkrC+ID1HrVB8OZq5bq2YIU4ns\""
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": {\n        \"id\": \"ad9b3ba1-78e0-472c-b0fe-41c2f2e4b283\",\n        \"name\": \"Оборудование для проверки бригады\",\n        \"type\": \"sensor\",\n        \"serialNumber\": \"CREW-04649f69-6124-4b01-9f9f-7fd099c5eb81\",\n        \"location\": {\n            \"lat\": 55.7558,\n            \"lon\": 37.6173\n        },\n        \"status\": \"operational\",\n        \"installedAt\": \"2026-10-01\",\n        \"passport\": null\n    }\n}"
             }
           ]
         },
         {
           "name": "Get request without assigned technicians - 200",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Expected response status', () => {\r",
+                  "  pm.response.to.have.status(200);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "method": "GET",
             "header": [],
@@ -15644,6 +18073,123 @@
               ],
               "cookie": [],
               "body": "{\n  \"data\": {\n    \"id\": \"3ffcab81-1063-4e7b-927a-5517cbf011df\",\n    \"equipmentId\": \"77d9951c-a4e9-4bc1-99e6-4bab9bf463c8\",\n    \"title\": \"Проверка сохранения заявки\",\n    \"priority\": \"high\",\n    \"status\": \"new\",\n    \"createdAt\": \"2026-09-27T07:45:52.927Z\",\n    \"updatedAt\": \"2026-09-27T07:45:52.525Z\",\n    \"description\": \"Временная заявка для проверки PostgreSQL\",\n    \"plannedAt\": \"2026-10-01T10:00:00.000Z\",\n    \"assignees\": []\n  }\n}"
+            },
+            {
+              "name": "Get request without assigned technicians - 200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/requests/{{requestWithoutAssigneesId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "requests",
+                    "{{requestWithoutAssigneesId}}"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 04 Oct 2026 18:47:56 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "416"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "91"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "4"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"1a0-ApYd1nF+lEKGi32gFbnqr7w7gPY\""
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": {\n        \"id\": \"3ffcab81-1063-4e7b-927a-5517cbf011df\",\n        \"equipmentId\": \"77d9951c-a4e9-4bc1-99e6-4bab9bf463c8\",\n        \"title\": \"Проверка сохранения заявки\",\n        \"priority\": \"high\",\n        \"status\": \"new\",\n        \"createdAt\": \"2026-09-27T07:45:52.927Z\",\n        \"updatedAt\": \"2026-09-27T07:45:52.525Z\",\n        \"description\": \"Временная заявка для проверки PostgreSQL\",\n        \"plannedAt\": \"2026-10-01T10:00:00.000Z\",\n        \"assignees\": []\n    }\n}"
             }
           ]
         }
@@ -15654,6 +18200,31 @@
       "item": [
         {
           "name": "History",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('History contains creation and start of work', () => {\r",
+                  "  pm.response.to.have.status(200);\r",
+                  "\r",
+                  "  const { data } = pm.response.json();\r",
+                  "  const requestId = pm.collectionVariables.get('assigneeRequestId');\r",
+                  "\r",
+                  "  pm.expect(data).to.be.an('array').with.lengthOf(2);\r",
+                  "  pm.expect(data.every((item) => item.requestId === requestId)).to.eql(true);\r",
+                  "\r",
+                  "  const started = data.find((item) => item.newStatus === 'in_progress');\r",
+                  "  pm.expect(started).to.exist;\r",
+                  "  pm.expect(started.previousStatus).to.eql('new');\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "method": "GET",
             "header": [],
@@ -15793,6 +18364,22 @@
         },
         {
           "name": "History of a non-existent application - 404",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Unknown request returns 404', () => {\r",
+                  "  pm.response.to.have.status(404);\r",
+                  "  pm.expect(pm.response.json().error.code).to.eql('NOT_FOUND');\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "method": "GET",
             "header": [],
@@ -15932,6 +18519,22 @@
         },
         {
           "name": "Invalid UUID - 422",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Invalid UUID returns 422', () => {\r",
+                  "  pm.response.to.have.status(422);\r",
+                  "  pm.expect(pm.response.json().error.code).to.eql('VALIDATION_ERROR');\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "method": "GET",
             "header": [],
@@ -21623,12 +24226,10 @@
               "listen": "test",
               "script": {
                 "exec": [
-                  "if (pm.response.code === 201) {\r",
-                  "  pm.collectionVariables.set(\r",
-                  "    'referenceSiteId',\r",
-                  "    pm.response.json().data.id,\r",
-                  "  );\r",
-                  "}"
+                  "pm.test('Returns the site list', () => {\r",
+                  "  pm.response.to.have.status(200);\r",
+                  "  pm.expect(pm.response.json().data).to.be.an('array');\r",
+                  "});"
                 ],
                 "type": "text/javascript",
                 "packages": {},
@@ -24516,19 +27117,722 @@
           ]
         }
       ]
+    },
+    {
+      "name": "Case 3 - Scenario setup",
+      "item": [
+        {
+          "name": "Create scenario equipment - 201",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Equipment created', () => {\r",
+                  "  pm.response.to.have.status(201);\r",
+                  "  const { data } = pm.response.json();\r",
+                  "  pm.expect(data.id).to.be.a('string').and.not.empty;\r",
+                  "  pm.collectionVariables.set('scenarioEquipmentId', data.id);\r",
+                  "  pm.collectionVariables.set('equipmentWithoutPassportId', data.id);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Оборудование для проверки бригады\",\r\n  \"type\": \"sensor\",\r\n  \"serialNumber\": \"CREW-{{$guid}}\",\r\n  \"location\": {\r\n    \"lat\": 55.7558,\r\n    \"lon\": 37.6173\r\n  },\r\n  \"status\": \"operational\",\r\n  \"installedAt\": \"2026-10-01\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/equipment",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "equipment"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Create scenario equipment - 201",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"Оборудование для проверки бригады\",\r\n  \"type\": \"sensor\",\r\n  \"serialNumber\": \"CREW-{{$guid}}\",\r\n  \"location\": {\r\n    \"lat\": 55.7558,\r\n    \"lon\": 37.6173\r\n  },\r\n  \"status\": \"operational\",\r\n  \"installedAt\": \"2026-10-01\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/equipment",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "equipment"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 04 Oct 2026 18:32:44 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "293"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "99"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "60"
+                },
+                {
+                  "key": "Location",
+                  "value": "/api/equipment/008d3249-bf0c-428f-8945-079f8326b541"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"125-W8Dd4xXksW80U29aCG7L+30alwc\""
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": {\n        \"id\": \"008d3249-bf0c-428f-8945-079f8326b541\",\n        \"name\": \"Оборудование для проверки бригады\",\n        \"type\": \"sensor\",\n        \"serialNumber\": \"CREW-1981bf7b-2010-436e-8dc2-f2c37c68d0e3\",\n        \"location\": {\n            \"lat\": 55.7558,\n            \"lon\": 37.6173\n        },\n        \"status\": \"operational\",\n        \"installedAt\": \"2026-10-01\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create scenario lead - 201",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Lead technician created', () => {\r",
+                  "  pm.response.to.have.status(201);\r",
+                  "  pm.collectionVariables.set(\r",
+                  "    'leadTechnicianId',\r",
+                  "    pm.response.json().data.id,\r",
+                  "  );\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"fullName\": \"Ведущий тестовой бригады\",\r\n  \"specialization\": \"Обслуживание оборудования\",\r\n  \"employeeNumber\": \"LEAD-{{$guid}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/technicians",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "technicians"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Create scenario lead - 201",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"fullName\": \"Ведущий тестовой бригады\",\r\n  \"specialization\": \"Обслуживание оборудования\",\r\n  \"employeeNumber\": \"LEAD-{{$guid}}\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/technicians",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "technicians"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 04 Oct 2026 18:33:34 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "244"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "98"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "10"
+                },
+                {
+                  "key": "Location",
+                  "value": "/api/technicians/331eebb2-edcf-4cd4-ae83-16247bf24573"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"f4-F2KAUl6qbh1rAlDtRLZtiu0/2hw\""
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": {\n        \"id\": \"331eebb2-edcf-4cd4-ae83-16247bf24573\",\n        \"fullName\": \"Ведущий тестовой бригады\",\n        \"specialization\": \"Обслуживание оборудования\",\n        \"employeeNumber\": \"LEAD-eb67be8c-29c7-4261-a6df-580c90c4515b\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create scenario member - 201",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Member technician created', () => {\r",
+                  "  pm.response.to.have.status(201);\r",
+                  "  pm.collectionVariables.set(\r",
+                  "    'memberTechnicianId',\r",
+                  "    pm.response.json().data.id,\r",
+                  "  );\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"fullName\": \"Участник тестовой бригады\",\r\n  \"specialization\": \"Обслуживание оборудования\",\r\n  \"employeeNumber\": \"MEMBER-{{$guid}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/technicians",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "technicians"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Create scenario member - 201",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"fullName\": \"Участник тестовой бригады\",\r\n  \"specialization\": \"Обслуживание оборудования\",\r\n  \"employeeNumber\": \"MEMBER-{{$guid}}\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/technicians",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "technicians"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 04 Oct 2026 18:34:14 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "248"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "99"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "60"
+                },
+                {
+                  "key": "Location",
+                  "value": "/api/technicians/f1d72f81-caa3-4891-8db6-d2ecc01cad30"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"f8-sx5Ir+oArWwsOUAAqnwAL7Fdr4U\""
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": {\n        \"id\": \"f1d72f81-caa3-4891-8db6-d2ecc01cad30\",\n        \"fullName\": \"Участник тестовой бригады\",\n        \"specialization\": \"Обслуживание оборудования\",\n        \"employeeNumber\": \"MEMBER-c790edd6-7357-42ba-b0e9-74dff44c1577\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create scenario request - 201",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Unassigned request created', () => {\r",
+                  "  pm.response.to.have.status(201);\r",
+                  "  const { data } = pm.response.json();\r",
+                  "  pm.expect(data.status).to.eql('new');\r",
+                  "  pm.collectionVariables.set('assigneeRequestId', data.id);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"equipmentId\": \"{{scenarioEquipmentId}}\",\r\n  \"title\": \"Проверка назначения бригады\",\r\n  \"priority\": \"high\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/requests",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "requests"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Create scenario request - 201",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"equipmentId\": \"{{scenarioEquipmentId}}\",\r\n  \"title\": \"Проверка назначения бригады\",\r\n  \"priority\": \"high\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/requests",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "requests"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 04 Oct 2026 18:34:56 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "281"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "100;w=60"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "100"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "98"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "19"
+                },
+                {
+                  "key": "Location",
+                  "value": "/api/requests/0cea3010-e98f-4ec9-a243-afc4b945a212"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"119-+wspNlJfGOUZ8WJ5QFSk0N5yAdg\""
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": {\n        \"id\": \"0cea3010-e98f-4ec9-a243-afc4b945a212\",\n        \"equipmentId\": \"008d3249-bf0c-428f-8945-079f8326b541\",\n        \"title\": \"Проверка назначения бригады\",\n        \"priority\": \"high\",\n        \"status\": \"new\",\n        \"createdAt\": \"2026-10-04T18:34:56.116Z\",\n        \"updatedAt\": \"2026-10-04T18:34:56.125Z\"\n    }\n}"
+            }
+          ]
+        }
+      ]
     }
   ],
   "auth": {
-    "type": "apikey",
-    "apikey": [
+    "type": "bearer",
+    "bearer": [
       {
-        "key": "key",
-        "value": "X-API-Key",
-        "type": "string"
-      },
-      {
-        "key": "value",
-        "value": "{{apiKey}}",
+        "key": "token",
+        "value": "{{authAccessToken}}",
         "type": "string"
       }
     ]
@@ -24569,10 +27873,6 @@
     {
       "key": "equipmentId",
       "value": "5a3a69cc-92a0-48fe-b391-d31be5eef078"
-    },
-    {
-      "key": "apiKey",
-      "value": "local-development-api-key"
     },
     {
       "key": "assigneeRequestId",
@@ -24640,6 +27940,10 @@
     },
     {
       "key": "referenceTechnicianId",
+      "value": ""
+    },
+    {
+      "key": "scenarioEquipmentId",
       "value": ""
     }
   ]
