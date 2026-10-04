@@ -12,7 +12,7 @@ export function createDocsRouter(): Router {
   });
 
   router.use(
-    '/api-docs',
+    ['/api/docs', '/api-docs'],
     helmet.contentSecurityPolicy({
       directives: {
         upgradeInsecureRequests:
